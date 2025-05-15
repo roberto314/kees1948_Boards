@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "65xx")(type "KiCad")(uri "/home/rob/Nextcloud/Documents/Elektronik/kicad/Libraries/6502-kicad-library-master/65xx.kicad_sym")(options "")(descr ""))
+  (lib (name "my_ics_new")(type "KiCad")(uri "/home/rob/Data/sync/Elektronik/kicad/Libraries/my_own/my_ics_new.kicad_sym")(options "")(descr ""))
+)
