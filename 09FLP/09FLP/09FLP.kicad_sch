@@ -7,9 +7,10 @@
 	(title_block
 		(title "09FLP")
 		(date "2025-02-01")
-		(rev "v1.0")
+		(rev "v1.1")
 		(company "100% Offner")
 		(comment 1 "redraw from kees1948 FLEX and UniFLEX System")
+		(comment 2 "v1.1: ch. C3")
 	)
 	(lib_symbols
 		(symbol "74xx:74LS123"
@@ -16086,7 +16087,6 @@
 	)
 	(label "WD"
 		(at 129.54 161.29 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16097,7 +16097,6 @@
 	)
 	(label "BA0"
 		(at 21.59 34.29 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16108,7 +16107,6 @@
 	)
 	(label "READY"
 		(at 88.9 161.29 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16119,7 +16117,6 @@
 	)
 	(label "CD7#"
 		(at 137.16 90.17 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16130,7 +16127,6 @@
 	)
 	(label "~{DS1}"
 		(at 195.58 97.79 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16141,7 +16137,6 @@
 	)
 	(label "~{DIR}"
 		(at 256.54 60.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16152,7 +16147,6 @@
 	)
 	(label "CD3"
 		(at 52.07 26.67 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16163,7 +16157,6 @@
 	)
 	(label "HLD"
 		(at 156.21 143.51 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16174,7 +16167,6 @@
 	)
 	(label "CD2#"
 		(at 173.99 27.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16185,7 +16177,6 @@
 	)
 	(label "~{FDCRES}"
 		(at 88.9 110.49 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16196,7 +16187,6 @@
 	)
 	(label "CD3"
 		(at 133.35 33.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16207,7 +16197,6 @@
 	)
 	(label "~{SIDE1}"
 		(at 256.54 35.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16218,7 +16207,6 @@
 	)
 	(label "BA1"
 		(at 88.9 105.41 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16229,7 +16217,6 @@
 	)
 	(label "CD0"
 		(at 133.35 25.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16240,7 +16227,6 @@
 	)
 	(label "~{F_MOT}"
 		(at 212.09 59.69 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16251,7 +16237,6 @@
 	)
 	(label "F_MODE"
 		(at 170.18 168.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16262,7 +16247,6 @@
 	)
 	(label "CD3"
 		(at 135.89 25.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16273,7 +16257,6 @@
 	)
 	(label "~{WPT}"
 		(at 218.44 86.36 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16284,7 +16267,6 @@
 	)
 	(label "~{DIR}"
 		(at 222.885 40.005 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16295,7 +16277,6 @@
 	)
 	(label "~{F_RDY}"
 		(at 222.885 60.325 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16306,7 +16287,6 @@
 	)
 	(label "CD3"
 		(at 88.9 123.19 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16317,7 +16297,6 @@
 	)
 	(label "BA0"
 		(at 88.9 102.87 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16328,7 +16307,6 @@
 	)
 	(label "CD1"
 		(at 135.89 30.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16339,7 +16317,6 @@
 	)
 	(label "~{DS0}"
 		(at 222.885 29.845 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16350,7 +16327,6 @@
 	)
 	(label "FDCDRQ"
 		(at 133.35 97.79 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16361,7 +16337,6 @@
 	)
 	(label "~{IDX}"
 		(at 194.31 54.61 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16372,7 +16347,6 @@
 	)
 	(label "B_Q"
 		(at 59.69 77.47 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16383,7 +16357,6 @@
 	)
 	(label "~{LR}"
 		(at 101.6 72.39 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16394,7 +16367,6 @@
 	)
 	(label "F_A"
 		(at 215.9 15.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16405,7 +16377,6 @@
 	)
 	(label "F_B"
 		(at 195.58 15.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16416,7 +16387,6 @@
 	)
 	(label "~{DIR}"
 		(at 201.93 128.27 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16427,7 +16397,6 @@
 	)
 	(label "CD5"
 		(at 133.35 38.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16438,7 +16407,6 @@
 	)
 	(label "~{IDX}"
 		(at 218.44 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16449,7 +16417,6 @@
 	)
 	(label "~{B_RES}"
 		(at 21.59 52.07 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16460,7 +16427,6 @@
 	)
 	(label "~{WPRT}"
 		(at 88.9 168.91 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16471,7 +16437,6 @@
 	)
 	(label "WD"
 		(at 156.21 130.81 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16482,7 +16447,6 @@
 	)
 	(label "F_A"
 		(at 222.885 37.465 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16493,7 +16457,6 @@
 	)
 	(label "BA3"
 		(at 52.07 36.83 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16504,7 +16467,6 @@
 	)
 	(label "~{WDAT}"
 		(at 201.93 130.81 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16515,7 +16477,6 @@
 	)
 	(label "CD4"
 		(at 135.89 43.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16526,7 +16487,6 @@
 	)
 	(label "F_MODE"
 		(at 152.4 92.71 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16537,7 +16497,6 @@
 	)
 	(label "~{WPRT}"
 		(at 261.62 86.36 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16548,7 +16507,6 @@
 	)
 	(label "~{F_MOT}"
 		(at 256.54 22.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16559,7 +16517,6 @@
 	)
 	(label "CD1#"
 		(at 173.99 30.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16570,7 +16527,6 @@
 	)
 	(label "CD2"
 		(at 135.89 27.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16581,7 +16537,6 @@
 	)
 	(label "~{SEL2}"
 		(at 52.07 67.31 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16592,7 +16547,6 @@
 	)
 	(label "~{DS2}"
 		(at 195.58 100.33 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16603,7 +16557,6 @@
 	)
 	(label "HLT"
 		(at 276.86 154.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16614,7 +16567,6 @@
 	)
 	(label "~{DS3}"
 		(at 256.54 58.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16625,7 +16577,6 @@
 	)
 	(label "~{TRK0}"
 		(at 261.62 91.44 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16636,7 +16587,6 @@
 	)
 	(label "~{FDCR}"
 		(at 88.9 100.33 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16647,7 +16597,6 @@
 	)
 	(label "~{RDAT}"
 		(at 196.85 54.61 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16658,7 +16607,6 @@
 	)
 	(label "CD4#"
 		(at 173.99 43.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16669,7 +16617,6 @@
 	)
 	(label "~{SIDE1}"
 		(at 222.885 57.785 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16680,7 +16627,6 @@
 	)
 	(label "~{WPT}"
 		(at 222.885 52.705 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16691,7 +16637,6 @@
 	)
 	(label "~{RFF}"
 		(at 101.6 80.01 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16702,7 +16647,6 @@
 	)
 	(label "CD1"
 		(at 52.07 24.13 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16713,7 +16657,6 @@
 	)
 	(label "CD3#"
 		(at 152.4 102.87 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16724,7 +16667,6 @@
 	)
 	(label "~{SEL2}"
 		(at 59.69 80.01 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16735,7 +16677,6 @@
 	)
 	(label "F_M5_8"
 		(at 77.47 173.99 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16746,7 +16687,6 @@
 	)
 	(label "B_E"
 		(at 59.69 72.39 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16757,7 +16697,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 52.07 57.15 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16768,7 +16707,6 @@
 	)
 	(label "CD7#"
 		(at 173.99 35.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16779,7 +16717,6 @@
 	)
 	(label "CD5"
 		(at 88.9 128.27 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16790,7 +16727,6 @@
 	)
 	(label "CD2"
 		(at 21.59 26.67 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16801,7 +16737,6 @@
 	)
 	(label "CD7"
 		(at 135.89 35.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16812,7 +16747,6 @@
 	)
 	(label "~{LC}"
 		(at 135.89 48.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16823,7 +16757,6 @@
 	)
 	(label "~{LR}"
 		(at 135.89 50.8 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16834,7 +16767,6 @@
 	)
 	(label "~{SIDE1}"
 		(at 195.58 85.09 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16845,7 +16777,6 @@
 	)
 	(label "~{TRK00}"
 		(at 189.23 54.61 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16856,7 +16787,6 @@
 	)
 	(label "TG43"
 		(at 156.21 135.89 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16867,7 +16797,6 @@
 	)
 	(label "~{DS3}"
 		(at 195.58 102.87 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16878,7 +16807,6 @@
 	)
 	(label "CD1"
 		(at 133.35 27.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16889,7 +16817,6 @@
 	)
 	(label "~{B_RW}"
 		(at 52.07 49.53 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16900,7 +16827,6 @@
 	)
 	(label "~{IP}"
 		(at 88.9 166.37 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16911,7 +16837,6 @@
 	)
 	(label "FDCDRQ"
 		(at 92.71 43.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16922,7 +16847,6 @@
 	)
 	(label "F_A"
 		(at 195.58 30.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16933,7 +16857,6 @@
 	)
 	(label "~{F_WG}"
 		(at 201.93 133.35 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16944,7 +16867,6 @@
 	)
 	(label "~{RDAT}"
 		(at 256.54 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16955,7 +16877,6 @@
 	)
 	(label "STEP"
 		(at 129.54 156.21 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16966,7 +16887,6 @@
 	)
 	(label "~{STEP}"
 		(at 256.54 63.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16977,7 +16897,6 @@
 	)
 	(label "~{F_MODE}"
 		(at 195.58 87.63 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16988,7 +16907,6 @@
 	)
 	(label "~{FDCW}"
 		(at 101.6 64.77 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16999,7 +16917,6 @@
 	)
 	(label "~{DS2}"
 		(at 222.885 34.925 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17010,7 +16927,6 @@
 	)
 	(label "~{STATE}"
 		(at 101.6 77.47 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17021,7 +16937,6 @@
 	)
 	(label "~{F_TG43}"
 		(at 256.54 20.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17032,7 +16947,6 @@
 	)
 	(label "~{STEP}"
 		(at 201.93 125.73 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17043,7 +16957,6 @@
 	)
 	(label "~{TRK0}"
 		(at 88.9 163.83 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17054,7 +16967,6 @@
 	)
 	(label "~{STEP}"
 		(at 222.885 42.545 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17065,7 +16977,6 @@
 	)
 	(label "~{RESFF}"
 		(at 261.62 83.82 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17076,7 +16987,6 @@
 	)
 	(label "BA2"
 		(at 59.69 67.31 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17087,7 +16997,6 @@
 	)
 	(label "~{TRK00}"
 		(at 222.885 50.165 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17098,7 +17007,6 @@
 	)
 	(label "~{F_MODE}"
 		(at 222.885 19.685 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17109,7 +17017,6 @@
 	)
 	(label "CD1#"
 		(at 152.4 97.79 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17120,7 +17027,6 @@
 	)
 	(label "CD4"
 		(at 21.59 29.21 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17131,7 +17037,6 @@
 	)
 	(label "CD0"
 		(at 88.9 115.57 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17142,7 +17047,6 @@
 	)
 	(label "~{DS0}"
 		(at 195.58 95.25 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17153,7 +17057,6 @@
 	)
 	(label "~{WPT}"
 		(at 199.39 54.61 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17164,7 +17067,6 @@
 	)
 	(label "~{WPT}"
 		(at 256.54 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17175,7 +17077,6 @@
 	)
 	(label "READY"
 		(at 201.93 138.43 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17186,7 +17087,6 @@
 	)
 	(label "CD5"
 		(at 135.89 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17197,7 +17097,6 @@
 	)
 	(label "~{DS1}"
 		(at 222.885 32.385 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17208,7 +17107,6 @@
 	)
 	(label "~{FDCW}"
 		(at 88.9 95.25 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17219,7 +17117,6 @@
 	)
 	(label "~{RDAT}"
 		(at 233.68 127 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17230,7 +17127,6 @@
 	)
 	(label "~{RAWRD}"
 		(at 88.9 158.75 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17241,7 +17137,6 @@
 	)
 	(label "CD5"
 		(at 52.07 29.21 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17252,7 +17147,6 @@
 	)
 	(label "CD7"
 		(at 133.35 43.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17263,7 +17157,6 @@
 	)
 	(label "MOFF"
 		(at 190.5 67.31 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17274,7 +17167,6 @@
 	)
 	(label "~{DS1}"
 		(at 256.54 53.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17285,7 +17177,6 @@
 	)
 	(label "CD6"
 		(at 133.35 40.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17296,7 +17187,6 @@
 	)
 	(label "~{F_MOT}"
 		(at 195.58 22.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17307,7 +17197,6 @@
 	)
 	(label "~{DS0}"
 		(at 256.54 50.8 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17318,7 +17207,6 @@
 	)
 	(label "~{STATE}"
 		(at 92.71 50.8 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17329,7 +17217,6 @@
 	)
 	(label "HLD"
 		(at 129.54 168.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17340,7 +17227,6 @@
 	)
 	(label "BAUD122"
 		(at 21.59 64.77 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17351,7 +17237,6 @@
 	)
 	(label "F_MODE"
 		(at 173.99 38.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17362,7 +17247,6 @@
 	)
 	(label "CD2"
 		(at 88.9 120.65 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17373,7 +17257,6 @@
 	)
 	(label "FDCINT"
 		(at 133.35 95.25 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17384,7 +17267,6 @@
 	)
 	(label "DIRC"
 		(at 156.21 128.27 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17395,7 +17277,6 @@
 	)
 	(label "CD0"
 		(at 135.89 33.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17406,7 +17287,6 @@
 	)
 	(label "CD3#"
 		(at 173.99 25.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17417,7 +17297,6 @@
 	)
 	(label "~{TRK00}"
 		(at 256.54 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17428,7 +17307,6 @@
 	)
 	(label "CD6"
 		(at 21.59 31.75 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17439,7 +17317,6 @@
 	)
 	(label "F_DDEN"
 		(at 173.99 40.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17450,7 +17327,6 @@
 	)
 	(label "~{RFF}"
 		(at 15.24 100.33 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17461,7 +17337,6 @@
 	)
 	(label "CD2#"
 		(at 152.4 100.33 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17472,7 +17347,6 @@
 	)
 	(label "INUSE"
 		(at 222.885 22.225 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17483,7 +17357,6 @@
 	)
 	(label "CD1"
 		(at 88.9 118.11 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17494,7 +17367,6 @@
 	)
 	(label "MOFF"
 		(at 204.47 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17505,7 +17377,6 @@
 	)
 	(label "~{B_RES}"
 		(at 59.69 82.55 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17516,7 +17387,6 @@
 	)
 	(label "~{FDCR}"
 		(at 101.6 67.31 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17527,7 +17397,6 @@
 	)
 	(label "BA3"
 		(at 59.69 69.85 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17538,7 +17407,6 @@
 	)
 	(label "~{RESFF}"
 		(at 59.69 85.09 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17549,7 +17417,6 @@
 	)
 	(label "CD7"
 		(at 88.9 133.35 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17560,7 +17427,6 @@
 	)
 	(label "~{SEL1}"
 		(at 21.59 67.31 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17571,7 +17437,6 @@
 	)
 	(label "F_B"
 		(at 215.9 30.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17582,7 +17447,6 @@
 	)
 	(label "~{DS3}"
 		(at 176.53 22.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17593,7 +17457,6 @@
 	)
 	(label "BA1"
 		(at 52.07 34.29 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17604,7 +17467,6 @@
 	)
 	(label "CD6"
 		(at 88.9 130.81 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17615,7 +17477,6 @@
 	)
 	(label "~{F_RDY}"
 		(at 156.21 138.43 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17626,7 +17487,6 @@
 	)
 	(label "MOFF"
 		(at 58.42 100.33 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17637,7 +17497,6 @@
 	)
 	(label "~{B_RW}"
 		(at 59.69 74.93 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17648,7 +17507,6 @@
 	)
 	(label "~{DS2}"
 		(at 256.54 55.88 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17659,7 +17517,6 @@
 	)
 	(label "BA2"
 		(at 21.59 36.83 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17670,7 +17527,6 @@
 	)
 	(label "~{IP}"
 		(at 261.62 88.9 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17681,7 +17537,6 @@
 	)
 	(label "F_DDEN"
 		(at 88.9 153.67 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17692,7 +17547,6 @@
 	)
 	(label "~{FDCRES}"
 		(at 101.6 69.85 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17703,7 +17557,6 @@
 	)
 	(label "CD0#"
 		(at 173.99 33.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17714,7 +17567,6 @@
 	)
 	(label "~{SEL1}"
 		(at 59.69 64.77 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17725,7 +17577,6 @@
 	)
 	(label "CD4"
 		(at 133.35 35.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17736,7 +17587,6 @@
 	)
 	(label "CD0"
 		(at 21.59 24.13 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17747,7 +17597,6 @@
 	)
 	(label "CD6"
 		(at 135.89 38.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17758,7 +17607,6 @@
 	)
 	(label "B_Q"
 		(at 52.07 52.07 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17769,7 +17617,6 @@
 	)
 	(label "CD0#"
 		(at 152.4 95.25 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17780,7 +17627,6 @@
 	)
 	(label "SCOPE_TRG"
 		(at 104.14 82.55 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17791,7 +17637,6 @@
 	)
 	(label "F_M5_8"
 		(at 195.58 92.71 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17802,7 +17647,6 @@
 	)
 	(label "CD2"
 		(at 133.35 30.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17813,7 +17657,6 @@
 	)
 	(label "~{F_WG}"
 		(at 222.885 47.625 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17824,7 +17667,6 @@
 	)
 	(label "STEP"
 		(at 156.21 125.73 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17835,7 +17677,6 @@
 	)
 	(label "CD7"
 		(at 52.07 31.75 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17846,7 +17687,6 @@
 	)
 	(label "~{RDAT}"
 		(at 222.885 55.245 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17857,7 +17697,6 @@
 	)
 	(label "WG"
 		(at 129.54 163.83 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17868,7 +17707,6 @@
 	)
 	(label "CD4"
 		(at 88.9 125.73 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17879,7 +17717,6 @@
 	)
 	(label "~{IDX}"
 		(at 222.885 27.305 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17890,7 +17727,6 @@
 	)
 	(label "~{RAWRD}"
 		(at 279.4 127 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17901,7 +17737,6 @@
 	)
 	(label "FDCINT"
 		(at 92.71 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17912,7 +17747,6 @@
 	)
 	(label "HLT"
 		(at 88.9 171.45 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17923,7 +17757,6 @@
 	)
 	(label "~{LC}"
 		(at 101.6 74.93 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17934,7 +17767,6 @@
 	)
 	(label "~{F_TG43}"
 		(at 201.93 135.89 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17945,7 +17777,6 @@
 	)
 	(label "~{F_WG}"
 		(at 256.54 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17956,7 +17787,6 @@
 	)
 	(label "DIRC"
 		(at 129.54 158.75 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17967,7 +17797,6 @@
 	)
 	(label "~{F_RDY}"
 		(at 256.54 45.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17978,7 +17807,6 @@
 	)
 	(label "B_E"
 		(at 21.59 49.53 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17989,7 +17817,6 @@
 	)
 	(label "~{WDAT}"
 		(at 256.54 66.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18000,7 +17827,6 @@
 	)
 	(label "CD4#"
 		(at 153.67 85.09 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18011,7 +17837,6 @@
 	)
 	(label "~{F_RDY}"
 		(at 201.93 54.61 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18022,7 +17847,6 @@
 	)
 	(label "~{IDX}"
 		(at 256.54 43.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18033,7 +17857,6 @@
 	)
 	(label "~{TRK00}"
 		(at 218.44 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18044,7 +17867,6 @@
 	)
 	(label "WG"
 		(at 156.21 133.35 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18055,7 +17877,6 @@
 	)
 	(label "F_B"
 		(at 222.885 24.765 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18066,7 +17887,6 @@
 	)
 	(label "~{WDAT}"
 		(at 222.885 45.085 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -18077,7 +17897,6 @@
 	)
 	(label "TG43"
 		(at 140.97 166.37 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -19323,7 +19142,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "22u"
+		(property "Value" "220n"
 			(at 232.41 149.8535 0)
 			(effects
 				(font
