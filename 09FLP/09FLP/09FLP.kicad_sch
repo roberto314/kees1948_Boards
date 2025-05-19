@@ -10,7 +10,7 @@
 		(rev "v1.1")
 		(company "100% Offner")
 		(comment 1 "redraw from kees1948 FLEX and UniFLEX System")
-		(comment 2 "v1.1: ch. C3")
+		(comment 2 "v1.1: ch. C3, ch. all 74LS Types to HC")
 	)
 	(lib_symbols
 		(symbol "74xx:74LS123"
@@ -18745,7 +18745,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74LS241"
+		(property "Value" "74HC241"
 			(at 240.9541 68.58 0)
 			(effects
 				(font
@@ -20435,7 +20435,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74LS240"
+		(property "Value" "74HC240"
 			(at 181.2641 120.65 0)
 			(effects
 				(font
@@ -20624,7 +20624,7 @@
 				)
 			)
 		)
-		(property "Value" "74LS123"
+		(property "Value" "74HC123"
 			(at 256.54 111.76 0)
 			(effects
 				(font
@@ -24482,7 +24482,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74LS240"
+		(property "Value" "74HC240"
 			(at 176.1841 80.01 0)
 			(effects
 				(font
@@ -24943,7 +24943,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74LS123"
+		(property "Value" "74HC123"
 			(at 37.846 143.51 0)
 			(effects
 				(font
@@ -25326,7 +25326,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74LS273"
+		(property "Value" "74HC273"
 			(at 155.8641 20.32 0)
 			(effects
 				(font
@@ -25582,7 +25582,7 @@
 				)
 			)
 		)
-		(property "Value" "74LS123"
+		(property "Value" "74HC123"
 			(at 256.54 139.7 0)
 			(effects
 				(font

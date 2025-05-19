@@ -239,7 +239,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "09FLP.kicad_pro",
+    "filename": "09NET.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -340,18 +340,6 @@
           "group_by": false,
           "label": "#",
           "name": "${ITEM_NUMBER}",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Sim.Device",
-          "name": "Sim.Device",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Sim.Pins",
-          "name": "Sim.Pins",
           "show": false
         },
         {
