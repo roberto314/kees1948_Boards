@@ -7,10 +7,11 @@
 	(title_block
 		(title "09FLP")
 		(date "2025-02-01")
-		(rev "v1.1")
+		(rev "v1.11")
 		(company "100% Offner")
 		(comment 1 "redraw from kees1948 FLEX and UniFLEX System")
 		(comment 2 "v1.1: ch. C3, ch. all 74LS Types to HC")
+		(comment 3 "v1.11: Direction of J2 Pin 2 ch., Instructions updated")
 	)
 	(lib_symbols
 		(symbol "74xx:74LS123"
@@ -11333,6 +11334,16 @@
 		)
 		(uuid "12139fcc-8c83-43d7-99ce-de592004d6f3")
 	)
+	(polyline
+		(pts
+			(xy 220.98 25.4) (xy 220.98 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "129425b5-ed5e-4148-bf61-4461f65272d3")
+	)
 	(wire
 		(pts
 			(xy 252.73 24.765) (xy 252.73 27.305)
@@ -11362,6 +11373,16 @@
 			(type default)
 		)
 		(uuid "13a346f7-b678-454a-b7b7-b4c3d2a15dfc")
+	)
+	(polyline
+		(pts
+			(xy 221.7638 19.6471) (xy 221.1288 19.0121)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13a9a49f-e8a9-46ee-9b9f-97bae14017dd")
 	)
 	(wire
 		(pts
@@ -12023,6 +12044,16 @@
 		)
 		(uuid "375ef7df-8b6b-4a49-ad82-824819304bc5")
 	)
+	(polyline
+		(pts
+			(xy 221.1288 20.2821) (xy 221.1288 20.2821)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37616464-375b-44ec-ace6-7203d4282a8a")
+	)
 	(wire
 		(pts
 			(xy 195.58 95.25) (xy 186.69 95.25)
@@ -12612,6 +12643,16 @@
 			(type default)
 		)
 		(uuid "59d07745-6edb-4aab-bbca-354459a172a5")
+	)
+	(polyline
+		(pts
+			(xy 221.7638 19.6471) (xy 217.9538 19.6471)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59dc76ea-8869-4b45-b79b-cae3947536a0")
 	)
 	(wire
 		(pts
@@ -13273,16 +13314,6 @@
 		)
 		(uuid "770cb42b-0d26-4502-aef2-5dbc528cc840")
 	)
-	(polyline
-		(pts
-			(xy 217.805 19.685) (xy 221.615 19.685)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "772efd14-f1ac-42e0-8f07-11c54370d778")
-	)
 	(wire
 		(pts
 			(xy 281.94 35.56) (xy 278.13 35.56)
@@ -13432,6 +13463,16 @@
 			(type default)
 		)
 		(uuid "818f93a3-fe05-4e70-814e-ffe3fc958630")
+	)
+	(polyline
+		(pts
+			(xy 221.7638 19.6471) (xy 221.1288 20.2821)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "822d3f32-558f-4781-a4cb-2aa4067f2dce")
 	)
 	(wire
 		(pts
@@ -14343,6 +14384,16 @@
 		)
 		(uuid "b2b1642e-5715-4711-84b2-69b35b965ea7")
 	)
+	(polyline
+		(pts
+			(xy 220.98 25.4) (xy 220.98 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2e9d6dd-a18a-4e3e-ba24-8598c4235dab")
+	)
 	(wire
 		(pts
 			(xy 215.9 83.82) (xy 217.17 83.82)
@@ -14462,6 +14513,16 @@
 			(type default)
 		)
 		(uuid "b841cd64-5f1c-47c5-b465-a3daef57f6fb")
+	)
+	(polyline
+		(pts
+			(xy 221.1288 20.2821) (xy 221.1288 20.2821)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9e0c03d-318c-4588-90f9-787e30999791")
 	)
 	(wire
 		(pts
@@ -15062,16 +15123,6 @@
 			(type default)
 		)
 		(uuid "d735461e-f826-4e36-b060-42e25b93bf52")
-	)
-	(polyline
-		(pts
-			(xy 217.805 19.685) (xy 218.44 20.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d74c266b-d690-4795-bcd5-1adbec4631f7")
 	)
 	(wire
 		(pts
@@ -15773,16 +15824,6 @@
 		)
 		(uuid "f49452da-ebe7-4726-8322-b15e4caeaabb")
 	)
-	(polyline
-		(pts
-			(xy 217.805 19.685) (xy 218.44 19.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f4eb9498-cd0f-43fc-9205-5a2006e6e62b")
-	)
 	(wire
 		(pts
 			(xy 59.69 77.47) (xy 67.31 77.47)
@@ -16053,7 +16094,7 @@
 		)
 		(uuid "7d6b37ca-4e84-4669-bdea-a15f5c83749f")
 	)
-	(text "C9: optional wire link\nAdjustment: close JP6 AFTER Reset.\nadj. C7 for 500kHz on Pin 16,\nRPW for 400ns on Pin 29 and\nWPW for 200ns on Pin 31."
+	(text "C9: optional wire link\nAdjustment: close JP6 AFTER Reset.\nadj. C7 for 500kHz on Pin 16,\nRPW for 250ns on Pin 29 and\nWPW for 125ns on Pin 31."
 		(exclude_from_sim no)
 		(at 41.656 177.038 0)
 		(effects
