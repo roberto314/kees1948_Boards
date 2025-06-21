@@ -36,8 +36,27 @@ This is an attempt to run the Exorciser Firmware on the kees CPUXXCMI Hardware.
 	  This is for switching on the ROM in Address FFFE and FFFF (Reset Vector).
 	  After two Read Cycles it switches to RAM from FE00-FFFF (thats why A9 is neded).
 
-### Firmware ###
+### Firmware: ###
 
 The Rom starts @ E000 but is accessed @ E800 where the Exordisk Firmware sits. At F000 is the Exbug Monitor. At FCF8-FCFF is the original PROM and the 6820. Here the Address FCFD is important, it holds the Initialisation Value for the MC6850.
 I have a Github page for Reverse Engineering the MDOS Operating System and the Exbug Monitor.
 
+### Memory Map: ###
+
+see the Exorciser User Guide pg. 31 (3-4). With Exordisk there is a little less RAM useable since the ROM and IO sit @ E800-EFFF.
+
+      ---------------
+FE00 |   RAM         | (originally from FF00)
+FCFC |   PROM        |
+FCF8 |   PIA         |
+FCF4 |   ACIA        |
+FC00 | IO Area       |
+F000 | Exbug ROM     |
+EC00 | Exordisk IO   |
+E800 | Exordisk ROM  |
+E7FF |---------------|
+     |               |
+     |   Exorciser   |
+     |      RAM      |
+     |               |
+0000  ---------------
