@@ -18,7 +18,6 @@ nA3 = !A3 ; 6850
 
 ;G12
 G12 = G11 & !A9 & !A8 & A7 & A6 & A5 & A4 & A3 ; FCF8-FCFF
-;G12 = G11 & A9 ; FE00-FFFF
 
 DESCRIPTION
-Exorciser Decoder G2
+Exorciser Decoder G2 v1.0

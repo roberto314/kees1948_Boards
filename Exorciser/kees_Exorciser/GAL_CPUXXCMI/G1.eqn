@@ -28,8 +28,6 @@ G21 BA DBEN U9E BS  A9  OVMA G22 IACK U8E DBDIR VCC
      # RW & E & VMA & G21                                 ; FCF8-FCFF PROM & 6820
      # RW & E & VMA & A15 & A14 & A13 & A12 & A11 & A10 & A9 & !SYS ; FE00-FFFF only 2 cycles
 
-;     # RW & E & VMA & G21                                 ; FE00-FFFF 
-
 ; IO Output to G2
 G22 = VMA & A15 & A14 & A13 & A12 & A11 & A10 ; FC00-FFFF
 
@@ -40,4 +38,4 @@ DBDIR = RW & A15 & A14 & A13 & !A12 & A11 & A10 ; EC00-EFFF
 !IACK = RW & E & VMA & A15 & A14 & A13 & A12 & A11 & A10 ; FC00-FFFF Read
 
 DESCRIPTION
-Exorciser Decoder G1
+Exorciser Decoder G1 v1.0
