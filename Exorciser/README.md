@@ -1,10 +1,12 @@
 # Motorola Exorciser
 This is an attempt to run the Exorciser Firmware on the kees CPUXXCMI Hardware.
 
-Modifications:
+### Modifications: ###
 
 .) Obviously ROM and GALs (see kees_Exorciser Directory)
+
 .) Hardware Mods:
+
 	- The ROM needs A11 and A12, no need to desolder R12 and R13
 	- GAL G1 needs A9 on Pin 18
     - smaller Resistor R16 (i used 470E)
