@@ -45,18 +45,18 @@ I have a Github page for Reverse Engineering the MDOS Operating System and the E
 
 see the Exorciser User Guide pg. 31 (3-4). With Exordisk there is a little less RAM useable since the ROM and IO sit @ E800-EFFF.
 
-      ---------------
-FE00 |   RAM         | (originally from FF00)
-FCFC |   PROM        |
-FCF8 |   PIA         |
-FCF4 |   ACIA        |
-FC00 | IO Area       |
-F000 | Exbug ROM     |
-EC00 | Exordisk IO   |
-E800 | Exordisk ROM  |
-E7FF |---------------|
-     |               |
-     |   Exorciser   |
-     |      RAM      |
-     |               |
-0000  ---------------
+          ---------------
+    FE00 |   RAM         | (originally from FF00)
+    FCFC |   PROM        |
+    FCF8 |   PIA         |
+    FCF4 |   ACIA        |
+    FC00 | IO Area       |
+    F000 | Exbug ROM     |
+    EC00 | Exordisk IO   |
+    E800 | Exordisk ROM  |
+    E7FF |---------------|
+         |               |
+         |   Exorciser   |
+         |      RAM      |
+         |               |
+    0000  ---------------
