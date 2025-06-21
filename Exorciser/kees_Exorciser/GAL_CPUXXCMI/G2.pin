@@ -1,0 +1,25 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | A7       | Input
+   2   | A6       | Input
+   3   | A5       | Input
+   4   | G11      | Input
+   5   | A4       | Input
+   6   | A3       | Input
+   7   | A8       | Input
+   8   | A9       | Input
+   9   | nc1      | Input
+  10   | GND      | GND
+  11   | nc2      | Input
+  12   | G12      | Output
+  13   | D4       | NC
+  14   | D7       | NC
+  15   | D6       | NC
+  16   | D5       | NC
+  17   | D3       | NC
+  18   | U10E     | Output
+  19   | nA3      | Output
+  20   | VCC      | VCC
+

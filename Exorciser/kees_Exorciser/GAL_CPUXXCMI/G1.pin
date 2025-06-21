@@ -1,0 +1,29 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | RW       | Clock/Input
+   2   | E        | Input
+   3   | A15      | Input
+   4   | A14      | Input
+   5   | A13      | Input
+   6   | A12      | Input
+   7   | A11      | Input
+   8   | A10      | Input
+   9   | VMA      | Input
+  10   | SYS      | Input
+  11   | BLK      | Input
+  12   | GND      | GND
+  13   | G21      | Input
+  14   | BA       | Input
+  15   | DBEN     | Output
+  16   | U9E      | Output
+  17   | BS       | NC
+  18   | A9       | Input
+  19   | OVMA     | Output
+  20   | G22      | Output
+  21   | IACK     | Output
+  22   | U8E      | Output
+  23   | DBDIR    | Output
+  24   | VCC      | VCC
+

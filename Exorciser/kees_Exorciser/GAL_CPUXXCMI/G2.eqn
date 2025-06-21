@@ -1,0 +1,24 @@
+GAL16V8   ; first line : used GAL
+CPUXXCMI G2;
+
+;1   2   3   4   5   6   7   8    9   10
+A7  A6  A5  G11 A4  A3  A8  A9  nc1  GND
+nc2 G12 D4  D7  D6  D5  D3  U10E nA3 VCC
+;11  12 13  14  15  16  17  18   19   20
+
+; G11 is input from G1 FC00-FFFF
+; G12 is Output to G1
+; Pin 9 can be A2
+
+;EQUATIONS
+
+nA3 = !A3 ; 6850
+;6850
+!U10E = G11 & !A9 & !A8 & A7 & A6 & A5 & A4 & !A3; FCF0-FCF7
+
+;G12
+G12 = G11 & !A9 & !A8 & A7 & A6 & A5 & A4 & A3 ; FCF8-FCFF
+;G12 = G11 & A9 ; FE00-FFFF
+
+DESCRIPTION
+Exorciser Decoder G2
