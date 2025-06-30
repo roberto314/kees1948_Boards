@@ -3383,12 +3383,6 @@
 		(uuid "347635b1-14b2-460a-a4c0-1eed35ef28d2")
 	)
 	(junction
-		(at 280.67 195.58)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "373f5ba2-e251-4d52-9e4d-9ae3f93784ae")
-	)
-	(junction
 		(at 54.61 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3399,12 +3393,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4392db1a-6af7-40b9-a050-aff1d4292495")
-	)
-	(junction
-		(at 280.67 198.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "440be55b-9900-4de8-b214-c06869272354")
 	)
 	(junction
 		(at 139.7 198.12)
@@ -6044,16 +6032,6 @@
 	)
 	(wire
 		(pts
-			(xy 280.67 195.58) (xy 295.91 195.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6adc1a56-e1d5-4a84-b201-bca7e77f8140")
-	)
-	(wire
-		(pts
 			(xy 162.56 87.63) (xy 162.56 90.17)
 		)
 		(stroke
@@ -8524,16 +8502,6 @@
 	)
 	(wire
 		(pts
-			(xy 280.67 198.12) (xy 295.91 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e0f2f996-49d9-4523-a2b6-1806bb45190d")
-	)
-	(wire
-		(pts
 			(xy 68.58 147.32) (xy 78.74 147.32)
 		)
 		(stroke
@@ -9204,7 +9172,6 @@
 	)
 	(label "BA1"
 		(at 78.74 144.78 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9215,7 +9182,6 @@
 	)
 	(label "BA2"
 		(at 116.84 147.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9226,7 +9192,6 @@
 	)
 	(label "B_MR"
 		(at 220.98 182.88 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9237,7 +9202,6 @@
 	)
 	(label "BA4"
 		(at 116.84 149.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9248,7 +9212,6 @@
 	)
 	(label "~{EXT}"
 		(at 245.11 39.37 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9259,7 +9222,6 @@
 	)
 	(label "BA8"
 		(at 187.96 154.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9270,7 +9232,6 @@
 	)
 	(label "BA15"
 		(at 149.86 162.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9281,7 +9242,6 @@
 	)
 	(label "B_Q"
 		(at 116.84 180.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9292,7 +9252,6 @@
 	)
 	(label "BA12"
 		(at 257.81 160.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9303,7 +9262,6 @@
 	)
 	(label "BD0"
 		(at 45.72 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9314,7 +9272,6 @@
 	)
 	(label "BA6"
 		(at 116.84 152.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9325,7 +9282,6 @@
 	)
 	(label "DIV4"
 		(at 187.96 132.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9336,7 +9292,6 @@
 	)
 	(label "DIV6"
 		(at 245.11 36.83 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9347,7 +9302,6 @@
 	)
 	(label "~{B_NMI}"
 		(at 281.94 97.79 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9358,7 +9312,6 @@
 	)
 	(label "RBAUD"
 		(at 257.81 198.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9369,7 +9322,6 @@
 	)
 	(label "BD3"
 		(at 290.83 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9380,7 +9332,6 @@
 	)
 	(label "BA13"
 		(at 290.83 160.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9391,7 +9342,6 @@
 	)
 	(label "~{B_NMI}"
 		(at 257.81 190.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9402,7 +9352,6 @@
 	)
 	(label "BA13"
 		(at 245.11 67.31 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9413,7 +9362,6 @@
 	)
 	(label "B_BA"
 		(at 149.86 177.8 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9424,7 +9372,6 @@
 	)
 	(label "~{EXT}"
 		(at 78.74 40.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9435,7 +9382,6 @@
 	)
 	(label "~{B_RES}"
 		(at 45.72 175.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9446,7 +9392,6 @@
 	)
 	(label "BD0"
 		(at 45.72 43.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9457,7 +9402,6 @@
 	)
 	(label "BD7"
 		(at 290.83 142.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9468,7 +9412,6 @@
 	)
 	(label "BA7"
 		(at 314.96 59.69 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9479,7 +9422,6 @@
 	)
 	(label "BD5"
 		(at 245.11 46.99 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9490,7 +9432,6 @@
 	)
 	(label "BA17"
 		(at 78.74 165.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9501,7 +9442,6 @@
 	)
 	(label "~{B_RW}"
 		(at 220.98 172.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9512,7 +9452,6 @@
 	)
 	(label "BA17"
 		(at 78.74 73.66 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9523,7 +9462,6 @@
 	)
 	(label "BA1"
 		(at 314.96 52.07 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9534,7 +9472,6 @@
 	)
 	(label "BA0"
 		(at 257.81 144.78 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9545,7 +9482,6 @@
 	)
 	(label "BA12"
 		(at 281.94 67.31 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9556,7 +9492,6 @@
 	)
 	(label "DIV3"
 		(at 257.81 193.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9567,7 +9502,6 @@
 	)
 	(label "BA10"
 		(at 45.72 157.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9578,7 +9512,6 @@
 	)
 	(label "RBAUD"
 		(at 281.94 105.41 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9589,7 +9522,6 @@
 	)
 	(label "~{B_NMI}"
 		(at 187.96 190.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9600,7 +9532,6 @@
 	)
 	(label "BA17"
 		(at 149.86 165.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9611,7 +9542,6 @@
 	)
 	(label "BA14"
 		(at 257.81 162.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9622,7 +9552,6 @@
 	)
 	(label "~{B_RES}"
 		(at 116.84 175.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9633,7 +9562,6 @@
 	)
 	(label "~{B_HLT}"
 		(at 116.84 185.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9644,7 +9572,6 @@
 	)
 	(label "BA10"
 		(at 116.84 157.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9655,7 +9582,6 @@
 	)
 	(label "BA1"
 		(at 290.83 144.78 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9666,7 +9592,6 @@
 	)
 	(label "~{B_RW}"
 		(at 78.74 172.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9677,7 +9602,6 @@
 	)
 	(label "BA5"
 		(at 78.74 58.42 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9688,7 +9612,6 @@
 	)
 	(label "~{B_VMA}"
 		(at 78.74 83.82 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9699,7 +9622,6 @@
 	)
 	(label "DIV6"
 		(at 314.96 36.83 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9710,7 +9632,6 @@
 	)
 	(label "B_BA"
 		(at 78.74 177.8 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9721,7 +9642,6 @@
 	)
 	(label "BA4"
 		(at 45.72 58.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9732,7 +9652,6 @@
 	)
 	(label "~{EXT}"
 		(at 78.74 132.08 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9743,7 +9662,6 @@
 	)
 	(label "BD2"
 		(at 45.72 45.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9754,7 +9672,6 @@
 	)
 	(label "~{EXT}"
 		(at 220.98 132.08 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9765,7 +9682,6 @@
 	)
 	(label "DIV5"
 		(at 116.84 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9776,7 +9692,6 @@
 	)
 	(label "BA18"
 		(at 281.94 74.93 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9787,7 +9702,6 @@
 	)
 	(label "RBAUD"
 		(at 78.74 106.68 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9798,7 +9712,6 @@
 	)
 	(label "BD1"
 		(at 245.11 41.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9809,7 +9722,6 @@
 	)
 	(label "BA7"
 		(at 245.11 59.69 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9820,7 +9732,6 @@
 	)
 	(label "BD2"
 		(at 45.72 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9831,7 +9742,6 @@
 	)
 	(label "BD7"
 		(at 314.96 49.53 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9842,7 +9752,6 @@
 	)
 	(label "BA12"
 		(at 116.84 160.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9853,7 +9762,6 @@
 	)
 	(label "BA11"
 		(at 78.74 66.04 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9864,7 +9772,6 @@
 	)
 	(label "BD4"
 		(at 281.94 46.99 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9875,7 +9782,6 @@
 	)
 	(label "~{EXT}"
 		(at 149.86 132.08 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9886,7 +9792,6 @@
 	)
 	(label "BD6"
 		(at 212.09 49.53 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9897,7 +9802,6 @@
 	)
 	(label "DIV3"
 		(at 45.72 193.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9908,7 +9812,6 @@
 	)
 	(label "BA11"
 		(at 78.74 157.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9919,7 +9822,6 @@
 	)
 	(label "BA17"
 		(at 245.11 72.39 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9930,7 +9832,6 @@
 	)
 	(label "RBAUD"
 		(at 212.09 105.41 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9941,7 +9842,6 @@
 	)
 	(label "BA6"
 		(at 257.81 152.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9952,7 +9852,6 @@
 	)
 	(label "BD5"
 		(at 314.96 46.99 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9963,7 +9862,6 @@
 	)
 	(label "BD0"
 		(at 257.81 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9974,7 +9872,6 @@
 	)
 	(label "BA11"
 		(at 149.86 157.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9985,7 +9882,6 @@
 	)
 	(label "B_Q"
 		(at 45.72 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9996,7 +9892,6 @@
 	)
 	(label "B_E"
 		(at 116.84 172.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10007,7 +9902,6 @@
 	)
 	(label "~{B_RW}"
 		(at 149.86 172.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10018,7 +9912,6 @@
 	)
 	(label "BA5"
 		(at 314.96 57.15 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10029,7 +9922,6 @@
 	)
 	(label "BA6"
 		(at 45.72 60.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10040,7 +9932,6 @@
 	)
 	(label "BA0"
 		(at 212.09 52.07 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10051,7 +9942,6 @@
 	)
 	(label "BA15"
 		(at 220.98 162.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10062,7 +9952,6 @@
 	)
 	(label "BA2"
 		(at 257.81 147.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10073,7 +9962,6 @@
 	)
 	(label "BA16"
 		(at 281.94 72.39 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10084,7 +9972,6 @@
 	)
 	(label "BA2"
 		(at 281.94 54.61 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10095,7 +9982,6 @@
 	)
 	(label "RBAUD"
 		(at 187.96 198.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10106,7 +9992,6 @@
 	)
 	(label "~{B_RES}"
 		(at 257.81 175.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10117,7 +10002,6 @@
 	)
 	(label "DIV7"
 		(at 78.74 101.6 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10128,7 +10012,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 314.96 95.25 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10139,7 +10022,6 @@
 	)
 	(label "BD6"
 		(at 45.72 142.24 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10150,7 +10032,6 @@
 	)
 	(label "~{B_NMI}"
 		(at 116.84 190.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10161,7 +10042,6 @@
 	)
 	(label "BD3"
 		(at 78.74 45.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10172,7 +10052,6 @@
 	)
 	(label "BA0"
 		(at 281.94 52.07 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10183,7 +10062,6 @@
 	)
 	(label "BA13"
 		(at 149.86 160.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10194,7 +10072,6 @@
 	)
 	(label "BD3"
 		(at 245.11 44.45 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10205,7 +10082,6 @@
 	)
 	(label "~{B_VMA}"
 		(at 290.83 175.26 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10216,7 +10092,6 @@
 	)
 	(label "~{B_RES}"
 		(at 212.09 82.55 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10227,7 +10102,6 @@
 	)
 	(label "BA16"
 		(at 45.72 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10238,7 +10112,6 @@
 	)
 	(label "BD5"
 		(at 220.98 139.7 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10249,7 +10122,6 @@
 	)
 	(label "BD0"
 		(at 116.84 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10260,7 +10132,6 @@
 	)
 	(label "BA12"
 		(at 187.96 160.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10271,7 +10142,6 @@
 	)
 	(label "B_BA"
 		(at 245.11 85.09 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10282,7 +10152,6 @@
 	)
 	(label "DIV7"
 		(at 314.96 100.33 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10293,7 +10162,6 @@
 	)
 	(label "~{B_RW}"
 		(at 245.11 80.01 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10304,7 +10172,6 @@
 	)
 	(label "B_E"
 		(at 257.81 172.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10315,7 +10182,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 245.11 95.25 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10326,7 +10192,6 @@
 	)
 	(label "BA9"
 		(at 220.98 154.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10337,7 +10202,6 @@
 	)
 	(label "BD1"
 		(at 314.96 41.91 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10348,7 +10212,6 @@
 	)
 	(label "BD1"
 		(at 290.83 134.62 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10359,7 +10222,6 @@
 	)
 	(label "BA15"
 		(at 78.74 71.12 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10370,7 +10232,6 @@
 	)
 	(label "BA1"
 		(at 220.98 144.78 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10381,7 +10242,6 @@
 	)
 	(label "BA19"
 		(at 220.98 167.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10392,7 +10252,6 @@
 	)
 	(label "BA18"
 		(at 187.96 167.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10403,7 +10262,6 @@
 	)
 	(label "BA4"
 		(at 187.96 149.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10414,7 +10272,6 @@
 	)
 	(label "RBAUD"
 		(at 245.11 105.41 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10425,7 +10282,6 @@
 	)
 	(label "DIV3"
 		(at 116.84 193.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10436,7 +10292,6 @@
 	)
 	(label "B_E"
 		(at 212.09 80.01 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10447,7 +10302,6 @@
 	)
 	(label "BD1"
 		(at 78.74 134.62 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10458,7 +10312,6 @@
 	)
 	(label "BD6"
 		(at 281.94 49.53 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10469,7 +10322,6 @@
 	)
 	(label "BD0"
 		(at 281.94 41.91 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10480,7 +10332,6 @@
 	)
 	(label "BA15"
 		(at 290.83 162.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10491,7 +10342,6 @@
 	)
 	(label "~{B_RW}"
 		(at 78.74 81.28 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10502,7 +10352,6 @@
 	)
 	(label "~{B_RES}"
 		(at 187.96 175.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10513,7 +10362,6 @@
 	)
 	(label "~{EXT}"
 		(at 314.96 39.37 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10524,7 +10372,6 @@
 	)
 	(label "BA12"
 		(at 212.09 67.31 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10535,7 +10382,6 @@
 	)
 	(label "BD4"
 		(at 257.81 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10546,7 +10392,6 @@
 	)
 	(label "~{B_NMI}"
 		(at 212.09 97.79 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10557,7 +10402,6 @@
 	)
 	(label "BA8"
 		(at 281.94 62.23 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10568,7 +10412,6 @@
 	)
 	(label "B_E"
 		(at 187.96 172.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10579,7 +10422,6 @@
 	)
 	(label "BD2"
 		(at 187.96 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10590,7 +10432,6 @@
 	)
 	(label "BA8"
 		(at 212.09 62.23 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10601,7 +10442,6 @@
 	)
 	(label "BA8"
 		(at 116.84 154.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10612,7 +10452,6 @@
 	)
 	(label "BA16"
 		(at 45.72 165.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10623,7 +10462,6 @@
 	)
 	(label "BD5"
 		(at 290.83 139.7 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10634,7 +10472,6 @@
 	)
 	(label "BA4"
 		(at 45.72 149.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10645,7 +10482,6 @@
 	)
 	(label "BD5"
 		(at 149.86 139.7 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10656,7 +10492,6 @@
 	)
 	(label "~{B_NMI}"
 		(at 45.72 190.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10667,7 +10502,6 @@
 	)
 	(label "BA1"
 		(at 149.86 144.78 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10678,7 +10512,6 @@
 	)
 	(label "BA19"
 		(at 314.96 74.93 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10689,7 +10522,6 @@
 	)
 	(label "BD6"
 		(at 257.81 142.24 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10700,7 +10532,6 @@
 	)
 	(label "BA7"
 		(at 78.74 152.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10711,7 +10542,6 @@
 	)
 	(label "~{B_NMI}"
 		(at 45.72 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10722,7 +10552,6 @@
 	)
 	(label "DIV4"
 		(at 45.72 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10733,7 +10562,6 @@
 	)
 	(label "B_Q"
 		(at 212.09 87.63 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10744,7 +10572,6 @@
 	)
 	(label "BD3"
 		(at 220.98 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10755,7 +10582,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 290.83 187.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10766,7 +10592,6 @@
 	)
 	(label "BA9"
 		(at 290.83 154.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10777,7 +10602,6 @@
 	)
 	(label "BA3"
 		(at 314.96 54.61 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10788,7 +10612,6 @@
 	)
 	(label "BA8"
 		(at 45.72 154.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10799,7 +10622,6 @@
 	)
 	(label "~{B_VMA}"
 		(at 78.74 175.26 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10810,7 +10632,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 78.74 187.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10821,7 +10642,6 @@
 	)
 	(label "BA17"
 		(at 290.83 165.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10832,7 +10652,6 @@
 	)
 	(label "BA13"
 		(at 314.96 67.31 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10843,7 +10662,6 @@
 	)
 	(label "BA6"
 		(at 45.72 152.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10854,7 +10672,6 @@
 	)
 	(label "BA3"
 		(at 78.74 147.32 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10865,7 +10682,6 @@
 	)
 	(label "BA1"
 		(at 78.74 53.34 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10876,7 +10692,6 @@
 	)
 	(label "BD2"
 		(at 281.94 44.45 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10887,7 +10702,6 @@
 	)
 	(label "DIV5"
 		(at 257.81 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10898,7 +10712,6 @@
 	)
 	(label "BA13"
 		(at 78.74 160.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10909,7 +10722,6 @@
 	)
 	(label "~{B_VMA}"
 		(at 245.11 82.55 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10920,7 +10732,6 @@
 	)
 	(label "B_BA"
 		(at 220.98 177.8 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10931,7 +10742,6 @@
 	)
 	(label "BA14"
 		(at 281.94 69.85 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10942,7 +10752,6 @@
 	)
 	(label "B_E"
 		(at 45.72 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10953,7 +10762,6 @@
 	)
 	(label "BA16"
 		(at 212.09 72.39 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10964,7 +10772,6 @@
 	)
 	(label "BA7"
 		(at 78.74 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10975,7 +10782,6 @@
 	)
 	(label "BA12"
 		(at 45.72 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10986,7 +10792,6 @@
 	)
 	(label "B_MR"
 		(at 149.86 182.88 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10997,7 +10802,6 @@
 	)
 	(label "BD0"
 		(at 212.09 41.91 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11008,7 +10812,6 @@
 	)
 	(label "DIV5"
 		(at 45.72 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11019,7 +10822,6 @@
 	)
 	(label "BD6"
 		(at 45.72 50.8 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11030,7 +10832,6 @@
 	)
 	(label "BA9"
 		(at 149.86 154.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11041,7 +10842,6 @@
 	)
 	(label "BA10"
 		(at 257.81 157.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11052,7 +10852,6 @@
 	)
 	(label "~{B_HLT}"
 		(at 45.72 185.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11063,7 +10862,6 @@
 	)
 	(label "BD6"
 		(at 116.84 142.24 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11074,7 +10872,6 @@
 	)
 	(label "BA9"
 		(at 245.11 62.23 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11085,7 +10882,6 @@
 	)
 	(label "B_BA"
 		(at 314.96 85.09 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11096,7 +10892,6 @@
 	)
 	(label "BD7"
 		(at 78.74 142.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11107,7 +10902,6 @@
 	)
 	(label "RBAUD"
 		(at 116.84 198.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11118,7 +10912,6 @@
 	)
 	(label "BA18"
 		(at 45.72 167.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11129,7 +10922,6 @@
 	)
 	(label "B_MR"
 		(at 78.74 91.44 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11140,7 +10932,6 @@
 	)
 	(label "RBAUD"
 		(at 78.74 198.12 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11151,7 +10942,6 @@
 	)
 	(label "BA17"
 		(at 314.96 72.39 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11162,7 +10952,6 @@
 	)
 	(label "BA14"
 		(at 45.72 162.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11173,7 +10962,6 @@
 	)
 	(label "BA7"
 		(at 290.83 152.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11184,7 +10972,6 @@
 	)
 	(label "~{EXT}"
 		(at 290.83 132.08 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11195,7 +10982,6 @@
 	)
 	(label "DIV4"
 		(at 281.94 39.37 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11206,7 +10992,6 @@
 	)
 	(label "~{B_HLT}"
 		(at 187.96 185.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11217,7 +11002,6 @@
 	)
 	(label "BA9"
 		(at 78.74 154.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11228,7 +11012,6 @@
 	)
 	(label "BD3"
 		(at 314.96 44.45 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11239,7 +11022,6 @@
 	)
 	(label "B_MR"
 		(at 290.83 182.88 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11250,7 +11032,6 @@
 	)
 	(label "BA9"
 		(at 314.96 62.23 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11261,7 +11042,6 @@
 	)
 	(label "BD2"
 		(at 257.81 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11272,7 +11052,6 @@
 	)
 	(label "BA11"
 		(at 314.96 64.77 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11281,20 +11060,8 @@
 		)
 		(uuid "9bb2a7a8-7524-44d9-83a1-5a1dae9f7388")
 	)
-	(label "RBAUD"
-		(at 290.83 198.12 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9ca1cfc8-526c-4a6d-a5da-9e0ea832eaaf")
-	)
 	(label "BA3"
 		(at 78.74 55.88 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11305,7 +11072,6 @@
 	)
 	(label "DIV5"
 		(at 187.96 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11316,7 +11082,6 @@
 	)
 	(label "BD4"
 		(at 212.09 46.99 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11327,7 +11092,6 @@
 	)
 	(label "BD1"
 		(at 78.74 43.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11338,7 +11102,6 @@
 	)
 	(label "BA3"
 		(at 290.83 147.32 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11349,7 +11112,6 @@
 	)
 	(label "BA14"
 		(at 45.72 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11360,7 +11122,6 @@
 	)
 	(label "BA19"
 		(at 290.83 167.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11371,7 +11132,6 @@
 	)
 	(label "BA16"
 		(at 187.96 165.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11382,7 +11142,6 @@
 	)
 	(label "~{B_VMA}"
 		(at 149.86 175.26 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11393,7 +11152,6 @@
 	)
 	(label "DIV7"
 		(at 290.83 193.04 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11404,7 +11162,6 @@
 	)
 	(label "BA14"
 		(at 187.96 162.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11415,7 +11172,6 @@
 	)
 	(label "BA19"
 		(at 78.74 167.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11426,7 +11182,6 @@
 	)
 	(label "BD4"
 		(at 116.84 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11437,7 +11192,6 @@
 	)
 	(label "BA7"
 		(at 220.98 152.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11448,7 +11202,6 @@
 	)
 	(label "DIV7"
 		(at 78.74 193.04 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11459,7 +11212,6 @@
 	)
 	(label "BA5"
 		(at 220.98 149.86 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11470,7 +11222,6 @@
 	)
 	(label "~{B_HLT}"
 		(at 257.81 185.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11481,7 +11232,6 @@
 	)
 	(label "DIV6"
 		(at 149.86 129.54 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11492,7 +11242,6 @@
 	)
 	(label "BA5"
 		(at 290.83 149.86 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11503,7 +11252,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 149.86 187.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11514,7 +11262,6 @@
 	)
 	(label "BD6"
 		(at 187.96 142.24 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11525,7 +11272,6 @@
 	)
 	(label "DIV4"
 		(at 212.09 39.37 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11536,7 +11282,6 @@
 	)
 	(label "RBAUD"
 		(at 220.98 198.12 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11547,7 +11292,6 @@
 	)
 	(label "BA3"
 		(at 220.98 147.32 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11558,7 +11302,6 @@
 	)
 	(label "BA2"
 		(at 187.96 147.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11569,7 +11312,6 @@
 	)
 	(label "B_Q"
 		(at 257.81 180.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11580,7 +11322,6 @@
 	)
 	(label "BD7"
 		(at 78.74 50.8 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11591,7 +11332,6 @@
 	)
 	(label "~{B_HLT}"
 		(at 212.09 92.71 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11602,7 +11342,6 @@
 	)
 	(label "BA11"
 		(at 220.98 157.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11613,7 +11352,6 @@
 	)
 	(label "BA13"
 		(at 220.98 160.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11624,7 +11362,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 78.74 96.52 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11635,7 +11372,6 @@
 	)
 	(label "BA4"
 		(at 257.81 149.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11646,7 +11382,6 @@
 	)
 	(label "BD4"
 		(at 45.72 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11657,7 +11392,6 @@
 	)
 	(label "BA2"
 		(at 45.72 147.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11668,7 +11402,6 @@
 	)
 	(label "BD1"
 		(at 149.86 134.62 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11679,7 +11412,6 @@
 	)
 	(label "DIV4"
 		(at 116.84 132.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11690,7 +11422,6 @@
 	)
 	(label "RBAUD"
 		(at 149.86 198.12 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11701,7 +11432,6 @@
 	)
 	(label "DIV4"
 		(at 257.81 132.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11712,7 +11442,6 @@
 	)
 	(label "BD4"
 		(at 45.72 48.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11723,7 +11452,6 @@
 	)
 	(label "BA3"
 		(at 149.86 147.32 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11734,7 +11462,6 @@
 	)
 	(label "~{B_RES}"
 		(at 281.94 82.55 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11745,7 +11472,6 @@
 	)
 	(label "B_BA"
 		(at 78.74 86.36 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11756,7 +11482,6 @@
 	)
 	(label "BA10"
 		(at 187.96 157.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11767,7 +11492,6 @@
 	)
 	(label "BA8"
 		(at 257.81 154.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11778,7 +11502,6 @@
 	)
 	(label "B_E"
 		(at 45.72 172.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11789,7 +11512,6 @@
 	)
 	(label "BA15"
 		(at 314.96 69.85 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11800,7 +11522,6 @@
 	)
 	(label "BA18"
 		(at 212.09 74.93 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11811,7 +11532,6 @@
 	)
 	(label "BA2"
 		(at 45.72 55.88 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11822,7 +11542,6 @@
 	)
 	(label "DIV3"
 		(at 212.09 100.33 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11833,7 +11552,6 @@
 	)
 	(label "DIV6"
 		(at 220.98 129.54 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11844,7 +11562,6 @@
 	)
 	(label "BA6"
 		(at 281.94 59.69 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11855,7 +11572,6 @@
 	)
 	(label "BA19"
 		(at 78.74 76.2 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11866,7 +11582,6 @@
 	)
 	(label "DIV3"
 		(at 45.72 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11877,7 +11592,6 @@
 	)
 	(label "~{RES}"
 		(at 78.74 88.9 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11888,7 +11602,6 @@
 	)
 	(label "BD1"
 		(at 220.98 134.62 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11899,7 +11612,6 @@
 	)
 	(label "BA14"
 		(at 212.09 69.85 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11910,7 +11622,6 @@
 	)
 	(label "DIV3"
 		(at 187.96 193.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11921,7 +11632,6 @@
 	)
 	(label "B_BA"
 		(at 290.83 177.8 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11932,7 +11642,6 @@
 	)
 	(label "BA11"
 		(at 245.11 64.77 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11943,7 +11652,6 @@
 	)
 	(label "BA10"
 		(at 281.94 64.77 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11954,7 +11662,6 @@
 	)
 	(label "DIV7"
 		(at 220.98 193.04 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11965,7 +11672,6 @@
 	)
 	(label "BA18"
 		(at 116.84 167.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11976,7 +11682,6 @@
 	)
 	(label "BA16"
 		(at 257.81 165.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11987,7 +11692,6 @@
 	)
 	(label "BA4"
 		(at 281.94 57.15 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11998,7 +11702,6 @@
 	)
 	(label "~{B_HLT}"
 		(at 281.94 92.71 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12009,7 +11712,6 @@
 	)
 	(label "BD0"
 		(at 187.96 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12020,7 +11722,6 @@
 	)
 	(label "DIV7"
 		(at 149.86 193.04 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12031,7 +11732,6 @@
 	)
 	(label "BA14"
 		(at 116.84 162.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12042,7 +11742,6 @@
 	)
 	(label "~{B_VMA}"
 		(at 314.96 82.55 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12053,7 +11752,6 @@
 	)
 	(label "BA7"
 		(at 149.86 152.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12064,7 +11762,6 @@
 	)
 	(label "BA0"
 		(at 45.72 53.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12075,7 +11772,6 @@
 	)
 	(label "BD7"
 		(at 149.86 142.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12086,7 +11782,6 @@
 	)
 	(label "B_E"
 		(at 281.94 80.01 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12097,7 +11792,6 @@
 	)
 	(label "~{RES}"
 		(at 191.77 73.66 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12108,7 +11802,6 @@
 	)
 	(label "BA12"
 		(at 45.72 160.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12119,7 +11812,6 @@
 	)
 	(label "~{B_RES}"
 		(at 45.72 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12130,7 +11822,6 @@
 	)
 	(label "BA15"
 		(at 78.74 162.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12141,7 +11832,6 @@
 	)
 	(label "~{B_HLT}"
 		(at 45.72 93.98 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12152,7 +11842,6 @@
 	)
 	(label "BA6"
 		(at 212.09 59.69 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12163,7 +11852,6 @@
 	)
 	(label "BA16"
 		(at 116.84 165.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12174,7 +11862,6 @@
 	)
 	(label "DIV4"
 		(at 45.72 132.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12185,7 +11872,6 @@
 	)
 	(label "~{B_RW}"
 		(at 290.83 172.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12196,7 +11882,6 @@
 	)
 	(label "B_MR"
 		(at 245.11 90.17 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12207,7 +11892,6 @@
 	)
 	(label "BA5"
 		(at 245.11 57.15 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12218,7 +11902,6 @@
 	)
 	(label "DIV3"
 		(at 281.94 100.33 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12229,7 +11912,6 @@
 	)
 	(label "DIV5"
 		(at 212.09 36.83 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12240,7 +11922,6 @@
 	)
 	(label "B_Q"
 		(at 187.96 180.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12251,7 +11932,6 @@
 	)
 	(label "DIV6"
 		(at 78.74 129.54 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12262,7 +11942,6 @@
 	)
 	(label "RBAUD"
 		(at 45.72 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12273,7 +11952,6 @@
 	)
 	(label "BA3"
 		(at 245.11 54.61 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12284,7 +11962,6 @@
 	)
 	(label "BA19"
 		(at 149.86 167.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12295,7 +11972,6 @@
 	)
 	(label "BA17"
 		(at 220.98 165.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12306,7 +11982,6 @@
 	)
 	(label "DIV6"
 		(at 290.83 129.54 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12317,7 +11992,6 @@
 	)
 	(label "BA4"
 		(at 212.09 57.15 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12328,7 +12002,6 @@
 	)
 	(label "BA18"
 		(at 257.81 167.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12339,7 +12012,6 @@
 	)
 	(label "BA8"
 		(at 45.72 63.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12350,7 +12022,6 @@
 	)
 	(label "DIV5"
 		(at 45.72 38.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12361,7 +12032,6 @@
 	)
 	(label "BD4"
 		(at 187.96 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12372,7 +12042,6 @@
 	)
 	(label "BA10"
 		(at 212.09 64.77 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12383,7 +12052,6 @@
 	)
 	(label "B_Q"
 		(at 45.72 180.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12394,7 +12062,6 @@
 	)
 	(label "B_Q"
 		(at 281.94 87.63 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12405,7 +12072,6 @@
 	)
 	(label "DIV6"
 		(at 78.74 38.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12416,7 +12082,6 @@
 	)
 	(label "B_MR"
 		(at 78.74 182.88 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12427,7 +12092,6 @@
 	)
 	(label "~{B_RW}"
 		(at 314.96 80.01 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12438,7 +12102,6 @@
 	)
 	(label "BD3"
 		(at 78.74 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12449,7 +12112,6 @@
 	)
 	(label "BA11"
 		(at 290.83 157.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12460,7 +12122,6 @@
 	)
 	(label "BD3"
 		(at 149.86 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12471,7 +12132,6 @@
 	)
 	(label "~{B_VMA}"
 		(at 220.98 175.26 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12482,7 +12142,6 @@
 	)
 	(label "BD2"
 		(at 212.09 44.45 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12493,7 +12152,6 @@
 	)
 	(label "RBAUD"
 		(at 45.72 198.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12504,7 +12162,6 @@
 	)
 	(label "BA10"
 		(at 45.72 66.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12515,7 +12172,6 @@
 	)
 	(label "DIV5"
 		(at 281.94 36.83 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12526,7 +12182,6 @@
 	)
 	(label "BA0"
 		(at 187.96 144.78 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12537,7 +12192,6 @@
 	)
 	(label "BA5"
 		(at 149.86 149.86 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12548,7 +12202,6 @@
 	)
 	(label "BA13"
 		(at 78.74 68.58 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12559,7 +12212,6 @@
 	)
 	(label "BA0"
 		(at 116.84 144.78 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12570,7 +12222,6 @@
 	)
 	(label "RBAUD"
 		(at 314.96 105.41 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12581,7 +12232,6 @@
 	)
 	(label "BD5"
 		(at 78.74 48.26 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12592,7 +12242,6 @@
 	)
 	(label "DIV7"
 		(at 245.11 100.33 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12603,7 +12252,6 @@
 	)
 	(label "BA2"
 		(at 212.09 54.61 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12614,7 +12262,6 @@
 	)
 	(label "BD5"
 		(at 78.74 139.7 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12625,7 +12272,6 @@
 	)
 	(label "BA15"
 		(at 245.11 69.85 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12636,7 +12282,6 @@
 	)
 	(label "~{B_IRQ}"
 		(at 220.98 187.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12647,7 +12292,6 @@
 	)
 	(label "BA9"
 		(at 78.74 63.5 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12658,7 +12302,6 @@
 	)
 	(label "BA0"
 		(at 45.72 144.78 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12669,7 +12312,6 @@
 	)
 	(label "BD7"
 		(at 245.11 49.53 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12680,7 +12322,6 @@
 	)
 	(label "BD7"
 		(at 220.98 142.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12691,7 +12332,6 @@
 	)
 	(label "BA18"
 		(at 45.72 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12702,7 +12342,6 @@
 	)
 	(label "BA19"
 		(at 245.11 74.93 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12713,7 +12352,6 @@
 	)
 	(label "BA1"
 		(at 245.11 52.07 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12724,7 +12362,6 @@
 	)
 	(label "BA5"
 		(at 78.74 149.86 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12735,7 +12372,6 @@
 	)
 	(label "B_MR"
 		(at 314.96 90.17 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12746,7 +12382,6 @@
 	)
 	(label "BA6"
 		(at 187.96 152.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12757,7 +12392,6 @@
 	)
 	(label "BD2"
 		(at 116.84 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12858,7 +12492,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 38.1 0)
 			(effects
 				(font
@@ -12923,7 +12557,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_DIN:DIN41612_C_2x32_Female_Vertical_THT"
 			(at 227.33 69.85 0)
 			(effects
 				(font
@@ -13177,7 +12811,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_DIN:DIN41612_C_2x32_Female_Vertical_THT"
 			(at 297.18 69.85 0)
 			(effects
 				(font
@@ -13431,7 +13065,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Fuse:Fuseholder_TR5_Littelfuse_No560_No460"
 			(at 161.29 88.9 0)
 			(effects
 				(font
@@ -13500,7 +13134,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_DIN:DIN41612_C_2x32_Female_Vertical_THT"
 			(at 273.05 162.56 0)
 			(effects
 				(font
@@ -13864,72 +13498,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
-		(at 300.99 195.58 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "12edeba8-9638-41d2-8f6b-ce136a07d503")
-		(property "Reference" "J78"
-			(at 300.99 189.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "G29"
-			(at 305.816 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 300.99 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 300.99 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 300.99 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "61ea8932-70d9-408c-8481-ef3c6b6f183d")
-		)
-		(instances
-			(project "CPU09BP7"
-				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "J78")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:ATX-24")
 		(at 124.46 92.71 0)
 		(unit 1)
@@ -13955,7 +13523,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-24A_2x12_P4.20mm_Vertical"
 			(at 124.46 95.25 0)
 			(effects
 				(font
@@ -14089,7 +13657,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 104.14 0)
 			(effects
 				(font
@@ -14155,7 +13723,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 255.27 105.41 0)
 			(effects
 				(font
@@ -14221,7 +13789,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 325.12 87.63 0)
 			(effects
 				(font
@@ -14285,7 +13853,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 180.34 73.66 0)
 			(effects
 				(font
@@ -14350,7 +13918,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 106.68 193.04 0)
 			(effects
 				(font
@@ -14416,7 +13984,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 104.14 0)
 			(effects
 				(font
@@ -14482,7 +14050,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 325.12 36.83 0)
 			(effects
 				(font
@@ -14587,7 +14155,7 @@
 			)
 			(project "CPU09FLX"
 				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "#PWR?")
+					(reference "#PWR101")
 					(unit 1)
 				)
 			)
@@ -14619,7 +14187,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 271.78 102.87 0)
 			(effects
 				(font
@@ -14816,7 +14384,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 247.65 193.04 0)
 			(effects
 				(font
@@ -14883,7 +14451,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 142.24 95.25 0)
 			(effects
 				(font
@@ -14989,7 +14557,7 @@
 			)
 			(project "CPU09FLX"
 				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "#PWR?")
+					(reference "#PWR106")
 					(unit 1)
 				)
 			)
@@ -15260,7 +14828,7 @@
 			)
 			(project "CPU09FLX"
 				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "#PWR?")
+					(reference "#PWR105")
 					(unit 1)
 				)
 			)
@@ -15292,7 +14860,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 201.93 102.87 0)
 			(effects
 				(font
@@ -15423,7 +14991,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 247.65 195.58 0)
 			(effects
 				(font
@@ -15555,7 +15123,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 231.14 195.58 0)
 			(effects
 				(font
@@ -15620,7 +15188,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 201.93 105.41 0)
 			(effects
 				(font
@@ -15752,7 +15320,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 129.54 0)
 			(effects
 				(font
@@ -15883,7 +15451,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 101.6 0)
 			(effects
 				(font
@@ -15948,7 +15516,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 201.93 100.33 0)
 			(effects
 				(font
@@ -16013,7 +15581,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_DIN:DIN41612_C_2x32_Female_Vertical_THT"
 			(at 60.96 71.12 0)
 			(effects
 				(font
@@ -16241,7 +15809,7 @@
 			)
 			(project "CPU09FLX"
 				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "J?")
+					(reference "J80")
 					(unit 1)
 				)
 			)
@@ -16274,7 +15842,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 101.6 0)
 			(effects
 				(font
@@ -16339,7 +15907,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 195.58 0)
 			(effects
 				(font
@@ -16406,7 +15974,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 142.24 102.87 0)
 			(effects
 				(font
@@ -16472,7 +16040,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 172.72 82.55 0)
 			(effects
 				(font
@@ -16537,7 +16105,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 100.33 91.44 0)
 			(effects
 				(font
@@ -16602,7 +16170,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_DIN:DIN41612_C_2x32_Female_Vertical_THT"
 			(at 60.96 162.56 0)
 			(effects
 				(font
@@ -16856,7 +16424,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 177.8 129.54 0)
 			(effects
 				(font
@@ -16922,7 +16490,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 160.02 195.58 0)
 			(effects
 				(font
@@ -16989,7 +16557,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 142.24 87.63 0)
 			(effects
 				(font
@@ -17121,7 +16689,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 325.12 105.41 0)
 			(effects
 				(font
@@ -17187,7 +16755,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 193.04 0)
 			(effects
 				(font
@@ -17253,7 +16821,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 255.27 36.83 0)
 			(effects
 				(font
@@ -17450,7 +17018,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_DO-201AE_P15.24mm_Horizontal"
 			(at 142.24 82.55 90)
 			(effects
 				(font
@@ -17536,7 +17104,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 201.93 36.83 0)
 			(effects
 				(font
@@ -17601,7 +17169,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 247.65 129.54 0)
 			(effects
 				(font
@@ -17666,7 +17234,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 106.68 129.54 0)
 			(effects
 				(font
@@ -17732,7 +17300,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 172.72 73.66 0)
 			(effects
 				(font
@@ -17798,7 +17366,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 38.1 0)
 			(effects
 				(font
@@ -17863,7 +17431,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 106.68 195.58 0)
 			(effects
 				(font
@@ -18127,7 +17695,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 271.78 36.83 0)
 			(effects
 				(font
@@ -18259,7 +17827,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 231.14 129.54 0)
 			(effects
 				(font
@@ -18324,7 +17892,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 271.78 105.41 0)
 			(effects
 				(font
@@ -18390,7 +17958,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 195.58 0)
 			(effects
 				(font
@@ -18455,7 +18023,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 106.68 198.12 0)
 			(effects
 				(font
@@ -18521,7 +18089,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 88.9 0)
 			(effects
 				(font
@@ -18718,7 +18286,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 247.65 198.12 0)
 			(effects
 				(font
@@ -18784,7 +18352,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 300.99 193.04 0)
 			(effects
 				(font
@@ -18917,7 +18485,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 106.68 0)
 			(effects
 				(font
@@ -18983,7 +18551,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 255.27 102.87 0)
 			(effects
 				(font
@@ -19115,7 +18683,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 255.27 100.33 0)
 			(effects
 				(font
@@ -19180,7 +18748,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 106.68 82.55 0)
 			(effects
 				(font
@@ -19245,7 +18813,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 177.8 198.12 0)
 			(effects
 				(font
@@ -19311,7 +18879,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 160.02 180.34 0)
 			(effects
 				(font
@@ -19377,7 +18945,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 160.02 193.04 0)
 			(effects
 				(font
@@ -19483,7 +19051,7 @@
 			)
 			(project "CPU09FLX"
 				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "#PWR?")
+					(reference "#PWR102")
 					(unit 1)
 				)
 			)
@@ -19648,7 +19216,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 300.99 129.54 0)
 			(effects
 				(font
@@ -19780,7 +19348,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 129.54 0)
 			(effects
 				(font
@@ -19885,7 +19453,7 @@
 			)
 			(project "CPU09FLX"
 				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "#PWR?")
+					(reference "#PWR103")
 					(unit 1)
 				)
 			)
@@ -19917,7 +19485,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 177.8 193.04 0)
 			(effects
 				(font
@@ -19983,7 +19551,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 231.14 193.04 0)
 			(effects
 				(font
@@ -20049,7 +19617,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 198.12 0)
 			(effects
 				(font
@@ -20180,7 +19748,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 198.12 0)
 			(effects
 				(font
@@ -20311,7 +19879,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_DIN:DIN41612_C_2x32_Female_Vertical_THT"
 			(at 203.2 162.56 0)
 			(effects
 				(font
@@ -20633,7 +20201,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 88.9 180.34 0)
 			(effects
 				(font
@@ -20698,7 +20266,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 106.68 0)
 			(effects
 				(font
@@ -20764,7 +20332,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 255.27 87.63 0)
 			(effects
 				(font
@@ -20963,7 +20531,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 231.14 180.34 0)
 			(effects
 				(font
@@ -21028,7 +20596,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 271.78 100.33 0)
 			(effects
 				(font
@@ -21161,7 +20729,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 172.72 95.25 0)
 			(effects
 				(font
@@ -21227,7 +20795,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 231.14 198.12 0)
 			(effects
 				(font
@@ -21332,7 +20900,7 @@
 			)
 			(project "CPU09FLX"
 				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "#PWR?")
+					(reference "#PWR104")
 					(unit 1)
 				)
 			)
@@ -21364,7 +20932,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 35.56 193.04 0)
 			(effects
 				(font
@@ -21537,72 +21105,6 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x01")
-		(at 300.99 198.12 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "edd54c61-684b-4a27-ab3b-c92eb8ceafb8")
-		(property "Reference" "J79"
-			(at 300.99 191.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "G30"
-			(at 305.816 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 300.99 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 300.99 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 300.99 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "98bb539e-2e76-462d-9f9f-c59ad99960f7")
-		)
-		(instances
-			(project "CPU09BP7"
-				(path "/f7470e71-a162-4277-ac91-f83c18bb0cc8"
-					(reference "J79")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x01")
 		(at 325.12 100.33 0)
 		(mirror x)
 		(unit 1)
@@ -21628,7 +21130,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 325.12 100.33 0)
 			(effects
 				(font
@@ -21827,7 +21329,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 177.8 195.58 0)
 			(effects
 				(font
@@ -21959,7 +21461,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 300.99 180.34 0)
 			(effects
 				(font
@@ -22225,7 +21727,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_DIN:DIN41612_C_2x32_Female_Vertical_THT"
 			(at 132.08 162.56 0)
 			(effects
 				(font
@@ -22480,7 +21982,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 160.02 198.12 0)
 			(effects
 				(font
@@ -22546,7 +22048,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 325.12 102.87 0)
 			(effects
 				(font
@@ -22612,7 +22114,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical"
 			(at 160.02 129.54 0)
 			(effects
 				(font
