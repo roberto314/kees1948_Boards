@@ -5,11 +5,11 @@
 	(uuid "05fb24d5-db99-47c3-b50e-9b588fa507ac")
 	(paper "A3")
 	(title_block
-		(title "CPU09RAM")
-		(date "2025-03-19")
+		(title "Exorset Floppy")
+		(date "2025-08-22")
 		(rev "v0.1")
 		(company "100% Offner")
-		(comment 1 "kees1948 UniFLEX System SMD Version")
+		(comment 1 "Exorset Floppy Controller for kees1948 UniFLEX System")
 		(comment 2 "v0.1:Initial")
 	)
 	(lib_symbols
@@ -3317,89 +3317,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Mechanical:MountingHole"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim yes)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "H"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MountingHole"
-				(at 0 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Mounting Hole without connection"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "mounting hole"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "MountingHole*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MountingHole_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 1.27)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:+5V"
 			(power)
 			(pin_names
@@ -6463,7 +6380,7 @@
 	)
 	(symbol
 		(lib_id "Graphic:Logo_Open_Hardware_Small")
-		(at 400.05 245.11 0)
+		(at 396.24 246.38 0)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom no)
@@ -6472,7 +6389,7 @@
 		(fields_autoplaced yes)
 		(uuid "1005d556-cb98-4c04-855b-8b3e51a4d297")
 		(property "Reference" "#SYM1"
-			(at 400.05 238.125 0)
+			(at 396.24 239.395 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6481,7 +6398,7 @@
 			)
 		)
 		(property "Value" "Logo_Open_Hardware_Small"
-			(at 400.05 250.825 0)
+			(at 396.24 252.095 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6490,7 +6407,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 400.05 245.11 0)
+			(at 396.24 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6499,7 +6416,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 400.05 245.11 0)
+			(at 396.24 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6508,7 +6425,7 @@
 			)
 		)
 		(property "Description" "Open Hardware logo, small"
-			(at 400.05 245.11 0)
+			(at 396.24 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7461,70 +7378,6 @@
 			(project "CPU09RAM"
 				(path "/05fb24d5-db99-47c3-b50e-9b588fa507ac"
 					(reference "#PWR11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 374.65 245.11 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "886cda4c-aa2e-4ac2-9bec-9b2205248def")
-		(property "Reference" "H1"
-			(at 377.19 243.8399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "160x100 PCB"
-			(at 377.19 246.3799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "my_own:Eurocard_160x100_19inch_holes_connector"
-			(at 374.65 245.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 374.65 245.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 374.65 245.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project ""
-				(path "/05fb24d5-db99-47c3-b50e-9b588fa507ac"
-					(reference "H1")
 					(unit 1)
 				)
 			)
