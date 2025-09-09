@@ -464,6 +464,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -510,7 +511,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "keesRAM",
+      "plot": "exordisk",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -583,6 +584,18 @@
           "label": "Description",
           "name": "Description",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -646,6 +659,10 @@
     [
       "05fb24d5-db99-47c3-b50e-9b588fa507ac",
       "Root"
+    ],
+    [
+      "a1c0351e-a831-4754-8be5-6f4bd5bad354",
+      "Floppy Logic"
     ]
   ],
   "text_variables": {}
