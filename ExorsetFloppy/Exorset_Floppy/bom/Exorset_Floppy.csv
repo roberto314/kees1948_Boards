@@ -1,42 +1,47 @@
 "","Sourced","Placed","References","Value","Footprint","Quantity"
-1,"","","U2, U11, U12, U16, U18","74LS74","DIP-14_W7.62mm",5
-2,"","","U5, U28, U29",74161,"DIP-16_W7.62mm",3
-3,"","","U1, U10","GAL22V10","DIP-24_W7.62mm",2
-4,"","","U3","74HC245","DIP-20_W7.62mm",1
-5,"","","U4","MC8506","DIP-16_W7.62mm",1
-6,"","","U6","27C32","DIP-24_W15.24mm",1
-7,"","","U7","74LS240","DIP-20_W7.62mm",1
-8,"","","U8","74LS244","DIP-20_W7.62mm",1
-9,"","","U9","NE555P","DIP-8_W7.62mm",1
-10,"","","U13","74LS91","DIP-14_W7.62mm",1
-11,"","","U14",7474,"DIP-14_W7.62mm",1
-12,"","","U15",7404,"DIP-14_W7.62mm",1
-13,"","","U17",7400,"DIP-14_W7.62mm",1
-14,"","","U19","74LS76","DIP-16_W7.62mm",1
-15,"","","U20","68B21","DIP-40_W15.24mm_Socket",1
-16,"","","U21","MC4024","DIP-14_W7.62mm",1
-17,"","","U22","74LS157","DIP-16_W7.62mm",1
-18,"","","U23","74LS123","DIP-16_W7.62mm",1
-19,"","","U27","MC4044","DIP-14_W7.62mm",1
-20,"","","U34","6852_DIL24","DIP-24_W15.24mm",1
-21,"","","R1, R7, R16","1k","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",3
-22,"","","R17, R18","2k2","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",2
-23,"","","R2","10M","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
-24,"","","R3","47k","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
-25,"","","R13","200E","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
-26,"","","R14","820E","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
-27,"","","R19","720E","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
-28,"","","C2, C3, C4, C5, C6, C15","100n","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",6
-29,"","","C18, C20","10n","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",2
-30,"","","C1","10u","CP_EIA-7343-31_Kemet-D_HandSolder",1
-31,"","","C16","100u","CP_EIA-7343-31_Kemet-D_HandSolder",1
-32,"","","C19","8-25p","DX_5R5HxxxxU_D11.5mm_P10.00mm",1
-33,"","","C21","1u","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",1
-34,"","","C38","10p","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",1
-35,"","","C39","56p","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",1
-36,"","","D1","1N4148","D_MiniMELF_Handsoldering",1
-37,"","","D3","BAT42","D_MiniMELF_Handsoldering",1
-38,"","","Q1","2N2219","TO-39-3",1
-39,"","","RN2","4k7","R_Array_SIP9",1
-40,"","","J1","BUS","DIN41612_C_2x32_Male_Horizontal_THT",1
-41,"","","J2","Floppy","PinHeader_2x17_P2.54mm_Horizontal",1
+1,"","","C2, C3, C4, C5, C6, C15","100n","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",6
+2,"","","C7, C16","100u","CP_EIA-7343-31_Kemet-D_HandSolder",2
+3,"","","C8, C9","100u","CP_Radial_D10.0mm_P5.00mm",2
+4,"","","C18, C20","10n","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",2
+5,"","","C1","10u","CP_EIA-7343-31_Kemet-D_HandSolder",1
+6,"","","C19","8-25p","Capacitor_Trim",1
+7,"","","C21","1u","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",1
+8,"","","C38","10p","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",1
+9,"","","C39","56p","C_1206_3216Metric_Pad1.33x1.80mm_HandSolder",1
+10,"","","R1, R7, R16","1k","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",3
+11,"","","R17, R18","2k2","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",2
+12,"","","R2","10M","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
+13,"","","R3","27k","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
+14,"","","R4","47k","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
+15,"","","R13","200E","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
+16,"","","R14","820E","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
+17,"","","R19","720E","R_1206_3216Metric_Pad1.30x1.75mm_HandSolder",1
+18,"","","D1, D2","1N4148","D_5W_P10.16mm_Horizontal",2
+19,"","","D3","BAT42","D_5W_P10.16mm_Horizontal",1
+20,"","","U2, U11, U12, U14, U16, U18","74HCT74","DIP-14_W7.62mm",6
+21,"","","U5, U28, U29","74F163","DIP-16_W7.62mm",3
+22,"","","U1, U10","GAL22V10","DIP-24_W7.62mm",2
+23,"","","U3","74HC245","DIP-20_W7.62mm",1
+24,"","","U4","MC8506","DIP-16_W7.62mm",1
+25,"","","U6","27C32","DIP-24_W15.24mm",1
+26,"","","U7","74LS240","DIP-20_W7.62mm",1
+27,"","","U8","74LS244","DIP-20_W7.62mm",1
+28,"","","U9","NE555P","DIP-8_W7.62mm",1
+29,"","","U13","74LS91","DIP-14_W7.62mm",1
+30,"","","U15","74HCT04","DIP-14_W7.62mm",1
+31,"","","U17","74HCT00","DIP-14_W7.62mm",1
+32,"","","U19","74LS76","DIP-16_W7.62mm",1
+33,"","","U20","68B21","DIP-40_W15.24mm",1
+34,"","","U21","MC4024","DIP-14_W7.62mm",1
+35,"","","U22","74LS157","DIP-16_W7.62mm",1
+36,"","","U23","74LS123","DIP-16_W7.62mm",1
+37,"","","U24","74HC164","DIP-14_W7.62mm",1
+38,"","","U27","MC4044","DIP-14_W7.62mm",1
+39,"","","U34","6852_DIL24","DIP-24_W15.24mm",1
+40,"","","U121","74LS624","DIP-14_W7.62mm",1
+41,"","","U221","74LS627","DIP-14_W7.62mm",1
+42,"","","Q1","BC337","TO-92L",1
+43,"","","RN2","4k7","R_Array_SIP9",1
+44,"","","J3, J4, J5, J6","Conn_01x01","PinHeader_1x01_P1.27mm_Vertical",4
+45,"","","J1","BUS","DIN41612_C_2x32_Male_Horizontal_THT",1
+46,"","","J2","Floppy","PinHeader_2x17_P2.54mm_Horizontal",1

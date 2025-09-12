@@ -1,0 +1,29 @@
+GAL22V10   ; first line : used GAL
+Exordisk G1;
+
+;1  2    3   4   5   6    7    8    9    10    11   12
+VMA E   RW  SEL  A3  A2   A4  BA   A10   A9    A8   GND
+A7  A6  A5  J4  J5   J6  nROM n6820 n6852 DBDIR DBEN VCC
+;13 14  15  16  17   18  19   20    21   22    23    24
+
+; SEL is E800 - EFFF from G2
+
+;EQUATIONS
+
+; 6820 EC00-EC03
+!n6820 = E & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & !A2
+
+; 6852 EC04-EC07
+!n6852 = E & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & A2
+
+; ROM E800-EBFF
+!nROM = RW & E & VMA & SEL & !A10 ; E800-EBFF
+
+; DBDIR high == write
+DBDIR = !RW & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 ; EC00-EC07
+
+; DBEN E800 - EC07
+!DBEN = !BA & SEL & A10 ; EC00-EFFF
+
+DESCRIPTION
+Exordisk Decoder G1 v1.0
