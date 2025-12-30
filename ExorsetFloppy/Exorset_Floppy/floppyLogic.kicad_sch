@@ -12046,6 +12046,17 @@
 		)
 		(uuid "0c82635a-5449-4597-88ad-cb42641d2946")
 	)
+	(text "Problems (needs fixing in next Version):\nU23-2 needs to go to +5V,\nR4 from 47k -> 100k, C7 from 100u -> 220u\nU5-15 wrong, needs to go to U5-11\nmaybe more Testpoints - look in AN764"
+		(exclude_from_sim no)
+		(at 359.918 256.286 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "24237e45-97e6-4468-8ce6-e2b9258ff83c")
+	)
 	(text "D"
 		(exclude_from_sim no)
 		(at 264.414 189.738 0)
@@ -12256,6 +12267,19 @@
 		)
 		(uuid "8a8b0996-1a95-4a46-a436-0edf6e1f0a20")
 	)
+	(text "PROBLEM!"
+		(exclude_from_sim no)
+		(at 177.038 251.206 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "8b33c7e4-4540-4769-909a-9ef0bd38b62d")
+	)
 	(text "SM: Sync Match"
 		(exclude_from_sim no)
 		(at 67.818 110.49 0)
@@ -12342,6 +12366,19 @@
 			(justify left bottom)
 		)
 		(uuid "b6c41925-f227-4523-bffa-696a88105737")
+	)
+	(text "PROBLEM!"
+		(exclude_from_sim no)
+		(at 202.184 42.672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "bdb34a94-3da6-41ad-844b-9c7f374ca160")
 	)
 	(text "Jumper left of\nFloppy Connector"
 		(exclude_from_sim no)
@@ -13845,6 +13882,16 @@
 		)
 		(uuid "16b404ce-eacd-4ef4-a28b-78cec0634361")
 	)
+	(polyline
+		(pts
+			(xy 171.45 252.73) (xy 176.53 252.095)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16fdbd5a-0689-48ca-bdfe-9ef95d61ad11")
+	)
 	(wire
 		(pts
 			(xy 33.02 137.16) (xy 46.99 137.16)
@@ -15155,6 +15202,16 @@
 		)
 		(uuid "42aad8c5-5a14-4e15-a6f8-657d2cf8ed0b")
 	)
+	(polyline
+		(pts
+			(xy 202.565 43.815) (xy 211.455 43.815)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42e2ae7e-7682-46ed-9762-b4d942f4a92e")
+	)
 	(wire
 		(pts
 			(xy 234.95 227.33) (xy 242.57 227.33)
@@ -15544,6 +15601,16 @@
 			(type default)
 		)
 		(uuid "4e0a0a5e-aaed-4b66-979f-e1eccfb43d36")
+	)
+	(polyline
+		(pts
+			(xy 211.455 43.815) (xy 218.44 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e1e358d-c695-445c-a4a0-1734a6a97031")
 	)
 	(wire
 		(pts
@@ -16464,6 +16531,16 @@
 			(type default)
 		)
 		(uuid "6e701b1c-9076-433f-bce5-f0b7184153dc")
+	)
+	(polyline
+		(pts
+			(xy 175.895 255.27) (xy 176.53 252.095)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e947a92-2500-41e2-8666-7b15851f9fe4")
 	)
 	(polyline
 		(pts
@@ -18684,6 +18761,16 @@
 			(type default)
 		)
 		(uuid "b85e9604-3162-4654-b160-ba427105392d")
+	)
+	(polyline
+		(pts
+			(xy 186.69 252.095) (xy 176.53 252.095)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b90d3968-e4df-40bd-a8c8-261a5cca38c7")
 	)
 	(wire
 		(pts

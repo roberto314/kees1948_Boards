@@ -20,6 +20,6 @@
   16   | SEL      | Output
   17   | J10      | NC
   18   | J11      | NC
-  19   | RFF      | NC
+  19   | RFF      | Output
   20   | VCC      | VCC
 

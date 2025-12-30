@@ -31,10 +31,25 @@ G21 BA DBEN U9E BS  A9  OVMA G22 IACK U8E DBDIR VCC
 ; IO Output to G2
 G22 = VMA & A15 & A14 & A13 & A12 & A11 & A10 ; FC00-FFFF
 
-DBDIR = RW & A15 & A14 & A13 & !A12 & A11 & A10 ; EC00-EFFF
+;----------------------------------------------------------------------
+DBDIR = RW & VMA & A15 & A14 & A13 & !A12 & A11 & A10 ; EC00-EFFF
 
-!DBEN = !BA & A15 & A14 & A13 & !A12 & A11 & A10 ; EC00-EFFF
+;DBDIR = RW & EIODB
+;!IOSEL_  = (A15 & A14 & A13 & A12 & VMA) & !A11 & !A10     ; responds to F000-F3FF
+;!DIV7 = !IOSEL_ & A9                                ; F200-F3FF
+;!DIV6 = !IOSEL_ & !A9 & A8 & A7                 ; F180-F1FF
+;!DIV5 = !IOSEL_ & !A9 & A8 & !A7                ; F100-F17F
+;!DIV4 = !IOSEL_ & !A9 & !A8 & A7                ; F080-F0FF
+;!DIV3A = !IOSEL_ & !A9 & !A8 & !A7 & U10_CE_    ; F000-F07F except ACIA
+;!U10_CE_ = !IOSEL_ & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 ; ACIA  F004-F007
+;EIODB = !DIV7 # !DIV6 # !DIV5 # !DIV4 # !DIV3A        ; ALL IO except ACIA
 
+
+;----------------------------------------------------------------------
+!DBEN = !BA & VMA & A15 & A14 & A13 & !A12 & A11 & A10 ; EC00-EFFF
+;!DBEN_ = EIODB & !BA
+
+;----------------------------------------------------------------------
 !IACK = RW & E & VMA & A15 & A14 & A13 & A12 & A11 & A10 ; FC00-FFFF Read
 
 DESCRIPTION

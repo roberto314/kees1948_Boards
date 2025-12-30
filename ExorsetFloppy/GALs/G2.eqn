@@ -14,11 +14,17 @@ CRCi SWCLK CRCo  A12  A11  SEL   J10   J11  RFF  VCC
 !SWCLK = SLO & nQ
        # FST & Q
 
-!CRCo = nQ & !SLO & !CRCi
-      #  Q & CRCi
+;!CRCo = nQ & SLO # !CRCi
+;      #  Q & CRCi
+
+!CRCo =  Q & CRCi
+      # nQ & !SLO # CRCi
 
 ; SEL: Output to G1
 SEL = A15 & A14 & A13 & !A12 & A11 ; E800 - EFFF
+
+; RFF goes to Motor Timer (Low if one or the other is low)
+RFF = n6820 & n6852
 
 DESCRIPTION
 Exordisk Decoder G2 v1.0

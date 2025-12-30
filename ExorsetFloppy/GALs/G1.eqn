@@ -11,19 +11,21 @@ A7  A6  A5  J4  J5   J6  nROM n6820 n6852 DBDIR DBEN VCC
 ;EQUATIONS
 
 ; 6820 EC00-EC03
-!n6820 = E & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & !A2
+!n6820 = SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & !A2
 
 ; 6852 EC04-EC07
-!n6852 = E & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & A2
+!n6852 = SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & A2
 
 ; ROM E800-EBFF
 !nROM = RW & E & VMA & SEL & !A10 ; E800-EBFF
 
 ; DBDIR high == write
 DBDIR = !RW & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 ; EC00-EC07
+;DBDIR = !RW
 
 ; DBEN E800 - EC07
-!DBEN = !BA & SEL & A10 ; EC00-EFFF
+;!DBEN = !BA & SEL & !VMA ; E800-EFFF ( with ROM)
+!DBEN = !BA & SEL & !VMA & A10 ; EC00-EFFF ( no ROM)
 
 DESCRIPTION
 Exordisk Decoder G1 v1.0
