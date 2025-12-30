@@ -29,7 +29,7 @@ Pin 22 = DBDIR        S0 = 1   S1 = 0
 
 Pin 21 = n6852        S0 = 0   S1 = 0
  21  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
- 22  ---- ---- ---- x--- -x-- x--- -x-- ---- x--x -x-x -x-x
+ 22  -x-- ---- ---- x--- -x-- x--- -x-- ---- x--x -x-x -x-x
  23  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
  24  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
  25  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
@@ -44,7 +44,7 @@ Pin 21 = n6852        S0 = 0   S1 = 0
 
 Pin 20 = n6820        S0 = 0   S1 = 0
  34  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
- 35  ---- ---- ---- x--- -x-- -x-- -x-- ---- x--x -x-x -x-x
+ 35  -x-- ---- ---- x--- -x-- -x-- -x-- ---- x--x -x-x -x-x
  36  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
  37  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
  38  xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
