@@ -1,0 +1,71 @@
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 1 - 01/08/2026 08:16:14 PM
+
+
+       1/    ED00 :                     		ORG $ED00
+       2/    ED00 : 39                  ED00	RTS
+       3/    ED01 : 00                  	FCB $00
+       4/    ED02 : 00                  	FCB $00
+       5/    ED03 : 39                  ED03	RTS
+       6/    ED04 : 00                  	FCB $00
+       7/    ED05 : 00                  	FCB $00
+       8/    ED06 : 39                  ED06	RTS
+       9/    ED07 : 00                  	FCB $00
+      10/    ED08 : 00                  	FCB $00
+      11/    ED09 : 39                  ED09	RTS
+      12/    ED0A : 00                  	FCB $00
+      13/    ED0B : 00                  	FCB $00
+      14/    ED0C : 39                  ED0C	RTS
+      15/    ED0D : 00                  	FCB $00
+      16/    ED0E : 00                  	FCB $00
+      17/    ED0F : 7E ED 12            ED0F	JMP ED12
+      18/    ED12 :                     
+      19/    ED12 :                     		ORG $ED12
+      20/    ED12 : 39                  ED12	RTS
+      21/    ED13 :                     
+      22/    ED13 :                     	END
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 2 - 01/08/2026 08:16:14 PM
+
+
+  Symbol Table (* = unused):
+  --------------------------
+
+*ARCHITECTURE :                                      "x86_64-unknown-linux" - |
+*BIGENDIAN :                      0 - | *BRANCHEXT :                      0 - |
+*CASESENSITIVE :                  0 - | *COMPMODE :                       0 - |
+*CONSTPI :        3.141592653589793 - | *CUSTOM :                         0 - |
+*DATE :                "01/08/2026" - | *ED00 :                        ED00 C |
+*ED03 :                        ED03 C | *ED06 :                        ED06 C |
+*ED09 :                        ED09 C | *ED0C :                        ED0C C |
+*ED0F :                        ED0F C |  ED12 :                        ED12 C |
+*FALSE :                          0 - | *FULLPMMU :                       1 - |
+*HAS64 :                          1 - | *HASDSP :                         0 - |
+*HASFPU :                         0 - | *HASPMMU :                        0 - |
+*INEXTMODE :                      0 - | *INLWORDMODE :                    0 - |
+*INMAXMODE :                      0 - | *INSRCMODE :                      0 - |
+*INSUPMODE :                      0 - | *LISTON :                         1 - |
+*MACEXP :                         7 - | *MOMCPU :                      6800 - |
+*MOMCPUNAME :                "6800" - | *NESTMAX :                      100 - |
+*PACKING :                        0 - | *PADDING :                        0 - |
+*RELAXED :                        0 - | *TIME :               "08:16:14 PM" - |
+*TRUE :                           1 - | *VERSION :                     142F - |
+*Z80SYNTAX :                      0 - |
+
+     38 symbols
+     37 unused symbols
+
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 3 - 01/08/2026 08:16:14 PM
+
+
+  Code Pages:
+  ----------
+
+STANDARD (0 changed characters)
+
+1 code page
+
+0.00 seconds assembly time
+
+     22 lines source file
+      2 passes
+      0 errors
+      0 warnings
