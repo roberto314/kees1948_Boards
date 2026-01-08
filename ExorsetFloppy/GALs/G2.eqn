@@ -3,10 +3,10 @@ Exordisk G2;
 
 ;1     2    3    4    5    6     7    8    9    10
  Q    nQ   A15   A14 A13  n6852 n6820 SLO  FST  GND
-CRCi SWCLK CRCo  A12  A11  SEL   J10   J11  RFF  VCC
+CRCi SWCLK CRCo  A12  A11  SEL   RXC   J11  RFF  VCC
 ;11   12    13   14   15   16    17   18   19   20
 
-; 
+; RXC is the Receive Character Line to the 6850 on the CPUXXCMI Board.
 
 ;EQUATIONS
 
@@ -24,7 +24,7 @@ CRCi SWCLK CRCo  A12  A11  SEL   J10   J11  RFF  VCC
 SEL = A15 & A14 & A13 & !A12 & A11 ; E800 - EFFF
 
 ; RFF goes to Motor Timer (Low if one or the other is low)
-RFF = n6820 & n6852
+RFF = n6820 & n6852 & RXC 
 
 DESCRIPTION
 Exordisk Decoder G2 v1.0

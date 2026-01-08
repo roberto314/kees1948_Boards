@@ -17,7 +17,11 @@ A7  A6  A5  J4  J5   J6  nROM n6820 n6852 DBDIR DBEN VCC
 !n6852 = SEL & !VMA & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & A2
 
 ; ROM E800-EBFF
-!nROM = RW & E & VMA & SEL & !A10 ; E800-EBFF
+;!nROM = RW & E & !VMA & SEL & !A10 ; E800-EBFF
+
+; ROM ED00-EFFF
+!nROM = RW & E & !VMA & SEL & A10 & !A9 & A8 ; ED00-EDFF
+      # RW & E & !VMA & SEL & A10 & A9 ; EE00-EFFF
 
 ; DBDIR high == write
 DBDIR = !RW & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 ; EC00-EC07

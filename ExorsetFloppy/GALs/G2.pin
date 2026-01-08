@@ -18,7 +18,7 @@
   14   | A12      | Input
   15   | A11      | Input
   16   | SEL      | Output
-  17   | J10      | NC
+  17   | RXC      | Input
   18   | J11      | NC
   19   | RFF      | Output
   20   | VCC      | VCC
