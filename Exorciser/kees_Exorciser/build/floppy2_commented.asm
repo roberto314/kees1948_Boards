@@ -81,7 +81,7 @@ FDINIT          LDX     #$0000                   ; E822: CE 00 00  ; |
                 STX     PIAREGA                  ; E83A: FF EC 00  ; Set DS0, DS1, DIRQ, HLD, WG high
                 LDX     #$0000                   ; E83D: CE 00 00  ; |
                 STX     PIACTRL                  ; E840: FF EC 02  ; Set both to Data direction Reg.
-                LDX     #$1F6F                   ; E843: CE 1F 0F  ; |
+                LDX     #$1F6F       ;changed    ; E843: CE 1F 0F  ; |
                 STX     PIAREGA                  ; E846: FF EC 00  ; PA0-PA4, PB0-PB3, PB5..6 Output
                 LDX     #$3C3E                   ; E849: CE 3C 3E  ; |
                 STX     PIACTRL                  ; E84C: FF EC 02  ; Select both Output Reg., Set CA2 (STEP), Set CB2 (NMI Timer), IRQB (IRQ) Set by LH Transition of CB1 (IDX)
@@ -147,7 +147,7 @@ CLOCK           LDAB    #$04                     ; E887: C6 04    ; Bit 2 set   
                 STX     NMIVECSAV                ; E898: DF 0F     ; Save old NMIISR
                 LDX     #NMIISR                  ; E89A: CE E9 39  ; |
                 STX     NMIsVC                   ; E89D: FF FF FC  ; New NMIISR
-                JSR     $ED00                                      ; Jump to new ROM
+                JSR     $ED00       ;changed                       ; Jump to new ROM
                 LDX     #$0012                   ; E8A0: CE 00 12  ;  
                 LDAA    #$01                     ; E8A3: 86 01     ; 
                 CMPA    CURDRV                   ; E8A5: 91 00     ; is 0 at start
