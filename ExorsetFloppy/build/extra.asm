@@ -77,7 +77,7 @@ SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
 ;DRVRDYJ  jmp     DRVRDY
 ;	jmp $E8A3
 ;------------------------------------------------
-WAIT4	ldx 	#$6000
+WAIT4	ldx 	#$4000
 WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
 WAIT1    DECB                ; 
          BNE     WAIT1       ; 
