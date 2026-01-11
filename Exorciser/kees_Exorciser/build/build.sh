@@ -16,3 +16,6 @@ cat out.txt | grep rror   # Check for Errors
 
 cat zeros1 exordisk.bin exbug.bin > Exbug_ROM_${VERSION}.bin
 rm zeros1 out.txt
+
+# upload
+minipro -p "X2864AP" -w Exbug_ROM_${VERSION}.bin

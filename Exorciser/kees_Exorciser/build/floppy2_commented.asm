@@ -1,4 +1,9 @@
-; Ready to assemble with asl. binary matches original
+; Ready to assemble with asl.
+; Modified Version for use with extra ROM @ ED00
+; Modifications are:
+; - Runs on kees1948 CPUXXCMI Board with Exordisk Replica Board
+; - Since there is literally no space left and the position ofe some labels is fixed
+;   we put in JMPs to extra ROM @ ED00 and then JMP back to the appropriate place.
 ;****************************************************
 ; Used Labels
 ;****************************************************
@@ -9,7 +14,8 @@ STRSCTL EQU     $0002
 NUMSCTH EQU     $0003
 NUMSCTL EQU     $0004
 LSCTLN  EQU     $0005
-CURADRH EQU     $0006
+CURADRH    EQU     $0006
+CURADRL    EQU     $0007
 FDSTAT  EQU     $0008
 M0009   EQU     $0009
 SECTOR  EQU     $000A
@@ -25,6 +31,8 @@ STACKSAV EQU     $0016
 M0018   EQU     $0018
 CLKFREQ EQU     $0019
 LDADDR  EQU     $0020
+EXADDR     EQU     $0022
+ONECON     EQU     $0024
 ; The PIA has A0 and A1 switched!
 ; 00 with CRA2 Set is Peripheral Register A 
 ; 00 with CRA2 cleared is Data Direction Register A 
@@ -47,6 +55,14 @@ PROM_0  EQU     $FCFC
 XSTAKs  EQU     $FF8A
 NMIsVC  EQU     $FFFC
 
+; Printer
+MEC10   EQU     $EC10
+MEC11   EQU     $EC11
+MEC12   EQU     $EC12
+MEC13   EQU     $EC13
+
+; External ROM (EC00-EFFF)
+CLKDMD  EQU     $EFDE
 ;****************************************************
 ; Program's Code Areas
 ;****************************************************
@@ -90,7 +106,7 @@ ZE84F           RTS                              ; E84F: 39        ; Both Output
 FDINIT2         JSR     FDINIT3                  ; E850: BD EB A6  ; 
 ;------------------------------------------------
 CHKERR          BCC     ZE84F                    ; E853: 24 FA     ; no carry - no error
-                BSR     PRNTER                   ; E855: 8D 03     ; Print for ex.: 'E2 ' for Error 0x32
+PRNTE2          BSR     PRNTER                   ; E855: 8D 03     ; Print for ex.: 'E2 ' for Error 0x32
                 JMP     REENT2                   ; E857: 7E F5 64  ; 
 ;------------------------------------------------
 PRNTER          LDAA    #$45                     ; E85A: 86 45      ; Load 'E'
@@ -147,8 +163,9 @@ CLOCK           LDAB    #$04                     ; E887: C6 04    ; Bit 2 set   
                 STX     NMIVECSAV                ; E898: DF 0F     ; Save old NMIISR
                 LDX     #NMIISR                  ; E89A: CE E9 39  ; |
                 STX     NMIsVC                   ; E89D: FF FF FC  ; New NMIISR
-                JSR     $ED00       ;changed                       ; Jump to new ROM
-                LDX     #$0012                   ; E8A0: CE 00 12  ;  
+;------------------------------------------------
+                JMP     $ED00       ;changed                       ; Jump to new ROM
+                ;LDX     #$0012                   ; E8A0: CE 00 12  ;  
                 LDAA    #$01                     ; E8A3: 86 01     ; 
                 CMPA    CURDRV                   ; E8A5: 91 00     ; is 0 at start
                 BCS     ZE8BB                    ; E8A7: 25 12     ; if CURDRV > 1 Error
@@ -174,10 +191,10 @@ DRVRDY          BITB    #$08                     ; E8C2: C5 08     ; Get Bit3 fr
                 BRA     RESTORY                  ; E8C9: 20 3F          
 ;------------------------------------------------
 ZE8CB           BITB    #$04                     ; E8CB: C5 04     ; Get Bit2 from FUNCSAV (CLOCK)
-                BEQ     RESTORN                  ; E8CD: 27 03     ;
-                JMP     CLKDMD                   ; E8CF: 7E EB 85  ;
+                BEQ     ZE8CD                    ; E8CD: 27 03     ; No Clock
+                JMP     CLKDMD                   ; E8CF: 7E EB 85  ; Calculate CPU Freq.
 ;------------------------------------------------
-RESTORN         LDAB    STRSCTL                  ; E8D2: D6 02     ; RESTOR is NOT active
+ZE8CD           LDAB    STRSCTL                  ; E8D2: D6 02     ; normal code flow
                 LDAA    STRSCTH                  ; E8D4: 96 01     ; Get Startsector
                 ADDB    NUMSCTL                  ; E8D6: DB 04     ; |
                 ADCA    NUMSCTH                  ; E8D8: 99 03     ; Add Number of sectors
@@ -207,12 +224,13 @@ ZE8FB           INCA                             ; E8FB: 4C        ;
                 LDX     NUMSCTH                  ; E904: DE 03     ; 
                 STX     SECTCNT                  ; E906: DF 0B     ; 
                 LDAB    TRACKSAV                 ; E908: D6 13     ; 
-RESTORY         STAA    TRACKSAV                 ; E90A: 97 13     ; contains track (0 if RESTOR or 3)
-                SBA                              ; E90C: 10        ; B cont. 0 if RESTOR
-                LDAB    PIAREGA                  ; E90D: F6 EC 00  ;                                        <******************** different
-                ORAB    #$08                     ; E910: CA 08     ; Isolate Bit 3 (DIRQ)
-                BCC     ZE917                    ; E912: 24 03     ; 
-                ANDB    #$F7                     ; E914: C4 F7     ; Isolate Bit 3 (DIRQ)
+RESTORY         jmp     $ED06     ;changed
+                ;STAA    TRACKSAV                 ; E90A: 97 13     ; contains track (0 if RESTOR or 3)
+                ;SBA                              ; E90C: 10        ; B cont. 0 if RESTOR
+                LDAB    PIAREGA                  ; E90D: F6 EC 00  ; 
+                ORAB    #$08                     ; E910: CA 08     ; Isolate Bit 3 (DIRQ) | Check direction to STEP
+                BCC     ZE917                    ; E912: 24 03     ;                      | Check direction to STEP
+                ANDB    #$F7                     ; E914: C4 F7     ; Isolate Bit 3 (DIRQ) | Check direction to STEP
                 NEGA                             ; E916: 40        ; 
 ZE917           ANDB    #$EF                     ; E917: C4 EF     ; Isolate PA4 (HLD)
                 CMPA    #$04                     ; E919: 81 04     ; Compare A with 4   <------------ WHY
@@ -246,7 +264,7 @@ STEP            LDAB    #$34                     ; E946: C6 34     ; Bit 5,4,2 s
                 STAB    PIACTRL                  ; E948: F7 EC 02  ; CA2 low (STEP)
                 LDAB    #$3C                     ; E94B: C6 3C     ; Bit 5,4,3,2 set
                 STAB    PIACTRL                  ; E94D: F7 EC 02  ; CA2 high (STEP)
-                LDX     #$00FE                   ; E950: CE 00 FE  ;                                        <******************** different
+                LDX     #$00FE                   ; E950: CE 00 FE  ;  
 WAIT3           LDAB    CLKFREQ                  ; E953: D6 19     ; is 3 for 1MHz
 WAIT1           DECB                             ; E955: 5A        ; 
                 BNE     WAIT1                    ; E956: 26 FD     ; 
@@ -282,7 +300,7 @@ ZE984           LDAA    FUNCSAV                  ; E984: 96 0E     ;
                 ANDA    #$40                     ; E988: 84 40     ; 
                 STAA    FUNCSAV                  ; E98A: 97 0E     ; 
                 BEQ     ERRHNDLR                 ; E98C: 27 03     ; 
-                JMP     RESTORN                  ; E98E: 7E E8 D2  ; 
+                JMP     ZE8CD                    ; E98E: 7E E8 D2  ; 
 ;------------------------------------------------
 ERRHNDLR        LDX     #$033C                   ; E991: CE 03 3C  ; 
                 STX     PIAREGB                  ; E994: FF EC 01  ; Set PB0,1 (RESET and WG) and Select A Output Reg., Set CA2 (STEP)
@@ -316,7 +334,7 @@ READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 
                 STAA    $05,X                    ; E9C7: A7 05     ; 
                 RTS                              ; E9C9: 39        ; 
 ;------------------------------------------------
-ZE9CA           STAA    SECTOR                   ; E9CA: 97 0A     ;                                        <******************** different
+ZE9CA           STAA    SECTOR                   ; E9CA: 97 0A     ; 
                 JSR     STEP                     ; E9CC: BD E9 46  ; 
                 BSR     WAIT2                    ; E9CF: 8D 8B     ; 
                 INC     $13,X                    ; E9D1: 6C 13     ; 
@@ -387,7 +405,7 @@ ZEA46           SUBA    #$03                     ; EA46: 80 03     ;
 ;*************************************************
 ; Found corr. Track and Sector, now look for Data Addr. Mark
 ;*************************************************
-                LDAA    $05,X                    ; EA4E: A6 05     ;                                        <******************** different
+                LDAA    $05,X                    ; EA4E: A6 05     ; 
                 LDAA    #$04                     ; EA50: 86 04     ; Try four times
 ZEA52           TST     $04,X                    ; EA52: 6D 04     ; Read SSDA Status Reg.
                 BPL     ZEA52                    ; EA54: 2A FC     ; Wait for Data
@@ -517,11 +535,11 @@ ZEB43           DECB                             ; EB43: 5A        ;
                 STX     CURADRH                  ; EB46: DF 06     ; 
                 LDX     #PIAREGA                 ; EB48: CE EC 00  ; 
                 LDAA    #$40                     ; EB4B: 86 40     ; 
-ZEB4D           BITA    $04,X                    ; EB4D: A5 04     ; 
-                BEQ     ZEB4D                    ; EB4F: 27 FC     ; 
-                STAB    $05,X                    ; EB51: E7 05     ; 
-ZEB53           BITA    $04,X                    ; EB53: A5 04     ; 
-                BEQ     ZEB53                    ; EB55: 27 FC     ; 
+ZEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
+                BEQ     ZEB4D                    ; EB4F: 27 FC     ; Wait for Data
+                STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
+ZEB53           BITA    $04,X                    ; EB53: A5 04     ; Check SSDA Status Reg.
+                BEQ     ZEB53                    ; EB55: 27 FC     ; Wait for Data
                 LDAB    #$08                     ; EB57: C6 08     ; 
                 STAB    $01,X                    ; EB59: E7 01     ; 
                 STAB    $05,X                    ; EB5B: E7 05     ; 
@@ -547,81 +565,146 @@ RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ;
                 STAA    $02,X                    ; EB82: A7 02     ; $3D -> PIACTRLA (En. IRQA interrupt by CA1 - NMI Timer, Sel. Output Reg. A, CA2 high - STEP)
                 RTS                              ; EB84: 39        ; 
 ;------------------------------------------------
-CLKDMD          BSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
-                LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
-                CLRA                             ; EB89: 4F        ; 
-ZEB8A           LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
-                BPL     ZEB8A                    ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
-                LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
-CLRTOP          CLRB                             ; EB90: 5F        ; 
-ZEB91           DECB                             ; EB91: 5A        ; Wait
-                BNE     ZEB91                    ; EB92: 26 FD     ; |
-                INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
-                TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
-                BPL     CLRTOP                   ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
-                INCB                             ; EB99: 5C        ; B is 1 now
-                SUBA    #$4B                     ; EB9A: 80 4B     ; 
-ZEB9C           INCB                             ; EB9C: 5C        ; 
-                SUBA    #$16                     ; EB9D: 80 16     ; 
-                BCC     ZEB9C                    ; EB9F: 24 FB     ; 
-                STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
-                JMP     ERRHNDLR                 ; EBA3: 7E E9 91  ; 
+;CLKDMD          BSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
+;                LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
+;                CLRA                             ; EB89: 4F        ; 
+;ZEB8A           LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
+;                BPL     ZEB8A                    ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
+;                LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
+;CLRTOP          CLRB                             ; EB90: 5F        ; 
+;ZEB91           DECB                             ; EB91: 5A        ; Wait
+;                BNE     ZEB91                    ; EB92: 26 FD     ; |
+;                INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
+;                TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
+;                BPL     CLRTOP                   ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
+;                INCB                             ; EB99: 5C        ; B is 1 now
+;                SUBA    #$4B                     ; EB9A: 80 4B     ; 
+;ZEB9C           INCB                             ; EB9C: 5C        ; 
+;                SUBA    #$16                     ; EB9D: 80 16     ; 
+;                BCC     ZEB9C                    ; EB9F: 24 FB     ; 
+;                STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
+;                JMP     ERRHNDLR                 ; EBA3: 7E E9 91  ; 
 ;------------------------------------------------
-FDINIT3         JSR     FDINIT                   ; EBA6: BD E8 22  ; 
+FDINIT3         JSR     FDINIT                   ; EBA6: BD E8 22  ; is now @ EB85
                 JMP     CLOCK                    ; EBA9: 7E E8 87  ; 
-;------------------------------------------------
-ZEBAC           PSHA                             ; EBAC: 36        ; 
-ZEBAD           LDAB    MEC26                    ; EBAD: F6 EC 26  ; <------------------------------------ no RAM here!
-                BITB    #$01                     ; EBB0: C5 01     ; 
-                BEQ     ZEBDA                    ; EBB2: 27 26     ; 
-                LDAA    MEC27                    ; EBB4: B6 EC 27  ; <------------------------------------ no RAM here!
-                CMPA    #$13                     ; EBB7: 81 13     ; 
-                BNE     ZEBDA                    ; EBB9: 26 1F     ; 
-ZEBBB           LDAB    MEC26                    ; EBBB: F6 EC 26  ; <------------------------------------ no RAM here!
-                BRA     ZEBCF                    ; EBBE: 20 0F     ; 
-;------------------------------------------------
-LPINIT          LDAA    #$03                     ; EBC0: 86 03     ; 
-                STAA    MEC26                    ; EBC2: B7 EC 26  ; <------------------------------------ no RAM here!
-                LDAA    #$15                     ; EBC5: 86 15     ; 
-                STAA    MEC26                    ; EBC7: B7 EC 26  ; <------------------------------------ no RAM here! 
-                RTS                              ; EBCA: 39        ; 
-;------------------------------------------------
-                NOP                              ; EBCB: 01        ; 
-LIST            PSHB                             ; EBCC: 37        ; 
-                BRA     ZEBAC                    ; EBCD: 20 DD     ; 
-;------------------------------------------------
-ZEBCF           BITB    #$01                     ; EBCF: C5 01     ; 
-                BEQ     ZEBBB                    ; EBD1: 27 E8     ; 
-                LDAA    MEC27                    ; EBD3: B6 EC 27  ; <------------------------------------ no RAM here!
-                CMPA    #$11                     ; EBD6: 81 11     ; 
-                BNE     ZEBBB                    ; EBD8: 26 E1     ; 
-ZEBDA           BITB    #$02                     ; EBDA: C5 02     ; 
-                BEQ     ZEBAD                    ; EBDC: 27 CF     ; 
-                PULA                             ; EBDE: 32        ; 
-                STAA    MEC27                    ; EBDF: B7 EC 27  ; <------------------------------------ no RAM here!
-                PULB                             ; EBE2: 33        ; 
-                RTS                              ; EBE3: 39        ; 
-;------------------------------------------------
-LDATA0          LDAA    #$0D                     ; EBE4: 86 0D     ; Send String to Printer
-                BSR     LIST                     ; EBE6: 8D E4     ; 
-                DEX                              ; EBE8: 09        ; 
-                LDAA    #$0A                     ; EBE9: 86 0A     ; 
-                BRA     ZEBEF                    ; EBEB: 20 02     ; 
-;------------------------------------------------
-                NOP                              ; EBED: 01        ; 
-                NOP                              ; EBEE: 01        ; 
-ZEBEF           BSR     LIST                     ; EBEF: 8D DB     ; 
-                INX                              ; EBF1: 08        ; 
-                LDAA    ,X                       ; EBF2: A6 00     ; 
-                CMPA    #$04                     ; EBF4: 81 04     ; End of line ?
-                BNE     ZEBEF                    ; EBF6: 26 F7     ; 
-                LDAA    #$1B                     ; EBF8: 86 1B     ; 
-                BSR     LIST                     ; EBFA: 8D D0     ; 
-                RTS                              ; EBFC: 39        ; 
-;------------------------------------------------
-                FCB     $00                      ; EBFD: 00             
-                FCB     $00                      ; EBFE: 00             
-                FCB     $00                      ; EBFF: 00             
 
+;------------------------------------------------
+;ZEBAC           PSHA                             ; EBAC: 36        ; 
+;ZEBAD           LDAB    MEC26                    ; EBAD: F6 EC 26  ; <------------------------------------ no RAM here!
+;                BITB    #$01                     ; EBB0: C5 01     ; 
+;                BEQ     ZEBDA                    ; EBB2: 27 26     ; 
+;                LDAA    MEC27                    ; EBB4: B6 EC 27  ; <------------------------------------ no RAM here!
+;                CMPA    #$13                     ; EBB7: 81 13     ; 
+;                BNE     ZEBDA                    ; EBB9: 26 1F     ; 
+;ZEBBB           LDAB    MEC26                    ; EBBB: F6 EC 26  ; <------------------------------------ no RAM here!
+;                BRA     ZEBCF                    ; EBBE: 20 0F     ; 
+;;------------------------------------------------
+;LPINIT          LDAA    #$03                     ; EBC0: 86 03     ; 
+;                STAA    MEC26                    ; EBC2: B7 EC 26  ; <------------------------------------ no RAM here!
+;                LDAA    #$15                     ; EBC5: 86 15     ; 
+;                STAA    MEC26                    ; EBC7: B7 EC 26  ; <------------------------------------ no RAM here! 
+;                RTS                              ; EBCA: 39        ; 
+;;------------------------------------------------
+;                NOP                              ; EBCB: 01        ; 
+;LIST            PSHB                             ; EBCC: 37        ; 
+;                BRA     ZEBAC                    ; EBCD: 20 DD     ; 
+;;------------------------------------------------
+;ZEBCF           BITB    #$01                     ; EBCF: C5 01     ; 
+;                BEQ     ZEBBB                    ; EBD1: 27 E8     ; 
+;                LDAA    MEC27                    ; EBD3: B6 EC 27  ; <------------------------------------ no RAM here!
+;                CMPA    #$11                     ; EBD6: 81 11     ; 
+;                BNE     ZEBBB                    ; EBD8: 26 E1     ; 
+;ZEBDA           BITB    #$02                     ; EBDA: C5 02     ; 
+;                BEQ     ZEBAD                    ; EBDC: 27 CF     ; 
+;                PULA                             ; EBDE: 32        ; 
+;                STAA    MEC27                    ; EBDF: B7 EC 27  ; <------------------------------------ no RAM here!
+;                PULB                             ; EBE2: 33        ; 
+;                RTS                              ; EBE3: 39        ; 
+;;------------------------------------------------
+;LDATA0          LDAA    #$0D                     ; EBE4: 86 0D     ; Send String to Printer
+;                BSR     LIST                     ; EBE6: 8D E4     ; 
+;                DEX                              ; EBE8: 09        ; 
+;                LDAA    #$0A                     ; EBE9: 86 0A     ; 
+;                BRA     ZEBEF                    ; EBEB: 20 02     ; 
+;;------------------------------------------------
+;                NOP                              ; EBED: 01        ; 
+;                NOP                              ; EBEE: 01        ; 
+;ZEBEF           BSR     LIST                     ; EBEF: 8D DB     ; 
+;                INX                              ; EBF1: 08        ; 
+;                LDAA    ,X                       ; EBF2: A6 00     ; 
+;                CMPA    #$04                     ; EBF4: 81 04     ; End of line ?
+;                BNE     ZEBEF                    ; EBF6: 26 F7     ; 
+;                LDAA    #$1B                     ; EBF8: 86 1B     ; 
+;                BSR     LIST                     ; EBFA: 8D D0     ; 
+;                RTS                              ; EBFC: 39        ; 
+;;------------------------------------------------
+;                FCB     $00                      ; EBFD: 00             
+;                FCB     $00                      ; EBFE: 00             
+;                FCB     $00                      ; EBFF: 00             
+;
+;------------------------------------------------
+; Disk Mini Diagnostic Routine
+;------------------------------------------------
+
+                ORG     $EB90
+
+CLRTOP          LDX     #M0014                   ; EB90: CE 00 14 ; Diagnostic with clear
+ZEB93           CLR     $5F,X                    ; EB93: 6F 5F    ; Clear $60-$73
+                DEX                              ; EB95: 09       ; |
+                BNE     ZEB93                    ; EB96: 26 FB    ; |
+TOP             JSR     FDINIT                   ; EB98: BD E8 22 ; Diagnostic without clear
+                JSR     RESTOR                   ; EB9B: BD E8 75 ; 
+ZEB9E           LDX     LDADDR                   ; EB9E: DE 20    ; 
+                STX     CURADRH                  ; EBA0: DF 06    ; 
+                LDX     EXADDR                   ; EBA2: DE 22    ; must contain addres of function (READSC,...)
+                JSR     ,X                       ; EBA4: AD 00    ; 
+                LDAA    ONECON                   ; EBA6: 96 24    ; 
+                BNE     ZEBB9                    ; EBA8: 26 0F    ; 
+                STAA    CURADRL                  ; EBAA: 97 07    ; 
+                ASL     FDSTAT                   ; EBAC: 78 00 08 ; 
+                LDX     CURADRL                  ; EBAF: DE 07    ; 
+                INC     $01,X                    ; EBB1: 6C 01    ; 
+                BNE     ZEB9E                    ; EBB3: 26 E9    ; 
+                INC     ,X                       ; EBB5: 6C 00    ; 
+                BNE     ZEB9E                    ; EBB7: 26 E5    ; 
+ZEBB9           JMP     PRNTE2                   ; EBB9: 7E E8 55 ; Print Error Code
+;------------------------------------------------
+                FCB     $FF,$FF,$FF,$FF          ; EBBC: FF FF FF FF
+LPINIT          LDX     #$FF2E                   ; EBC0: CE FF 2E ; Line Printer Init (should there be a 6821 @ EC10)
+                STX     MEC10                    ; EBC3: FF EC 10 ; <------------------------------------ no RAM here!
+                LDAA    #$3C                     ; EBC6: 86 3C    ; 
+                STAA    MEC13                    ; EBC8: B7 EC 13 ; <------------------------------------ no RAM here!
+                RTS                              ; EBCB: 39       ; 
+;------------------------------------------------
+LIST            STAA    MEC10                    ; EBCC: B7 EC 10 ; Print contents of A
+                LDAA    MEC10                    ; EBCF: B6 EC 10 ; <------------------------------------ no RAM here!
+ZEBD2           PSHB                             ; EBD2: 37       ; 
+                LDAB    MEC12                    ; EBD3: F6 EC 12 ; <------------------------------------ no RAM here!
+                ANDB    #$03                     ; EBD6: C4 03    ; 
+                DECB                             ; EBD8: 5A       ; 
+                PULB                             ; EBD9: 33       ; 
+                BNE     ZEBE2                    ; EBDA: 26 06    ; 
+                TST     MEC11                    ; EBDC: 7D EC 11 ; <------------------------------------ no RAM here!
+                BPL     ZEBD2                    ; EBDF: 2A F1    ; 
+                RTS                              ; EBE1: 39       ; 
+;------------------------------------------------
+ZEBE2           SEC                              ; EBE2: 0D       ; 
+                RTS                              ; EBE3: 39       ; 
+;------------------------------------------------
+LDATA0          LDAA    #$0D                     ; EBE4: 86 0D    ; Send String to Printer
+ZEBE6           BSR     LIST                     ; EBE6: 8D E4    ; 
+                BCS     ZEBE6                    ; EBE8: 25 FC    ; 
+                LDAA    #$0A                     ; EBEA: 86 0A    ; 
+                DEX                              ; EBEC: 09       ; 
+ZEBED           BSR     LIST                     ; EBED: 8D DD    ; 
+                BCS     ZEBED                    ; EBEF: 25 FC    ; 
+                INX                              ; EBF1: 08       ; 
+LDATA1          LDAA    ,X                       ; EBF2: A6 00    ; 
+                CMPA    #$04                     ; EBF4: 81 04    ; 
+                BNE     ZEBED                    ; EBF6: 26 F5    ; 
+                RTS                              ; EBF8: 39       ; 
+;------------------------------------------------
+                FCB     $FF,$FF,$FF,$FF,$FF      ; EBF9: FF FF FF FF FF '.....'
+                FDB     $0750                    ; EBFE: 07 50          '.P'
 
                 END

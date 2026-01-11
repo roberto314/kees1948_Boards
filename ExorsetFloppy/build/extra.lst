@@ -1,29 +1,122 @@
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 1 - 01/08/2026 08:16:14 PM
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 1 - 01/11/2026 04:39:16 PM
 
 
-       1/    ED00 :                     		ORG $ED00
-       2/    ED00 : 39                  ED00	RTS
-       3/    ED01 : 00                  	FCB $00
-       4/    ED02 : 00                  	FCB $00
-       5/    ED03 : 39                  ED03	RTS
-       6/    ED04 : 00                  	FCB $00
-       7/    ED05 : 00                  	FCB $00
-       8/    ED06 : 39                  ED06	RTS
-       9/    ED07 : 00                  	FCB $00
-      10/    ED08 : 00                  	FCB $00
-      11/    ED09 : 39                  ED09	RTS
-      12/    ED0A : 00                  	FCB $00
-      13/    ED0B : 00                  	FCB $00
-      14/    ED0C : 39                  ED0C	RTS
-      15/    ED0D : 00                  	FCB $00
-      16/    ED0E : 00                  	FCB $00
-      17/    ED0F : 7E ED 12            ED0F	JMP ED12
-      18/    ED12 :                     
-      19/    ED12 :                     		ORG $ED12
-      20/    ED12 : 39                  ED12	RTS
-      21/    ED13 :                     
-      22/    ED13 :                     	END
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 2 - 01/08/2026 08:16:14 PM
+       1/       0 :                     
+       2/       0 : =$0                  CURDRV    EQU     $0000
+       3/       0 : =$1                  STRSCTH   EQU     $0001
+       4/       0 : =$2                  STRSCTL   EQU     $0002
+       5/       0 : =$3                  NUMSCTH   EQU     $0003
+       6/       0 : =$4                  NUMSCTL   EQU     $0004
+       7/       0 : =$5                  LSCTLN    EQU     $0005
+       8/       0 : =$6                  CURADRH   EQU     $0006
+       9/       0 : =$8                  FDSTAT    EQU     $0008
+      10/       0 : =$9                  M0009     EQU     $0009
+      11/       0 : =$A                  SECTOR    EQU     $000A
+      12/       0 : =$B                  SECTCNT   EQU     $000B
+      13/       0 : =$D                  STATSAV   EQU     $000D
+      14/       0 : =$E                  FUNCSAV   EQU     $000E
+      15/       0 : =$F                  NMIVECSAV EQU     $000F
+      16/       0 : =$12                 M0012     EQU     $0012
+      17/       0 : =$13                 TRACKSAV  EQU     $0013
+      18/       0 : =$14                 M0014     EQU     $0014
+      19/       0 : =$15                 WRDCNT    EQU     $0015
+      20/       0 : =$16                 STACKSAV  EQU     $0016
+      21/       0 : =$18                 M0018     EQU     $0018
+      22/       0 : =$19                 CLKFREQ   EQU     $0019
+      23/       0 : =$20                 LDADDR    EQU     $0020
+      24/       0 :                     ; The PIA has A0 and A1 switched!
+      25/       0 :                     ; 00 with CRA2 Set is Peripheral Register A 
+      26/       0 :                     ; 00 with CRA2 cleared is Data Direction Register A 
+      27/       0 :                     ; 01 with CRB2 Set is Peripheral Register B 
+      28/       0 :                     ; 01 with CRB2 cleared is Data Direction Register B 
+      29/       0 :                     ; 02 is Control Register A
+      30/       0 :                     ; 03 is Control Register B
+      31/       0 : =$EC00               PIAREGA EQU     $EC00
+      32/       0 : =$EC01               PIAREGB EQU     $EC01
+      33/       0 : =$EC02               PIACTRL EQU     $EC02
+      34/       0 : =$EC04               SSDA_0  EQU     $EC04
+      35/       0 : =$EC05               SSDA_1  EQU     $EC05
+      36/       0 :                     
+      37/       0 : =$E940               SETERR	EQU    $E940
+      38/       0 : =$E991               ERRHNDLR	EQU    $E991
+      39/       0 : =$EB74               RETRG    EQU    $EB74
+      40/       0 : =$E8C2               DRVRDY   EQU    $E8C2
+      41/       0 :                     
+      42/       0 :                     ; ################################################################
+      43/       0 :                     ; Jump Table
+      44/       0 :                     ; ################################################################
+      45/    ED00 :                     		ORG $ED00
+      46/    ED00 : 7E ED 20            ED00	jmp $ED20
+      47/    ED06 :                     		ORG $ED06
+      48/    ED06 :                     ED06	
+      49/    ED06 : 97 13               	STAA    TRACKSAV     ; contains track (0 if RESTOR or 3)
+      50/    ED08 : 10                  	SBA
+      51/    ED09 : 7E E9 0D            	jmp $E90D
+      52/    ED0C :                     
+      53/    ED0C :                     ; ################################################################
+      54/    ED0C :                     ; Code ED00
+      55/    ED0C :                     ; ################################################################
+      56/    ED20 :                     		ORG $ED20
+      57/    ED20 : CE 00 12            	ldx #$0012
+      58/    ED23 : 86 01               	LDAA    #$01
+      59/    ED25 : 91 00               	CMPA    CURDRV      ; is 0 at start
+      60/    ED27 : 25 19                        BCS     SERR3       ; if CURDRV > 1 Set Error 3
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 2 - 01/11/2026 04:39:16 PM
+
+
+      61/    ED29 : 27 02                        BEQ     ZE8AD       ; if CURRDRV == 1 leave it @ $12
+      62/    ED2B : 09                           DEX                 ; else, down to $11
+      63/    ED2C : 4C                           INCA                ; A is 2 now
+      64/    ED2D : B7 EC 00            ZE8AD    STAA    PIAREGA     ; Write DS0, TG43, DIRQ, HLD low, Set DS1
+      65/    ED30 : A6 00                        LDAA    ,X          ; X @ $11 for Drive 0 or $12 for Drive 1
+      66/    ED32 : 97 13                        STAA    TRACKSAV    ; 
+      67/    ED34 : 37                           PSHB
+      68/    ED35 : 8D 10                        bsr 	WAIT4
+      69/    ED37 : 33                           PULB
+      70/    ED38 : 86 40                        LDAA    #$40        ; PA6 (RDY)
+      71/    ED3A : B5 EC 00            CHECKAGAIN   BITA    PIAREGA     ; Check Drive Ready
+      72/    ED3D : 26 FB                        bne 	CHECKAGAIN
+      73/    ED3F : 7E E8 C2                     JMP     DRVRDY     ; 
+      74/    ED42 : C6 33               SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
+      75/    ED44 : 7E E9 40                     jmp     SETERR      ; 
+      76/    ED47 :                     ;------------------------------------------------
+      77/    ED47 :                     ;DRVRDYJ  jmp     DRVRDY
+      78/    ED47 :                     ;	jmp $E8A3
+      79/    ED47 :                     ;------------------------------------------------
+      80/    ED47 : CE 60 00            WAIT4	ldx 	#$6000
+      81/    ED4A : D6 19               WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
+      82/    ED4C : 5A                  WAIT1    DECB                ; 
+      83/    ED4D : 26 FD                        BNE     WAIT1       ; 
+      84/    ED4F : 09                           DEX                 ; 
+      85/    ED50 : 26 F8                        BNE     WAIT3       ; 
+      86/    ED52 : 39                           RTS                 ; 
+      87/    ED53 :                     
+      88/    EFDE :                     		ORG $EFDE
+      89/    EFDE :                     ;------------------------------------------------
+      90/    EFDE :                     ; Calculates CPU Frequency with Disk Rotation Period
+      91/    EFDE :                     ;------------------------------------------------
+      92/    EFDE : BD EB 74            CLKDMD          JSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
+      93/    EFE1 : E6 01                               LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
+      94/    EFE3 : 4F                                  CLRA                             ; EB89: 4F        ; 
+      95/    EFE4 : E6 03               ZEB8A           LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
+      96/    EFE6 : 2A FC                               BPL     ZEB8A                    ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
+      97/    EFE8 : E6 01                               LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
+      98/    EFEA : 5F                  ZEB90           CLRB                             ; EB90: 5F        ; 
+      99/    EFEB : 5A                  ZEB91           DECB                             ; EB91: 5A        ; Wait
+     100/    EFEC : 26 FD                               BNE     ZEB91                    ; EB92: 26 FD     ; |
+     101/    EFEE : 4C                                  INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
+     102/    EFEF : 6D 03                               TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
+     103/    EFF1 : 2A F7                               BPL     ZEB90                    ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
+     104/    EFF3 : 5C                                  INCB                             ; EB99: 5C        ; B is 1 now
+     105/    EFF4 : 80 4B                               SUBA    #$4B                     ; EB9A: 80 4B     ; 
+     106/    EFF6 : 5C                  ZEB9C           INCB                             ; EB9C: 5C        ; 
+     107/    EFF7 : 80 16                               SUBA    #$16                     ; EB9D: 80 16     ; 
+     108/    EFF9 : 24 FB                               BCC     ZEB9C                    ; EB9F: 24 FB     ; 
+     109/    EFFB : D7 19                               STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
+     110/    EFFD : 7E E9 91                            JMP     ERRHNDLR                 ; EBA3: 7E E9 91  ; 
+     111/    F000 :                     ;------------------------------------------------
+     112/    F000 :                     	END
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 3 - 01/11/2026 04:39:16 PM
 
 
   Symbol Table (* = unused):
@@ -31,29 +124,47 @@
 
 *ARCHITECTURE :                                      "x86_64-unknown-linux" - |
 *BIGENDIAN :                      0 - | *BRANCHEXT :                      0 - |
-*CASESENSITIVE :                  0 - | *COMPMODE :                       0 - |
-*CONSTPI :        3.141592653589793 - | *CUSTOM :                         0 - |
-*DATE :                "01/08/2026" - | *ED00 :                        ED00 C |
-*ED03 :                        ED03 C | *ED06 :                        ED06 C |
-*ED09 :                        ED09 C | *ED0C :                        ED0C C |
-*ED0F :                        ED0F C |  ED12 :                        ED12 C |
-*FALSE :                          0 - | *FULLPMMU :                       1 - |
+*CASESENSITIVE :                  0 - |  CHECKAGAIN :                  ED3A C |
+*CLKDMD :                      EFDE C |  CLKFREQ :                       19 - |
+*COMPMODE :                       0 - | *CONSTPI :        3.141592653589793 - |
+*CURADRH :                        6 - |  CURDRV :                         0 - |
+*CUSTOM :                         0 - | *DATE :                "01/11/2026" - |
+ DRVRDY :                      E8C2 - | *ED00 :                        ED00 C |
+*ED06 :                        ED06 C |  ERRHNDLR :                    E991 - |
+*FALSE :                          0 - | *FDSTAT :                         8 - |
+*FULLPMMU :                       1 - | *FUNCSAV :                        E - |
 *HAS64 :                          1 - | *HASDSP :                         0 - |
 *HASFPU :                         0 - | *HASPMMU :                        0 - |
 *INEXTMODE :                      0 - | *INLWORDMODE :                    0 - |
 *INMAXMODE :                      0 - | *INSRCMODE :                      0 - |
-*INSUPMODE :                      0 - | *LISTON :                         1 - |
+*INSUPMODE :                      0 - | *LDADDR :                        20 - |
+*LISTON :                         1 - | *LSCTLN :                         5 - |
+*M0009 :                          9 - | *M0012 :                         12 - |
+*M0014 :                         14 - | *M0018 :                         18 - |
 *MACEXP :                         7 - | *MOMCPU :                      6800 - |
 *MOMCPUNAME :                "6800" - | *NESTMAX :                      100 - |
-*PACKING :                        0 - | *PADDING :                        0 - |
-*RELAXED :                        0 - | *TIME :               "08:16:14 PM" - |
+*NMIVECSAV :                      F - | *NUMSCTH :                        3 - |
+*NUMSCTL :                        4 - | *PACKING :                        0 - |
+*PADDING :                        0 - | *PIACTRL :                     EC02 - |
+ PIAREGA :                     EC00 - | *PIAREGB :                     EC01 - |
+*RELAXED :                        0 - |  RETRG :                       EB74 - |
+*SECTCNT :                        B - | *SECTOR :                         A - |
+ SERR3 :                       ED42 C |  SETERR :                      E940 - |
+*SSDA_0 :                      EC04 - | *SSDA_1 :                      EC05 - |
+*STACKSAV :                      16 - | *STATSAV :                        D - |
+*STRSCTH :                        1 - | *STRSCTL :                        2 - |
+*TIME :               "04:39:16 PM" - |  TRACKSAV :                      13 - |
 *TRUE :                           1 - | *VERSION :                     142F - |
-*Z80SYNTAX :                      0 - |
+ WAIT1 :                       ED4C C |  WAIT3 :                       ED4A C |
+ WAIT4 :                       ED47 C | *WRDCNT :                        15 - |
+*Z80SYNTAX :                      0 - |  ZE8AD :                       ED2D C |
+ ZEB8A :                       EFE4 C |  ZEB90 :                       EFEA C |
+ ZEB91 :                       EFEB C |  ZEB9C :                       EFF6 C |
 
-     38 symbols
-     37 unused symbols
+     75 symbols
+     57 unused symbols
 
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 3 - 01/08/2026 08:16:14 PM
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 4 - 01/11/2026 04:39:16 PM
 
 
   Code Pages:
@@ -65,7 +176,7 @@ STANDARD (0 changed characters)
 
 0.00 seconds assembly time
 
-     22 lines source file
+    112 lines source file
       2 passes
       0 errors
       0 warnings
