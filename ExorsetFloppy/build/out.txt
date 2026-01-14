@@ -18,7 +18,7 @@ extra.asm(112)
 PASS 2
 extra.asm(112)
 
-0.00 seconds assembly time
+0.01 seconds assembly time
 
     112 lines source file
       2 passes
@@ -27,4 +27,4 @@ extra.asm(112)
 P2BIN/C V1.42 Beta [Bld 216]
 (C) 1992,2022 Alfred Arnold
 Deduced address range: 0x0000ED00-0x0000EFFF
-extra.p==>>extra.bin  (94 Bytes)
+extra.p==>>extra.bin  (90 Bytes)

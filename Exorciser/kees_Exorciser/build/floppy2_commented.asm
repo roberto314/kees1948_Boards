@@ -281,6 +281,8 @@ ZE961           LDAA    TRACKSAV                 ; E961: 96 13     ; Function = 
                 LDAB    #$56                     ; E966: C6 56     ; <------------------------------------ What is this??????
                 BRA     RESTORY                  ; E968: 20 A0     ; 
 ;------------------------------------------------
+; Comes from RESTORY
+;------------------------------------------------
 ZE96A           LDX     #$02C0                   ; E96A: CE 02 C0  ; |
                 BSR     WAIT3                    ; E96D: 8D E4     ; Wait
                 LDAA    FUNCSAV                  ; E96F: 96 0E     ; What was the function?
@@ -294,6 +296,8 @@ ZE96A           LDX     #$02C0                   ; E96A: CE 02 C0  ; |
                 LDAB    #$6A                     ; E97E: C6 6A     ; yes, write DELETED DATA MARK
 ZE980           STAB    ADDRMRK                  ; E980: D7 14     ; 
                 BRA     NXTSEC                   ; E982: 20 4F     ; next sector
+;------------------------------------------------
+; Comes from NXTSEC
 ;------------------------------------------------
 ZE984           LDAA    FUNCSAV                  ; E984: 96 0E     ; Get Function
                 BPL     ERRHNDLR                 ; E986: 2A 09     ; Bit 7 not Set - done

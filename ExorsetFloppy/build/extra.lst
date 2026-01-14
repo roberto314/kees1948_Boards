@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 1 - 01/11/2026 09:43:06 PM
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 1 - 01/14/2026 02:21:26 PM
 
 
        1/       0 :                     
@@ -60,8 +60,8 @@
       57/    ED20 : CE 00 12            	ldx #$0012
       58/    ED23 : 86 01               	LDAA    #$01
       59/    ED25 : 91 00               	CMPA    CURDRV      ; is 0 at start
-      60/    ED27 : 25 19                        BCS     SERR3       ; if CURDRV > 1 Set Error 3
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 2 - 01/11/2026 09:43:06 PM
+      60/    ED27 : 25 15                        BCS     SERR3       ; if CURDRV > 1 Set Error 3
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 2 - 01/14/2026 02:21:26 PM
 
 
       61/    ED29 : 27 02                        BEQ     ZE8AD       ; if CURRDRV == 1 leave it @ $12
@@ -70,27 +70,27 @@
       64/    ED2D : B7 EC 00            ZE8AD    STAA    PIAREGA     ; Write DS0, TG43, DIRQ, HLD low, Set DS1
       65/    ED30 : A6 00                        LDAA    ,X          ; X @ $11 for Drive 0 or $12 for Drive 1
       66/    ED32 : 97 13                        STAA    TRACKSAV    ; 
-      67/    ED34 : 37                           PSHB
-      68/    ED35 : 8D 10                        bsr 	WAIT4
-      69/    ED37 : 33                           PULB
-      70/    ED38 : 86 40                        LDAA    #$40        ; PA6 (RDY)
-      71/    ED3A : B5 EC 00            CHECKAGAIN   BITA    PIAREGA     ; Check Drive Ready
-      72/    ED3D : 26 FB                        bne 	CHECKAGAIN
-      73/    ED3F : 7E E8 C2                     JMP     DRVRDY     ; 
-      74/    ED42 : C6 33               SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
-      75/    ED44 : 7E E9 40                     jmp     SETERR      ; 
-      76/    ED47 :                     ;------------------------------------------------
-      77/    ED47 :                     ;DRVRDYJ  jmp     DRVRDY
-      78/    ED47 :                     ;	jmp $E8A3
-      79/    ED47 :                     ;------------------------------------------------
-      80/    ED47 : CE 40 00            WAIT4	ldx 	#$4000
-      81/    ED4A : D6 19               WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
-      82/    ED4C : 5A                  WAIT1    DECB                ; 
-      83/    ED4D : 26 FD                        BNE     WAIT1       ; 
-      84/    ED4F : 09                           DEX                 ; 
-      85/    ED50 : 26 F8                        BNE     WAIT3       ; 
-      86/    ED52 : 39                           RTS                 ; 
-      87/    ED53 :                     
+      67/    ED34 :                              ;PSHB
+      68/    ED34 :                              ;bsr 	WAIT4
+      69/    ED34 :                              ;PULB
+      70/    ED34 : 86 40                        LDAA    #$40        ; PA6 (RDY)
+      71/    ED36 : B5 EC 00            CHECKAGAIN   BITA    PIAREGA     ; Check Drive Ready
+      72/    ED39 : 26 FB                        bne 	CHECKAGAIN
+      73/    ED3B : 7E E8 C2                     JMP     DRVRDY     ; 
+      74/    ED3E : C6 33               SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
+      75/    ED40 : 7E E9 40                     jmp     SETERR      ; 
+      76/    ED43 :                     ;------------------------------------------------
+      77/    ED43 :                     ;DRVRDYJ  jmp     DRVRDY
+      78/    ED43 :                     ;	jmp $E8A3
+      79/    ED43 :                     ;------------------------------------------------
+      80/    ED43 : CE 08 00            WAIT4	ldx 	#$800
+      81/    ED46 : D6 19               WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
+      82/    ED48 : 5A                  WAIT1    DECB                ; 
+      83/    ED49 : 26 FD                        BNE     WAIT1       ; 
+      84/    ED4B : 09                           DEX                 ; 
+      85/    ED4C : 26 F8                        BNE     WAIT3       ; 
+      86/    ED4E : 39                           RTS                 ; 
+      87/    ED4F :                     
       88/    EFDE :                     		ORG $EFDE
       89/    EFDE :                     ;------------------------------------------------
       90/    EFDE :                     ; Calculates CPU Frequency with Disk Rotation Period
@@ -116,7 +116,7 @@
      110/    EFFD : 7E E9 91                            JMP     ERRHNDLR                 ; EBA3: 7E E9 91  ; 
      111/    F000 :                     ;------------------------------------------------
      112/    F000 :                     	END
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 3 - 01/11/2026 09:43:06 PM
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 3 - 01/14/2026 02:21:26 PM
 
 
   Symbol Table (* = unused):
@@ -124,11 +124,11 @@
 
 *ARCHITECTURE :                                      "x86_64-unknown-linux" - |
 *BIGENDIAN :                      0 - | *BRANCHEXT :                      0 - |
-*CASESENSITIVE :                  0 - |  CHECKAGAIN :                  ED3A C |
+*CASESENSITIVE :                  0 - |  CHECKAGAIN :                  ED36 C |
 *CLKDMD :                      EFDE C |  CLKFREQ :                       19 - |
 *COMPMODE :                       0 - | *CONSTPI :        3.141592653589793 - |
 *CURADRH :                        6 - |  CURDRV :                         0 - |
-*CUSTOM :                         0 - | *DATE :                "01/11/2026" - |
+*CUSTOM :                         0 - | *DATE :                "01/14/2026" - |
  DRVRDY :                      E8C2 - | *ED00 :                        ED00 C |
 *ED06 :                        ED06 C |  ERRHNDLR :                    E991 - |
 *FALSE :                          0 - | *FDSTAT :                         8 - |
@@ -149,22 +149,22 @@
  PIAREGA :                     EC00 - | *PIAREGB :                     EC01 - |
 *RELAXED :                        0 - |  RETRG :                       EB74 - |
 *SECTCNT :                        B - | *SECTOR :                         A - |
- SERR3 :                       ED42 C |  SETERR :                      E940 - |
+ SERR3 :                       ED3E C |  SETERR :                      E940 - |
 *SSDA_0 :                      EC04 - | *SSDA_1 :                      EC05 - |
 *STACKSAV :                      16 - | *STATSAV :                        D - |
 *STRSCTH :                        1 - | *STRSCTL :                        2 - |
-*TIME :               "09:43:06 PM" - |  TRACKSAV :                      13 - |
+*TIME :               "02:21:26 PM" - |  TRACKSAV :                      13 - |
 *TRUE :                           1 - | *VERSION :                     142F - |
- WAIT1 :                       ED4C C |  WAIT3 :                       ED4A C |
- WAIT4 :                       ED47 C | *WRDCNT :                        15 - |
+ WAIT1 :                       ED48 C |  WAIT3 :                       ED46 C |
+*WAIT4 :                       ED43 C | *WRDCNT :                        15 - |
 *Z80SYNTAX :                      0 - |  ZE8AD :                       ED2D C |
  ZEB8A :                       EFE4 C |  ZEB90 :                       EFEA C |
  ZEB91 :                       EFEB C |  ZEB9C :                       EFF6 C |
 
      75 symbols
-     57 unused symbols
+     58 unused symbols
 
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 4 - 01/11/2026 09:43:06 PM
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 4 - 01/14/2026 02:21:26 PM
 
 
   Code Pages:
@@ -174,7 +174,7 @@ STANDARD (0 changed characters)
 
 1 code page
 
-0.00 seconds assembly time
+0.01 seconds assembly time
 
     112 lines source file
       2 passes

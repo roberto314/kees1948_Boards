@@ -64,9 +64,9 @@ ED06
 ZE8AD    STAA    PIAREGA     ; Write DS0, TG43, DIRQ, HLD low, Set DS1
          LDAA    ,X          ; X @ $11 for Drive 0 or $12 for Drive 1
          STAA    TRACKSAV    ; 
-         PSHB
-         bsr 	WAIT4
-         PULB
+         ;PSHB
+         ;bsr 	WAIT4
+         ;PULB
          LDAA    #$40        ; PA6 (RDY)
 CHECKAGAIN   BITA    PIAREGA     ; Check Drive Ready
          bne 	CHECKAGAIN
@@ -77,7 +77,7 @@ SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
 ;DRVRDYJ  jmp     DRVRDY
 ;	jmp $E8A3
 ;------------------------------------------------
-WAIT4	ldx 	#$4000
+WAIT4	ldx 	#$800
 WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
 WAIT1    DECB                ; 
          BNE     WAIT1       ; 
