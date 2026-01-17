@@ -275,7 +275,7 @@ WAIT1           DECB                             ; E955: 5A        ;
 WAIT2           LDX     #$0187                   ; E95C: CE 01 87  ; 
                 BRA     WAIT3                    ; E95F: 20 F2     ; 
 ;------------------------------------------------
-ZE961           LDAA    TRACKSAV                 ; E961: 96 13     ; Function = RESTOR
+ZE961           LDAA    TRACKSAV                 ; E961: 96 13     ; Function NOT RESTOR
                 BEQ     ZE93E                    ; E963: 27 D9     ; Is Track 0? If no Set Error '7' (SEEK ERROR)
                 CLRA                             ; E965: 4F        ; 
                 LDAB    #$56                     ; E966: C6 56     ; <------------------------------------ What is this??????
@@ -300,11 +300,11 @@ ZE980           STAB    ADDRMRK                  ; E980: D7 14     ;
 ; Comes from NXTSEC
 ;------------------------------------------------
 ZE984           LDAA    FUNCSAV                  ; E984: 96 0E     ; Get Function
-                BPL     ERRHNDLR                 ; E986: 2A 09     ; Bit 7 not Set - done
+                BPL     ERRHNDLR                 ; E986: 2A 09     ; Bit 7 not Set - done (READPS, RDCRC, RESTOR, SEEK, CLOCK)
                 ANDA    #$40                     ; E988: 84 40     ; Isolate Bit 6
-                STAA    FUNCSAV                  ; E98A: 97 0E     ; 
-                BEQ     ERRHNDLR                 ; E98C: 27 03     ; Bit 6 NOT set (Not RDCRC or WRVERF)
-                JMP     CLOCKN                   ; E98E: 7E E8 D2  ; Bit 6 Set (normal codeflow)
+                STAA    FUNCSAV                  ; E98A: 97 0E     ;  
+                BEQ     ERRHNDLR                 ; E98C: 27 03     ; Bit 6 NOT set - done (READSC, WRTEST, WRDDAM, WRITSC)
+                JMP     CLOCKN                   ; E98E: 7E E8 D2  ; Bit 6 Set (normal codeflow) (RWTEST, WRVERF)
 ;------------------------------------------------
 ERRHNDLR        LDX     #$033C                   ; E991: CE 03 3C  ; 
                 STX     PIAREGB                  ; E994: FF EC 01  ; Set PB0,1 (RESET and WG) and Select A Output Reg., Set CA2 (STEP)
@@ -326,7 +326,7 @@ READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 
                 STX     SSDA_0                   ; E9AF: FF EC 04  ; |
                 LDX     #PIAREGA                 ; E9B2: CE EC 00  ; 
                 LDAA    #$50                     ; E9B5: 86 50     ; 
-                STAA    $04,X                    ; E9B7: A7 04     ; Write $50 to SSDA_0
+                STAA    $04,X                    ; E9B7: A7 04     ; Write $50 to SSDA_0 (Enable Read)
                 LDAA    #$07                     ; E9B9: 86 07     ; 
                 STAA    $01,X                    ; E9BB: A7 01     ; Write 7 to PIAREGB (Set to Read, Reset active., WG inact.)
                 DEC     $01,X                    ; E9BD: 6A 01     ; Reset inact.
@@ -456,8 +456,8 @@ SERR4           LDAB    #$34                                        ; (Set Error
 ZEA9A           JMP     SETERR                   ; EA9A: 7E E9 40  ; 
 ;------------------------------------------------
 READSECT        LDAB    FUNCSAV                  ; EA9D: D6 0E     ; data address mark found
-                ASLB                             ; EA9F: 58        ; 
-                BMI     ZEABB                    ; EAA0: 2B 19     ; Check for READCRC ($40)
+                ASLB                             ; EA9F: 58        ; FUNCSAV<<1
+                BMI     ZEABB                    ; EAA0: 2B 19     ; Check for READCRC ($40, Bit 6)
                 LDAB    WRDCNT                   ; EAA2: D6 15     ; Wordcount?
 ZEAA4           LDAA    SSDA_0                   ; EAA4: B6 EC 04  ; Read SSDA Status Reg.
                 BPL     ZEAA4                    ; EAA7: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
@@ -526,7 +526,7 @@ ZEB2A           LDAA    #$40                     ; EB2A: 86 40     ;
 ZEB2C           BITA    SSDA_0                   ; EB2C: B5 EC 04  ; Transmit Datareg. empty?
                 BEQ     ZEB2C                    ; EB2F: 27 FB     ; If no, wait
 WRITSEC         LDAA    PROM_0                   ; EB31: B6 FC FC  ; in PROM_0 is zero
-                NOP                              ; EB34: 01        ; 
+                NOP                              ; EB34: 01        ;  
                 LDAA    ,X                       ; EB35: A6 00     ; Load Data from RAM
                 STAA    SSDA_1                   ; EB37: B7 EC 05  ; Write to disk
                 LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
@@ -537,8 +537,8 @@ WRITSEC         LDAA    PROM_0                   ; EB31: B6 FC FC  ; in PROM_0 i
 ZEB43           DECB                             ; EB43: 5A        ; decrease counter
                 BNE     ZEB2A                    ; EB44: 26 E4     ; check if underflow, if not, continue from top
                 STX     CURADRH                  ; EB46: DF 06     ; done, store current address
-                LDX     #PIAREGA                 ; EB48: CE EC 00  ; 
-                LDAA    #$40                     ; EB4B: 86 40     ; 
+                LDX     #PIAREGA                 ; EB48: CE EC 00  ;  
+                LDAA    #$40                     ; EB4B: 86 40     ;  
 ZEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
                 BEQ     ZEB4D                    ; EB4F: 27 FC     ; Wait for Data
                 STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
@@ -573,21 +573,21 @@ RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ;
 ;------------------------------------------------
 ;CLKDMD          BSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
 ;                LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
-;                CLRA                             ; EB89: 4F        ; 
+;                CLRA                             ; EB89: 4F        ;  
 ;ZEB8A           LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
 ;                BPL     ZEB8A                    ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
 ;                LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
-;CLRTOP          CLRB                             ; EB90: 5F        ; 
+;CLRTOP          CLRB                             ; EB90: 5F        ;  
 ;ZEB91           DECB                             ; EB91: 5A        ; Wait
 ;                BNE     ZEB91                    ; EB92: 26 FD     ; |
 ;                INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
 ;                TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
 ;                BPL     CLRTOP                   ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
 ;                INCB                             ; EB99: 5C        ; B is 1 now
-;                SUBA    #$4B                     ; EB9A: 80 4B     ; 
-;ZEB9C           INCB                             ; EB9C: 5C        ; 
-;                SUBA    #$16                     ; EB9D: 80 16     ; 
-;                BCC     ZEB9C                    ; EB9F: 24 FB     ; 
+;                SUBA    #$4B                     ; EB9A: 80 4B     ;  
+;ZEB9C           INCB                             ; EB9C: 5C        ;  
+;                SUBA    #$16                     ; EB9D: 80 16     ;  
+;                BCC     ZEB9C                    ; EB9F: 24 FB     ;  
 ;                STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
 ;                JMP     ERRHNDLR                 ; EBA3: 7E E9 91  ; 
 ;------------------------------------------------
