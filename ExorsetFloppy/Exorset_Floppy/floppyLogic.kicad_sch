@@ -12097,19 +12097,6 @@
 		)
 		(uuid "19a2d73d-45aa-4bac-8abc-e4dd9fb2f582")
 	)
-	(text "WPROT is wrong.\nIt is Write Enabled\nin orig. schem."
-		(exclude_from_sim no)
-		(at 278.384 20.066 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-			)
-			(justify left)
-		)
-		(uuid "1a8931be-99c0-4d75-825d-7cd52b93a8fd")
-	)
 	(text "PROBLEM!"
 		(exclude_from_sim no)
 		(at 19.304 119.888 0)
@@ -12134,9 +12121,9 @@
 		)
 		(uuid "22145756-e950-4980-8a85-72d5efb2d905")
 	)
-	(text "Problems (needs fixing in next Version):\nU23-2 and U23-10 needs to go to +5V,\nR4 from 47k -> 100k, C7 from 100u -> 220u,\nU5-15 wrong, needs to go to U5-11,\nmaybe more Testpoints - look in AN764,\nSEL2, SEL3 and WPT should NOT be inverted,\nU34 has Datalines switched: D0->D7, D1->D6,...,\nU20 A0 and A1 are switched,\nU14 forgot +5V on Pin 14 and GND on Pin 7,\nU21-13 must conn. to GND (or maybe open?),\nMC8506 Pin15 wrong!,\nWPROT needs no inversion - it is Write Enable\nin the orig. schematic,\nWorks only if the Motor keeps spinning!"
+	(text "Problems (needs fixing in next Version):\nU23-2 and U23-10 needs to go to +5V,\nR4 from 47k -> 100k, C7 from 100u -> 220u,\nU5-15 wrong, needs to go to U5-11,\nmaybe more Testpoints - look in AN764,\nSEL2, SEL3 and WPT should NOT be inverted,\nU34 has Datalines switched: D0->D7, D1->D6,...,\nU20 A0 and A1 are switched,\nU14 forgot +5V on Pin 14 and GND on Pin 7,\nU21-13 must conn. to GND (or maybe open?),\nMC8506 Pin15 wrong!,\nin the orig. schematic,\nWorks only if the Motor keeps spinning!\n\n(WPROT needs no inversion - it is Write Enable) - actually i \npatched exordisk ROM otherwise it conflicts with format.sy. \nSo inverted signal is fine!"
 		(exclude_from_sim no)
-		(at 244.094 262.128 0)
+		(at 230.124 264.414 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -13687,16 +13674,6 @@
 			(type default)
 		)
 		(uuid "0003377c-1085-41bc-8658-1f68207c87bd")
-	)
-	(polyline
-		(pts
-			(xy 285.75 23.495) (xy 291.465 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "007e7f46-094f-4858-9bc1-6383c2ef6b10")
 	)
 	(wire
 		(pts
@@ -18918,16 +18895,6 @@
 		)
 		(uuid "af03b152-092c-464d-87ea-1007574e6fd5")
 	)
-	(polyline
-		(pts
-			(xy 335.915 27.94) (xy 338.455 38.735)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af4e5d7b-39d4-4bc7-bebd-8016070b63f9")
-	)
 	(wire
 		(pts
 			(xy 46.99 127) (xy 38.1 127)
@@ -19187,16 +19154,6 @@
 			(type default)
 		)
 		(uuid "b66cb8a8-c503-42c7-a12d-fc5dd13cae84")
-	)
-	(polyline
-		(pts
-			(xy 278.765 23.495) (xy 291.465 23.495)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b6862ec2-e462-47a6-81ac-f41fcc3f55b2")
 	)
 	(wire
 		(pts
