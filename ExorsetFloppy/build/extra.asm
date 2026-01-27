@@ -5,6 +5,7 @@ CURADRH   EQU     $0006
 FDSTAT    EQU     $0008
 
 STATSAV EQU     $000D
+FUNCSAV EQU     $000E
 TRACKSAV  EQU     $0013
 ADDRMRK   EQU     $0014
 
@@ -34,12 +35,22 @@ NXTSEC  EQU     $E9D2
 ; Jump Table
 ; ################################################################
 		ORG $ED00
-ED00	jmp $ED20
-		ORG $ED06
-ED06	
-	STAA    TRACKSAV     ; contains track (0 if RESTOR or 3)
-	SBA
-	jmp $E90D
+;ED00	jmp $ED20
+	BRA  SETUP
+
+;WAIT4	ldx 	#$800
+WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
+WAIT1    DECB                ; 
+         BNE     WAIT1       ; 
+         DEX                 ; 
+         BNE     WAIT3       ; 
+         RTS                 ; 
+
+;		ORG $ED06
+;ED06	
+;	STAA    TRACKSAV     ; contains track (0 if RESTOR or 3)
+;	SBA
+;	jmp $E90D
 
 ;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ; DS1 is not used!
@@ -50,28 +61,49 @@ ED06
 ; DRVNUM = 2  low hi  low
 ; DRVNUM = 3  hi  low low
 ;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		ORG $ED20
-	ldx     #$0012
-	;ldx     #$FE03
-	LDAA    #$01
-	;LDAB    #$02
+;		ORG $ED20
+SETUP	LDAA    #$03
 	CMPA    CURDRV              ; is 0 at start
-         BCS     SERR3   ;changed    ; if CURDRV > 3 Set Error 3
-         BEQ     ZE8AD               ; if CURRDRV == 3 leave it @ $FE03
-         DEX                         ; else, down to $11
-         INCA                        ; A is 2 now
+         BCS     SERR3               ; if CURDRV > 1 Set Error 3
+         ;BEQ     ZE8AD               ; if CURRDRV == 0
 
-ZE8AD    STAA    PIAREGA             ; Write DS0, TG43, DIRQ, HLD low, Set DS1
-         LDAA    ,X                  ; X @ $11 for Drive 0 or $12 for Drive 1
-         STAA    TRACKSAV            ; 
+         LDAA    #$FE
+         STAA    $FE04
+         LDAA    CURDRV                   ; E99E: D6 00     ; 
+	ANDA    #$03
+         STAA    $FE05
+         STAA    CURDRV
+         STAA    PIAREGA             ; Write DS0, TG43, DIRQ, HLD low, Set DS1
+         LDX     $FE04
+         LDAA    ,X
+         STAA    TRACKSAV                 ; E99C: 96 13     ; 
          
-         PSHB
-         bsr 	WAIT4
-         PULB
-         LDAA    #$40        ; PA6 (RDY)
+         LDAA    #$62          ; Set DS3(side) and DS2 high
+         LDAB    CURDRV
+         ANDB    #$02          ; if Drive 2 or 3 is set
+         BEQ     STORE         ; If Drive 0 or 1 is active, Set PB5
+         ANDA    #$42          ; Set Side high and DS2 low
+STORE    STAA    PIAREGB
+	
+	;ldx     #$0011
+	;LDAA    #$01
+	;LDAA    CURDRV              ; is 0 at start
+         ;BCS     SERR3               ; if CURDRV > 1 Set Error 3
+         ;BEQ     ZE8AD               ; if CURRDRV == 0 leave it @ $12
+         ;INX                         ; else, down to $11
+         ;INCA                        ; A is 2 now
+ZE8AD    ;STAA    PIAREGA             ; Write DS0, TG43, DIRQ, HLD low, Set DS1
+         ;LDAA    ,X                  ; X @ $11 for Drive 0 or $12 for Drive 1
+         ;STAA    TRACKSAV            ; 
+         
+         ;PSHB
+         ;bsr 	WAIT4
+         ;PULB
+             LDAA    #$40        ; PA6 (RDY)
 CHECKAGAIN   BITA    PIAREGA     ; Check Drive Ready
-         ;bne 	CHECKAGAIN
-         JMP     DRVRDY     ; 
+             bne 	CHECKAGAIN
+	    LDAB    FUNCSAV
+             JMP     DRVRDY     ; 
 
 SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
          jmp     SETERR      ; 
@@ -79,13 +111,7 @@ SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
 ;DRVRDYJ  jmp     DRVRDY
 ;	jmp $E8A3
 ;------------------------------------------------
-WAIT4	ldx 	#$800
-WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
-WAIT1    DECB                ; 
-         BNE     WAIT1       ; 
-         DEX                 ; 
-         BNE     WAIT3       ; 
-         RTS                 ; 
+
 
 ;------------------------------------------------
 ;
@@ -101,7 +127,7 @@ READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 
                 ;LDAA    $01,X             ;+5                      ; Read PIAREGB
                 LDAA    PIAREGB            ;+4                      ; Read PIAREGB
                 ANDA    #$60               ;+2                      ; clear all but Bit 6,7
-                ORAA    #$07               ;+2                      ; same as before but leave PB6,7
+                ORAA    #$07               ;+2                      ; same as before but leave PB5,6
                 STAA    $01,X   ;write PIAREGB ;6 ; E9BB: A7 01     ; Set Bit0,1,2 in PIAREGB (Set to Read, Reset active., WG inact.)
                 ;STAA    PIAREGB ;write PIAREGB ;5  ; E9BB: A7 01     ; Set Bit0,1,2 in PIAREGB (Set to Read, Reset active., WG inact.)
                 DEC     $01,X   ;write PIAREGB ;7  ; E9BD: 6A 01     ; Reset inact.
@@ -135,7 +161,7 @@ WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ;
                 LDAA    PIAREGB  ; changed   ;+4                        
                 BITA    #$10     ; changed   ;-2                   ; Check Writeprot?
                 BNE     SERR2        ;changed    ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
-                ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 6,7 (DS2, DS3)
+                ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 5,6 (DS2, DS3)
                 TAB                         ;+2
                 ORAA    #$02     ; changed   ;+2                   ; Set Bit 1 (WG high)
                 STAA    PIAREGB  ;write PIAREGB ;+5 ; EAF8: B7 EC 01  ; WG off, PB7 is an Input 
@@ -213,13 +239,21 @@ IEB67           BITA    $04,X                    ; EB67: A5 04     ; Check SSDA 
 
 		ORG $EE40
 ;STORTRACKS
+                LDAA    #$FE
+                STAA    $FE04
+                LDAA    CURDRV                   ; E99E: D6 00     ; 
+                STAA    $FE05
+                LDX     $FE04
                 LDAA    TRACKSAV                 ; E99C: 96 13     ; 
-                LDAB    CURDRV                   ; E99E: D6 00     ; 
-                BEQ     IE9A5                    ; E9A0: 27 03     ; 
-                STAA    $12                      ; E9A2: 97 12     ; 
-;                CPX     #$9711                   ; E9A4: 8C 97 11  ; 
-                FCB     $8C
-IE9A5           STAA    $11                                       ;
+                STAA    ,X
+
+               ; LDAA    TRACKSAV                 ; E99C: 96 13     ; 
+               ; LDAB    CURDRV                   ; E99E: D6 00     ; 
+               ; BEQ     IE9A5                    ; E9A0: 27 03     ; 
+               ; STAA    $12                    ; E9A2: 97 12     ; 
+;              ;  CPX     #$9711                   ; E9A4: 8C 97 11  ; 
+               ; FCB     $8C
+IE9A5          ; STAA    $11                                       ;
                 LDAA    STATSAV                  ; E9A7: 96 0D     ; 
                 RTS                              ; E9AB: 39        ; 
 
