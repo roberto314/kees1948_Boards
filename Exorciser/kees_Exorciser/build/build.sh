@@ -1,6 +1,6 @@
 #!/bin/bash
 NAME=floppy2_commented
-VERSION=4
+VERSION=5
 
 ASL=../../../ExorsetFloppy/bin/asl
 P2B=../../../ExorsetFloppy/bin/p2bin

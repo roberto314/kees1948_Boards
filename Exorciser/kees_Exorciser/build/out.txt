@@ -12,19 +12,19 @@ MIL-STD 1750 Generator also (C) 2019 Oliver Kellogg
 GI CP-1600-Generator (C) 2021 Haruo Asano
 
 
-Assembling extra.asm
+Assembling floppy2_commented.asm
 PASS 1
-extra.asm(149)
+floppy2_commented.asm(701)
 PASS 2
-extra.asm(149)
+floppy2_commented.asm(701)
 
 0.01 seconds assembly time
 
-    149 lines source file
+    701 lines source file
       2 passes
       0 errors
       0 warnings
 P2BIN/C V1.42 Beta [Bld 216]
 (C) 1992,2022 Alfred Arnold
-Deduced address range: 0x0000ED00-0x0000ED78
-extra.p==>>extra.bin  (121 Bytes)
+Deduced address range: 0x0000E800-0x0000EBFF
+floppy2_commented.p==>>floppy2_commented_b.bin  (1024 Bytes)

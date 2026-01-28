@@ -1,352 +1,205 @@
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 1 - 01/26/2026 09:51:58 PM
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 1 - 01/28/2026 04:07:58 PM
 
 
        1/       0 :                     
-       2/       0 : =$0                  CURDRV    EQU     $0000
-       3/       0 :                     
-       4/       0 : =$6                  CURADRH   EQU     $0006
-       5/       0 : =$8                  FDSTAT    EQU     $0008
-       6/       0 :                     
-       7/       0 : =$D                  STATSAV EQU     $000D
-       8/       0 : =$E                  FUNCSAV EQU     $000E
-       9/       0 : =$13                 TRACKSAV  EQU     $0013
-      10/       0 : =$14                 ADDRMRK   EQU     $0014
-      11/       0 :                     
-      12/       0 : =$19                 CLKFREQ   EQU     $0019
-      13/       0 :                     
-      14/       0 :                     ; The PIA has A0 and A1 switched!
-      15/       0 :                     ; 00 with CRA2 Set is Peripheral Register A 
-      16/       0 :                     ; 00 with CRA2 cleared is Data Direction Register A 
-      17/       0 :                     ; 01 with CRB2 Set is Peripheral Register B 
-      18/       0 :                     ; 01 with CRB2 cleared is Data Direction Register B 
-      19/       0 :                     ; 02 is Control Register A
-      20/       0 :                     ; 03 is Control Register B
-      21/       0 : =$EC00               PIAREGA EQU     $EC00
-      22/       0 : =$EC01               PIAREGB EQU     $EC01
-      23/       0 : =$EC02               PIACTRL EQU     $EC02
-      24/       0 : =$EC04               SSDA_0  EQU     $EC04
-      25/       0 : =$EC05               SSDA_1  EQU     $EC05
-      26/       0 :                     
-      27/       0 : =$E8C2               DRVRDY   EQU    $E8C2
-      28/       0 : =$E940               SETERR	EQU    $E940
-      29/       0 : =$E991               ERRHNDLR	EQU    $E991
-      30/       0 : =$EE40               STORTRACKS EQU  $EE40
-      31/       0 :                     ;##########################  ATTENTION from approx E9C0 difference in 
-      32/       0 : =$EAE0               RETRG    EQU    $EAE0
-      33/       0 : =$E9D2               NXTSEC  EQU     $E9D2
-      34/       0 :                     ; ################################################################
-      35/       0 :                     ; Jump Table
-      36/       0 :                     ; ################################################################
-      37/    ED00 :                     		ORG $ED00
-      38/    ED00 :                     ;ED00	jmp $ED20
-      39/    ED00 : 20 09               	BRA  SETUP
-      40/    ED02 :                     
-      41/    ED02 :                     ;WAIT4	ldx 	#$800
-      42/    ED02 : D6 19               WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
-      43/    ED04 : 5A                  WAIT1    DECB                ; 
-      44/    ED05 : 26 FD                        BNE     WAIT1       ; 
-      45/    ED07 : 09                           DEX                 ; 
-      46/    ED08 : 26 F8                        BNE     WAIT3       ; 
-      47/    ED0A : 39                           RTS                 ; 
-      48/    ED0B :                     
-      49/    ED0B :                     ;		ORG $ED06
-      50/    ED0B :                     ;ED06	
-      51/    ED0B :                     ;	STAA    TRACKSAV     ; contains track (0 if RESTOR or 3)
-      52/    ED0B :                     ;	SBA
-      53/    ED0B :                     ;	jmp $E90D
-      54/    ED0B :                     
-      55/    ED0B :                     ;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      56/    ED0B :                     ; DS1 is not used!
-      57/    ED0B :                     ;             PA0 PA1 PB5
-      58/    ED0B :                     ;             DS0 DS1 DS2
-      59/    ED0B :                     ; DRVNUM = 0  low hi  hi
-      60/    ED0B :                     ; DRVNUM = 1  hi  low hi
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 2 - 01/26/2026 09:51:58 PM
+       2/       0 :                     ;CURDRV  EQU     $0000
+       3/       0 :                     ;STRSCTH EQU     $0001
+       4/       0 :                     ;STRSCTL EQU     $0002
+       5/       0 :                     ;NUMSCTH EQU     $0003
+       6/       0 :                     ;NUMSCTL EQU     $0004
+       7/       0 :                     ;LSCTLN  EQU     $0005
+       8/       0 : =$6                  CURADRH EQU     $0006
+       9/       0 : =$7                  CURADRL EQU     $0007
+      10/       0 : =$8                  FDSTAT  EQU     $0008
+      11/       0 :                     ;CWRDCNT EQU     $0009
+      12/       0 :                     ;SofTRK  EQU     $000A
+      13/       0 :                     ;SECTCNT EQU     $000B
+      14/       0 :                     ;STATSAV EQU     $000D
+      15/       0 :                     ;FUNCSAV EQU     $000E
+      16/       0 :                     ;NMIVECSAV EQU     $000F
+      17/       0 :                     ;M0012   EQU     $0012 ; $11 and $12 are current Track of Drive 0,1
+      18/       0 :                     ;TRACKSAV EQU    $0013
+      19/       0 :                     ;ADDRMRK EQU     $0014
+      20/       0 :                     ;DWRDCNT EQU     $0015
+      21/       0 :                     ;STACKSAV EQU     $0016
+      22/       0 :                     ;DRDCNT  EQU     $0018
+      23/       0 :                     ;CLKFREQ EQU     $0019
+      24/       0 : =$20                 LDADDR  EQU     $0020
+      25/       0 : =$22                 EXADDR     EQU     $0022
+      26/       0 : =$24                 ONECON     EQU     $0024
+      27/       0 :                     
+      28/       0 :                     ; The PIA has A0 and A1 switched!
+      29/       0 :                     ; 00 with CRA2 Set is Peripheral Register A 
+      30/       0 :                     ; 00 with CRA2 cleared is Data Direction Register A 
+      31/       0 :                     ; 01 with CRB2 Set is Peripheral Register B 
+      32/       0 :                     ; 01 with CRB2 cleared is Data Direction Register B 
+      33/       0 :                     ; 02 is Control Register A
+      34/       0 :                     ; 03 is Control Register B
+      35/       0 :                     ;PIAREGA EQU     $EC00
+      36/       0 :                     ;PIAREGB EQU     $EC01
+      37/       0 :                     ;PIACTRL EQU     $EC02
+      38/       0 :                     ;SSDA_0  EQU     $EC04
+      39/       0 :                     ;SSDA_1  EQU     $EC05
+      40/       0 :                     
+      41/       0 : =$EC10               LPTPIA0 EQU     $EC10
+      42/       0 : =$EC11               LPTPIA1 EQU     $EC11
+      43/       0 : =$EC12               LPTPIA2 EQU     $EC12
+      44/       0 : =$EC13               LPTPIA3 EQU     $EC13
+      45/       0 :                     
+      46/       0 :                     ;DSLOAD  EQU  $E800 ; BOOTSTRAP THE OPERATING SYSTEM
+      47/       0 : =$E822               FDINIT  EQU  $E822 ; INITIALIZE THE DISK'S PIA AND SSD
+      48/       0 :                     ;CHKERR  EQU  $E853 ; CHECK AND PRINT ERROR FROM FDSTAT
+      49/       0 :                     ;PRNTER  EQU  $E85A ; PRINT ERROR FROM FDSTAT
+      50/       0 :                     ;READSC  EQU  $E869 ; READ SECTOR(S)
+      51/       0 :                     ;READPS  EQU  $E86D ; READ PARTIAL SECTOR
+      52/       0 :                     ;RDCRC   EQU  $E86F ; READ AND CHECK FOR CRC
+      53/       0 :                     ;RWTEST  EQU  $E872 ; WRITE/READ TEST
+      54/       0 : =$E875               RESTOR  EQU  $E875 ; MOVE HEAD TO TRACK 0
+      55/       0 :                     ;SEEK    EQU  $E878 ; POSITION HEAD TO TRACK OF "STRSCT
+      56/       0 :                     ;WRTEST  EQU  $E87B ; WRITE TEST
+      57/       0 :                     ;WRDDAM  EQU  $E87E ; WRITE DELETED DATA MARK
+      58/       0 :                     ;WRVERF  EQU  $E881 ; WRITE AND VERIFY CRC
+      59/       0 :                     ;WRITSC  EQU  $E884 ; WRITE SECTDR(S)
+      60/       0 :                     
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 2 - 01/28/2026 04:07:58 PM
 
 
-      61/    ED0B :                     ; DRVNUM = 2  low hi  low
-      62/    ED0B :                     ; DRVNUM = 3  hi  low low
-      63/    ED0B :                     ;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      64/    ED0B :                     ;		ORG $ED20
-      65/    ED0B : 86 03               SETUP	LDAA    #$03
-      66/    ED0D : 91 00               	CMPA    CURDRV              ; is 0 at start
-      67/    ED0F : 25 31                        BCS     SERR3               ; if CURDRV > 1 Set Error 3
-      68/    ED11 :                              ;BEQ     ZE8AD               ; if CURRDRV == 0
-      69/    ED11 :                     
-      70/    ED11 : 86 FE                        LDAA    #$FE
-      71/    ED13 : B7 FE 04                     STAA    $FE04
-      72/    ED16 : 96 00                        LDAA    CURDRV                   ; E99E: D6 00     ; 
-      73/    ED18 : 84 03               	ANDA    #$03
-      74/    ED1A : B7 FE 05                     STAA    $FE05
-      75/    ED1D : 97 00                        STAA    CURDRV
-      76/    ED1F : B7 EC 00                     STAA    PIAREGA             ; Write DS0, TG43, DIRQ, HLD low, Set DS1
-      77/    ED22 : FE FE 04                     LDX     $FE04
-      78/    ED25 : A6 00                        LDAA    ,X
-      79/    ED27 : 97 13                        STAA    TRACKSAV                 ; E99C: 96 13     ; 
-      80/    ED29 :                              
-      81/    ED29 : 86 62                        LDAA    #$62          ; Set DS3(side) and DS2 high
-      82/    ED2B : D6 00                        LDAB    CURDRV
-      83/    ED2D : C4 02                        ANDB    #$02          ; if Drive 2 or 3 is set
-      84/    ED2F : 27 02                        BEQ     STORE         ; If Drive 0 or 1 is active, Set PB5
-      85/    ED31 : 84 42                        ANDA    #$42          ; Set Side high and DS2 low
-      86/    ED33 : B7 EC 01            STORE    STAA    PIAREGB
-      87/    ED36 :                     	
-      88/    ED36 :                     	;ldx     #$0011
-      89/    ED36 :                     	;LDAA    #$01
-      90/    ED36 :                     	;LDAA    CURDRV              ; is 0 at start
-      91/    ED36 :                              ;BCS     SERR3               ; if CURDRV > 1 Set Error 3
-      92/    ED36 :                              ;BEQ     ZE8AD               ; if CURRDRV == 0 leave it @ $12
-      93/    ED36 :                              ;INX                         ; else, down to $11
-      94/    ED36 :                              ;INCA                        ; A is 2 now
-      95/    ED36 :                     ZE8AD    ;STAA    PIAREGA             ; Write DS0, TG43, DIRQ, HLD low, Set DS1
-      96/    ED36 :                              ;LDAA    ,X                  ; X @ $11 for Drive 0 or $12 for Drive 1
-      97/    ED36 :                              ;STAA    TRACKSAV            ; 
-      98/    ED36 :                              
-      99/    ED36 :                              ;PSHB
-     100/    ED36 :                              ;bsr 	WAIT4
-     101/    ED36 :                              ;PULB
-     102/    ED36 : 86 40                            LDAA    #$40        ; PA6 (RDY)
-     103/    ED38 : B5 EC 00            CHECKAGAIN   BITA    PIAREGA     ; Check Drive Ready
-     104/    ED3B : 26 FB                            bne 	CHECKAGAIN
-     105/    ED3D : D6 0E               	    LDAB    FUNCSAV
-     106/    ED3F : 7E E8 C2                         JMP     DRVRDY     ; 
-     107/    ED42 :                     
-     108/    ED42 : C6 33               SERR3    LDAB    #$33        ; Error '3' (DISK NOT READY)
-     109/    ED44 : 7E E9 40                     jmp     SETERR      ; 
-     110/    ED47 :                     ;------------------------------------------------
-     111/    ED47 :                     ;DRVRDYJ  jmp     DRVRDY
-     112/    ED47 :                     ;	jmp $E8A3
-     113/    ED47 :                     ;------------------------------------------------
-     114/    ED47 :                     
-     115/    ED47 :                     
-     116/    ED47 :                     ;------------------------------------------------
-     117/    ED47 :                     ;
-     118/    ED47 :                     ;------------------------------------------------
-     119/    ED60 :                     		ORG $ED60
-     120/    ED60 : CE D0 D8            READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 and Inhibit SM, 2-Byte RDA, 8-Bit Word
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 3 - 01/26/2026 09:51:58 PM
+      61/       0 : =$E855               PRNTE2  EQU  $E855 ; Jump Back into old EPROM
+      62/       0 :                     
+      63/       0 :                     ; ################################################################
+      64/       0 :                     ; Jump Table
+      65/       0 :                     ; ################################################################
+      66/    ED00 :                     		ORG $ED00
+      67/    ED00 : 7E ED 1B            ED00	jmp EXIT
+      68/    ED03 : 7E ED 1C            ED03    jmp TOP
+      69/    ED06 : 7E ED 40            ED06    jmp LPINIT
+      70/    ED09 : 7E ED 4C            ED09    jmp LIST
+      71/    ED0C : 7E ED 64            ED0C    jmp LDATA
+      72/    ED0F : 7E ED 72            ED0F    jmp LDATA1
+      73/    ED12 : 7E ED 1B            ED12    jmp EXIT
+      74/    ED15 : 7E ED 1B            ED15    jmp EXIT
+      75/    ED18 : 7E ED 1B            ED18    jmp EXIT
+      76/    ED1B : 39                  EXIT    rts
+      77/    ED1C :                     
+      78/    ED1C :                     ;------------------------------------------------
+      79/    ED1C :                     ; Disk Mini Diagnostic Routine (CLRTOP is in original ROM)
+      80/    ED1C :                     ;------------------------------------------------
+      81/    ED1C : BD E8 22            TOP             JSR     FDINIT                   ; EB98: BD E8 22 ; Diagnostic without clear
+      82/    ED1F : BD E8 75                            JSR     RESTOR                   ; EB9B: BD E8 75 ; 
+      83/    ED22 : DE 20               ZEB9E           LDX     LDADDR                   ; EB9E: DE 20    ; 
+      84/    ED24 : DF 06                               STX     CURADRH                  ; EBA0: DF 06    ; 
+      85/    ED26 : DE 22                               LDX     EXADDR                   ; EBA2: DE 22    ; must contain addres of function (READSC,...)
+      86/    ED28 : AD 00                               JSR     ,X                       ; EBA4: AD 00    ; 
+      87/    ED2A : 96 24                               LDAA    ONECON                   ; EBA6: 96 24    ; 
+      88/    ED2C : 26 0F                               BNE     ZEBB9                    ; EBA8: 26 0F    ; 
+      89/    ED2E : 97 07                               STAA    CURADRL                  ; EBAA: 97 07    ; 
+      90/    ED30 : 78 00 08                            ASL     FDSTAT                   ; EBAC: 78 00 08 ; 
+      91/    ED33 : DE 07                               LDX     CURADRL                  ; EBAF: DE 07    ; 
+      92/    ED35 : 6C 01                               INC     $01,X                    ; EBB1: 6C 01    ; 
+      93/    ED37 : 26 E9                               BNE     ZEB9E                    ; EBB3: 26 E9    ; 
+      94/    ED39 : 6C 00                               INC     ,X                       ; EBB5: 6C 00    ; 
+      95/    ED3B : 26 E5                               BNE     ZEB9E                    ; EBB7: 26 E5    ; 
+      96/    ED3D : 7E E8 55            ZEBB9           JMP     PRNTE2                  ; EBB9: 7E E8 55 ; Print Error Code
+      97/    ED40 :                     
+      98/    ED40 :                     ;------------------------------------------------
+      99/    ED40 :                     ; Line Printer Routines
+     100/    ED40 :                     ;------------------------------------------------
+     101/    ED40 : CE FF 2E            LPINIT          LDX     #$FF2E                   ; EBC0: CE FF 2E ; Line Printer Init
+     102/    ED43 : FF EC 10                            STX     LPTPIA0                  ; EBC3: FF EC 10 ; <------------------------------------ no RAM here!
+     103/    ED46 : 86 3C                               LDAA    #$3C                     ; EBC6: 86 3C    ; 
+     104/    ED48 : B7 EC 13                            STAA    LPTPIA3                  ; EBC8: B7 EC 13 ; <------------------------------------ no RAM here!
+     105/    ED4B : 39                                  RTS                              ; EBCB: 39       ; 
+     106/    ED4C :                     ;------------------------------------------------
+     107/    ED4C : B7 EC 10            LIST            STAA    LPTPIA0                  ; EBCC: B7 EC 10 ; Print contents of A
+     108/    ED4F : B6 EC 10                            LDAA    LPTPIA0                  ; EBCF: B6 EC 10 ; <------------------------------------ no RAM here!
+     109/    ED52 : 37                  ZEBD2           PSHB                             ; EBD2: 37       ; 
+     110/    ED53 : F6 EC 12                            LDAB    LPTPIA2                  ; EBD3: F6 EC 12 ; <------------------------------------ no RAM here!
+     111/    ED56 : C4 03                               ANDB    #$03                     ; EBD6: C4 03    ; 
+     112/    ED58 : 5A                                  DECB                             ; EBD8: 5A       ; 
+     113/    ED59 : 33                                  PULB                             ; EBD9: 33       ; 
+     114/    ED5A : 26 06                               BNE     ZEBE2                    ; EBDA: 26 06    ; 
+     115/    ED5C : 7D EC 11                            TST     LPTPIA1                  ; EBDC: 7D EC 11 ; <------------------------------------ no RAM here!
+     116/    ED5F : 2A F1                               BPL     ZEBD2                    ; EBDF: 2A F1    ; 
+     117/    ED61 : 39                                  RTS                              ; EBE1: 39       ; 
+     118/    ED62 :                     ;------------------------------------------------
+     119/    ED62 : 0D                  ZEBE2           SEC                              ; EBE2: 0D       ; 
+     120/    ED63 : 39                                  RTS                              ; EBE3: 39       ; 
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 3 - 01/28/2026 04:07:58 PM
 
 
-     121/    ED63 : FF EC 04                            STX     SSDA_0                   ; E9AF: FF EC 04  ; |
-     122/    ED66 : CE EC 00                            LDX     #PIAREGA                 ; E9B2: CE EC 00  ; 
-     123/    ED69 : 86 50                               LDAA    #$50                     ; E9B5: 86 50     ; 
-     124/    ED6B : A7 04                               STAA    $04,X              ;6    ; E9B7: A7 04     ; Write $50 to SSDA_0 (Enable Read)
-     125/    ED6D :                                     ;STAA    SSDA_0            ;5    ; E9B7: A7 04     ; Write $50 to SSDA_0 (Enable Read)
-     126/    ED6D :                                     ;LDAA    #$07    ;changed  ;-2   ; E9B9: 86 07     ; 
-     127/    ED6D :                                     ;LDAA    $01,X             ;+5                      ; Read PIAREGB
-     128/    ED6D : B6 EC 01                            LDAA    PIAREGB            ;+4                      ; Read PIAREGB
-     129/    ED70 : 84 60                               ANDA    #$60               ;+2                      ; clear all but Bit 6,7
-     130/    ED72 : 8A 07                               ORAA    #$07               ;+2                      ; same as before but leave PB5,6
-     131/    ED74 : A7 01                               STAA    $01,X   ;write PIAREGB ;6 ; E9BB: A7 01     ; Set Bit0,1,2 in PIAREGB (Set to Read, Reset active., WG inact.)
-     132/    ED76 :                                     ;STAA    PIAREGB ;write PIAREGB ;5  ; E9BB: A7 01     ; Set Bit0,1,2 in PIAREGB (Set to Read, Reset active., WG inact.)
-     133/    ED76 : 6A 01                               DEC     $01,X   ;write PIAREGB ;7  ; E9BD: 6A 01     ; Reset inact.
-     134/    ED78 :                                     ;DEC     PIAREGB ;write PIAREGB ;6  ; E9BD: 6A 01     ; Reset inact.
-     135/    ED78 :                                    ; INX                       ;-4    ; E9BF: 08        ; useless or timing?
-     136/    ED78 :                                    ; DEX                       ;-4    ; E9C0: 09        ; useless or timing?
-     137/    ED78 : 4A                                 DECA                        ;+2                     ; timing
-     138/    ED79 : 86 40                               LDAA    #$40                     ; E9C1: 86 40     ; Write $40 to SSDA_0 (Enable Sync, Select CR2)
-     139/    ED7B : A7 04                               STAA    $04,X                    ; E9C3: A7 04     ; 
-     140/    ED7D : 86 98                               LDAA    #$98                     ; E9C5: 86 98     ; Write $98 to SSDA_1 (Enable SM Output)
-     141/    ED7F : A7 05                               STAA    $05,X                    ; E9C7: A7 05     ; 
-     142/    ED81 : 39                                  RTS                              ; E9C9: 39        ; 
-     143/    ED82 :                     
-     144/    ED82 :                     ;------------------------------------------------
-     145/    ED82 :                     ;
-     146/    ED82 :                     ;------------------------------------------------
-     147/    ED90 :                     		ORG $ED90
-     148/    ED90 : C6 32               SERR2           LDAB  #$32                                        ;Set Error '2' (DISK WRITE PROTECTED) 
-     149/    ED92 : 7E E9 40                            JMP SETERR
-     150/    ED95 :                     
-     151/    ED95 : CE C0 DA            WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
-     152/    ED98 : FF EC 04                            STX     SSDA_0                   ; EAE0: FF EC 04  ; 
-     153/    ED9B : CE C1 AA                            LDX     #$C1AA                   ; EAE3: CE C1 AA  ; 
-     154/    ED9E : FF EC 04                            STX     SSDA_0                   ; EAE6: FF EC 04  ; 
-     155/    EDA1 : CE C2 70                            LDX     #$C270                   ; EAE9: CE C2 70  ; 
-     156/    EDA4 : FF EC 04                            STX     SSDA_0                   ; EAEC: FF EC 04  ; 
-     157/    EDA7 : 7C EC 01                            INC     PIAREGB  ;write PIAREGB  ; EAEF: 7C EC 01  ; Reset inactive (PB0 high)
-     158/    EDAA : 86 82                               LDAA    #$82                     ; EAF2: 86 82     ; Bit 1,7
-     159/    EDAC : B7 EC 04                            STAA    SSDA_0                   ; EAF4: B7 EC 04  ; 
-     160/    EDAF :                                    ; DEX                         ;-4     ; EAF7: 09        ; useless ?
-     161/    EDAF : B6 EC 01                            LDAA    PIAREGB  ; changed   ;+4                        
-     162/    EDB2 : 85 10                               BITA    #$10     ; changed   ;-2                   ; Check Writeprot?
-     163/    EDB4 : 26 DA                               BNE     SERR2        ;changed    ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
-     164/    EDB6 : 84 60                               ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 5,6 (DS2, DS3)
-     165/    EDB8 : 16                                  TAB                         ;+2
-     166/    EDB9 : 8A 02                               ORAA    #$02     ; changed   ;+2                   ; Set Bit 1 (WG high)
-     167/    EDBB : B7 EC 01                            STAA    PIAREGB  ;write PIAREGB ;+5 ; EAF8: B7 EC 01  ; WG off, PB7 is an Input 
-     168/    EDBE :                                     ;LDAA    #$10               ;-2   ; EAFB: 86 10     ; Bit 4
-     169/    EDBE :                                     ;BITA    PIAREGB                  ; EAFD: B5 EC 01  ; Check Writeprot?
-     170/    EDBE :                                     ;BEQ     SERR2                    ; EB00: 27 93     ; If low set Error
-     171/    EDBE : 96 19                               LDAA    CLKFREQ                  ; EB02: 96 19     ; Waitloop
-     172/    EDC0 : 80 03                               SUBA    #$03                     ; EB04: 80 03     ; |
-     173/    EDC2 : 48                                  ASLA                             ; EB06: 48        ; |
-     174/    EDC3 : 4A                  IEB07           DECA                             ; EB07: 4A        ; |
-     175/    EDC4 : 2A FD                               BPL     IEB07                    ; EB08: 2A FD     ; |
-     176/    EDC6 :                      ;               CLR     PIAREGB  ;write PIAREGB ;-6 ; EB0A: 7F EC 01  ; Clear all PB (Set to Write, Reset active, ShiftCRC off, WG on)
-     177/    EDC6 : F7 EC 01                            STAB    PIAREGB  ;changed   ;+5                  ; Bit 5,6 (DS2, DS3 unaffected)
-     178/    EDC9 :                                     ;RORB                        ;-2     ; EB0D: 56        ; useless ?
-     179/    EDC9 :                     ;                BCC     IEB11                    ; EB0E: 24 01     ; 
-     180/    EDC9 :                     ;                BITA    #$56                ;-2  ; EB10: 85 56     ; 
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 4 - 01/26/2026 09:51:58 PM
-
-
-     181/    EDC9 :                     ;                FCB     $85                
-     182/    EDC9 :                     ;IEB11           RORB                        ;-2     ;                 ; useless ?
-     183/    EDC9 : CE 00 05                            LDX     #$0005                   ; EB12: CE 00 05  ; 
-     184/    EDCC : BD ED 02                            JSR     WAIT3                    ; EB15: BD E9 53  ; 
-     185/    EDCF : C6 40                               LDAB    #$40                     ; EB18: C6 40     ; $40 words
-     186/    EDD1 : 96 14                               LDAA    ADDRMRK                  ; EB1A: 96 14     ; 
-     187/    EDD3 : CE 83 F5                            LDX     #$83F5                   ; EB1C: CE 83 F5  ; 
-     188/    EDD6 : FF EC 04                            STX     SSDA_0                   ; EB1F: FF EC 04  ; 
-     189/    EDD9 : DE 06                               LDX     CURADRH                  ; EB22: DE 06     ; 
-     190/    EDDB : B7 EC 05                            STAA    SSDA_1                   ; EB24: B7 EC 05  ; 
-     191/    EDDE : 7E ED E8                            JMP     WRITSEC              ;3  ; EB27: 7E EB 31  ; 
-     192/    EDE1 :                     
-     193/    EDE1 : 86 40               IEB2A           LDAA    #$40                     ; EB2A: 86 40     ; 
-     194/    EDE3 : B5 EC 04            IEB2C           BITA    SSDA_0                   ; EB2C: B5 EC 04  ; Transmit Datareg. empty?
-     195/    EDE6 : 27 FB                               BEQ     IEB2C                    ; EB2F: 27 FB     ; If no, wait
-     196/    EDE8 :                     WRITSEC         ;LDAA    PROM_0             ;-4   ; EB31: B6 FC FC  ; in PROM_0 is zero
-     197/    EDE8 :                                     ;NOP                        ;-2   ; EB34: 01        ;  
-     198/    EDE8 : 4F                                  CLRA           ;changed     ;+2                       
-     199/    EDE9 : A6 00                               LDAA    ,X                       ; EB35: A6 00     ; Load Data from RAM
-     200/    EDEB : B7 EC 05                            STAA    SSDA_1                   ; EB37: B7 EC 05  ; Write to disk
-     201/    EDEE : A6 01                               LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
-     202/    EDF0 : B7 EC 05                            STAA    SSDA_1                   ; EB3C: B7 EC 05  ; Write to disk
-     203/    EDF3 : 25 02                               BCS     IEB43                    ; EB3F: 25 02     ; all done?
-     204/    EDF5 : 08                                  INX                              ; EB41: 08        ; if not, increase pointer
-     205/    EDF6 : 08                                  INX                              ; EB42: 08        ; |
-     206/    EDF7 : 5A                  IEB43           DECB                             ; EB43: 5A        ; decrease counter
-     207/    EDF8 : 26 E7                               BNE     IEB2A                    ; EB44: 26 E4     ; check if underflow, if not, continue from top
-     208/    EDFA : DF 06                               STX     CURADRH                  ; EB46: DF 06     ; done, store current address
-     209/    EDFC : CE EC 00                            LDX     #PIAREGA                 ; EB48: CE EC 00  ;  
-     210/    EDFF : 86 40                               LDAA    #$40                     ; EB4B: 86 40     ;  
-     211/    EE01 : A5 04               IEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
-     212/    EE03 : 27 FC                               BEQ     IEB4D                    ; EB4F: 27 FC     ; Wait for Data
-     213/    EE05 : E7 05                               STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
-     214/    EE07 : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4  ; EB59: E7 01   ;
-     215/    EE0A : A5 04               IEB53           BITA    $04,X                    ; EB53: A5 04     ; Check SSDA Status Reg.
-     216/    EE0C : 27 FC                               BEQ     IEB53                    ; EB55: 27 FC     ; Wait for Data
-     217/    EE0E :                                     ;STAB    $01,X   ;write PIAREGB ;-6  ; EB59: E7 01     ; Store $8 to PIAREGB (SHIFT-CRC high)
-     218/    EE0E : CA 08                               ORAB    #$08                ;+2
-     219/    EE10 :                                     ;STAB    $01,X               ;+6
-     220/    EE10 : F7 EC 01                            STAB    PIAREGB             ;+5
-     221/    EE13 : C6 08                               LDAB    #$08                     ; EB57: C6 08     ; |
-     222/    EE15 : E7 05                               STAB    $05,X                    ; EB5B: E7 05     ; Store $8 to SSDA Data Reg.
-     223/    EE17 : A5 04               IEB5D           BITA    $04,X                    ; EB5D: A5 04     ; Check SSDA Status Reg.
-     224/    EE19 : 27 FC                               BEQ     IEB5D                    ; EB5F: 27 FC     ; Wait for Data
-     225/    EE1B : C6 FF                               LDAB    #$FF                     ; EB61: C6 FF     ; |
-     226/    EE1D : E7 05                               STAB    $05,X                    ; EB63: E7 05     ; |
-     227/    EE1F : E7 05                               STAB    $05,X                    ; EB65: E7 05     ; Store $FF to SSDA Data Reg.
-     228/    EE21 : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4 
-     229/    EE24 : A5 04               IEB67           BITA    $04,X                    ; EB67: A5 04     ; Check SSDA Status Reg.
-     230/    EE26 : 27 FC                               BEQ     IEB67                    ; EB69: 27 FC     ; Wait for Data
-     231/    EE28 : C4 60                               ANDB    #$60     ; changed ;+2
-     232/    EE2A : F7 EC 01                            STAB    PIAREGB            ;+5
-     233/    EE2D : 7C EC 01                            INC     PIAREGB            ;+6
-     234/    EE30 : 7C EC 01                            INC     PIAREGB            ;+6
-     235/    EE33 :                                     ;CLR     $01,X   ;write PIAREGB ;7  ; EB6B: 6F 01     ; Clear PIAREGB           - toggle Reset and WG high
-     236/    EE33 :                                     ;INC     $01,X   ;write PIAREGB ;7  ; EB6D: 6C 01     ; |                       - toggle Reset and WG high
-     237/    EE33 :                                     ;INC     $01,X   ;write PIAREGB ;7  ; EB6F: 6C 01     ; should be $2 in PIAREGB - toggle Reset and WG high
-     238/    EE33 : 7E E9 D2                            JMP     NXTSEC    ; -->          ; EB71: 7E E9 D3  ; next sector
-     239/    EE36 :                     
-     240/    EE40 :                     		ORG $EE40
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 5 - 01/26/2026 09:51:58 PM
-
-
-     241/    EE40 :                     ;STORTRACKS
-     242/    EE40 : 86 FE                               LDAA    #$FE
-     243/    EE42 : B7 FE 04                            STAA    $FE04
-     244/    EE45 : 96 00                               LDAA    CURDRV                   ; E99E: D6 00     ; 
-     245/    EE47 : B7 FE 05                            STAA    $FE05
-     246/    EE4A : FE FE 04                            LDX     $FE04
-     247/    EE4D : 96 13                               LDAA    TRACKSAV                 ; E99C: 96 13     ; 
-     248/    EE4F : A7 00                               STAA    ,X
-     249/    EE51 :                     
-     250/    EE51 : 96 13                               LDAA    TRACKSAV                 ; E99C: 96 13     ; 
-     251/    EE53 : D6 00                               LDAB    CURDRV                   ; E99E: D6 00     ; 
-     252/    EE55 : 27 03                               BEQ     IE9A5                    ; E9A0: 27 03     ; 
-     253/    EE57 : 97 12                               STAA    $12                    ; E9A2: 97 12     ; 
-     254/    EE59 :                     ;                CPX     #$9711                   ; E9A4: 8C 97 11  ; 
-     255/    EE59 : 8C                                  FCB     $8C
-     256/    EE5A : 97 11               IE9A5           STAA    $11                                       ;
-     257/    EE5C : 96 0D                               LDAA    STATSAV                  ; E9A7: 96 0D     ; 
-     258/    EE5E : 39                                  RTS                              ; E9AB: 39        ; 
-     259/    EE5F :                     
-     260/    EFDE :                     		ORG $EFDE
-     261/    EFDE :                     ;------------------------------------------------
-     262/    EFDE :                     ; Calculates CPU Frequency with Disk Rotation Period
-     263/    EFDE :                     ;------------------------------------------------
-     264/    EFDE : BD EA E0            CLKDMD          JSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
-     265/    EFE1 : E6 01                               LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
-     266/    EFE3 : 4F                                  CLRA                             ; EB89: 4F        ; 
-     267/    EFE4 : E6 03               ZEB8A           LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
-     268/    EFE6 : 2A FC                               BPL     ZEB8A                    ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
-     269/    EFE8 : E6 01                               LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
-     270/    EFEA : 5F                  ZEB90           CLRB                             ; EB90: 5F        ; 
-     271/    EFEB : 5A                  ZEB91           DECB                             ; EB91: 5A        ; Wait
-     272/    EFEC : 26 FD                               BNE     ZEB91                    ; EB92: 26 FD     ; |
-     273/    EFEE : 4C                                  INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
-     274/    EFEF : 6D 03                               TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
-     275/    EFF1 : 2A F7                               BPL     ZEB90                    ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
-     276/    EFF3 : 5C                                  INCB                             ; EB99: 5C        ; B is 1 now
-     277/    EFF4 : 80 4B                               SUBA    #$4B                     ; EB9A: 80 4B     ; 
-     278/    EFF6 : 5C                  ZEB9C           INCB                             ; EB9C: 5C        ; 
-     279/    EFF7 : 80 16                               SUBA    #$16                     ; EB9D: 80 16     ; 
-     280/    EFF9 : 24 FB                               BCC     ZEB9C                    ; EB9F: 24 FB     ; 
-     281/    EFFB : D7 19                               STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
-     282/    EFFD : 7E E9 91                            JMP     ERRHNDLR                 ; EBA3: 7E E9 91  ; 
-     283/    F000 :                     ;------------------------------------------------
-     284/    F000 :                     	END
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 6 - 01/26/2026 09:51:58 PM
+     121/    ED64 :                     ;------------------------------------------------
+     122/    ED64 : 86 0D               LDATA           LDAA    #$0D                     ; EBE4: 86 0D    ; Send String to Printer
+     123/    ED66 : 8D E4               ZEBE6           BSR     LIST                     ; EBE6: 8D E4    ; 
+     124/    ED68 : 25 FC                               BCS     ZEBE6                    ; EBE8: 25 FC    ; 
+     125/    ED6A : 86 0A                               LDAA    #$0A                     ; EBEA: 86 0A    ; 
+     126/    ED6C : 09                                  DEX                              ; EBEC: 09       ; 
+     127/    ED6D : 8D DD               ZEBED           BSR     LIST                     ; EBED: 8D DD    ; 
+     128/    ED6F : 25 FC                               BCS     ZEBED                    ; EBEF: 25 FC    ; 
+     129/    ED71 : 08                                  INX                              ; EBF1: 08       ; 
+     130/    ED72 : A6 00               LDATA1          LDAA    ,X                       ; EBF2: A6 00    ; 
+     131/    ED74 : 81 04                               CMPA    #$04                     ; EBF4: 81 04    ; 
+     132/    ED76 : 26 F5                               BNE     ZEBED                    ; EBF6: 26 F5    ; 
+     133/    ED78 : 39                                  RTS                              ; EBF8: 39       ; 
+     134/    ED79 :                     
+     135/    ED79 :                     
+     136/    ED79 :                     
+     137/    ED79 :                     
+     138/    ED79 :                     
+     139/    ED79 :                     
+     140/    ED79 :                     
+     141/    ED79 :                     ;WAIT4	ldx 	#$800
+     142/    ED79 :                     ;WAIT3    LDAB    CLKFREQ     ; is 3 for 1MHz
+     143/    ED79 :                     ;WAIT1    DECB                ; 
+     144/    ED79 :                     ;         BNE     WAIT1       ; 
+     145/    ED79 :                     ;         DEX                 ; 
+     146/    ED79 :                     ;         BNE     WAIT3       ; 
+     147/    ED79 :                     ;         RTS                 ; 
+     148/    ED79 :                     
+     149/    ED79 :                     	END
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 4 - 01/28/2026 04:07:58 PM
 
 
   Symbol Table (* = unused):
   --------------------------
 
- ADDRMRK :                       14 - |
 *ARCHITECTURE :                                      "x86_64-unknown-linux" - |
 *BIGENDIAN :                      0 - | *BRANCHEXT :                      0 - |
-*CASESENSITIVE :                  0 - |  CHECKAGAIN :                  ED38 C |
-*CLKDMD :                      EFDE C |  CLKFREQ :                       19 - |
-*COMPMODE :                       0 - | *CONSTPI :        3.141592653589793 - |
- CURADRH :                        6 - |  CURDRV :                         0 - |
-*CUSTOM :                         0 - | *DATE :                "01/26/2026" - |
- DRVRDY :                      E8C2 - |  ERRHNDLR :                    E991 - |
-*FALSE :                          0 - | *FDSTAT :                         8 - |
-*FULLPMMU :                       1 - |  FUNCSAV :                        E - |
+*CASESENSITIVE :                  0 - | *COMPMODE :                       0 - |
+*CONSTPI :        3.141592653589793 - |  CURADRH :                        6 - |
+ CURADRL :                        7 - | *CUSTOM :                         0 - |
+*DATE :                "01/28/2026" - | *ED00 :                        ED00 C |
+*ED03 :                        ED03 C | *ED06 :                        ED06 C |
+*ED09 :                        ED09 C | *ED0C :                        ED0C C |
+*ED0F :                        ED0F C | *ED12 :                        ED12 C |
+*ED15 :                        ED15 C | *ED18 :                        ED18 C |
+ EXADDR :                        22 - |  EXIT :                        ED1B C |
+*FALSE :                          0 - |  FDINIT :                      E822 - |
+ FDSTAT :                         8 - | *FULLPMMU :                       1 - |
 *HAS64 :                          1 - | *HASDSP :                         0 - |
 *HASFPU :                         0 - | *HASPMMU :                        0 - |
- IE9A5 :                       EE5A C |  IEB07 :                       EDC3 C |
- IEB2A :                       EDE1 C |  IEB2C :                       EDE3 C |
- IEB43 :                       EDF7 C |  IEB4D :                       EE01 C |
- IEB53 :                       EE0A C |  IEB5D :                       EE17 C |
- IEB67 :                       EE24 C | *INEXTMODE :                      0 - |
-*INLWORDMODE :                    0 - | *INMAXMODE :                      0 - |
-*INSRCMODE :                      0 - | *INSUPMODE :                      0 - |
-*LISTON :                         1 - | *MACEXP :                         7 - |
+*INEXTMODE :                      0 - | *INLWORDMODE :                    0 - |
+*INMAXMODE :                      0 - | *INSRCMODE :                      0 - |
+*INSUPMODE :                      0 - |  LDADDR :                        20 - |
+ LDATA :                       ED64 C |  LDATA1 :                      ED72 C |
+ LIST :                        ED4C C | *LISTON :                         1 - |
+ LPINIT :                      ED40 C |  LPTPIA0 :                     EC10 - |
+ LPTPIA1 :                     EC11 - |  LPTPIA2 :                     EC12 - |
+ LPTPIA3 :                     EC13 - | *MACEXP :                         7 - |
 *MOMCPU :                      6800 - | *MOMCPUNAME :                "6800" - |
-*NESTMAX :                      100 - |  NXTSEC :                      E9D2 - |
+*NESTMAX :                      100 - |  ONECON :                        24 - |
 *PACKING :                        0 - | *PADDING :                        0 - |
-*PIACTRL :                     EC02 - |  PIAREGA :                     EC00 - |
- PIAREGB :                     EC01 - | *READINIT :                    ED60 C |
-*RELAXED :                        0 - |  RETRG :                       EAE0 - |
- SERR2 :                       ED90 C |  SERR3 :                       ED42 C |
- SETERR :                      E940 - |  SETUP :                       ED0B C |
- SSDA_0 :                      EC04 - |  SSDA_1 :                      EC05 - |
- STATSAV :                        D - |  STORE :                       ED33 C |
-*STORTRACKS :                  EE40 - | *TIME :               "09:51:58 PM" - |
- TRACKSAV :                      13 - | *TRUE :                           1 - |
-*VERSION :                     142F - |  WAIT1 :                       ED04 C |
- WAIT3 :                       ED02 C | *WRITINI2 :                    ED95 C |
- WRITSEC :                     EDE8 C | *Z80SYNTAX :                      0 - |
-*ZE8AD :                       ED36 C |  ZEB8A :                       EFE4 C |
- ZEB90 :                       EFEA C |  ZEB91 :                       EFEB C |
- ZEB9C :                       EFF6 C |
+ PRNTE2 :                      E855 - | *RELAXED :                        0 - |
+ RESTOR :                      E875 - | *TIME :               "04:07:58 PM" - |
+ TOP :                         ED1C C | *TRUE :                           1 - |
+*VERSION :                     142F - | *Z80SYNTAX :                      0 - |
+ ZEB9E :                       ED22 C |  ZEBB9 :                       ED3D C |
+ ZEBD2 :                       ED52 C |  ZEBE2 :                       ED62 C |
+ ZEBE6 :                       ED66 C |  ZEBED :                       ED6D C |
 
-     75 symbols
-     38 unused symbols
+     65 symbols
+     40 unused symbols
 
- AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 7 - 01/26/2026 09:51:58 PM
+ AS V1.42 Beta [Bld 216] - Source File extra.asm - Page 5 - 01/28/2026 04:07:58 PM
 
 
   Code Pages:
@@ -358,7 +211,7 @@ STANDARD (0 changed characters)
 
 0.01 seconds assembly time
 
-    284 lines source file
+    149 lines source file
       2 passes
       0 errors
       0 warnings
