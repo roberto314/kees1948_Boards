@@ -14,17 +14,17 @@ GI CP-1600-Generator (C) 2021 Haruo Asano
 
 Assembling extra.asm
 PASS 1
-extra.asm(149)
+extra.asm(230)
 PASS 2
-extra.asm(149)
+extra.asm(230)
 
 0.01 seconds assembly time
 
-    149 lines source file
+    230 lines source file
       2 passes
       0 errors
       0 warnings
 P2BIN/C V1.42 Beta [Bld 216]
 (C) 1992,2022 Alfred Arnold
-Deduced address range: 0x0000ED00-0x0000ED78
-extra.p==>>extra.bin  (121 Bytes)
+Deduced address range: 0x0000ED00-0x0000EE2D
+extra.p==>>extra.bin  (302 Bytes)

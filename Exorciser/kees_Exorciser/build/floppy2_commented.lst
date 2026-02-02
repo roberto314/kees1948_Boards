@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 1 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 1 - 02/02/2026 10:10:04 PM
 
 
        1/       0 :                     ; Ready to assemble with asl.
@@ -61,7 +61,7 @@
       58/       0 :                     
       59/       0 :                     ; Printer
       60/       0 : =$EC10               MEC10   EQU     $EC10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 2 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 2 - 02/02/2026 10:10:04 PM
 
 
       61/       0 : =$EC11               MEC11   EQU     $EC11
@@ -118,13 +118,13 @@
      112/    E84C : FF EC 02                            STX     PIACTRL                  ; E84C: FF EC 02  ; Select both Output Reg., Set CA2 (STEP), Set CB2 (NMI Timer), IRQB (IRQ) Set by LH Transition of CB1 (IDX)
      113/    E84F : 39                  ZE84F           RTS                              ; E84F: 39        ; Both Output Regsters Selected
      114/    E850 :                     ;------------------------------------------------
-     115/    E850 : BD EB 85            FDINIT2         JSR     FDINIT3                  ; E850: BD EB A6  ; 
+     115/    E850 : BD EB 84            FDINIT2         JSR     FDINIT3                  ; E850: BD EB A6  ; 
      116/    E853 :                     ;------------------------------------------------
      117/    E853 : 24 FA               CHKERR          BCC     ZE84F                    ; E853: 24 FA     ; no carry - no error
      118/    E855 : 8D 03               PRNTE2          BSR     PRNTER                   ; E855: 8D 03     ; Print for ex.: 'E2 ' for Error 0x32
      119/    E857 : 7E F5 64                            JMP     REENT2                   ; E857: 7E F5 64  ; 
      120/    E85A :                     ;------------------------------------------------
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 3 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 3 - 02/02/2026 10:10:04 PM
 
 
      121/    E85A : 86 45               PRNTER          LDAA    #$45                     ; E85A: 86 45      ; Load 'E'
@@ -187,7 +187,7 @@
      178/    E88A : 0F                                  SEI                              ; E88A: 0F        ; 
      179/    E88B : 97 0D                               STAA    STATSAV                  ; E88B: 97 0D     ; Save Status Reg.
      180/    E88D : D7 0E                               STAB    FUNCSAV                  ; E88D: D7 0E     ; Save Function
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 4 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 4 - 02/02/2026 10:10:04 PM
 
 
      181/    E88F : 86 30                               LDAA    #$30                     ; E88F: 86 30     ; 
@@ -250,7 +250,7 @@
      238/    E8EE : 25 E2                               BCS     SERR6                    ; E8DA: 25 E2     ; Set Error '6': INVALID DISK ADDRESS
      239/    E8F0 :                                    ; CMPB    #$D3                     ; E8DC: C1 D3     ; |
      240/    E8F0 :                                    ; SBCA    #$07                     ; E8DE: 82 07     ; 0x7D3 = 2003 (sector too big)
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 5 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 5 - 02/02/2026 10:10:04 PM
 
 
      241/    E8F0 : C1 A4                               CMPB    #$A4     ;changed        ; E8DC: C1 D3     ; |
@@ -313,7 +313,7 @@
      298/    E954 : D7 08               SETERR          STAB    FDSTAT                   ; E940: D7 08     ; 
      299/    E956 : 8D 4D                               BSR     ERRHNDLR                 ; E942: 8D 4D     ; 
      300/    E958 : 0D                                  SEC                              ; E944: 0D        ; 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 6 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 6 - 02/02/2026 10:10:04 PM
 
 
      301/    E959 : 39                                  RTS                              ; E945: 39        ; 
@@ -376,7 +376,7 @@
      358/    E9B0 :                     ; from here new code
      359/    E9B0 :                     ;------------------------------------------------                
      360/    E9B0 : 96 00                               LDAA    CURDRV                  ; 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 7 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 7 - 02/02/2026 10:10:04 PM
 
 
      361/    E9B2 : B7 FE 05                            STAA    $FE05                   ; 
@@ -423,7 +423,7 @@
      402/    E9EF : 4F                                  CLRA                             ; E9FA: 4F        ; 
      403/    E9F0 : 8B 40               NOCRC           ADDA    #$40                     ; E9FB: 8B 40     ; 
      404/    E9F2 : 97 09                               STAA    CWRDCNT                  ; E9FD: 97 09     ; 
-     405/    E9F4 : BD EB 74                            JSR     RETRG                    ; E9FF: BD EB 74  ; Retrigger NMI Timer X <- EC00
+     405/    E9F4 : BD EB 73                            JSR     RETRG                    ; E9FF: BD EB 74  ; Retrigger NMI Timer X <- EC00
      406/    E9F7 : 96 13                               LDAA    TRACKSAV                 ; EA02: 96 13     ; 
      407/    E9F9 : CA 0C                               ORAB    #$0C                     ; EA04: CA 0C     ; In B is FUNCSAV<<1, isol. Bit 2,3 (RWTEST, WRTEST, CLOCK)
      408/    E9FB : 81 2B                               CMPA    #$2B                     ; EA06: 81 2B     ; check for Track > 43
@@ -438,8 +438,8 @@
      417/    EA0F :                     ; Looking for ID Addr. Mark, correct Track and Sector
      418/    EA0F :                     ;*************************************************
      419/    EA0F :                     ;IEA1A           BSR     READINIT                 ; EA1A: 8D 90     ; X is on PIAREGA (EC00), Toggle RESET
-     420/    EA0F : BD EB 9B            IEA1A           JSR     READINIT  ;changed ; EA1A: 8D 90     ; X is on PIAREGA (EC00), Toggle RESET
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 8 - 01/28/2026 04:07:51 PM
+     420/    EA0F : BD EB 9A            IEA1A           JSR     READINIT  ;changed ; EA1A: 8D 90     ; X is on PIAREGA (EC00), Toggle RESET
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 8 - 02/02/2026 10:10:04 PM
 
 
      421/    EA12 : A6 04               IEA1C           LDAA    $04,X                    ; EA1C: A6 04     ; Read SSDA Status Reg.
@@ -487,7 +487,7 @@
      463/    EA5C : 5A                                  DECB                             ; EA66: 5A        ; |
      464/    EA5D : 26 FB                               BNE     IEA64                    ; EA67: 26 FB     ; |
      465/    EA5F : C6 04                               LDAB    #$04                     ; EA69: C6 04     ; Try four times
-     466/    EA61 : BD EB 9B            IEA6B           JSR     READINIT                 ; EA6B: BD E9 AC  ; Initialize SSDA for Read, Toggle RESET
+     466/    EA61 : BD EB 9A            IEA6B           JSR     READINIT                 ; EA6B: BD E9 AC  ; Initialize SSDA for Read, Toggle RESET
      467/    EA64 : DE 06                               LDX     CURADRH                  ; EA6E: DE 06     ; Load Start Address
      468/    EA66 : B6 EC 04            IEA70           LDAA    SSDA_0                   ; EA70: B6 EC 04  ; Read SSDA Status Reg.
      469/    EA69 : 2A FB                               BPL     IEA70                    ; EA73: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
@@ -502,7 +502,7 @@
      478/    EA7B :                     ;                CPX     #MC631                   ; EA85: 8C C6 31  ; 
      479/    EA7B : 8C                                  FCB     $8C
      480/    EA7C : C6 31               SERR1           LDAB    #$31                                       ; (Set Error '1') (DATA CRC ERROR)
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 9 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 9 - 02/02/2026 10:10:04 PM
 
 
      481/    EA7E :                     ;                CPX     #MC639                   ; EA88: 8C C6 39  ; 
@@ -553,189 +553,190 @@
      526/    EAD3 :                     ;------------------------------------------------
      527/    EAD3 :                     ; from here new code
      528/    EAD3 :                     ;------------------------------------------------                
-     529/    EAD3 : CE C0 DA            WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
-     530/    EAD6 : FF EC 04                            STX     SSDA_0                   ; EAE0: FF EC 04  ; 
-     531/    EAD9 : CE C1 AA                            LDX     #$C1AA                   ; EAE3: CE C1 AA  ; 
-     532/    EADC : FF EC 04                            STX     SSDA_0                   ; EAE6: FF EC 04  ; 
-     533/    EADF : CE C2 70                            LDX     #$C270                   ; EAE9: CE C2 70  ; 
-     534/    EAE2 : FF EC 04                            STX     SSDA_0                   ; EAEC: FF EC 04  ; 
-     535/    EAE5 : 7C EC 01                            INC     PIAREGB  ;write PIAREGB  ; EAEF: 7C EC 01  ; Reset inactive (PB0 high)
-     536/    EAE8 : 86 82                               LDAA    #$82                     ; EAF2: 86 82     ; Bit 1,7
-     537/    EAEA : B7 EC 04                            STAA    SSDA_0                   ; EAF4: B7 EC 04  ; 
-     538/    EAED : B6 EC 01                            LDAA    PIAREGB  ; changed   ;+4                        
-     539/    EAF0 : 85 10                               BITA    #$10     ; changed   ;-2                   ; Check Writeprot?
-     540/    EAF2 : 26 97                               BNE     SERR2        ;changed    ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 10 - 01/28/2026 04:07:51 PM
+     529/    EAD3 : 7E ED 00            WRITINI2        JMP     $ED00
+     530/    EAD6 : CE C0 DA                            LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
+     531/    EAD9 : FF EC 04                            STX     SSDA_0                   ; EAE0: FF EC 04  ; 
+     532/    EADC : CE C1 AA                            LDX     #$C1AA                   ; EAE3: CE C1 AA  ; 
+     533/    EADF : FF EC 04                            STX     SSDA_0                   ; EAE6: FF EC 04  ; 
+     534/    EAE2 : CE C2 70                            LDX     #$C270                   ; EAE9: CE C2 70  ; 
+     535/    EAE5 : FF EC 04                            STX     SSDA_0                   ; EAEC: FF EC 04  ; 
+     536/    EAE8 : 7C EC 01                            INC     PIAREGB  ;write PIAREGB  ; EAEF: 7C EC 01  ; Reset inactive (PB0 high)
+     537/    EAEB : 86 82                               LDAA    #$82                     ; EAF2: 86 82     ; Bit 1,7
+     538/    EAED : B7 EC 04                            STAA    SSDA_0                   ; EAF4: B7 EC 04  ; 
+     539/    EAF0 : B6 EC 01                            LDAA    PIAREGB  ; changed   ;+4                        
+     540/    EAF3 : 85 10                               BITA    #$10     ; changed   ;-2                   ; Check Writeprot?
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 10 - 02/02/2026 10:10:04 PM
 
 
-     541/    EAF4 : 84 60                               ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 5,6 (DS2, DS3)
-     542/    EAF6 : 16                                  TAB                         ;+2
-     543/    EAF7 : 8A 02                               ORAA    #$02     ; changed   ;+2                   ; Set Bit 1 (WG high)
-     544/    EAF9 : B7 EC 01                            STAA    PIAREGB  ;write PIAREGB ;+5 ; EAF8: B7 EC 01  ; WG off, PB7 is an Input 
-     545/    EAFC : 96 19                               LDAA    CLKFREQ                  ; EB02: 96 19     ; Waitloop
-     546/    EAFE : 80 03                               SUBA    #$03                     ; EB04: 80 03     ; |
-     547/    EB00 : 48                                  ASLA                             ; EB06: 48        ; |
-     548/    EB01 : 4A                  IEB07           DECA                             ; EB07: 4A        ; |
-     549/    EB02 : 2A FD                               BPL     IEB07                    ; EB08: 2A FD     ; |
-     550/    EB04 : F7 EC 01                            STAB    PIAREGB  ;changed   ;+5                  ; Bit 5,6 (DS2, DS3 unaffected)
-     551/    EB07 : CE 00 05                            LDX     #$0005                   ; EB12: CE 00 05  ; 
-     552/    EB0A : BD E9 67                            JSR     WAIT3                    ; EB15: BD E9 53  ; 
-     553/    EB0D : C6 40                               LDAB    #$40                     ; EB18: C6 40     ; $40 words
-     554/    EB0F : 96 14                               LDAA    ADDRMRK                  ; EB1A: 96 14     ; 
-     555/    EB11 : CE 83 F5                            LDX     #$83F5                   ; EB1C: CE 83 F5  ; 
-     556/    EB14 : FF EC 04                            STX     SSDA_0                   ; EB1F: FF EC 04  ; 
-     557/    EB17 : DE 06                               LDX     CURADRH                  ; EB22: DE 06     ; 
-     558/    EB19 : B7 EC 05                            STAA    SSDA_1                   ; EB24: B7 EC 05  ; 
-     559/    EB1C : 7E EB 26                            JMP     WRITSEC              ;3  ; EB27: 7E EB 31  ; 
-     560/    EB1F :                     
-     561/    EB1F : 86 40               IEB2A           LDAA    #$40                     ; EB2A: 86 40     ; 
-     562/    EB21 : B5 EC 04            IEB2C           BITA    SSDA_0                   ; EB2C: B5 EC 04  ; Transmit Datareg. empty?
-     563/    EB24 : 27 FB                               BEQ     IEB2C                    ; EB2F: 27 FB     ; If no, wait
-     564/    EB26 : 4F                  WRITSEC         CLRA           ;changed     ;+2                       
-     565/    EB27 : A6 00                               LDAA    ,X                       ; EB35: A6 00     ; Load Data from RAM
-     566/    EB29 : B7 EC 05                            STAA    SSDA_1                   ; EB37: B7 EC 05  ; Write to disk
-     567/    EB2C : A6 01                               LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
-     568/    EB2E : B7 EC 05                            STAA    SSDA_1                   ; EB3C: B7 EC 05  ; Write to disk
-     569/    EB31 : 25 02                               BCS     IEB43                    ; EB3F: 25 02     ; all done?
-     570/    EB33 : 08                                  INX                              ; EB41: 08        ; if not, increase pointer
-     571/    EB34 : 08                                  INX                              ; EB42: 08        ; |
-     572/    EB35 : 5A                  IEB43           DECB                             ; EB43: 5A        ; decrease counter
-     573/    EB36 : 26 E7                               BNE     IEB2A                    ; EB44: 26 E4     ; check if underflow, if not, continue from top
-     574/    EB38 : DF 06                               STX     CURADRH                  ; EB46: DF 06     ; done, store current address
-     575/    EB3A : CE EC 00                            LDX     #PIAREGA                 ; EB48: CE EC 00  ;  
-     576/    EB3D : 86 40                               LDAA    #$40                     ; EB4B: 86 40     ;  
-     577/    EB3F : A5 04               IEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
-     578/    EB41 : 27 FC                               BEQ     IEB4D                    ; EB4F: 27 FC     ; Wait for Data
-     579/    EB43 : E7 05                               STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
-     580/    EB45 : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4  ; EB59: E7 01   ;
-     581/    EB48 : A5 04               IEB53           BITA    $04,X                    ; EB53: A5 04     ; Check SSDA Status Reg.
-     582/    EB4A : 27 FC                               BEQ     IEB53                    ; EB55: 27 FC     ; Wait for Data
-     583/    EB4C : CA 08                               ORAB    #$08                ;+2
-     584/    EB4E : F7 EC 01                            STAB    PIAREGB             ;+5
-     585/    EB51 : C6 08                               LDAB    #$08                     ; EB57: C6 08     ; |
-     586/    EB53 : E7 05                               STAB    $05,X                    ; EB5B: E7 05     ; Store $8 to SSDA Data Reg.
-     587/    EB55 : A5 04               IEB5D           BITA    $04,X                    ; EB5D: A5 04     ; Check SSDA Status Reg.
-     588/    EB57 : 27 FC                               BEQ     IEB5D                    ; EB5F: 27 FC     ; Wait for Data
-     589/    EB59 : C6 FF                               LDAB    #$FF                     ; EB61: C6 FF     ; |
-     590/    EB5B : E7 05                               STAB    $05,X                    ; EB63: E7 05     ; |
-     591/    EB5D : E7 05                               STAB    $05,X                    ; EB65: E7 05     ; Store $FF to SSDA Data Reg.
-     592/    EB5F : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4 
-     593/    EB62 : A5 04               IEB67           BITA    $04,X                    ; EB67: A5 04     ; Check SSDA Status Reg.
-     594/    EB64 : 27 FC                               BEQ     IEB67                    ; EB69: 27 FC     ; Wait for Data
-     595/    EB66 : C4 60                               ANDB    #$60     ; changed ;+2
-     596/    EB68 : F7 EC 01                            STAB    PIAREGB            ;+5
-     597/    EB6B : 7C EC 01                            INC     PIAREGB            ;+6
-     598/    EB6E : 7C EC 01                            INC     PIAREGB            ;+6
-     599/    EB71 : 7E E9 C8                            JMP     NXTSEC    ; -->          ; EB71: 7E E9 D3  ; next sector
-     600/    EB74 :                     
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 11 - 01/28/2026 04:07:51 PM
+     541/    EAF5 : 26 94                               BNE     SERR2        ;changed    ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
+     542/    EAF7 : 84 60                               ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 5,6 (DS2, DS3)
+     543/    EAF9 : 16                                  TAB                         ;+2
+     544/    EAFA : 8A 02                               ORAA    #$02     ; changed   ;+2                   ; Set Bit 1 (WG high)
+     545/    EAFC : B7 EC 01                            STAA    PIAREGB  ;write PIAREGB ;+5 ; EAF8: B7 EC 01  ; WG off, PB7 is an Input 
+     546/    EAFF : 96 19                               LDAA    CLKFREQ                  ; EB02: 96 19     ; Waitloop
+     547/    EB01 : 80 03                               SUBA    #$03                     ; EB04: 80 03     ; |
+     548/    EB03 : 48                                  ASLA                             ; EB06: 48        ; |
+     549/    EB04 : 4A                  IEB07           DECA                             ; EB07: 4A        ; |
+     550/    EB05 : 2A FD                               BPL     IEB07                    ; EB08: 2A FD     ; | A is FF
+     551/    EB07 : F7 EC 01                            STAB    PIAREGB  ;changed   ;+5                  ; Bit 5,6 (DS2, DS3 unaffected)
+     552/    EB0A : CE 00 05                            LDX     #$0005                   ; EB12: CE 00 05  ; 
+     553/    EB0D : BD E9 67                            JSR     WAIT3                    ; EB15: BD E9 53  ; 
+     554/    EB10 : C6 40                               LDAB    #$40                     ; EB18: C6 40     ; $40 words
+     555/    EB12 : 96 14                               LDAA    ADDRMRK                  ; EB1A: 96 14     ; 
+     556/    EB14 : CE 83 F5                            LDX     #$83F5                   ; EB1C: CE 83 F5  ; 
+     557/    EB17 : FF EC 04                            STX     SSDA_0                   ; EB1F: FF EC 04  ; 
+     558/    EB1A : DE 06                               LDX     CURADRH                  ; EB22: DE 06     ; 
+     559/    EB1C : B7 EC 05                            STAA    SSDA_1                   ; EB24: B7 EC 05  ; 
+     560/    EB1F : 7E EB 29                            JMP     WRITSEC              ;3  ; EB27: 7E EB 31  ; 
+     561/    EB22 :                     
+     562/    EB22 : 86 40               IEB2A           LDAA    #$40                     ; EB2A: 86 40     ; 
+     563/    EB24 : B5 EC 04            IEB2C           BITA    SSDA_0                   ; EB2C: B5 EC 04  ; Transmit Datareg. empty?
+     564/    EB27 : 27 FB                               BEQ     IEB2C                    ; EB2F: 27 FB     ; If no, wait
+     565/    EB29 : 4F                  WRITSEC         CLRA           ;changed     ;+2                       
+     566/    EB2A : A6 00                               LDAA    ,X                       ; EB35: A6 00     ; Load Data from RAM
+     567/    EB2C : B7 EC 05                            STAA    SSDA_1                   ; EB37: B7 EC 05  ; Write to disk
+     568/    EB2F : A6 01                               LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
+     569/    EB31 : B7 EC 05                            STAA    SSDA_1                   ; EB3C: B7 EC 05  ; Write to disk
+     570/    EB34 : 25 00                               BCS     IEB43                    ; EB3F: 25 02     ; all done?
+     571/    EB36 :                                     ;INX                              ; EB41: 08        ; if not, increase pointer
+     572/    EB36 :                                     ;INX                              ; EB42: 08        ; |
+     573/    EB36 : 5A                  IEB43           DECB                             ; EB43: 5A        ; decrease counter
+     574/    EB37 : 26 E9                               BNE     IEB2A                    ; EB44: 26 E4     ; check if underflow, if not, continue from top
+     575/    EB39 :                                     ;STX     CURADRH                  ; EB46: DF 06     ; done, store current address  ####### THIS IS WRONG ##########
+     576/    EB39 : CE EC 00                            LDX     #PIAREGA                 ; EB48: CE EC 00  ;  #### according to the M68SFDC3 Manual it should NOT change CURADR
+     577/    EB3C : 86 40                               LDAA    #$40                     ; EB4B: 86 40     ;  
+     578/    EB3E : A5 04               IEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
+     579/    EB40 : 27 FC                               BEQ     IEB4D                    ; EB4F: 27 FC     ; Wait for Data
+     580/    EB42 : E7 05                               STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
+     581/    EB44 : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4  ; EB59: E7 01   ;
+     582/    EB47 : A5 04               IEB53           BITA    $04,X                    ; EB53: A5 04     ; Check SSDA Status Reg.
+     583/    EB49 : 27 FC                               BEQ     IEB53                    ; EB55: 27 FC     ; Wait for Data
+     584/    EB4B : CA 08                               ORAB    #$08                ;+2
+     585/    EB4D : F7 EC 01                            STAB    PIAREGB             ;+5
+     586/    EB50 : C6 08                               LDAB    #$08                     ; EB57: C6 08     ; |
+     587/    EB52 : E7 05                               STAB    $05,X                    ; EB5B: E7 05     ; Store $8 to SSDA Data Reg.
+     588/    EB54 : A5 04               IEB5D           BITA    $04,X                    ; EB5D: A5 04     ; Check SSDA Status Reg.
+     589/    EB56 : 27 FC                               BEQ     IEB5D                    ; EB5F: 27 FC     ; Wait for Data
+     590/    EB58 : C6 FF                               LDAB    #$FF                     ; EB61: C6 FF     ; |
+     591/    EB5A : E7 05                               STAB    $05,X                    ; EB63: E7 05     ; |
+     592/    EB5C : E7 05                               STAB    $05,X                    ; EB65: E7 05     ; Store $FF to SSDA Data Reg.
+     593/    EB5E : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4 
+     594/    EB61 : A5 04               IEB67           BITA    $04,X                    ; EB67: A5 04     ; Check SSDA Status Reg.
+     595/    EB63 : 27 FC                               BEQ     IEB67                    ; EB69: 27 FC     ; Wait for Data
+     596/    EB65 : C4 60                               ANDB    #$60     ; changed ;+2
+     597/    EB67 : F7 EC 01                            STAB    PIAREGB            ;+5
+     598/    EB6A : 7C EC 01                            INC     PIAREGB            ;+6
+     599/    EB6D : 7C EC 01                            INC     PIAREGB            ;+6
+     600/    EB70 : 7E E9 C8                            JMP     NXTSEC    ; -->          ; EB71: 7E E9 D3  ; next sector
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 11 - 02/02/2026 10:10:04 PM
 
 
-     601/    EB74 :                     ;------------------------------------------------
-     602/    EB74 :                     ; from here new code
-     603/    EB74 :                     ;------------------------------------------------                
-     604/    EB74 : CE EC 00            RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ; 
-     605/    EB77 : 86 36                               LDAA    #$36                     ; EB77: 86 36     ; |
-     606/    EB79 : A7 03                               STAA    $03,X                    ; EB79: A7 03     ; $36 -> PIACTRLB (CB2 Low - Trigger NMI Timer, IRQB Flag set by HL on CB1 - IDX, Select Output Reg. B)
-     607/    EB7B : 86 3E                               LDAA    #$3E                     ; EB7B: 86 3E     ; |
-     608/    EB7D : A7 03                               STAA    $03,X                    ; EB7D: A7 03     ; $3E -> PIACTRLB (CB2 high)
-     609/    EB7F : E6 00                               LDAB    ,X                       ; EB7F: E6 00     ; Get Port A
-     610/    EB81 : 4A                                  DECA                             ; EB81: 4A        ; 
-     611/    EB82 : A7 02                               STAA    $02,X                    ; EB82: A7 02     ; $3D -> PIACTRLA (En. IRQA interrupt by CA1 - NMI Timer, Sel. Output Reg. A, CA2 high - STEP)
-     612/    EB84 : 39                                  RTS                              ; EB84: 39        ; 
-     613/    EB85 :                     
-     614/    EB85 : BD E8 22            FDINIT3         JSR     FDINIT                   ; EBA6: BD E8 22  ; 
-     615/    EB88 : 86 FE                               LDAA    #$FE                     ; | $ FE00-03  is a pointer to the Position of Track / Drive
-     616/    EB8A : B7 FE 04                            STAA    $FE04                    ; | $FE04 <- $FE 
-     617/    EB8D : 7E E8 87                            JMP     CLOCK                    ; EBA9: 7E E8 87  ; initializes and starts drive, then jumps to CLKDMD
-     618/    EB90 :                     
-     619/    EB90 : CE 00 14            CLRTOP          LDX     #$0014                   ; EB90: CE 00 14 ; Diagnostic with clear
-     620/    EB93 : 6F 5F               ZEB93           CLR     $5F,X                    ; EB93: 6F 5F    ; Clear $60-$73
-     621/    EB95 : 09                                  DEX                              ; EB95: 09       ; |
-     622/    EB96 : 26 FB                               BNE     ZEB93                    ; EB96: 26 FB    ; |
-     623/    EB98 : 7E ED 03            TOP             JMP     TOPEXT                                    ; Jump to external ROM
-     624/    EB9B :                     
-     625/    EB9B : CE D0 D8            READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 and Inhibit SM, 2-Byte RDA, 8-Bit Word
-     626/    EB9E : FF EC 04                            STX     SSDA_0                   ; E9AF: FF EC 04  ; |
-     627/    EBA1 : CE EC 00                            LDX     #PIAREGA                 ; E9B2: CE EC 00  ; 
-     628/    EBA4 : 86 50                               LDAA    #$50                     ; E9B5: 86 50     ; 
-     629/    EBA6 : A7 04                               STAA    $04,X              ;6    ; E9B7: A7 04     ; Write $50 to SSDA_0 (Enable Read)
-     630/    EBA8 : B6 EC 01                            LDAA    PIAREGB            ;+4                     ; Read PIAREGB
-     631/    EBAB : 84 60                               ANDA    #$60               ;+2                     ; clear all but Bit 6,7
-     632/    EBAD : 8A 07                               ORAA    #$07               ;+2                     ; same as before but leave PB5,6
-     633/    EBAF : A7 01                               STAA    $01,X   ;write PIAREGB ;6 ; E9BB: A7 01    ; Set Bit0,1,2 in PIAREGB (Set to Read, Reset active., WG inact.)
-     634/    EBB1 : 6A 01                               DEC     $01,X   ;write PIAREGB ;7  ; E9BD: 6A 01   ; Reset inact.
-     635/    EBB3 : 4A                                  DECA                        ;+2                    ; timing
-     636/    EBB4 : 86 40                               LDAA    #$40                     ; E9C1: 86 40     ; Write $40 to SSDA_0 (Enable Sync, Select CR2)
-     637/    EBB6 : A7 04                               STAA    $04,X                    ; E9C3: A7 04     ; 
-     638/    EBB8 : 86 98                               LDAA    #$98                     ; E9C5: 86 98     ; Write $98 to SSDA_1 (Enable SM Output)
-     639/    EBBA : A7 05                               STAA    $05,X                    ; E9C7: A7 05     ; 
-     640/    EBBC : 39                                  RTS                              ; E9C9: 39        ; 
-     641/    EBBD :                                     
-     642/    EBBD : FF                                  FCB     $FF
-     643/    EBBE : FF                                  FCB     $FF
-     644/    EBBF : FF                                  FCB     $FF
-     645/    EBC0 :                     
-     646/    EBC0 :                      ;               ORG     $EBC0
-     647/    EBC0 :                     ;------------------------------------------------
-     648/    EBC0 : 7E ED 06            LPINIT          JMP     LPINITEXT                                  ; Jump to external ROM
-     649/    EBC3 :                     ;------------------------------------------------
-     650/    EBC3 : BD EB 74            CLKDMD          JSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
-     651/    EBC6 : E6 01                               LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
-     652/    EBC8 : 4F                                  CLRA                             ; EB89: 4F        ;  
-     653/    EBC9 : 20 04                               BRA     CONT01
-     654/    EBCB :                     ;------------------------------------------------
-     655/    EBCB : FF                                  FCB     $FF
-     656/    EBCC :                     ;------------------------------------------------
-     657/    EBCC :                       ;              ORG     $EBCC
-     658/    EBCC : 7E ED 09            LIST            JMP     LPLISTEXT                                  ; Jump to external ROM
-     659/    EBCF :                     ;------------------------------------------------
-     660/    EBCF : E6 03               CONT01          LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 12 - 01/28/2026 04:07:51 PM
+     601/    EB73 :                     
+     602/    EB73 :                     ;------------------------------------------------
+     603/    EB73 :                     ; from here new code
+     604/    EB73 :                     ;------------------------------------------------                
+     605/    EB73 : CE EC 00            RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ; 
+     606/    EB76 : 86 36                               LDAA    #$36                     ; EB77: 86 36     ; |
+     607/    EB78 : A7 03                               STAA    $03,X                    ; EB79: A7 03     ; $36 -> PIACTRLB (CB2 Low - Trigger NMI Timer, IRQB Flag set by HL on CB1 - IDX, Select Output Reg. B)
+     608/    EB7A : 86 3E                               LDAA    #$3E                     ; EB7B: 86 3E     ; |
+     609/    EB7C : A7 03                               STAA    $03,X                    ; EB7D: A7 03     ; $3E -> PIACTRLB (CB2 high)
+     610/    EB7E : E6 00                               LDAB    ,X                       ; EB7F: E6 00     ; Get Port A
+     611/    EB80 : 4A                                  DECA                             ; EB81: 4A        ; 
+     612/    EB81 : A7 02                               STAA    $02,X                    ; EB82: A7 02     ; $3D -> PIACTRLA (En. IRQA interrupt by CA1 - NMI Timer, Sel. Output Reg. A, CA2 high - STEP)
+     613/    EB83 : 39                                  RTS                              ; EB84: 39        ; 
+     614/    EB84 :                     
+     615/    EB84 : BD E8 22            FDINIT3         JSR     FDINIT                   ; EBA6: BD E8 22  ; 
+     616/    EB87 : 86 FE                               LDAA    #$FE                     ; | $ FE00-03  is a pointer to the Position of Track / Drive
+     617/    EB89 : B7 FE 04                            STAA    $FE04                    ; | $FE04 <- $FE 
+     618/    EB8C : 7E E8 87                            JMP     CLOCK                    ; EBA9: 7E E8 87  ; initializes and starts drive, then jumps to CLKDMD
+     619/    EB8F :                     
+     620/    EB8F : CE 00 14            CLRTOP          LDX     #$0014                   ; EB90: CE 00 14 ; Diagnostic with clear
+     621/    EB92 : 6F 5F               ZEB93           CLR     $5F,X                    ; EB93: 6F 5F    ; Clear $60-$73
+     622/    EB94 : 09                                  DEX                              ; EB95: 09       ; |
+     623/    EB95 : 26 FB                               BNE     ZEB93                    ; EB96: 26 FB    ; |
+     624/    EB97 : 7E ED 03            TOP             JMP     TOPEXT                                    ; Jump to external ROM
+     625/    EB9A :                     
+     626/    EB9A : CE D0 D8            READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 and Inhibit SM, 2-Byte RDA, 8-Bit Word
+     627/    EB9D : FF EC 04                            STX     SSDA_0                   ; E9AF: FF EC 04  ; |
+     628/    EBA0 : CE EC 00                            LDX     #PIAREGA                 ; E9B2: CE EC 00  ; 
+     629/    EBA3 : 86 50                               LDAA    #$50                     ; E9B5: 86 50     ; 
+     630/    EBA5 : A7 04                               STAA    $04,X              ;6    ; E9B7: A7 04     ; Write $50 to SSDA_0 (Enable Read)
+     631/    EBA7 : B6 EC 01                            LDAA    PIAREGB            ;+4                     ; Read PIAREGB
+     632/    EBAA : 84 60                               ANDA    #$60               ;+2                     ; clear all but Bit 6,7
+     633/    EBAC : 8A 07                               ORAA    #$07               ;+2                     ; same as before but leave PB5,6
+     634/    EBAE : A7 01                               STAA    $01,X   ;write PIAREGB ;6 ; E9BB: A7 01    ; Set Bit0,1,2 in PIAREGB (Set to Read, Reset active., WG inact.)
+     635/    EBB0 : 6A 01                               DEC     $01,X   ;write PIAREGB ;7  ; E9BD: 6A 01   ; Reset inact.
+     636/    EBB2 : 4A                                  DECA                        ;+2                    ; timing
+     637/    EBB3 : 86 40                               LDAA    #$40                     ; E9C1: 86 40     ; Write $40 to SSDA_0 (Enable Sync, Select CR2)
+     638/    EBB5 : A7 04                               STAA    $04,X                    ; E9C3: A7 04     ; 
+     639/    EBB7 : 86 98                               LDAA    #$98                     ; E9C5: 86 98     ; Write $98 to SSDA_1 (Enable SM Output)
+     640/    EBB9 : A7 05                               STAA    $05,X                    ; E9C7: A7 05     ; 
+     641/    EBBB : 39                                  RTS                              ; E9C9: 39        ; 
+     642/    EBBC :                                     
+     643/    EBBC :                      ;               FCB     $FF
+     644/    EBBC :                      ;               FCB     $FF
+     645/    EBBC :                      ;               FCB     $FF
+     646/    EBBC :                     
+     647/    EBC0 :                                     ORG     $EBC0
+     648/    EBC0 :                     ;------------------------------------------------
+     649/    EBC0 : 7E ED 06            LPINIT          JMP     LPINITEXT                                  ; Jump to external ROM
+     650/    EBC3 :                     ;------------------------------------------------
+     651/    EBC3 : BD EB 73            CLKDMD          JSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
+     652/    EBC6 : E6 01                               LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
+     653/    EBC8 : 4F                                  CLRA                             ; EB89: 4F        ;  
+     654/    EBC9 : 20 04                               BRA     CONT01
+     655/    EBCB :                     ;------------------------------------------------
+     656/    EBCB : FF                                  FCB     $FF
+     657/    EBCC :                     ;------------------------------------------------
+     658/    EBCC :                       ;              ORG     $EBCC
+     659/    EBCC : 7E ED 09            LIST            JMP     LPLISTEXT                                  ; Jump to external ROM
+     660/    EBCF :                     ;------------------------------------------------
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 12 - 02/02/2026 10:10:04 PM
 
 
-     661/    EBD1 : 2A FC                               BPL     CONT01                   ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
-     662/    EBD3 : E6 01                               LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
-     663/    EBD5 : 5F                  IDXHER          CLRB                             ; EB90: 5F        ;  
-     664/    EBD6 : 5A                  IEB91           DECB                             ; EB91: 5A        ; Wait
-     665/    EBD7 : 26 FD                               BNE     IEB91                    ; EB92: 26 FD     ; |
-     666/    EBD9 : 4C                                  INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
-     667/    EBDA : 6D 03                               TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
-     668/    EBDC : 2A F7                               BPL     IDXHER                   ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
-     669/    EBDE : 5C                                  INCB                             ; EB99: 5C        ; B is 1 now
-     670/    EBDF : 80 4B                               SUBA    #$4B                     ; EB9A: 80 4B     ;  
-     671/    EBE1 : 5C                  IEB9C           INCB                             ; EB9C: 5C        ;  
-     672/    EBE2 : 20 11                               BRA     CONT02
-     673/    EBE4 :                     ;------------------------------------------------
-     674/    EBE4 :                     ;                ORG     $EBE4
-     675/    EBE4 : 7E ED 0C            LDATA           JMP     LPDATEXT                                   ; Jump to external ROM
-     676/    EBE7 :                     ;------------------------------------------------
+     661/    EBCF : E6 03               CONT01          LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
+     662/    EBD1 : 2A FC                               BPL     CONT01                   ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
+     663/    EBD3 : E6 01                               LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
+     664/    EBD5 : 5F                  IDXHER          CLRB                             ; EB90: 5F        ;  
+     665/    EBD6 : 5A                  IEB91           DECB                             ; EB91: 5A        ; Wait
+     666/    EBD7 : 26 FD                               BNE     IEB91                    ; EB92: 26 FD     ; |
+     667/    EBD9 : 4C                                  INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
+     668/    EBDA : 6D 03                               TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
+     669/    EBDC : 2A F7                               BPL     IDXHER                   ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
+     670/    EBDE : 5C                                  INCB                             ; EB99: 5C        ; B is 1 now
+     671/    EBDF : 80 4B                               SUBA    #$4B                     ; EB9A: 80 4B     ;  
+     672/    EBE1 : 5C                  IEB9C           INCB                             ; EB9C: 5C        ;  
+     673/    EBE2 : 20 11                               BRA     CONT02
+     674/    EBE4 :                     ;------------------------------------------------
+     675/    EBE4 :                     ;                ORG     $EBE4
+     676/    EBE4 : 7E ED 0C            LDATA           JMP     LPDATEXT                                   ; Jump to external ROM
      677/    EBE7 :                     ;------------------------------------------------
-     678/    EBE7 : FF                                  FCB     $FF
-     679/    EBE8 : FF                                  FCB     $FF
-     680/    EBE9 : FF                                  FCB     $FF
-     681/    EBEA : FF                                  FCB     $FF
-     682/    EBEB : FF                                  FCB     $FF
-     683/    EBEC : FF                                  FCB     $FF
-     684/    EBED : FF                                  FCB     $FF
-     685/    EBEE : FF                                  FCB     $FF
-     686/    EBEF : FF                                  FCB     $FF
-     687/    EBF0 : FF                                  FCB     $FF
-     688/    EBF1 : FF                                  FCB     $FF
-     689/    EBF2 :                     ;------------------------------------------------
-     690/    EBF2 :                     ;                ORG     $EBF2
-     691/    EBF2 : 7E ED 0F            LDATA1          JMP     LPDAT0EXT                                  ; Jump to external ROM
-     692/    EBF5 :                     ;------------------------------------------------
-     693/    EBF5 : 80 16               CONT02          SUBA    #$16                     ; EB9D: 80 16     ;  
-     694/    EBF7 : 24 E8                               BCC     IEB9C                    ; EB9F: 24 FB     ;  
-     695/    EBF9 : D7 19                               STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
-     696/    EBFB : 7E E9 A5                            JMP     ERRHNDLR   ; -->         ; EBA3: 7E E9 91  ; ERRHNDLR has RTS
-     697/    EBFE :                     
-     698/    EBFE :                             ; ORG $EBFE
-     699/    EBFE : 07 50                               FDB     $0750                    ; EBFE: 07 50          '.P'
-     700/    EC00 :                     
-     701/    EC00 :                                     END
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 13 - 01/28/2026 04:07:51 PM
+     678/    EBE7 :                     ;------------------------------------------------
+     679/    EBE7 : FF                                  FCB     $FF
+     680/    EBE8 : FF                                  FCB     $FF
+     681/    EBE9 : FF                                  FCB     $FF
+     682/    EBEA : FF                                  FCB     $FF
+     683/    EBEB : FF                                  FCB     $FF
+     684/    EBEC : FF                                  FCB     $FF
+     685/    EBED : FF                                  FCB     $FF
+     686/    EBEE : FF                                  FCB     $FF
+     687/    EBEF : FF                                  FCB     $FF
+     688/    EBF0 : FF                                  FCB     $FF
+     689/    EBF1 : FF                                  FCB     $FF
+     690/    EBF2 :                     ;------------------------------------------------
+     691/    EBF2 :                     ;                ORG     $EBF2
+     692/    EBF2 : 7E ED 0F            LDATA1          JMP     LPDAT0EXT                                  ; Jump to external ROM
+     693/    EBF5 :                     ;------------------------------------------------
+     694/    EBF5 : 80 16               CONT02          SUBA    #$16                     ; EB9D: 80 16     ;  
+     695/    EBF7 : 24 E8                               BCC     IEB9C                    ; EB9F: 24 FB     ;  
+     696/    EBF9 : D7 19                               STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
+     697/    EBFB : 7E E9 A5                            JMP     ERRHNDLR   ; -->         ; EBA3: 7E E9 91  ; ERRHNDLR has RTS
+     698/    EBFE :                     
+     699/    EBFE :                             ; ORG $EBFE
+     700/    EBFE : 07 50                               FDB     $0750                    ; EBFE: 07 50          '.P'
+     701/    EC00 :                     
+     702/    EC00 :                                     END
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 13 - 02/02/2026 10:10:04 PM
 
 
   Symbol Table (* = unused):
@@ -747,18 +748,18 @@
 *CASESENSITIVE :                  0 - |  CHECKAGAIN :                  E8C6 C |
  CHKERR :                      E853 C |  CLKDMD :                      EBC3 C |
  CLKFREQ :                       19 - |  CLOCK :                       E887 C |
- CLOCKN :                      E8E6 C | *CLRTOP :                      EB90 C |
+ CLOCKN :                      E8E6 C | *CLRTOP :                      EB8F C |
 *COMPMODE :                       0 - | *CONSTPI :        3.141592653589793 - |
  CONT01 :                      EBCF C |  CONT02 :                      EBF5 C |
  CRCOK :                       EAC3 C |  CRCONLY :                     EAB1 C |
  CURADRH :                        6 - | *CURADRL :                        7 - |
  CURDRV :                         0 - | *CUSTOM :                         0 - |
- CWRDCNT :                        9 - | *DATE :                "01/28/2026" - |
+ CWRDCNT :                        9 - | *DATE :                "02/02/2026" - |
  DRDCNT :                        18 - |  DRVRDY :                      E8D6 C |
  DWRDCNT :                       15 - |  ERRHNDLR :                    E9A5 C |
 *EXADDR :                        22 - | *FALSE :                          0 - |
  FDINIT :                      E822 C |  FDINIT2 :                     E850 C |
- FDINIT3 :                     EB85 C |  FDSTAT :                         8 - |
+ FDINIT3 :                     EB84 C |  FDSTAT :                         8 - |
 *FULLPMMU :                       1 - |  FUNCSAV :                        E - |
 *HAS64 :                          1 - | *HASDSP :                         0 - |
 *HASFPU :                         0 - | *HASPMMU :                        0 - |
@@ -773,10 +774,10 @@
  IEA64 :                       EA5A C |  IEA6B :                       EA61 C |
  IEA70 :                       EA66 C |  IEA9A :                       EA90 C |
  IEAA4 :                       EA9A C |  IEACF :                       EAC5 C |
- IEB07 :                       EB01 C |  IEB2A :                       EB1F C |
- IEB2C :                       EB21 C |  IEB43 :                       EB35 C |
- IEB4D :                       EB3F C |  IEB53 :                       EB48 C |
- IEB5D :                       EB55 C |  IEB67 :                       EB62 C |
+ IEB07 :                       EB04 C |  IEB2A :                       EB22 C |
+ IEB2C :                       EB24 C |  IEB43 :                       EB36 C |
+ IEB4D :                       EB3E C |  IEB53 :                       EB47 C |
+ IEB5D :                       EB54 C |  IEB67 :                       EB61 C |
  IEB91 :                       EBD6 C |  IEB9C :                       EBE1 C |
  INCTRK :                      E9BF C | *INEXTMODE :                      0 - |
 *INLWORDMODE :                    0 - | *INMAXMODE :                      0 - |
@@ -798,18 +799,18 @@
  NXTSEC :                      E9C8 C | *ONECON :                        24 - |
 *OSLOAD :                      E800 C | *PACKING :                        0 - |
 *PADDING :                        0 - |  PIACTRL :                     EC02 - |
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 14 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 14 - 02/02/2026 10:10:04 PM
 
 
  PIAREGA :                     EC00 - |  PIAREGB :                     EC01 - |
 *PRNTE2 :                      E855 C |  PRNTER :                      E85A C |
  PROM_0 :                      FCFC - | *PWRUP :                       F000 - |
 *RDCRC :                       E86F C |  READCRC :                     EAB3 C |
- READINIT :                    EB9B C | *READPS :                      E86D C |
+ READINIT :                    EB9A C | *READPS :                      E86D C |
  READSC :                      E869 C |  READSECT :                    EA93 C |
  REENT2 :                      F564 - | *RELAXED :                        0 - |
  RESTOR :                      E875 C |  RESTORN :                     E8DF C |
- RESTORY :                     E91E C |  RETRG :                       EB74 C |
+ RESTORY :                     E91E C |  RETRG :                       EB73 C |
 *RWTEST :                      E872 C |  SECRDDONE :                   E998 C |
  SECTCNT :                        B - | *SEEK :                        E878 C |
  SERR1 :                       EA7C C |  SERR2 :                       EA8B C |
@@ -821,22 +822,22 @@
  START :                       E9DA C |  STATSAV :                        D - |
  STEP :                        E95A C |  STORE :                       E8C1 C |
  STRSCTH :                        1 - |  STRSCTL :                        2 - |
-*TIME :               "04:07:51 PM" - | *TOP :                         EB98 C |
+*TIME :               "10:10:04 PM" - | *TOP :                         EB97 C |
  TOPEXT :                      ED03 - |  TRACKSAV :                      13 - |
 *TRUE :                           1 - | *VERSION :                     142F - |
  WAIT1 :                       E969 C |  WAIT2 :                       E970 C |
  WAIT3 :                       E967 C | *WRDDAM :                      E87E C |
  WRITINI2 :                    EAD3 C | *WRITSC :                      E884 C |
- WRITSEC :                     EB26 C | *WRTEST :                      E87B C |
+ WRITSEC :                     EB29 C | *WRTEST :                      E87B C |
 *WRVERF :                      E881 C |  XOUTCH :                      F018 - |
  XSTAKS :                      FF8A - | *Z80SYNTAX :                      0 - |
  ZE84F :                       E84F C |  ZE866 :                       E866 C |
- ZE96A :                       E97E C |  ZEB93 :                       EB93 C |
+ ZE96A :                       E97E C |  ZEB93 :                       EB92 C |
 
     174 symbols
      58 unused symbols
 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 15 - 01/28/2026 04:07:51 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 15 - 02/02/2026 10:10:04 PM
 
 
   Code Pages:
@@ -848,7 +849,7 @@ STANDARD (0 changed characters)
 
 0.01 seconds assembly time
 
-    701 lines source file
+    702 lines source file
       2 passes
       0 errors
       0 warnings

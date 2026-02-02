@@ -526,7 +526,8 @@ IEACF           SUBA    #$03                     ; EACF: 80 03     ;
 ;------------------------------------------------
 ; from here new code
 ;------------------------------------------------                
-WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
+WRITINI2        JMP     $ED00
+                LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
                 STX     SSDA_0                   ; EAE0: FF EC 04  ; 
                 LDX     #$C1AA                   ; EAE3: CE C1 AA  ; 
                 STX     SSDA_0                   ; EAE6: FF EC 04  ; 
@@ -534,7 +535,7 @@ WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ;
                 STX     SSDA_0                   ; EAEC: FF EC 04  ; 
                 INC     PIAREGB  ;write PIAREGB  ; EAEF: 7C EC 01  ; Reset inactive (PB0 high)
                 LDAA    #$82                     ; EAF2: 86 82     ; Bit 1,7
-                STAA    SSDA_0                   ; EAF4: B7 EC 04  ; 
+                STAA    SSDA_0                   ; EAF4: B7 EC 04  ; RXRs, Sel. CR3
                 LDAA    PIAREGB  ; changed   ;+4                        
                 BITA    #$10     ; changed   ;-2                   ; Check Writeprot?
                 BNE     SERR2        ;changed    ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
@@ -546,7 +547,7 @@ WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ;
                 SUBA    #$03                     ; EB04: 80 03     ; |
                 ASLA                             ; EB06: 48        ; |
 IEB07           DECA                             ; EB07: 4A        ; |
-                BPL     IEB07                    ; EB08: 2A FD     ; |
+                BPL     IEB07                    ; EB08: 2A FD     ; | A is FF
                 STAB    PIAREGB  ;changed   ;+5                  ; Bit 5,6 (DS2, DS3 unaffected)
                 LDX     #$0005                   ; EB12: CE 00 05  ; 
                 JSR     WAIT3                    ; EB15: BD E9 53  ; 
@@ -567,12 +568,12 @@ WRITSEC         CLRA           ;changed     ;+2
                 LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
                 STAA    SSDA_1                   ; EB3C: B7 EC 05  ; Write to disk
                 BCS     IEB43                    ; EB3F: 25 02     ; all done?
-                INX                              ; EB41: 08        ; if not, increase pointer
-                INX                              ; EB42: 08        ; |
+                ;INX                              ; EB41: 08        ; if not, increase pointer
+                ;INX                              ; EB42: 08        ; |
 IEB43           DECB                             ; EB43: 5A        ; decrease counter
                 BNE     IEB2A                    ; EB44: 26 E4     ; check if underflow, if not, continue from top
-                STX     CURADRH                  ; EB46: DF 06     ; done, store current address
-                LDX     #PIAREGA                 ; EB48: CE EC 00  ;  
+                ;STX     CURADRH                  ; EB46: DF 06     ; done, store current address  ####### THIS IS WRONG ##########
+                LDX     #PIAREGA                 ; EB48: CE EC 00  ;  #### according to the M68SFDC3 Manual it should NOT change CURADR
                 LDAA    #$40                     ; EB4B: 86 40     ;  
 IEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
                 BEQ     IEB4D                    ; EB4F: 27 FC     ; Wait for Data
@@ -639,11 +640,11 @@ READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 
                 STAA    $05,X                    ; E9C7: A7 05     ; 
                 RTS                              ; E9C9: 39        ; 
                 
-                FCB     $FF
-                FCB     $FF
-                FCB     $FF
+ ;               FCB     $FF
+ ;               FCB     $FF
+ ;               FCB     $FF
 
- ;               ORG     $EBC0
+                ORG     $EBC0
 ;------------------------------------------------
 LPINIT          JMP     LPINITEXT                                  ; Jump to external ROM
 ;------------------------------------------------
