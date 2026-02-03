@@ -6,8 +6,8 @@ A7  A6  A5  G11 A4  A3  A8  A9  nc1  GND
 nc2 G12 D4  D7  D6  D5  D3  U10E nA3 VCC
 ;11  12 13  14  15  16  17  18   19   20
 
-; G11 is input from G1 FC00-FFFF
-; G12 is Output to G1
+; G11 is input from G1 (FC00-FFFF)
+; G12 is Output to G1 (FCF8-FCFF)
 ; Pin 9 can be A2
 
 ;EQUATIONS

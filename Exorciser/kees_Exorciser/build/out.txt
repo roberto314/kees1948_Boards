@@ -14,17 +14,14 @@ GI CP-1600-Generator (C) 2021 Haruo Asano
 
 Assembling floppy2_commented.asm
 PASS 1
-floppy2_commented.asm(702)
+floppy2_commented.asm(777)
 PASS 2
-floppy2_commented.asm(702)
+floppy2_commented.asm(777)
 
-0.01 seconds assembly time
+0.00 seconds assembly time
 
-    702 lines source file
+    777 lines source file
+   1033 lines incl. macro expansions
       2 passes
-      0 errors
+      1 error
       0 warnings
-P2BIN/C V1.42 Beta [Bld 216]
-(C) 1992,2022 Alfred Arnold
-Deduced address range: 0x0000E800-0x0000EBFF
-floppy2_commented.p==>>floppy2_commented_b.bin  (1020 Bytes)

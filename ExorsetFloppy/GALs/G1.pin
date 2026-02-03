@@ -1,0 +1,29 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | VMA      | Clock/Input
+   2   | E        | Input
+   3   | RW       | Input
+   4   | SEL      | Input
+   5   | A3       | Input
+   6   | A2       | Input
+   7   | A4       | Input
+   8   | BA       | Input
+   9   | A10      | Input
+  10   | A9       | Input
+  11   | A8       | Input
+  12   | GND      | GND
+  13   | A7       | Input
+  14   | A6       | Input
+  15   | A5       | Input
+  16   | J4       | NC
+  17   | J5       | NC
+  18   | J6       | NC
+  19   | nROM     | NC
+  20   | n6820    | Output
+  21   | n6852    | Output
+  22   | DBDIR    | Output
+  23   | DBEN     | Output
+  24   | VCC      | VCC
+

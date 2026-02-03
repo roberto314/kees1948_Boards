@@ -7,6 +7,7 @@ CRCi SWCLK CRCo  A12  A11  SEL   RXC   J11  RFF  VCC
 ;11   12    13   14   15   16    17   18   19   20
 
 ; RXC is the Receive Character Line to the 6850 on the CPUXXCMI Board.
+; SEL is Output to G1
 
 ;EQUATIONS
 
@@ -21,7 +22,7 @@ CRCi SWCLK CRCo  A12  A11  SEL   RXC   J11  RFF  VCC
       # nQ & !SLO # CRCi
 
 ; SEL: Output to G1
-SEL = A15 & A14 & A13 & !A12 & A11 ; E800 - EFFF
+SEL = A15 & A14 & A13 & !A12 & A11 ; E800 - EFFF (with ROM E800-EBFF)
 
 ; RFF goes to Motor Timer (Low if one or the other is low)
 RFF = n6820 & n6852 & RXC 

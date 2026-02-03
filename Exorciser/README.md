@@ -36,10 +36,17 @@ This is an attempt to run the Exorciser Firmware on the kees CPUXXCMI Hardware.
 	  This is for switching on the ROM in Address FFFE and FFFF (Reset Vector).
 	  After two Read Cycles it switches to RAM from FE00-FFFF (thats why A9 is neded).
 
+Also we need A8 on the GAL G1 because of extended firmware. We need ROM in ED00-EFFF, and we need Output from the HC245 only EC00-ECFF
+
+The easiest way is to use U3B - a 74HC132 NAND. Pins 4+5 are unfortunately connected to +5V on the upper side (difficult to see). Cut this and connect it to GAL G1 Pin9, connect U3-6 to U4-6 (HC245).
+Now cut the trace from G1-19 (OVMA) to U4-6 on the upper side above G1.
+Finally connect A8 from the CPU Socket (i used the 6809 socket Pin16) to G1-19.
+
 ### Firmware: ###
 
 The Rom starts @ E000 but is accessed @ E800 where the Exordisk Firmware sits. At F000 is the Exbug Monitor. At FCF8-FCFF is the original PROM and the 6820. Here the Address FCFD is important, it holds the Initialisation Value for the MC6850.
 I have a Github page for Reverse Engineering the MDOS Operating System and the Exbug Monitor.
+For the extended firmware the ROM has now also ED00-EFFF.
 
 ### Memory Map: ###
 
@@ -60,3 +67,4 @@ see the Exorciser User Guide pg. 31 (3-4). With Exordisk there is a little less 
          |      RAM      |
          |               |
     0000  ---------------
+

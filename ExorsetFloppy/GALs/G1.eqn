@@ -6,7 +6,7 @@ VMA E   RW  SEL  A3  A2   A4  BA   A10   A9    A8   GND
 A7  A6  A5  J4  J5   J6  nROM n6820 n6852 DBDIR DBEN VCC
 ;13 14  15  16  17   18  19   20    21   22    23    24
 
-; SEL is E800 - EFFF from G2
+; SEL is E800 - EFFF from G2.
 
 ;EQUATIONS
 
@@ -17,19 +17,19 @@ A7  A6  A5  J4  J5   J6  nROM n6820 n6852 DBDIR DBEN VCC
 !n6852 = SEL & !VMA & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 & A2
 
 ; ROM E800-EBFF
-;!nROM = RW & E & !VMA & SEL & !A10 ; E800-EBFF
+;!nROM = RW & E & !VMA & SEL & !A10          ; E800-EBFF
 
 ; ROM ED00-EFFF
-!nROM = RW & E & !VMA & SEL & A10 & !A9 & A8 ; ED00-EDFF
-      # RW & E & !VMA & SEL & A10 & A9 ; EE00-EFFF
+;!nROM = RW & E & !VMA & SEL & A10 & !A9 & A8 ; ED00-EDFF
+;      # RW & E & !VMA & SEL & A10 & A9       ; EE00-EFFF
+
+; DBEN E800 - EC07
+;!DBEN = !BA & SEL & !VMA                   ; E800-EFFF (with ROM E800-EFFF)
+;!DBEN = !BA & SEL & !VMA & A10             ; EC00-EFFF (only small ROM ED00-EFFF)
+!DBEN = !BA & SEL & !VMA & A10 & !A9 & !A8 ; EC00-ECFF (no ROM)
 
 ; DBDIR high == write
 DBDIR = !RW & SEL & A10 & !A9 & !A8 & !A7 & !A6 & !A5 & !A4 & !A3 ; EC00-EC07
-;DBDIR = !RW
-
-; DBEN E800 - EC07
-;!DBEN = !BA & SEL & !VMA ; E800-EFFF ( with ROM)
-!DBEN = !BA & SEL & !VMA & A10 ; EC00-EFFF ( no ROM)
 
 DESCRIPTION
 Exordisk Decoder G1 v1.0

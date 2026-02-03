@@ -20,7 +20,7 @@
   16   | U9E      | Output
   17   | BS       | NC
   18   | A9       | Input
-  19   | OVMA     | Output
+  19   | A8       | Input
   20   | G22      | Output
   21   | IACK     | Output
   22   | U8E      | Output
