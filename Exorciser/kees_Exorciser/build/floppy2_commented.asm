@@ -223,7 +223,7 @@ DRVRDY          BITB    #$08                     ; E8C2: C5 08     ; Get Bit3 fr
 ;------------------------------------------------
 RESTORN         BITB    #$04                     ; E8CB: C5 04     ; Get Bit2 from FUNCSAV (CLOCK)
                 BEQ     CLOCKN                   ; E8CD: 27 03     ; No Clock
-                JMP     CLKDMD                   ; E8CF: 7E EB 85  ; Calculate CPU Freq., goes to CLKDMD, ERRHNDLR and RST
+                JMP     CLKDMD                   ; E8CF: 7E EB 85  ; Calculate CPU Freq., goes to CLKDMD, EXITHNDLR and RST
 ;------------------------------------------------
 CLOCKN          LDAB    STRSCTL                  ; E8D2: D6 02     ; normal code flow (no CLOCK, no RESTOR)
                 LDAA    STRSCTH                  ; E8D4: 96 01     ; Get Startsector
@@ -264,10 +264,10 @@ RESTORY         STAA    TRACKSAV                 ; E90A: 97 13     ; contains tr
                 BCC     IE917                    ; E912: 24 03     ;                      | Check direction to STEP
                 ANDB    #$F7                     ; E914: C4 F7     ; Clear Bit 3 (DIRQ) | Check direction to STEP
                 NEGA                             ; E916: 40        ; 
-IE917           ANDB    #$EF                     ; E917: C4 EF     ; Isolate PA4 (HLD)
+IE917           ;ANDB    #$EF    ; changed       ; E917: C4 EF     ; Isolate PA4 (HLD)
                 CMPA    #$04                     ; E919: 81 04     ; Compare A with Track 4
                 BLS     IE91F                    ; E91B: 23 02     ; 
-                ORAB    #$10                     ; E91D: CA 10     ; Set Bit 4 (HLD)
+                ;ORAB    #$10     ; changed      ; E91D: CA 10     ; Set Bit 4 (HLD)
 IE91F           STAB    PIAREGA                  ; E91F: F7 EC 00  ; Write to Port
                 DECA                             ; E922: 4A        ; 
                 BMI     ZE96A     ; -->          ; E923: 2B 45     ; 
@@ -280,7 +280,7 @@ IE91F           STAB    PIAREGA                  ; E91F: F7 EC 00  ; Write to Po
                 BITA    #$08                     ; E931: 85 08     ; Get Bit3 from FUNCSAV (RESTOR)
                 BEQ     SERR7                    ; E933: 27 09     ; Function is NOT RESTOR, Set Error
                 BSR     WAIT2                    ; E935: 8D 25     ; Wait
-                BRA     ERRHNDLR  ; -->          ; E937: 20 58     ; 
+                BRA     EXITHNDLR ; -->          ; E937: 20 58     ; 
 ;------------------------------------------------
 ;
 ;------------------------------------------------
@@ -290,7 +290,7 @@ NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ;
                 FCB     $8C
 SERR7           LDAB    #$37                                       ; Set Error '7' (SEEK ERROR)
 SETERR          STAB    FDSTAT                   ; E940: D7 08     ; 
-                BSR     ERRHNDLR                 ; E942: 8D 4D     ; 
+                BSR     EXITHNDLR                ; E942: 8D 4D     ; 
                 SEC                              ; E944: 0D        ; 
                 RTS                              ; E945: 39        ; 
 ;------------------------------------------------
@@ -325,7 +325,7 @@ ZE96A           LDX     #$02C0                   ; E96A: CE 02 C0  ; |
                 BITA    #$08                     ; E971: 85 08     ; Is Function = RESTOR ?
                 BNE     IE961                    ; E973: 26 EC     ; if yes, branch
                 BITA    #$10                     ; E975: 85 10     ; Is FUNCTION SEEK?
-                BNE     ERRHNDLR                 ; E977: 26 18     ; If yes - Done
+                BNE     EXITHNDLR                ; E977: 26 18     ; If yes - Done
                 LDAB    #$6F                     ; E979: C6 6F     ; Write Sync data address mark
                 RORA                             ; E97B: 46        ; Get Bit 0 into carry
                 BCC     IE980                    ; E97C: 24 02     ; Is Bit 0 set?
@@ -336,16 +336,23 @@ IE980           STAB    ADDRMRK                  ; E980: D7 14     ;
 ; Comes from NXTSEC
 ;------------------------------------------------
 SECRDDONE       LDAA    FUNCSAV                  ; E984: 96 0E     ; Get Function
-                BPL     ERRHNDLR                 ; E986: 2A 09     ; Bit 7 not Set - done (READPS, RDCRC, RESTOR, SEEK, CLOCK)
+                BPL     EXITHNDLR                ; E986: 2A 09     ; Bit 7 not Set - done (READPS, RDCRC, RESTOR, SEEK, CLOCK)
                 ANDA    #$40                     ; E988: 84 40     ; Isolate Bit 6
                 STAA    FUNCSAV                  ; E98A: 97 0E     ; <------------- WHY??
-                BEQ     ERRHNDLR                 ; E98C: 27 03     ; Bit 6 NOT set - done (READSC, WRTEST, WRDDAM, WRITSC)
+                BEQ     EXITHNDLR                ; E98C: 27 03     ; Bit 6 NOT set - done (READSC, WRTEST, WRDDAM, WRITSC)
                 JMP     CLOCKN                   ; E98E: 7E E8 D2  ; Bit 6 Set (normal codeflow) (RWTEST, WRVERF)
 ;------------------------------------------------
 ;
 ;------------------------------------------------
-ERRHNDLR        LDX     #$633C    ;changed      ; E991: CE 03 3C  ; |
-                STX     PIAREGB   ;write PIAREGB, changed   ; E994: FF EC 01  ; Set PB0,1,5,6 (RESET, DS2, DS3, WG) and Select A Output Reg., Set CA2 (STEP)
+EXITHNDLR       LDAA    PIAREGA                  ; 
+                ORAA    #$10                     ; Set Bit 4 (HLD)
+                STAA    PIAREGA                  ; 
+                LDX     #$433C     ;changed 
+                LDAA    PIAREGB
+                BITA    #$20                     ; check for drive 2 or 3
+                BEQ     DRIVETHREE               ; if zero we are on drive >1
+                LDX     #$633C    ;changed      ; E991: CE 03 3C  ; |
+DRIVETHREE      STX     PIAREGB   ;write PIAREGB, changed   ; E994: FF EC 01  ; Set PB0,1,5,6 (RESET, DS2, DS3, WG) and Select A Output Reg., Set CA2 (STEP)
                 LDX     NMIVECSAV                ; E997: DE 0F     ; |
                 STX     NMIsVC                   ; E999: FF FF FC  ; Restore old NMIISR
 ;------------------------------------------------
@@ -359,6 +366,7 @@ ERRHNDLR        LDX     #$633C    ;changed      ; E991: CE 03 3C  ; |
 ;------------------------------------------------
 ; from here original code
 ;------------------------------------------------
+                LDAA    STATSAV
                 TAP                              ; E9A9: 06        ; Transfer A to Status Register
                 CLC                              ; E9AA: 0C        ; 
                 RTS                              ; E9AB: 39        ; 
@@ -682,7 +690,7 @@ IEB9C           INCB                             ; EB9C: 5C        ;
 CONT02          SUBA    #$16                     ; EB9D: 80 16     ;  
                 BCC     IEB9C                    ; EB9F: 24 FB     ;  
                 STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
-                JMP     ERRHNDLR   ; -->         ; EBA3: 7E E9 91  ; ERRHNDLR has RTS
+                JMP     EXITHNDLR  ; -->         ; EBA3: 7E E9 91  ; EXITHNDLR has RTS
 
 ;------------------------------------------------
 ; from here new code
