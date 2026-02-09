@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 1 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 1 - 02/09/2026 11:13:27 PM
 
 
        1/       0 :                     ; Ready to assemble with asl.
@@ -61,7 +61,7 @@
       58/       0 : =$FFFC               NMIsVC  EQU     $FFFC
       59/       0 :                     
       60/       0 :                     ; Printer
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 2 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 2 - 02/09/2026 11:13:27 PM
 
 
       61/       0 : =$EC10               MEC10   EQU     $EC10
@@ -124,7 +124,7 @@
      118/    E864 : 8D 00                               BSR     ZE866                    ; E864: 8D 00      ; 
      119/    E866 : 7E F0 18            ZE866           JMP     XOUTCH                   ; E866: 7E F0 18   ; Print Accu A to Console
      120/    E869 :                     ;------------------------------------------------
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 3 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 3 - 02/09/2026 11:13:27 PM
 
 
      121/    E869 :                     ;READSC          LDAB    #$80                     ; E869: C6 80      ; 
@@ -187,7 +187,7 @@
      178/    E89A : CE E9 49                            LDX     #NMIISR                  ; E89A: CE E9 39  ; |
      179/    E89D : FF FF FC                            STX     NMIsVC                   ; E89D: FF FF FC  ; New NMIISR
      180/    E8A0 :                     ;------------------------------------------------
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 4 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 4 - 02/09/2026 11:13:27 PM
 
 
      181/    E8A0 :                     ; from here new code
@@ -250,7 +250,7 @@
      238/    E8F6 : 86 FF                               LDAA    #$FF                     ; E8E2: 86 FF     ; 
      239/    E8F8 : 97 0A                               STAA    SofTRK                   ; E8E4: 97 0A     ; 
      240/    E8FA : 96 01                               LDAA    STRSCTH                  ; E8E6: 96 01     ; Startsector is usually at $17 at boot
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 5 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 5 - 02/09/2026 11:13:27 PM
 
 
      241/    E8FC : D6 02                               LDAB    STRSCTL                  ; E8E8: D6 02     ; |
@@ -313,7 +313,7 @@
      298/    E956 :                     ;
      299/    E956 :                     ;------------------------------------------------
      300/    E956 : C6 34               STEP            LDAB    #$34                     ; E946: C6 34     ; Bit 5,4,2 set
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 6 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 6 - 02/09/2026 11:13:27 PM
 
 
      301/    E958 : F7 EC 02                            STAB    PIACTRL                  ; E948: F7 EC 02  ; CA2 low (STEP)
@@ -376,7 +376,7 @@
      358/    E9BB : FF FF FC                            STX     NMIsVC                   ; E999: FF FF FC  ; Restore old NMIISR
      359/    E9BE :                     ;------------------------------------------------
      360/    E9BE :                     ; from here new code
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 7 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 7 - 02/09/2026 11:13:27 PM
 
 
      361/    E9BE :                     ;------------------------------------------------                
@@ -439,7 +439,7 @@
      418/    EA1C : FF EC 04                            STX     SSDA_0                   ; EA17: FF EC 04  ; |
      419/    EA1F :                     ;*************************************************
      420/    EA1F :                     ; Looking for ID Addr. Mark, correct Track and Sector
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 8 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 8 - 02/09/2026 11:13:27 PM
 
 
      421/    EA1F :                     ;*************************************************
@@ -468,7 +468,7 @@
      444/    EA4C : 80 03               IEA46           SUBA    #$03                     ; EA46: 80 03     ; 
      445/    EA4E : 22 FC                               BHI     IEA46                    ; EA48: 22 FC     ; 
      446/    EA50 : A6 01                               LDAA    $01,X                    ; EA4A: A6 01     ; Read PIAREGB
-     447/    EA52 : 2B 39                               BMI     SERR9                    ; EA4C: 2B 3B     ; PB7 High ? (CRC-0) - ERROR
+     447/    EA52 : 2B 3B                               BMI     SERR9                    ; EA4C: 2B 3B     ; PB7 High ? (CRC-0) - ERROR
      448/    EA54 :                     ;*************************************************
      449/    EA54 :                     ; Found corr. Track and Sector, now look for Data Addr. Mark
      450/    EA54 :                     ;*************************************************
@@ -480,169 +480,169 @@
      456/    EA5E : A1 05                               CMPA    $05,X                    ; EA58: A1 05     ; Compare SSDA Data Reg to A (04)
      457/    EA60 : 4A                                  DECA                             ; EA5A: 4A        ; |
      458/    EA61 : 26 F5                               BNE     IEA52                    ; EA5B: 26 F5     ; try again
-     459/    EA63 :                                     ;LDAB    FUNCSAV                  ; EA5D: D6 0E     ; do it later
-     460/    EA63 : 2B 7C                               BMI     WRITINI2   ; -->         ; EA5F: 2B 7C     ; Bit 7 set - Write Function
-     461/    EA65 : D6 19                               LDAB    CLKFREQ                  ; EA61: D6 19     ; Waitloop
-     462/    EA67 : 58                                  ASLB                             ; EA63: 58        ; |
-     463/    EA68 : 08                  IEA64           INX                              ; EA64: 08        ; |
-     464/    EA69 : 09                                  DEX                              ; EA65: 09        ; |
-     465/    EA6A : 5A                                  DECB                             ; EA66: 5A        ; |
-     466/    EA6B : 26 FB                               BNE     IEA64                    ; EA67: 26 FB     ; |
-     467/    EA6D : C6 04                               LDAB    #$04                     ; EA69: C6 04     ; Try four times
-     468/    EA6F : BD EB 9B            IEA6B           JSR     READINIT                 ; EA6B: BD E9 AC  ; Initialize SSDA for Read, Toggle RESET
-     469/    EA72 : DE 06                               LDX     CURADRH                  ; EA6E: DE 06     ; Load Start Address
-     470/    EA74 : B6 EC 04            IEA70           LDAA    SSDA_0                   ; EA70: B6 EC 04  ; Read SSDA Status Reg.
-     471/    EA77 : 2A FB                               BPL     IEA70                    ; EA73: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
-     472/    EA79 : B6 EC 05                            LDAA    SSDA_1                   ; EA75: B6 EC 05  ; Read Data
-     473/    EA7C : 81 6F                               CMPA    #$6F                     ; EA78: 81 6F     ; Sync data address mark
-     474/    EA7E : 27 21                               BEQ     READSECT  ; -->          ; EA7A: 27 21     ; ********** Found data address mark *************
-     475/    EA80 : 81 6A                               CMPA    #$6A                     ; EA7C: 81 6A     ; Read DELETED DATA MARK (set Error '4')
-     476/    EA82 : 27 18                               BEQ     SERR4                    ; EA7E: 27 18     ; |
-     477/    EA84 : 5A                                  DECB                             ; EA80: 5A        ; |
-     478/    EA85 : 26 E8                               BNE     IEA6B                    ; EA81: 26 E8     ; again
-     479/    EA87 : C6 38                               LDAB    #$38                     ; EA83: C6 38     ; (Set Error '8') (DATA MARK ERROR)
-     480/    EA89 :                     ;                CPX     #MC631                   ; EA85: 8C C6 31  ; 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 9 - 02/09/2026 09:55:17 PM
+     459/    EA63 : D6 0E                               LDAB    FUNCSAV                  ; EA5D: D6 0E     ; do it later
+     460/    EA65 : 2B 7C                               BMI     WRITINI2   ; -->         ; EA5F: 2B 7C     ; Bit 7 set - Write Function
+     461/    EA67 : D6 19                               LDAB    CLKFREQ                  ; EA61: D6 19     ; Waitloop
+     462/    EA69 : 58                                  ASLB                             ; EA63: 58        ; |
+     463/    EA6A : 08                  IEA64           INX                              ; EA64: 08        ; |
+     464/    EA6B : 09                                  DEX                              ; EA65: 09        ; |
+     465/    EA6C : 5A                                  DECB                             ; EA66: 5A        ; |
+     466/    EA6D : 26 FB                               BNE     IEA64                    ; EA67: 26 FB     ; |
+     467/    EA6F : C6 04                               LDAB    #$04                     ; EA69: C6 04     ; Try four times
+     468/    EA71 : BD EB 9B            IEA6B           JSR     READINIT                 ; EA6B: BD E9 AC  ; Initialize SSDA for Read, Toggle RESET
+     469/    EA74 : DE 06                               LDX     CURADRH                  ; EA6E: DE 06     ; Load Start Address
+     470/    EA76 : B6 EC 04            IEA70           LDAA    SSDA_0                   ; EA70: B6 EC 04  ; Read SSDA Status Reg.
+     471/    EA79 : 2A FB                               BPL     IEA70                    ; EA73: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
+     472/    EA7B : B6 EC 05                            LDAA    SSDA_1                   ; EA75: B6 EC 05  ; Read Data
+     473/    EA7E : 81 6F                               CMPA    #$6F                     ; EA78: 81 6F     ; Sync data address mark
+     474/    EA80 : 27 21                               BEQ     READSECT  ; -->          ; EA7A: 27 21     ; ********** Found data address mark *************
+     475/    EA82 : 81 6A                               CMPA    #$6A                     ; EA7C: 81 6A     ; Read DELETED DATA MARK (set Error '4')
+     476/    EA84 : 27 18                               BEQ     SERR4                    ; EA7E: 27 18     ; |
+     477/    EA86 : 5A                                  DECB                             ; EA80: 5A        ; |
+     478/    EA87 : 26 E8                               BNE     IEA6B                    ; EA81: 26 E8     ; again
+     479/    EA89 : C6 38                               LDAB    #$38                     ; EA83: C6 38     ; (Set Error '8') (DATA MARK ERROR)
+     480/    EA8B :                     ;                CPX     #MC631                   ; EA85: 8C C6 31  ; 
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 9 - 02/09/2026 11:13:27 PM
 
 
-     481/    EA89 : 8C                                  FCB     $8C
-     482/    EA8A : C6 31               SERR1           LDAB    #$31                                       ; (Set Error '1') (DATA CRC ERROR)
-     483/    EA8C :                     ;                CPX     #MC639                   ; EA88: 8C C6 39  ; 
-     484/    EA8C : 8C                                  FCB     $8C
-     485/    EA8D : C6 39               SERR9           LDAB    #$39                                        ; (Set Error '9') (ADDRESS MARK CRC ERROR)
-     486/    EA8F : 7A 00 18                            DEC     DRDCNT                   ; EA8B: 7A 00 18  ; decrement counter (was 5)
-     487/    EA92 : 27 0A                               BEQ     IEA9A                    ; EA8E: 27 0A     ; if 0, set error
-     488/    EA94 : DE 0B                               LDX     SECTCNT                  ; EA90: DE 0B     ; if not, try again
-     489/    EA96 : 7E E9 EA                            JMP     START      ; -->         ; EA92: 7E E9 E5  ; 
-     490/    EA99 :                     ;------------------------------------------------
-     491/    EA99 : C6 32               SERR2           LDAB    #$32                     ; EA95: C6 32     ; Set Error '2' (DISK WRITE PROTECTED)
-     492/    EA9B :                     ;                CPX     #MC634                   ; EA97: 8C C6 34  ; 
-     493/    EA9B : 8C                                  FCB     $8C
-     494/    EA9C : C6 34               SERR4           LDAB    #$34                                        ; (Set Error '4') (READ DELETED DATA MARK)
-     495/    EA9E : 7E E9 50            IEA9A           JMP     SETERR     ; -->         ; EA9A: 7E E9 40  ; 
-     496/    EAA1 :                     ;------------------------------------------------
-     497/    EAA1 : D6 0E               READSECT        LDAB    FUNCSAV                  ; EA9D: D6 0E     ; data address mark found
-     498/    EAA3 : 58                                  ASLB                             ; EA9F: 58        ; FUNCSAV<<1
-     499/    EAA4 : 2B 19                               BMI     CRCONLY                  ; EAA0: 2B 19     ; Check for READCRC ($40, Bit 6)
-     500/    EAA6 : D6 15                               LDAB    DWRDCNT                  ; EAA2: D6 15     ; Data Wordcount
-     501/    EAA8 : B6 EC 04            IEAA4           LDAA    SSDA_0                   ; EAA4: B6 EC 04  ; Read SSDA Status Reg.
-     502/    EAAB : 2A FB                               BPL     IEAA4                    ; EAA7: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
-     503/    EAAD : B6 EC 05                            LDAA    SSDA_1                   ; EAA9: B6 EC 05  ; Read Data to Buffer
-     504/    EAB0 : BC FC FC                            CPX     PROM_0                   ; EAAC: BC FC FC  ; X is on $20, in PROM_0 is zero *** This does nothing ! ***
-     505/    EAB3 : A7 00                               STAA    ,X                       ; EAAF: A7 00     ; |
-     506/    EAB5 : B6 EC 05                            LDAA    SSDA_1                   ; EAB1: B6 EC 05  ; |
-     507/    EAB8 : A7 01                               STAA    $01,X                    ; EAB4: A7 01     ; |
-     508/    EABA : 08                                  INX                              ; EAB6: 08        ; |
-     509/    EABB : 08                                  INX                              ; EAB7: 08        ; |
-     510/    EABC : 5A                                  DECB                             ; EAB8: 5A        ; |
-     511/    EABD : 26 E9                               BNE     IEAA4                    ; EAB9: 26 E9     ; 
-     512/    EABF : D6 09               CRCONLY         LDAB    CWRDCNT                  ; EABB: D6 09     ; CRC Wordcount
-     513/    EAC1 : B6 EC 04            READCRC         LDAA    SSDA_0                   ; EABD: B6 EC 04  ; Read SSDA Status Reg.
-     514/    EAC4 : 2A FB                               BPL     READCRC                  ; EAC0: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
-     515/    EAC6 : 5A                                  DECB                             ; EAC2: 5A        ; dec. counter
-     516/    EAC7 : 2B 08                               BMI     CRCOK                    ; EAC3: 2B 08     ; finished ?
-     517/    EAC9 : B6 EC 05                            LDAA    SSDA_1                   ; EAC5: B6 EC 05  ; Read SSDA Data to A
-     518/    EACC : B6 EC 05                            LDAA    SSDA_1                   ; EAC8: B6 EC 05  ; Read SSDA Data to A
-     519/    EACF : 20 F0                               BRA     READCRC                  ; EACB: 20 F0     ; continue
-     520/    EAD1 :                     
-     521/    EAD1 : 96 19               CRCOK           LDAA    CLKFREQ                  ; EACD: 96 19     ; 
-     522/    EAD3 : 80 03               IEACF           SUBA    #$03                     ; EACF: 80 03     ; 
-     523/    EAD5 : 22 FC                               BHI     IEACF                    ; EAD1: 22 FC     ; 
-     524/    EAD7 : B6 EC 01                            LDAA    PIAREGB                  ; EAD3: B6 EC 01  ; |
-     525/    EADA : 2B AE                               BMI     SERR1                    ; EAD6: 2B AE     ; PB7 High ? (CRC-0) Error
-     526/    EADC : DF 06                               STX     CURADRH                  ; EAD8: DF 06     ; CRC ok
-     527/    EADE : 7E E9 D8                            JMP     NXTSEC     ; -->         ; EADA: 7E E9 D3  ; next sector
-     528/    EAE1 :                     ;------------------------------------------------
-     529/    EAE1 :                     ; from here new code
-     530/    EAE1 :                     ;------------------------------------------------                
-     531/    EAE1 : CE C0 DA            WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
-     532/    EAE4 : FF EC 04                            STX     SSDA_0                   ; EAE0: FF EC 04  ; 
-     533/    EAE7 : CE C1 AA                            LDX     #$C1AA                   ; EAE3: CE C1 AA  ; 
-     534/    EAEA : FF EC 04                            STX     SSDA_0                   ; EAE6: FF EC 04  ; 
-     535/    EAED : CE C2 70                            LDX     #$C270                   ; EAE9: CE C2 70  ; 
-     536/    EAF0 : FF EC 04                            STX     SSDA_0                   ; EAEC: FF EC 04  ; 
-     537/    EAF3 : 7C EC 01                            INC     PIAREGB  ;write PIAREGB  ; EAEF: 7C EC 01  ; Reset inactive (PB0 high)
-     538/    EAF6 : 86 82                               LDAA    #$82                     ; EAF2: 86 82     ; Bit 1,7
-     539/    EAF8 : B7 EC 04                            STAA    SSDA_0                   ; EAF4: B7 EC 04  ; RXRs, Sel. CR3
-     540/    EAFB : B6 EC 01                            LDAA    PIAREGB  ; changed   ;+4  but DEX is gone (-4) so it is a wash     
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 10 - 02/09/2026 09:55:17 PM
+     481/    EA8B : 8C                                  FCB     $8C
+     482/    EA8C : C6 31               SERR1           LDAB    #$31                                       ; (Set Error '1') (DATA CRC ERROR)
+     483/    EA8E :                     ;                CPX     #MC639                   ; EA88: 8C C6 39  ; 
+     484/    EA8E : 8C                                  FCB     $8C
+     485/    EA8F : C6 39               SERR9           LDAB    #$39                                        ; (Set Error '9') (ADDRESS MARK CRC ERROR)
+     486/    EA91 : 7A 00 18                            DEC     DRDCNT                   ; EA8B: 7A 00 18  ; decrement counter (was 5)
+     487/    EA94 : 27 0A                               BEQ     IEA9A                    ; EA8E: 27 0A     ; if 0, set error
+     488/    EA96 : DE 0B                               LDX     SECTCNT                  ; EA90: DE 0B     ; if not, try again
+     489/    EA98 : 7E E9 EA                            JMP     START      ; -->         ; EA92: 7E E9 E5  ; 
+     490/    EA9B :                     ;------------------------------------------------
+     491/    EA9B : C6 32               SERR2           LDAB    #$32                     ; EA95: C6 32     ; Set Error '2' (DISK WRITE PROTECTED)
+     492/    EA9D :                     ;                CPX     #MC634                   ; EA97: 8C C6 34  ; 
+     493/    EA9D : 8C                                  FCB     $8C
+     494/    EA9E : C6 34               SERR4           LDAB    #$34                                        ; (Set Error '4') (READ DELETED DATA MARK)
+     495/    EAA0 : 7E E9 50            IEA9A           JMP     SETERR     ; -->         ; EA9A: 7E E9 40  ; 
+     496/    EAA3 :                     ;------------------------------------------------
+     497/    EAA3 : D6 0E               READSECT        LDAB    FUNCSAV                  ; EA9D: D6 0E     ; data address mark found
+     498/    EAA5 : 58                                  ASLB                             ; EA9F: 58        ; FUNCSAV<<1
+     499/    EAA6 : 2B 19                               BMI     CRCONLY                  ; EAA0: 2B 19     ; Check for READCRC ($40, Bit 6)
+     500/    EAA8 : D6 15                               LDAB    DWRDCNT                  ; EAA2: D6 15     ; Data Wordcount
+     501/    EAAA : B6 EC 04            IEAA4           LDAA    SSDA_0                   ; EAA4: B6 EC 04  ; Read SSDA Status Reg.
+     502/    EAAD : 2A FB                               BPL     IEAA4                    ; EAA7: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
+     503/    EAAF : B6 EC 05                            LDAA    SSDA_1                   ; EAA9: B6 EC 05  ; Read Data to Buffer
+     504/    EAB2 : BC FC FC                            CPX     PROM_0                   ; EAAC: BC FC FC  ; X is on $20, in PROM_0 is zero *** This does nothing ! ***
+     505/    EAB5 : A7 00                               STAA    ,X                       ; EAAF: A7 00     ; |
+     506/    EAB7 : B6 EC 05                            LDAA    SSDA_1                   ; EAB1: B6 EC 05  ; |
+     507/    EABA : A7 01                               STAA    $01,X                    ; EAB4: A7 01     ; |
+     508/    EABC : 08                                  INX                              ; EAB6: 08        ; |
+     509/    EABD : 08                                  INX                              ; EAB7: 08        ; |
+     510/    EABE : 5A                                  DECB                             ; EAB8: 5A        ; |
+     511/    EABF : 26 E9                               BNE     IEAA4                    ; EAB9: 26 E9     ; 
+     512/    EAC1 : D6 09               CRCONLY         LDAB    CWRDCNT                  ; EABB: D6 09     ; CRC Wordcount
+     513/    EAC3 : B6 EC 04            READCRC         LDAA    SSDA_0                   ; EABD: B6 EC 04  ; Read SSDA Status Reg.
+     514/    EAC6 : 2A FB                               BPL     READCRC                  ; EAC0: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
+     515/    EAC8 : 5A                                  DECB                             ; EAC2: 5A        ; dec. counter
+     516/    EAC9 : 2B 08                               BMI     CRCOK                    ; EAC3: 2B 08     ; finished ?
+     517/    EACB : B6 EC 05                            LDAA    SSDA_1                   ; EAC5: B6 EC 05  ; Read SSDA Data to A
+     518/    EACE : B6 EC 05                            LDAA    SSDA_1                   ; EAC8: B6 EC 05  ; Read SSDA Data to A
+     519/    EAD1 : 20 F0                               BRA     READCRC                  ; EACB: 20 F0     ; continue
+     520/    EAD3 :                     
+     521/    EAD3 : 96 19               CRCOK           LDAA    CLKFREQ                  ; EACD: 96 19     ; 
+     522/    EAD5 : 80 03               IEACF           SUBA    #$03                     ; EACF: 80 03     ; 
+     523/    EAD7 : 22 FC                               BHI     IEACF                    ; EAD1: 22 FC     ; 
+     524/    EAD9 : B6 EC 01                            LDAA    PIAREGB                  ; EAD3: B6 EC 01  ; |
+     525/    EADC : 2B AE                               BMI     SERR1                    ; EAD6: 2B AE     ; PB7 High ? (CRC-0) Error
+     526/    EADE : DF 06                               STX     CURADRH                  ; EAD8: DF 06     ; CRC ok
+     527/    EAE0 : 7E E9 D8                            JMP     NXTSEC     ; -->         ; EADA: 7E E9 D3  ; next sector
+     528/    EAE3 :                     ;------------------------------------------------
+     529/    EAE3 :                     ; from here new code
+     530/    EAE3 :                     ;------------------------------------------------                
+     531/    EAE3 : CE C0 DA            WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
+     532/    EAE6 : FF EC 04                            STX     SSDA_0                   ; EAE0: FF EC 04  ; 
+     533/    EAE9 : CE C1 AA                            LDX     #$C1AA                   ; EAE3: CE C1 AA  ; 
+     534/    EAEC : FF EC 04                            STX     SSDA_0                   ; EAE6: FF EC 04  ; 
+     535/    EAEF : CE C2 70                            LDX     #$C270                   ; EAE9: CE C2 70  ; 
+     536/    EAF2 : FF EC 04                            STX     SSDA_0                   ; EAEC: FF EC 04  ; 
+     537/    EAF5 : 7C EC 01                            INC     PIAREGB  ;write PIAREGB  ; EAEF: 7C EC 01  ; Reset inactive (PB0 high)
+     538/    EAF8 : 86 82                               LDAA    #$82                     ; EAF2: 86 82     ; Bit 1,7
+     539/    EAFA : B7 EC 04                            STAA    SSDA_0                   ; EAF4: B7 EC 04  ; RXRs, Sel. CR3
+     540/    EAFD : B6 EC 01                            LDAA    PIAREGB  ; changed   ;+4  but DEX is gone (-4) so it is a wash     
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 10 - 02/09/2026 11:13:27 PM
 
 
-     541/    EAFE : 85 10                               BITA    #$10     ; changed   ;+2                   ; Check Writeprot?
-     542/    EB00 : 26 97                               BNE     SERR2    ;changed    ;+4 ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
-     543/    EB02 : 84 60                               ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 5,6 (DS2, DS3)
-     544/    EB04 : 16                                  TAB                          ;+2
-     545/    EB05 : 8A 02                               ORAA    #$02     ; changed   ;+2                   ; Set Bit 1 (WG high)
-     546/    EB07 : B7 EC 01                            STAA    PIAREGB  ;write PIAREGB ;+5 ; EAF8: B7 EC 01  
-     547/    EB0A :                                                     ; +6 cycles slower
-     548/    EB0A : 96 19                               LDAA    CLKFREQ              ;+3 ; EB02: 96 19     ; Waitloop A is 3 on 1MHz
-     549/    EB0C : 80 03                               SUBA    #$03                 ;+2 ; EB04: 80 03     ; |
-     550/    EB0E : 48                                  ASLA                         ;+2 ; EB06: 48        ; |
-     551/    EB0F : 4A                  IEB07           DECA                         ;+2 ; EB07: 4A        ; |
-     552/    EB10 : 2A FD                               BPL     IEB07                ;+4 ; EB08: 2A FD     ; | A is FF
-     553/    EB12 : F7 EC 01                            STAB    PIAREGB  ;changed   ;+5                    ; Bit 5,6 (DS2, DS3 unaffected), WG low
-     554/    EB15 : D6 0E                               LDAB    FUNCSAV             ;+3
-     555/    EB17 : 56                                  RORB                        ;+2  ; EB0D: 56        ; ROR FUNCSAV (check Bit 0)
-     556/    EB18 : 24 01                               BCC     IEB11               ;+4  ; EB0E: 24 01     ; useless or timing? 
-     557/    EB1A :                     ;                BITA    #$56                     ; EB10: 85 56     ; A is now $56, doesn't effect carry
-     558/    EB1A : 85                                  FCB     $85                
-     559/    EB1B : 56                  IEB11           RORB                             ; EB11: 56        ; ROR FUNCSAV (check Bit 1) set carry
-     560/    EB1C :                                                      ; 8 cycles slower
-     561/    EB1C : CE 00 05                            LDX     #$0005                   ; EB12: CE 00 05  ; 
-     562/    EB1F : BD E9 63                            JSR     WAIT3                    ; EB15: BD E9 53  ; destroys B
-     563/    EB22 : C6 40                               LDAB    #$40                     ; EB18: C6 40     ; $40 words
-     564/    EB24 : 96 14                               LDAA    ADDRMRK                  ; EB1A: 96 14     ; 
-     565/    EB26 : CE 83 F5                            LDX     #$83F5                   ; EB1C: CE 83 F5  ; 
-     566/    EB29 : FF EC 04                            STX     SSDA_0                   ; EB1F: FF EC 04  ; 
-     567/    EB2C : DE 06                               LDX     CURADRH                  ; EB22: DE 06     ; 
-     568/    EB2E : B7 EC 05                            STAA    SSDA_1                   ; EB24: B7 EC 05  ; 
-     569/    EB31 : 7E EB 3B                            JMP     WRITSEC              ;3  ; EB27: 7E EB 31  ; 
-     570/    EB34 :                     
-     571/    EB34 : 86 40               IEB2A           LDAA    #$40                     ; EB2A: 86 40     ; 
-     572/    EB36 : B5 EC 04            IEB2C           BITA    SSDA_0                   ; EB2C: B5 EC 04  ; Transmit Datareg. empty?
-     573/    EB39 : 27 FB                               BEQ     IEB2C                    ; EB2F: 27 FB     ; If no, wait
-     574/    EB3B : 96 12               WRITSEC         LDAA    $12      ;changed     ;+2                  ; $12 is alway zero    
-     575/    EB3D : A6 00                               LDAA    ,X                       ; EB35: A6 00     ; Load Data from RAM
-     576/    EB3F : B7 EC 05                            STAA    SSDA_1                   ; EB37: B7 EC 05  ; Write to disk
-     577/    EB42 : A6 01                               LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
-     578/    EB44 : B7 EC 05                            STAA    SSDA_1                   ; EB3C: B7 EC 05  ; Write to disk
-     579/    EB47 : 25 02                               BCS     IEB43                    ; EB3F: 25 02     ; if carry is set, don't INX (RWTEST or WRTEST or WRDAM)
-     580/    EB49 : 08                                  INX                              ; EB41: 08        ; if not, increase pointer
-     581/    EB4A : 08                                  INX                              ; EB42: 08        ; |
-     582/    EB4B : 5A                  IEB43           DECB                             ; EB43: 5A        ; decrease counter
-     583/    EB4C : 26 E6                               BNE     IEB2A                    ; EB44: 26 E4     ; check if underflow, if not, continue from top
-     584/    EB4E : DF 06                               STX     CURADRH                  ; EB46: DF 06     ; done, store current address
-     585/    EB50 : CE EC 00                            LDX     #PIAREGA                 ; EB48: CE EC 00  ; 
-     586/    EB53 : 86 40                               LDAA    #$40                     ; EB4B: 86 40     ;  
-     587/    EB55 : A5 04               IEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
-     588/    EB57 : 27 FC                               BEQ     IEB4D                    ; EB4F: 27 FC     ; Wait for Data
-     589/    EB59 : E7 05                               STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
-     590/    EB5B : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4  ; EB59: E7 01   ;
-     591/    EB5E : C4 60                               ANDB    #$60                                       ; Clear all but Side and DS2
-     592/    EB60 : CA 08                               ORAB    #$08                ;+2                    ; Set SHIFT_CRC
-     593/    EB62 : A5 04               IEB53           BITA    $04,X                    ; EB53: A5 04     ; Check SSDA Status Reg.
-     594/    EB64 : 27 FC                               BEQ     IEB53                    ; EB55: 27 FC     ; Wait for Data
-     595/    EB66 : F7 EC 01                            STAB    PIAREGB             ;+5
-     596/    EB69 : C6 08                               LDAB    #$08                     ; EB57: C6 08     ; |
-     597/    EB6B : E7 05                               STAB    $05,X                    ; EB5B: E7 05     ; Store $8 to SSDA Data Reg.
-     598/    EB6D : A5 04               IEB5D           BITA    $04,X                    ; EB5D: A5 04     ; Check SSDA Status Reg.
-     599/    EB6F : 27 FC                               BEQ     IEB5D                    ; EB5F: 27 FC     ; Wait for Data
-     600/    EB71 : C6 FF                               LDAB    #$FF                     ; EB61: C6 FF     ; |
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 11 - 02/09/2026 09:55:17 PM
+     541/    EB00 : 85 10                               BITA    #$10     ; changed   ;+2                   ; Check Writeprot?
+     542/    EB02 : 26 97                               BNE     SERR2    ;changed    ;+4 ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
+     543/    EB04 : 84 60                               ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 5,6 (DS2, DS3)
+     544/    EB06 : 16                                  TAB                          ;+2
+     545/    EB07 : 8A 02                               ORAA    #$02     ; changed   ;+2                   ; Set Bit 1 (WG high)
+     546/    EB09 : B7 EC 01                            STAA    PIAREGB  ;write PIAREGB ;+5 ; EAF8: B7 EC 01  
+     547/    EB0C :                                                     ; +6 cycles slower
+     548/    EB0C : 96 19                               LDAA    CLKFREQ              ;+3 ; EB02: 96 19     ; Waitloop A is 3 on 1MHz
+     549/    EB0E : 80 03                               SUBA    #$03                 ;+2 ; EB04: 80 03     ; |
+     550/    EB10 : 48                                  ASLA                         ;+2 ; EB06: 48        ; |
+     551/    EB11 : 4A                  IEB07           DECA                         ;+2 ; EB07: 4A        ; |
+     552/    EB12 : 2A FD                               BPL     IEB07                ;+4 ; EB08: 2A FD     ; | A is FF
+     553/    EB14 : F7 EC 01                            STAB    PIAREGB  ;changed   ;+5                    ; Bit 5,6 (DS2, DS3 unaffected), WG low
+     554/    EB17 : D6 0E                               LDAB    FUNCSAV             ;+3
+     555/    EB19 : 56                                  RORB                        ;+2  ; EB0D: 56        ; ROR FUNCSAV (check Bit 0)
+     556/    EB1A : 24 01                               BCC     IEB11               ;+4  ; EB0E: 24 01     ; useless or timing? 
+     557/    EB1C :                     ;                BITA    #$56                     ; EB10: 85 56     ; A is now $56, doesn't effect carry
+     558/    EB1C : 85                                  FCB     $85                
+     559/    EB1D : 56                  IEB11           RORB                             ; EB11: 56        ; ROR FUNCSAV (check Bit 1) set carry
+     560/    EB1E :                                                      ; 8 cycles slower
+     561/    EB1E : CE 00 05                            LDX     #$0005                   ; EB12: CE 00 05  ; 
+     562/    EB21 : BD E9 63                            JSR     WAIT3                    ; EB15: BD E9 53  ; destroys B
+     563/    EB24 : C6 40                               LDAB    #$40                     ; EB18: C6 40     ; $40 words
+     564/    EB26 : 96 14                               LDAA    ADDRMRK                  ; EB1A: 96 14     ; 
+     565/    EB28 : CE 83 F5                            LDX     #$83F5                   ; EB1C: CE 83 F5  ; 
+     566/    EB2B : FF EC 04                            STX     SSDA_0                   ; EB1F: FF EC 04  ; 
+     567/    EB2E : DE 06                               LDX     CURADRH                  ; EB22: DE 06     ; 
+     568/    EB30 : B7 EC 05                            STAA    SSDA_1                   ; EB24: B7 EC 05  ; 
+     569/    EB33 : 7E EB 3D                            JMP     WRITSEC              ;3  ; EB27: 7E EB 31  ; 
+     570/    EB36 :                     
+     571/    EB36 : 86 40               IEB2A           LDAA    #$40                     ; EB2A: 86 40     ; 
+     572/    EB38 : B5 EC 04            IEB2C           BITA    SSDA_0                   ; EB2C: B5 EC 04  ; Transmit Datareg. empty?
+     573/    EB3B : 27 FB                               BEQ     IEB2C                    ; EB2F: 27 FB     ; If no, wait
+     574/    EB3D : 96 12               WRITSEC         LDAA    $12      ;changed     ;+2                  ; $12 is alway zero    
+     575/    EB3F : A6 00                               LDAA    ,X                       ; EB35: A6 00     ; Load Data from RAM
+     576/    EB41 : B7 EC 05                            STAA    SSDA_1                   ; EB37: B7 EC 05  ; Write to disk
+     577/    EB44 : A6 01                               LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
+     578/    EB46 : B7 EC 05                            STAA    SSDA_1                   ; EB3C: B7 EC 05  ; Write to disk
+     579/    EB49 : 25 02                               BCS     IEB43                    ; EB3F: 25 02     ; if carry is set, don't INX (RWTEST or WRTEST or WRDAM)
+     580/    EB4B : 08                                  INX                              ; EB41: 08        ; if not, increase pointer
+     581/    EB4C : 08                                  INX                              ; EB42: 08        ; |
+     582/    EB4D : 5A                  IEB43           DECB                             ; EB43: 5A        ; decrease counter
+     583/    EB4E : 26 E6                               BNE     IEB2A                    ; EB44: 26 E4     ; check if underflow, if not, continue from top
+     584/    EB50 : DF 06                               STX     CURADRH                  ; EB46: DF 06     ; done, store current address
+     585/    EB52 : CE EC 00                            LDX     #PIAREGA                 ; EB48: CE EC 00  ; 
+     586/    EB55 : 86 40                               LDAA    #$40                     ; EB4B: 86 40     ;  
+     587/    EB57 : A5 04               IEB4D           BITA    $04,X                    ; EB4D: A5 04     ; Check SSDA Status Reg.
+     588/    EB59 : 27 FC                               BEQ     IEB4D                    ; EB4F: 27 FC     ; Wait for Data
+     589/    EB5B : E7 05                               STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
+     590/    EB5D : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4  ; EB59: E7 01   ;
+     591/    EB60 : C4 60                               ANDB    #$60                                       ; Clear all but Side and DS2
+     592/    EB62 : CA 08                               ORAB    #$08                ;+2                    ; Set SHIFT_CRC
+     593/    EB64 : A5 04               IEB53           BITA    $04,X                    ; EB53: A5 04     ; Check SSDA Status Reg.
+     594/    EB66 : 27 FC                               BEQ     IEB53                    ; EB55: 27 FC     ; Wait for Data
+     595/    EB68 : F7 EC 01                            STAB    PIAREGB             ;+5
+     596/    EB6B : C6 08                               LDAB    #$08                     ; EB57: C6 08     ; |
+     597/    EB6D : E7 05                               STAB    $05,X                    ; EB5B: E7 05     ; Store $8 to SSDA Data Reg.
+     598/    EB6F : A5 04               IEB5D           BITA    $04,X                    ; EB5D: A5 04     ; Check SSDA Status Reg.
+     599/    EB71 : 27 FC                               BEQ     IEB5D                    ; EB5F: 27 FC     ; Wait for Data
+     600/    EB73 : C6 FF                               LDAB    #$FF                     ; EB61: C6 FF     ; |
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 11 - 02/09/2026 11:13:27 PM
 
 
-     601/    EB73 : E7 05                               STAB    $05,X                    ; EB63: E7 05     ; |
-     602/    EB75 : E7 05                               STAB    $05,X                    ; EB65: E7 05     ; Store $FF to SSDA Data Reg.
-     603/    EB77 : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4 
-     604/    EB7A : A5 04               IEB67           BITA    $04,X                    ; EB67: A5 04     ; Check SSDA Status Reg.
-     605/    EB7C : 27 FC                               BEQ     IEB67                    ; EB69: 27 FC     ; Wait for Data
-     606/    EB7E : C4 60                               ANDB    #$60     ; changed ;+2                     ; 
-     607/    EB80 : F7 EC 01                            STAB    PIAREGB            ;+5                     ; Clear all but Side and DS2
-     608/    EB83 : 7C EC 01                            INC     PIAREGB            ;+6                     ; Set PB0 high
-     609/    EB86 : 7C EC 01                            INC     PIAREGB            ;+6                     ; Set PB0 low (toggle RESET), Set WG high
-     610/    EB89 : 7E E9 D8                            JMP     NXTSEC    ; -->          ; EB71: 7E E9 D3  ; next sector  
-     611/    EB8C :                     
-     612/    EB8C :                     
+     601/    EB75 : E7 05                               STAB    $05,X                    ; EB63: E7 05     ; |
+     602/    EB77 : E7 05                               STAB    $05,X                    ; EB65: E7 05     ; Store $FF to SSDA Data Reg.
+     603/    EB79 : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4 
+     604/    EB7C : A5 04               IEB67           BITA    $04,X                    ; EB67: A5 04     ; Check SSDA Status Reg.
+     605/    EB7E : 27 FC                               BEQ     IEB67                    ; EB69: 27 FC     ; Wait for Data
+     606/    EB80 : C4 60                               ANDB    #$60     ; changed ;+2                     ; 
+     607/    EB82 : F7 EC 01                            STAB    PIAREGB            ;+5                     ; Clear all but Side and DS2
+     608/    EB85 : 7C EC 01                            INC     PIAREGB            ;+6                     ; Set PB0 high
+     609/    EB88 : 7C EC 01                            INC     PIAREGB            ;+6                     ; Set PB0 low (toggle RESET), Set WG high
+     610/    EB8B : 7E E9 D8                            JMP     NXTSEC    ; -->          ; EB71: 7E E9 D3  ; next sector  
+     611/    EB8E :                     
+     612/    EB8E :                     
      613/    EB90 :                                     ORG     $EB90
      614/    EB90 :                     
      615/    EB90 : CE 00 14            CLRTOP          LDX     #$0014                   ; EB90: CE 00 14 ; Diagnostic with clear
@@ -691,7 +691,7 @@
      658/    EBED :                     
      659/    EBED :                     ;------------------------------------------------
      660/    EBF2 :                                     ORG     $EBF2
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 12 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 12 - 02/09/2026 11:13:27 PM
 
 
      661/    EBF2 : 7E ED 89            LDATA1          JMP     LPDAT0EXT
@@ -754,7 +754,7 @@
      667/    EC31 : 10                                  FCB     $10
      667/    EC32 : 10                                  FCB     $10
      667/    EC33 : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 13 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 13 - 02/09/2026 11:13:27 PM
 
 
      667/    EC34 : 10                                  FCB     $10
@@ -817,7 +817,7 @@
      667/    EC6D : 10                                  FCB     $10
      667/    EC6E : 10                                  FCB     $10
      667/    EC6F : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 14 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 14 - 02/09/2026 11:13:27 PM
 
 
      667/    EC70 : 10                                  FCB     $10
@@ -880,7 +880,7 @@
      667/    ECA9 : 10                                  FCB     $10
      667/    ECAA : 10                                  FCB     $10
      667/    ECAB : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 15 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 15 - 02/09/2026 11:13:27 PM
 
 
      667/    ECAC : 10                                  FCB     $10
@@ -943,7 +943,7 @@
      667/    ECE5 : 10                                  FCB     $10
      667/    ECE6 : 10                                  FCB     $10
      667/    ECE7 : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 16 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 16 - 02/09/2026 11:13:27 PM
 
 
      667/    ECE8 : 10                                  FCB     $10
@@ -1006,7 +1006,7 @@
      702/    ED29 : 86 3E                               LDAA    #$3E                     ; EB7B: 86 3E     ; |
      703/    ED2B : A7 03                               STAA    $03,X                    ; EB7D: A7 03     ; $3E -> PIACTRLB (CB2 high)
      704/    ED2D : E6 00                               LDAB    ,X                       ; EB7F: E6 00     ; Get Port A
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 17 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 17 - 02/09/2026 11:13:27 PM
 
 
      705/    ED2F : 4A                                  DECA                             ; EB81: 4A        ; 
@@ -1069,7 +1069,7 @@
      762/    ED79 : 0D                  ZEBE2           SEC                              ; EBE2: 0D       ; 
      763/    ED7A : 39                                  RTS                              ; EBE3: 39       ; 
      764/    ED7B :                     ;------------------------------------------------
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 18 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 18 - 02/09/2026 11:13:27 PM
 
 
      765/    ED7B : 86 0D               LPDATEXT        LDAA    #$0D                     ; EBE4: 86 0D    ; Send String to Printer
@@ -1092,7 +1092,7 @@
      782/    EFFE :                                     ORG     $EFFE          ; Just to make sure the Area from End to EFFF is filled
      783/    EFFE : 07 50                               FDB     $0750
      784/    F000 :                     
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 19 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 19 - 02/09/2026 11:13:27 PM
 
 
   Symbol Table (* = unused):
@@ -1107,7 +1107,7 @@
  CLOCKN :                      E8E6 C | *CLRTOP :                      EB90 C |
 *COMPMODE :                       0 - | *CONSTPI :        3.141592653589793 - |
  CONT01 :                      ED06 C | *CONT02 :                      ED19 C |
- CRCOK :                       EAD1 C |  CRCONLY :                     EABF C |
+ CRCOK :                       EAD3 C |  CRCONLY :                     EAC1 C |
  CURADRH :                        6 - |  CURADRL :                        7 - |
  CURDRV :                         0 - | *CUSTOM :                         0 - |
  CWRDCNT :                        9 - | *DATE :                "02/09/2026" - |
@@ -1129,14 +1129,14 @@
  IEA1C :                       EA22 C |  IEA26 :                       EA2C C |
  IEA32 :                       EA38 C |  IEA3E :                       EA44 C |
  IEA46 :                       EA4C C |  IEA52 :                       EA58 C |
- IEA64 :                       EA68 C |  IEA6B :                       EA6F C |
- IEA70 :                       EA74 C |  IEA9A :                       EA9E C |
- IEAA4 :                       EAA8 C |  IEACF :                       EAD3 C |
- IEB07 :                       EB0F C |  IEB11 :                       EB1B C |
- IEB2A :                       EB34 C |  IEB2C :                       EB36 C |
- IEB43 :                       EB4B C |  IEB4D :                       EB55 C |
- IEB53 :                       EB62 C |  IEB5D :                       EB6D C |
- IEB67 :                       EB7A C |  IEB91 :                       ED0D C |
+ IEA64 :                       EA6A C |  IEA6B :                       EA71 C |
+ IEA70 :                       EA76 C |  IEA9A :                       EAA0 C |
+ IEAA4 :                       EAAA C |  IEACF :                       EAD5 C |
+ IEB07 :                       EB11 C |  IEB11 :                       EB1D C |
+ IEB2A :                       EB36 C |  IEB2C :                       EB38 C |
+ IEB43 :                       EB4D C |  IEB4D :                       EB57 C |
+ IEB53 :                       EB64 C |  IEB5D :                       EB6F C |
+ IEB67 :                       EB7C C |  IEB91 :                       ED0D C |
  IEB9C :                       ED18 C |  INCTRK :                      E9CF C |
 *INEXTMODE :                      0 - | *INLWORDMODE :                    0 - |
 *INMAXMODE :                      0 - | *INSRCMODE :                      0 - |
@@ -1155,7 +1155,7 @@
 *NESTMAX :                      100 - |  NMIISR :                      E949 C |
  NMISVC :                      FFFC - |  NMIVECSAV :                      F - |
  NOCRC :                       EA00 C |  NUMSCTH :                        3 - |
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 20 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 20 - 02/09/2026 11:13:27 PM
 
 
  NUMSCTL :                        4 - |  NXTSEC :                      E9D8 C |
@@ -1164,30 +1164,30 @@
  PIACTRL :                     EC02 - |  PIAREGA :                     EC00 - |
  PIAREGB :                     EC01 - |  PRNTE2 :                      E855 C |
  PRNTER :                      E85A C |  PROM_0 :                      FCFC - |
-*RDCRC :                       E86F C |  READCRC :                     EAC1 C |
+*RDCRC :                       E86F C |  READCRC :                     EAC3 C |
  READINIT :                    EB9B C | *READPS :                      E86D C |
- READSC :                      E869 C |  READSECT :                    EAA1 C |
+ READSC :                      E869 C |  READSECT :                    EAA3 C |
  REENT2 :                      F564 - | *RELAXED :                        0 - |
  RESTOR :                      E875 C |  RESTORN :                     E8DF C |
  RESTORY :                     E91E C |  RETRG :                       ED22 C |
 *RWTEST :                      E872 C |  SECRDDONE :                   E994 C |
  SECTCNT :                        B - | *SEEK :                        E878 C |
- SERR1 :                       EA8A C |  SERR2 :                       EA99 C |
- SERR3 :                       E8CF C |  SERR4 :                       EA9C C |
+ SERR1 :                       EA8C C |  SERR2 :                       EA9B C |
+ SERR3 :                       E8CF C |  SERR4 :                       EA9E C |
  SERR6 :                       E8D2 C |  SERR7 :                       E94E C |
- SERR9 :                       EA8D C |  SETERR :                      E950 C |
+ SERR9 :                       EA8F C |  SETERR :                      E950 C |
  SOFTRK :                         A - |  SSDA_0 :                      EC04 - |
  SSDA_1 :                      EC05 - |  STACKSAV :                      16 - |
  START :                       E9EA C |  STATSAV :                        D - |
  STEP :                        E956 C |  STORE :                       E8C1 C |
  STRSCTH :                        1 - |  STRSCTL :                        2 - |
-*TIME :               "09:55:17 PM" - | *TOP :                         EB98 C |
+*TIME :               "11:13:27 PM" - | *TOP :                         EB98 C |
  TOPEXT :                      ED33 C |  TRACKSAV :                      13 - |
 *TRUE :                           1 - | *VERSION :                     142F - |
  WAIT1 :                       E965 C |  WAIT2 :                       E96C C |
  WAIT3 :                       E963 C | *WRDDAM :                      E87E C |
- WRITINI2 :                    EAE1 C | *WRITSC :                      E884 C |
- WRITSEC :                     EB3B C | *WRTEST :                      E87B C |
+ WRITINI2 :                    EAE3 C | *WRITSC :                      E884 C |
+ WRITSEC :                     EB3D C | *WRTEST :                      E87B C |
 *WRVERF :                      E881 C |  XOUTCH :                      F018 - |
  XSTAKS :                      FF8A - | *Z80SYNTAX :                      0 - |
  ZE84F :                       E84F C |  ZE866 :                       E866 C |
@@ -1199,7 +1199,7 @@
     186 symbols
      53 unused symbols
 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 21 - 02/09/2026 09:55:17 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 21 - 02/09/2026 11:13:27 PM
 
 
   Code Pages:
@@ -1209,7 +1209,7 @@ STANDARD (0 changed characters)
 
 1 code page
 
-0.01 seconds assembly time
+0.00 seconds assembly time
 
     784 lines source file
    1040 lines incl. macro expansions

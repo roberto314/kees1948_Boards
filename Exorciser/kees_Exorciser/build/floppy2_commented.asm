@@ -456,7 +456,7 @@ IEA52           TST     $04,X                    ; EA52: 6D 04     ; Read SSDA S
                 CMPA    $05,X                    ; EA58: A1 05     ; Compare SSDA Data Reg to A (04)
                 DECA                             ; EA5A: 4A        ; |
                 BNE     IEA52                    ; EA5B: 26 F5     ; try again
-                ;LDAB    FUNCSAV                  ; EA5D: D6 0E     ; do it later
+                LDAB    FUNCSAV                  ; EA5D: D6 0E     ; do it later
                 BMI     WRITINI2   ; -->         ; EA5F: 2B 7C     ; Bit 7 set - Write Function
                 LDAB    CLKFREQ                  ; EA61: D6 19     ; Waitloop
                 ASLB                             ; EA63: 58        ; |
