@@ -274,6 +274,7 @@ IE91F           STAB    PIAREGA                  ; E91F: F7 EC 00  ; Write to Po
                 BSR     STEP                     ; E925: 8D 1F     ; 
                 LDAB    PIAREGA                  ; E927: F6 EC 00  ; 
                 BPL     IE917                    ; E92A: 2A EB     ; Bit 7 clear? (TRK0)
+                ;BMI     IE917                    ; E92A: 2A EB     ; Bit 7 set? (TRK0)
                 TSTA                             ; E92C: 4D        ; 
                 BEQ     ZE96A     ; -->          ; E92D: 27 3B     ; 
                 LDAA    FUNCSAV                  ; E92F: 96 0E     ; 
