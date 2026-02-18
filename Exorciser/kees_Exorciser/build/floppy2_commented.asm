@@ -619,7 +619,7 @@ IEB67           BITA    $04,X                    ; EB67: A5 04     ; Check SSDA 
                 INC     PIAREGB            ;+6                     ; Set PB0 low (toggle RESET), Set WG high
                 JMP     NXTSEC    ; -->          ; EB71: 7E E9 D3  ; next sector  
 
-
+; ###########  about 6 Bytes free
                 ORG     $EB90
 
 CLRTOP          LDX     #$0014                   ; EB90: CE 00 14 ; Diagnostic with clear
@@ -646,11 +646,13 @@ READINIT        LDX     #$D0D8                   ; E9AC: CE D0 D8  ; Select CR2 
                 LDAA    #$98                     ; E9C5: 86 98     ; Write $98 to SSDA_1 (Enable SM Output)
                 STAA    $05,X                    ; E9C7: A7 05     ; 
                 RTS                              ; E9C9: 39        ; 
-                
+
 ;------------------------------------------------
+; ########### 3 Bytes free
                 ORG     $EBC0
 LPINIT          JMP     LPINITEXT
 ;------------------------------------------------
+; ########### 9 Bytes free
                 ORG     $EBCC
 LIST            JMP     LPLISTEXT
 ;------------------------------------------------
@@ -660,13 +662,14 @@ FDINITEXT       LDAA    #$FE                ; | $ FE00-03  is a pointer to the P
                 CLR     $12
                 JMP     FDINTBACK
 ;------------------------------------------------
+; ########### 7 Bytes free
                 ORG     $EBE4
 LDATA           JMP     LPDATEXT 
 ;------------------------------------------------
 FDINIT3         JSR     FDINIT              ; EBA6: BD E8 22  ; 
                 JMP     CLOCK               ; EBA9: 7E E8 87  ; initializes and starts drive, then jumps to CLKDMD
-
 ;------------------------------------------------
+; ########### 5 Bytes free
                 ORG     $EBF2
 LDATA1          JMP     LPDAT0EXT
 ;------------------------------------------------

@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 1 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 1 - 02/18/2026 09:30:05 PM
 
 
        1/       0 :                     ; Ready to assemble with asl.
@@ -61,7 +61,7 @@
       58/       0 : =$FFFC               NMIsVC  EQU     $FFFC
       59/       0 :                     
       60/       0 :                     ; Printer
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 2 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 2 - 02/18/2026 09:30:05 PM
 
 
       61/       0 : =$EC10               MEC10   EQU     $EC10
@@ -124,7 +124,7 @@
      118/    E864 : 8D 00                               BSR     ZE866                    ; E864: 8D 00      ; 
      119/    E866 : 7E F0 18            ZE866           JMP     XOUTCH                   ; E866: 7E F0 18   ; Print Accu A to Console
      120/    E869 :                     ;------------------------------------------------
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 3 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 3 - 02/18/2026 09:30:05 PM
 
 
      121/    E869 :                     ;READSC          LDAB    #$80                     ; E869: C6 80      ; 
@@ -187,7 +187,7 @@
      178/    E89A : CE ED 33                            LDX     #NMIISR                  ; E89A: CE E9 39  ; |
      179/    E89D : FF FF FC                            STX     NMIsVC                   ; E89D: FF FF FC  ; New NMIISR
      180/    E8A0 :                     ;------------------------------------------------
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 4 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 4 - 02/18/2026 09:30:05 PM
 
 
      181/    E8A0 :                     ; from here new code
@@ -250,7 +250,7 @@
      238/    E8F9 : 96 01                               LDAA    STRSCTH                  ; E8D4: 96 01     ; Get Startsector
      239/    E8FB : DB 04                               ADDB    NUMSCTL                  ; E8D6: DB 04     ; |
      240/    E8FD : 99 03                               ADCA    NUMSCTH                  ; E8D8: 99 03     ; Add Number of sectors
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 5 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 5 - 02/18/2026 09:30:05 PM
 
 
      241/    E8FF : 25 E1                               BCS     SERR6                    ; E8DA: 25 E2     ; Set Error '6': INVALID DISK ADDRESS
@@ -313,7 +313,7 @@
      298/    E95D :                     ;NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ; 
      299/    E95D :                     ;                LDAB    #$35                     ; E93B: C6 35     ; Set Error '5' (TIMEOUT)
      300/    E95D :                     ;;                CPX     #MC637                   ; E93D: 8C C6 37  ; 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 6 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 6 - 02/18/2026 09:30:05 PM
 
 
      301/    E95D :                     ;                FCB     $8C
@@ -376,7 +376,7 @@
      358/    E9A8 : B6 EC 00            EXITHNDLR       LDAA    PIAREGA                  ; 
      359/    E9AB : 8A 10                               ORAA    #$10                     ; Set Bit 4 (HLD)
      360/    E9AD : B7 EC 00                            STAA    PIAREGA                  ; 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 7 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 7 - 02/18/2026 09:30:05 PM
 
 
      361/    E9B0 : CE 43 3C                            LDX     #$433C     ;changed 
@@ -439,7 +439,7 @@
      418/    EA0B : BD ED 22                            JSR     RETRG                    ; E9FF: BD EB 74  ; Retrigger NMI Timer X <- EC00
      419/    EA0E :                                     ;LDAA    TRACKSAV ;changed       ; EA02: 96 13     ; 
      420/    EA0E :                                     ;ORAB    #$0C     ;changed       ; EA04: CA 0C     ; In B is FUNCSAV<<1, isol. Bit 2,3 (RWTEST, WRTEST, CLOCK)
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 8 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 8 - 02/18/2026 09:30:05 PM
 
 
      421/    EA0E :                                     ;CMPA    #$2B     ;changed       ; EA06: 81 2B     ; check for Track > 43
@@ -502,7 +502,7 @@
      478/    EA6C : BD EB 9B            IEA6B           JSR     READINIT                 ; EA6B: BD E9 AC  ; Initialize SSDA for Read, Toggle RESET
      479/    EA6F : DE 06                               LDX     CURADRH                  ; EA6E: DE 06     ; Load Start Address
      480/    EA71 : B6 EC 04            IEA70           LDAA    SSDA_0                   ; EA70: B6 EC 04  ; Read SSDA Status Reg.
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 9 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 9 - 02/18/2026 09:30:05 PM
 
 
      481/    EA74 : 2A FB                               BPL     IEA70                    ; EA73: 2A FB     ; Wait and Test RDA for 2 Bytes Ready
@@ -565,7 +565,7 @@
      538/    EADE :                     ;------------------------------------------------
      539/    EADE :                     ; from here new code
      540/    EADE :                     ;------------------------------------------------                
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 10 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 10 - 02/18/2026 09:30:05 PM
 
 
      541/    EADE : CE C0 DA            WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ; 
@@ -628,7 +628,7 @@
      598/    EB54 : 27 FC                               BEQ     IEB4D                    ; EB4F: 27 FC     ; Wait for Data
      599/    EB56 : E7 05                               STAB    $05,X                    ; EB51: E7 05     ; Store B to Data Register
      600/    EB58 : F6 EC 01                            LDAB    PIAREGB ;read PIAREGB ;+4  ; EB59: E7 01   ;
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 11 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 11 - 02/18/2026 09:30:05 PM
 
 
      601/    EB5B : C4 60                               ANDB    #$60                                       ; Clear all but Side and DS2
@@ -652,7 +652,7 @@
      619/    EB83 : 7C EC 01                            INC     PIAREGB            ;+6                     ; Set PB0 low (toggle RESET), Set WG high
      620/    EB86 : 7E E9 DF                            JMP     NXTSEC    ; -->          ; EB71: 7E E9 D3  ; next sector  
      621/    EB89 :                     
-     622/    EB89 :                     
+     622/    EB89 :                     ; ###########  about 6 Bytes free
      623/    EB90 :                                     ORG     $EB90
      624/    EB90 :                     
      625/    EB90 : CE 00 14            CLRTOP          LDX     #$0014                   ; EB90: CE 00 14 ; Diagnostic with clear
@@ -679,442 +679,445 @@
      646/    EBB8 : 86 98                               LDAA    #$98                     ; E9C5: 86 98     ; Write $98 to SSDA_1 (Enable SM Output)
      647/    EBBA : A7 05                               STAA    $05,X                    ; E9C7: A7 05     ; 
      648/    EBBC : 39                                  RTS                              ; E9C9: 39        ; 
-     649/    EBBD :                                     
+     649/    EBBD :                     
      650/    EBBD :                     ;------------------------------------------------
-     651/    EBC0 :                                     ORG     $EBC0
-     652/    EBC0 : 7E ED 65            LPINIT          JMP     LPINITEXT
-     653/    EBC3 :                     ;------------------------------------------------
-     654/    EBCC :                                     ORG     $EBCC
-     655/    EBCC : 7E ED 71            LIST            JMP     LPLISTEXT
-     656/    EBCF :                     ;------------------------------------------------
-     657/    EBCF : 86 FE               FDINITEXT       LDAA    #$FE                ; | $ FE00-03  is a pointer to the Position of Track / Drive
-     658/    EBD1 : B7 FE 04                            STAA    $FE04               ; | $FE04 <- $FE 
-     659/    EBD4 : CE 00 00                            LDX     #$0000
-     660/    EBD7 : 7F 00 12                            CLR     $12
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 12 - 02/18/2026 09:15:49 PM
+     651/    EBBD :                     ; ########### 3 Bytes free
+     652/    EBC0 :                                     ORG     $EBC0
+     653/    EBC0 : 7E ED 65            LPINIT          JMP     LPINITEXT
+     654/    EBC3 :                     ;------------------------------------------------
+     655/    EBC3 :                     ; ########### 9 Bytes free
+     656/    EBCC :                                     ORG     $EBCC
+     657/    EBCC : 7E ED 71            LIST            JMP     LPLISTEXT
+     658/    EBCF :                     ;------------------------------------------------
+     659/    EBCF : 86 FE               FDINITEXT       LDAA    #$FE                ; | $ FE00-03  is a pointer to the Position of Track / Drive
+     660/    EBD1 : B7 FE 04                            STAA    $FE04               ; | $FE04 <- $FE 
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 12 - 02/18/2026 09:30:05 PM
 
 
-     661/    EBDA : 7E E8 25                            JMP     FDINTBACK
-     662/    EBDD :                     ;------------------------------------------------
-     663/    EBE4 :                                     ORG     $EBE4
-     664/    EBE4 : 7E ED 89            LDATA           JMP     LPDATEXT 
-     665/    EBE7 :                     ;------------------------------------------------
-     666/    EBE7 : BD E8 22            FDINIT3         JSR     FDINIT              ; EBA6: BD E8 22  ; 
-     667/    EBEA : 7E E8 87                            JMP     CLOCK               ; EBA9: 7E E8 87  ; initializes and starts drive, then jumps to CLKDMD
-     668/    EBED :                     
-     669/    EBED :                     ;------------------------------------------------
-     670/    EBF2 :                                     ORG     $EBF2
-     671/    EBF2 : 7E ED 97            LDATA1          JMP     LPDAT0EXT
-     672/    EBF5 :                     ;------------------------------------------------
-     673/    EBFE :                                     ORG     $EBFE
-     674/    EBFE : 07 50                               FDB     $0750                    ; EBFE: 07 50          '.P'
-     675/    EC00 :                     
-     676/    EC00 :                                     REPT    $100                      ; Filler for IO Area
-     677/    EC00 :                                     FCB     $10
-     678/    EC00 :                                     ENDM
-     677/    EC00 : 10                                  FCB     $10
-     677/    EC01 : 10                                  FCB     $10
-     677/    EC02 : 10                                  FCB     $10
-     677/    EC03 : 10                                  FCB     $10
-     677/    EC04 : 10                                  FCB     $10
-     677/    EC05 : 10                                  FCB     $10
-     677/    EC06 : 10                                  FCB     $10
-     677/    EC07 : 10                                  FCB     $10
-     677/    EC08 : 10                                  FCB     $10
-     677/    EC09 : 10                                  FCB     $10
-     677/    EC0A : 10                                  FCB     $10
-     677/    EC0B : 10                                  FCB     $10
-     677/    EC0C : 10                                  FCB     $10
-     677/    EC0D : 10                                  FCB     $10
-     677/    EC0E : 10                                  FCB     $10
-     677/    EC0F : 10                                  FCB     $10
-     677/    EC10 : 10                                  FCB     $10
-     677/    EC11 : 10                                  FCB     $10
-     677/    EC12 : 10                                  FCB     $10
-     677/    EC13 : 10                                  FCB     $10
-     677/    EC14 : 10                                  FCB     $10
-     677/    EC15 : 10                                  FCB     $10
-     677/    EC16 : 10                                  FCB     $10
-     677/    EC17 : 10                                  FCB     $10
-     677/    EC18 : 10                                  FCB     $10
-     677/    EC19 : 10                                  FCB     $10
-     677/    EC1A : 10                                  FCB     $10
-     677/    EC1B : 10                                  FCB     $10
-     677/    EC1C : 10                                  FCB     $10
-     677/    EC1D : 10                                  FCB     $10
-     677/    EC1E : 10                                  FCB     $10
-     677/    EC1F : 10                                  FCB     $10
-     677/    EC20 : 10                                  FCB     $10
-     677/    EC21 : 10                                  FCB     $10
-     677/    EC22 : 10                                  FCB     $10
-     677/    EC23 : 10                                  FCB     $10
-     677/    EC24 : 10                                  FCB     $10
-     677/    EC25 : 10                                  FCB     $10
-     677/    EC26 : 10                                  FCB     $10
-     677/    EC27 : 10                                  FCB     $10
-     677/    EC28 : 10                                  FCB     $10
-     677/    EC29 : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 13 - 02/18/2026 09:15:49 PM
+     661/    EBD4 : CE 00 00                            LDX     #$0000
+     662/    EBD7 : 7F 00 12                            CLR     $12
+     663/    EBDA : 7E E8 25                            JMP     FDINTBACK
+     664/    EBDD :                     ;------------------------------------------------
+     665/    EBDD :                     ; ########### 7 Bytes free
+     666/    EBE4 :                                     ORG     $EBE4
+     667/    EBE4 : 7E ED 89            LDATA           JMP     LPDATEXT 
+     668/    EBE7 :                     ;------------------------------------------------
+     669/    EBE7 : BD E8 22            FDINIT3         JSR     FDINIT              ; EBA6: BD E8 22  ; 
+     670/    EBEA : 7E E8 87                            JMP     CLOCK               ; EBA9: 7E E8 87  ; initializes and starts drive, then jumps to CLKDMD
+     671/    EBED :                     ;------------------------------------------------
+     672/    EBED :                     ; ########### 5 Bytes free
+     673/    EBF2 :                                     ORG     $EBF2
+     674/    EBF2 : 7E ED 97            LDATA1          JMP     LPDAT0EXT
+     675/    EBF5 :                     ;------------------------------------------------
+     676/    EBFE :                                     ORG     $EBFE
+     677/    EBFE : 07 50                               FDB     $0750                    ; EBFE: 07 50          '.P'
+     678/    EC00 :                     
+     679/    EC00 :                                     REPT    $100                      ; Filler for IO Area
+     680/    EC00 :                                     FCB     $10
+     681/    EC00 :                                     ENDM
+     680/    EC00 : 10                                  FCB     $10
+     680/    EC01 : 10                                  FCB     $10
+     680/    EC02 : 10                                  FCB     $10
+     680/    EC03 : 10                                  FCB     $10
+     680/    EC04 : 10                                  FCB     $10
+     680/    EC05 : 10                                  FCB     $10
+     680/    EC06 : 10                                  FCB     $10
+     680/    EC07 : 10                                  FCB     $10
+     680/    EC08 : 10                                  FCB     $10
+     680/    EC09 : 10                                  FCB     $10
+     680/    EC0A : 10                                  FCB     $10
+     680/    EC0B : 10                                  FCB     $10
+     680/    EC0C : 10                                  FCB     $10
+     680/    EC0D : 10                                  FCB     $10
+     680/    EC0E : 10                                  FCB     $10
+     680/    EC0F : 10                                  FCB     $10
+     680/    EC10 : 10                                  FCB     $10
+     680/    EC11 : 10                                  FCB     $10
+     680/    EC12 : 10                                  FCB     $10
+     680/    EC13 : 10                                  FCB     $10
+     680/    EC14 : 10                                  FCB     $10
+     680/    EC15 : 10                                  FCB     $10
+     680/    EC16 : 10                                  FCB     $10
+     680/    EC17 : 10                                  FCB     $10
+     680/    EC18 : 10                                  FCB     $10
+     680/    EC19 : 10                                  FCB     $10
+     680/    EC1A : 10                                  FCB     $10
+     680/    EC1B : 10                                  FCB     $10
+     680/    EC1C : 10                                  FCB     $10
+     680/    EC1D : 10                                  FCB     $10
+     680/    EC1E : 10                                  FCB     $10
+     680/    EC1F : 10                                  FCB     $10
+     680/    EC20 : 10                                  FCB     $10
+     680/    EC21 : 10                                  FCB     $10
+     680/    EC22 : 10                                  FCB     $10
+     680/    EC23 : 10                                  FCB     $10
+     680/    EC24 : 10                                  FCB     $10
+     680/    EC25 : 10                                  FCB     $10
+     680/    EC26 : 10                                  FCB     $10
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 13 - 02/18/2026 09:30:05 PM
 
 
-     677/    EC2A : 10                                  FCB     $10
-     677/    EC2B : 10                                  FCB     $10
-     677/    EC2C : 10                                  FCB     $10
-     677/    EC2D : 10                                  FCB     $10
-     677/    EC2E : 10                                  FCB     $10
-     677/    EC2F : 10                                  FCB     $10
-     677/    EC30 : 10                                  FCB     $10
-     677/    EC31 : 10                                  FCB     $10
-     677/    EC32 : 10                                  FCB     $10
-     677/    EC33 : 10                                  FCB     $10
-     677/    EC34 : 10                                  FCB     $10
-     677/    EC35 : 10                                  FCB     $10
-     677/    EC36 : 10                                  FCB     $10
-     677/    EC37 : 10                                  FCB     $10
-     677/    EC38 : 10                                  FCB     $10
-     677/    EC39 : 10                                  FCB     $10
-     677/    EC3A : 10                                  FCB     $10
-     677/    EC3B : 10                                  FCB     $10
-     677/    EC3C : 10                                  FCB     $10
-     677/    EC3D : 10                                  FCB     $10
-     677/    EC3E : 10                                  FCB     $10
-     677/    EC3F : 10                                  FCB     $10
-     677/    EC40 : 10                                  FCB     $10
-     677/    EC41 : 10                                  FCB     $10
-     677/    EC42 : 10                                  FCB     $10
-     677/    EC43 : 10                                  FCB     $10
-     677/    EC44 : 10                                  FCB     $10
-     677/    EC45 : 10                                  FCB     $10
-     677/    EC46 : 10                                  FCB     $10
-     677/    EC47 : 10                                  FCB     $10
-     677/    EC48 : 10                                  FCB     $10
-     677/    EC49 : 10                                  FCB     $10
-     677/    EC4A : 10                                  FCB     $10
-     677/    EC4B : 10                                  FCB     $10
-     677/    EC4C : 10                                  FCB     $10
-     677/    EC4D : 10                                  FCB     $10
-     677/    EC4E : 10                                  FCB     $10
-     677/    EC4F : 10                                  FCB     $10
-     677/    EC50 : 10                                  FCB     $10
-     677/    EC51 : 10                                  FCB     $10
-     677/    EC52 : 10                                  FCB     $10
-     677/    EC53 : 10                                  FCB     $10
-     677/    EC54 : 10                                  FCB     $10
-     677/    EC55 : 10                                  FCB     $10
-     677/    EC56 : 10                                  FCB     $10
-     677/    EC57 : 10                                  FCB     $10
-     677/    EC58 : 10                                  FCB     $10
-     677/    EC59 : 10                                  FCB     $10
-     677/    EC5A : 10                                  FCB     $10
-     677/    EC5B : 10                                  FCB     $10
-     677/    EC5C : 10                                  FCB     $10
-     677/    EC5D : 10                                  FCB     $10
-     677/    EC5E : 10                                  FCB     $10
-     677/    EC5F : 10                                  FCB     $10
-     677/    EC60 : 10                                  FCB     $10
-     677/    EC61 : 10                                  FCB     $10
-     677/    EC62 : 10                                  FCB     $10
-     677/    EC63 : 10                                  FCB     $10
-     677/    EC64 : 10                                  FCB     $10
-     677/    EC65 : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 14 - 02/18/2026 09:15:49 PM
+     680/    EC27 : 10                                  FCB     $10
+     680/    EC28 : 10                                  FCB     $10
+     680/    EC29 : 10                                  FCB     $10
+     680/    EC2A : 10                                  FCB     $10
+     680/    EC2B : 10                                  FCB     $10
+     680/    EC2C : 10                                  FCB     $10
+     680/    EC2D : 10                                  FCB     $10
+     680/    EC2E : 10                                  FCB     $10
+     680/    EC2F : 10                                  FCB     $10
+     680/    EC30 : 10                                  FCB     $10
+     680/    EC31 : 10                                  FCB     $10
+     680/    EC32 : 10                                  FCB     $10
+     680/    EC33 : 10                                  FCB     $10
+     680/    EC34 : 10                                  FCB     $10
+     680/    EC35 : 10                                  FCB     $10
+     680/    EC36 : 10                                  FCB     $10
+     680/    EC37 : 10                                  FCB     $10
+     680/    EC38 : 10                                  FCB     $10
+     680/    EC39 : 10                                  FCB     $10
+     680/    EC3A : 10                                  FCB     $10
+     680/    EC3B : 10                                  FCB     $10
+     680/    EC3C : 10                                  FCB     $10
+     680/    EC3D : 10                                  FCB     $10
+     680/    EC3E : 10                                  FCB     $10
+     680/    EC3F : 10                                  FCB     $10
+     680/    EC40 : 10                                  FCB     $10
+     680/    EC41 : 10                                  FCB     $10
+     680/    EC42 : 10                                  FCB     $10
+     680/    EC43 : 10                                  FCB     $10
+     680/    EC44 : 10                                  FCB     $10
+     680/    EC45 : 10                                  FCB     $10
+     680/    EC46 : 10                                  FCB     $10
+     680/    EC47 : 10                                  FCB     $10
+     680/    EC48 : 10                                  FCB     $10
+     680/    EC49 : 10                                  FCB     $10
+     680/    EC4A : 10                                  FCB     $10
+     680/    EC4B : 10                                  FCB     $10
+     680/    EC4C : 10                                  FCB     $10
+     680/    EC4D : 10                                  FCB     $10
+     680/    EC4E : 10                                  FCB     $10
+     680/    EC4F : 10                                  FCB     $10
+     680/    EC50 : 10                                  FCB     $10
+     680/    EC51 : 10                                  FCB     $10
+     680/    EC52 : 10                                  FCB     $10
+     680/    EC53 : 10                                  FCB     $10
+     680/    EC54 : 10                                  FCB     $10
+     680/    EC55 : 10                                  FCB     $10
+     680/    EC56 : 10                                  FCB     $10
+     680/    EC57 : 10                                  FCB     $10
+     680/    EC58 : 10                                  FCB     $10
+     680/    EC59 : 10                                  FCB     $10
+     680/    EC5A : 10                                  FCB     $10
+     680/    EC5B : 10                                  FCB     $10
+     680/    EC5C : 10                                  FCB     $10
+     680/    EC5D : 10                                  FCB     $10
+     680/    EC5E : 10                                  FCB     $10
+     680/    EC5F : 10                                  FCB     $10
+     680/    EC60 : 10                                  FCB     $10
+     680/    EC61 : 10                                  FCB     $10
+     680/    EC62 : 10                                  FCB     $10
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 14 - 02/18/2026 09:30:05 PM
 
 
-     677/    EC66 : 10                                  FCB     $10
-     677/    EC67 : 10                                  FCB     $10
-     677/    EC68 : 10                                  FCB     $10
-     677/    EC69 : 10                                  FCB     $10
-     677/    EC6A : 10                                  FCB     $10
-     677/    EC6B : 10                                  FCB     $10
-     677/    EC6C : 10                                  FCB     $10
-     677/    EC6D : 10                                  FCB     $10
-     677/    EC6E : 10                                  FCB     $10
-     677/    EC6F : 10                                  FCB     $10
-     677/    EC70 : 10                                  FCB     $10
-     677/    EC71 : 10                                  FCB     $10
-     677/    EC72 : 10                                  FCB     $10
-     677/    EC73 : 10                                  FCB     $10
-     677/    EC74 : 10                                  FCB     $10
-     677/    EC75 : 10                                  FCB     $10
-     677/    EC76 : 10                                  FCB     $10
-     677/    EC77 : 10                                  FCB     $10
-     677/    EC78 : 10                                  FCB     $10
-     677/    EC79 : 10                                  FCB     $10
-     677/    EC7A : 10                                  FCB     $10
-     677/    EC7B : 10                                  FCB     $10
-     677/    EC7C : 10                                  FCB     $10
-     677/    EC7D : 10                                  FCB     $10
-     677/    EC7E : 10                                  FCB     $10
-     677/    EC7F : 10                                  FCB     $10
-     677/    EC80 : 10                                  FCB     $10
-     677/    EC81 : 10                                  FCB     $10
-     677/    EC82 : 10                                  FCB     $10
-     677/    EC83 : 10                                  FCB     $10
-     677/    EC84 : 10                                  FCB     $10
-     677/    EC85 : 10                                  FCB     $10
-     677/    EC86 : 10                                  FCB     $10
-     677/    EC87 : 10                                  FCB     $10
-     677/    EC88 : 10                                  FCB     $10
-     677/    EC89 : 10                                  FCB     $10
-     677/    EC8A : 10                                  FCB     $10
-     677/    EC8B : 10                                  FCB     $10
-     677/    EC8C : 10                                  FCB     $10
-     677/    EC8D : 10                                  FCB     $10
-     677/    EC8E : 10                                  FCB     $10
-     677/    EC8F : 10                                  FCB     $10
-     677/    EC90 : 10                                  FCB     $10
-     677/    EC91 : 10                                  FCB     $10
-     677/    EC92 : 10                                  FCB     $10
-     677/    EC93 : 10                                  FCB     $10
-     677/    EC94 : 10                                  FCB     $10
-     677/    EC95 : 10                                  FCB     $10
-     677/    EC96 : 10                                  FCB     $10
-     677/    EC97 : 10                                  FCB     $10
-     677/    EC98 : 10                                  FCB     $10
-     677/    EC99 : 10                                  FCB     $10
-     677/    EC9A : 10                                  FCB     $10
-     677/    EC9B : 10                                  FCB     $10
-     677/    EC9C : 10                                  FCB     $10
-     677/    EC9D : 10                                  FCB     $10
-     677/    EC9E : 10                                  FCB     $10
-     677/    EC9F : 10                                  FCB     $10
-     677/    ECA0 : 10                                  FCB     $10
-     677/    ECA1 : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 15 - 02/18/2026 09:15:49 PM
+     680/    EC63 : 10                                  FCB     $10
+     680/    EC64 : 10                                  FCB     $10
+     680/    EC65 : 10                                  FCB     $10
+     680/    EC66 : 10                                  FCB     $10
+     680/    EC67 : 10                                  FCB     $10
+     680/    EC68 : 10                                  FCB     $10
+     680/    EC69 : 10                                  FCB     $10
+     680/    EC6A : 10                                  FCB     $10
+     680/    EC6B : 10                                  FCB     $10
+     680/    EC6C : 10                                  FCB     $10
+     680/    EC6D : 10                                  FCB     $10
+     680/    EC6E : 10                                  FCB     $10
+     680/    EC6F : 10                                  FCB     $10
+     680/    EC70 : 10                                  FCB     $10
+     680/    EC71 : 10                                  FCB     $10
+     680/    EC72 : 10                                  FCB     $10
+     680/    EC73 : 10                                  FCB     $10
+     680/    EC74 : 10                                  FCB     $10
+     680/    EC75 : 10                                  FCB     $10
+     680/    EC76 : 10                                  FCB     $10
+     680/    EC77 : 10                                  FCB     $10
+     680/    EC78 : 10                                  FCB     $10
+     680/    EC79 : 10                                  FCB     $10
+     680/    EC7A : 10                                  FCB     $10
+     680/    EC7B : 10                                  FCB     $10
+     680/    EC7C : 10                                  FCB     $10
+     680/    EC7D : 10                                  FCB     $10
+     680/    EC7E : 10                                  FCB     $10
+     680/    EC7F : 10                                  FCB     $10
+     680/    EC80 : 10                                  FCB     $10
+     680/    EC81 : 10                                  FCB     $10
+     680/    EC82 : 10                                  FCB     $10
+     680/    EC83 : 10                                  FCB     $10
+     680/    EC84 : 10                                  FCB     $10
+     680/    EC85 : 10                                  FCB     $10
+     680/    EC86 : 10                                  FCB     $10
+     680/    EC87 : 10                                  FCB     $10
+     680/    EC88 : 10                                  FCB     $10
+     680/    EC89 : 10                                  FCB     $10
+     680/    EC8A : 10                                  FCB     $10
+     680/    EC8B : 10                                  FCB     $10
+     680/    EC8C : 10                                  FCB     $10
+     680/    EC8D : 10                                  FCB     $10
+     680/    EC8E : 10                                  FCB     $10
+     680/    EC8F : 10                                  FCB     $10
+     680/    EC90 : 10                                  FCB     $10
+     680/    EC91 : 10                                  FCB     $10
+     680/    EC92 : 10                                  FCB     $10
+     680/    EC93 : 10                                  FCB     $10
+     680/    EC94 : 10                                  FCB     $10
+     680/    EC95 : 10                                  FCB     $10
+     680/    EC96 : 10                                  FCB     $10
+     680/    EC97 : 10                                  FCB     $10
+     680/    EC98 : 10                                  FCB     $10
+     680/    EC99 : 10                                  FCB     $10
+     680/    EC9A : 10                                  FCB     $10
+     680/    EC9B : 10                                  FCB     $10
+     680/    EC9C : 10                                  FCB     $10
+     680/    EC9D : 10                                  FCB     $10
+     680/    EC9E : 10                                  FCB     $10
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 15 - 02/18/2026 09:30:05 PM
 
 
-     677/    ECA2 : 10                                  FCB     $10
-     677/    ECA3 : 10                                  FCB     $10
-     677/    ECA4 : 10                                  FCB     $10
-     677/    ECA5 : 10                                  FCB     $10
-     677/    ECA6 : 10                                  FCB     $10
-     677/    ECA7 : 10                                  FCB     $10
-     677/    ECA8 : 10                                  FCB     $10
-     677/    ECA9 : 10                                  FCB     $10
-     677/    ECAA : 10                                  FCB     $10
-     677/    ECAB : 10                                  FCB     $10
-     677/    ECAC : 10                                  FCB     $10
-     677/    ECAD : 10                                  FCB     $10
-     677/    ECAE : 10                                  FCB     $10
-     677/    ECAF : 10                                  FCB     $10
-     677/    ECB0 : 10                                  FCB     $10
-     677/    ECB1 : 10                                  FCB     $10
-     677/    ECB2 : 10                                  FCB     $10
-     677/    ECB3 : 10                                  FCB     $10
-     677/    ECB4 : 10                                  FCB     $10
-     677/    ECB5 : 10                                  FCB     $10
-     677/    ECB6 : 10                                  FCB     $10
-     677/    ECB7 : 10                                  FCB     $10
-     677/    ECB8 : 10                                  FCB     $10
-     677/    ECB9 : 10                                  FCB     $10
-     677/    ECBA : 10                                  FCB     $10
-     677/    ECBB : 10                                  FCB     $10
-     677/    ECBC : 10                                  FCB     $10
-     677/    ECBD : 10                                  FCB     $10
-     677/    ECBE : 10                                  FCB     $10
-     677/    ECBF : 10                                  FCB     $10
-     677/    ECC0 : 10                                  FCB     $10
-     677/    ECC1 : 10                                  FCB     $10
-     677/    ECC2 : 10                                  FCB     $10
-     677/    ECC3 : 10                                  FCB     $10
-     677/    ECC4 : 10                                  FCB     $10
-     677/    ECC5 : 10                                  FCB     $10
-     677/    ECC6 : 10                                  FCB     $10
-     677/    ECC7 : 10                                  FCB     $10
-     677/    ECC8 : 10                                  FCB     $10
-     677/    ECC9 : 10                                  FCB     $10
-     677/    ECCA : 10                                  FCB     $10
-     677/    ECCB : 10                                  FCB     $10
-     677/    ECCC : 10                                  FCB     $10
-     677/    ECCD : 10                                  FCB     $10
-     677/    ECCE : 10                                  FCB     $10
-     677/    ECCF : 10                                  FCB     $10
-     677/    ECD0 : 10                                  FCB     $10
-     677/    ECD1 : 10                                  FCB     $10
-     677/    ECD2 : 10                                  FCB     $10
-     677/    ECD3 : 10                                  FCB     $10
-     677/    ECD4 : 10                                  FCB     $10
-     677/    ECD5 : 10                                  FCB     $10
-     677/    ECD6 : 10                                  FCB     $10
-     677/    ECD7 : 10                                  FCB     $10
-     677/    ECD8 : 10                                  FCB     $10
-     677/    ECD9 : 10                                  FCB     $10
-     677/    ECDA : 10                                  FCB     $10
-     677/    ECDB : 10                                  FCB     $10
-     677/    ECDC : 10                                  FCB     $10
-     677/    ECDD : 10                                  FCB     $10
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 16 - 02/18/2026 09:15:49 PM
+     680/    EC9F : 10                                  FCB     $10
+     680/    ECA0 : 10                                  FCB     $10
+     680/    ECA1 : 10                                  FCB     $10
+     680/    ECA2 : 10                                  FCB     $10
+     680/    ECA3 : 10                                  FCB     $10
+     680/    ECA4 : 10                                  FCB     $10
+     680/    ECA5 : 10                                  FCB     $10
+     680/    ECA6 : 10                                  FCB     $10
+     680/    ECA7 : 10                                  FCB     $10
+     680/    ECA8 : 10                                  FCB     $10
+     680/    ECA9 : 10                                  FCB     $10
+     680/    ECAA : 10                                  FCB     $10
+     680/    ECAB : 10                                  FCB     $10
+     680/    ECAC : 10                                  FCB     $10
+     680/    ECAD : 10                                  FCB     $10
+     680/    ECAE : 10                                  FCB     $10
+     680/    ECAF : 10                                  FCB     $10
+     680/    ECB0 : 10                                  FCB     $10
+     680/    ECB1 : 10                                  FCB     $10
+     680/    ECB2 : 10                                  FCB     $10
+     680/    ECB3 : 10                                  FCB     $10
+     680/    ECB4 : 10                                  FCB     $10
+     680/    ECB5 : 10                                  FCB     $10
+     680/    ECB6 : 10                                  FCB     $10
+     680/    ECB7 : 10                                  FCB     $10
+     680/    ECB8 : 10                                  FCB     $10
+     680/    ECB9 : 10                                  FCB     $10
+     680/    ECBA : 10                                  FCB     $10
+     680/    ECBB : 10                                  FCB     $10
+     680/    ECBC : 10                                  FCB     $10
+     680/    ECBD : 10                                  FCB     $10
+     680/    ECBE : 10                                  FCB     $10
+     680/    ECBF : 10                                  FCB     $10
+     680/    ECC0 : 10                                  FCB     $10
+     680/    ECC1 : 10                                  FCB     $10
+     680/    ECC2 : 10                                  FCB     $10
+     680/    ECC3 : 10                                  FCB     $10
+     680/    ECC4 : 10                                  FCB     $10
+     680/    ECC5 : 10                                  FCB     $10
+     680/    ECC6 : 10                                  FCB     $10
+     680/    ECC7 : 10                                  FCB     $10
+     680/    ECC8 : 10                                  FCB     $10
+     680/    ECC9 : 10                                  FCB     $10
+     680/    ECCA : 10                                  FCB     $10
+     680/    ECCB : 10                                  FCB     $10
+     680/    ECCC : 10                                  FCB     $10
+     680/    ECCD : 10                                  FCB     $10
+     680/    ECCE : 10                                  FCB     $10
+     680/    ECCF : 10                                  FCB     $10
+     680/    ECD0 : 10                                  FCB     $10
+     680/    ECD1 : 10                                  FCB     $10
+     680/    ECD2 : 10                                  FCB     $10
+     680/    ECD3 : 10                                  FCB     $10
+     680/    ECD4 : 10                                  FCB     $10
+     680/    ECD5 : 10                                  FCB     $10
+     680/    ECD6 : 10                                  FCB     $10
+     680/    ECD7 : 10                                  FCB     $10
+     680/    ECD8 : 10                                  FCB     $10
+     680/    ECD9 : 10                                  FCB     $10
+     680/    ECDA : 10                                  FCB     $10
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 16 - 02/18/2026 09:30:05 PM
 
 
-     677/    ECDE : 10                                  FCB     $10
-     677/    ECDF : 10                                  FCB     $10
-     677/    ECE0 : 10                                  FCB     $10
-     677/    ECE1 : 10                                  FCB     $10
-     677/    ECE2 : 10                                  FCB     $10
-     677/    ECE3 : 10                                  FCB     $10
-     677/    ECE4 : 10                                  FCB     $10
-     677/    ECE5 : 10                                  FCB     $10
-     677/    ECE6 : 10                                  FCB     $10
-     677/    ECE7 : 10                                  FCB     $10
-     677/    ECE8 : 10                                  FCB     $10
-     677/    ECE9 : 10                                  FCB     $10
-     677/    ECEA : 10                                  FCB     $10
-     677/    ECEB : 10                                  FCB     $10
-     677/    ECEC : 10                                  FCB     $10
-     677/    ECED : 10                                  FCB     $10
-     677/    ECEE : 10                                  FCB     $10
-     677/    ECEF : 10                                  FCB     $10
-     677/    ECF0 : 10                                  FCB     $10
-     677/    ECF1 : 10                                  FCB     $10
-     677/    ECF2 : 10                                  FCB     $10
-     677/    ECF3 : 10                                  FCB     $10
-     677/    ECF4 : 10                                  FCB     $10
-     677/    ECF5 : 10                                  FCB     $10
-     677/    ECF6 : 10                                  FCB     $10
-     677/    ECF7 : 10                                  FCB     $10
-     677/    ECF8 : 10                                  FCB     $10
-     677/    ECF9 : 10                                  FCB     $10
-     677/    ECFA : 10                                  FCB     $10
-     677/    ECFB : 10                                  FCB     $10
-     677/    ECFC : 10                                  FCB     $10
-     677/    ECFD : 10                                  FCB     $10
-     677/    ECFE : 10                                  FCB     $10
-     677/    ECFF : 10                                  FCB     $10
-     679/    ED00 :                                     
-     680/    ED00 :                     
-     681/    ED00 :                     ; ################################################################
-     682/    ED00 :                     ; Extended ROM
-     683/    ED00 :                     ; ################################################################
-     684/    ED00 :                                       ORG $ED00
-     685/    ED00 :                     
-     686/    ED00 : BD ED 22            CLKDMD          JSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
-     687/    ED03 : E6 01                               LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
-     688/    ED05 : 4F                                  CLRA                             ; EB89: 4F        ;  
-     689/    ED06 : E6 03               CONT01          LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
-     690/    ED08 : 2A FC                               BPL     CONT01                   ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
-     691/    ED0A : E6 01                               LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
-     692/    ED0C : 5F                  IDXHER          CLRB                             ; EB90: 5F        ;  
-     693/    ED0D : 5A                  IEB91           DECB                             ; EB91: 5A        ; Wait
-     694/    ED0E : 26 FD                               BNE     IEB91                    ; EB92: 26 FD     ; |
-     695/    ED10 : 4C                                  INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
-     696/    ED11 : 6D 03                               TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
-     697/    ED13 : 2A F7                               BPL     IDXHER                   ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
-     698/    ED15 : 5C                                  INCB                             ; EB99: 5C        ; B is 1 now
-     699/    ED16 : 80 4B                               SUBA    #$4B                     ; EB9A: 80 4B     ;  
-     700/    ED18 : 5C                  IEB9C           INCB                             ; EB9C: 5C        ;  
-     701/    ED19 : 80 16               CONT02          SUBA    #$16                     ; EB9D: 80 16     ;  
-     702/    ED1B : 24 FB                               BCC     IEB9C                    ; EB9F: 24 FB     ;  
-     703/    ED1D : D7 19                               STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
-     704/    ED1F : 7E E9 A8                            JMP     EXITHNDLR  ; -->         ; EBA3: 7E E9 91  ; EXITHNDLR has RTS
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 17 - 02/18/2026 09:15:49 PM
+     680/    ECDB : 10                                  FCB     $10
+     680/    ECDC : 10                                  FCB     $10
+     680/    ECDD : 10                                  FCB     $10
+     680/    ECDE : 10                                  FCB     $10
+     680/    ECDF : 10                                  FCB     $10
+     680/    ECE0 : 10                                  FCB     $10
+     680/    ECE1 : 10                                  FCB     $10
+     680/    ECE2 : 10                                  FCB     $10
+     680/    ECE3 : 10                                  FCB     $10
+     680/    ECE4 : 10                                  FCB     $10
+     680/    ECE5 : 10                                  FCB     $10
+     680/    ECE6 : 10                                  FCB     $10
+     680/    ECE7 : 10                                  FCB     $10
+     680/    ECE8 : 10                                  FCB     $10
+     680/    ECE9 : 10                                  FCB     $10
+     680/    ECEA : 10                                  FCB     $10
+     680/    ECEB : 10                                  FCB     $10
+     680/    ECEC : 10                                  FCB     $10
+     680/    ECED : 10                                  FCB     $10
+     680/    ECEE : 10                                  FCB     $10
+     680/    ECEF : 10                                  FCB     $10
+     680/    ECF0 : 10                                  FCB     $10
+     680/    ECF1 : 10                                  FCB     $10
+     680/    ECF2 : 10                                  FCB     $10
+     680/    ECF3 : 10                                  FCB     $10
+     680/    ECF4 : 10                                  FCB     $10
+     680/    ECF5 : 10                                  FCB     $10
+     680/    ECF6 : 10                                  FCB     $10
+     680/    ECF7 : 10                                  FCB     $10
+     680/    ECF8 : 10                                  FCB     $10
+     680/    ECF9 : 10                                  FCB     $10
+     680/    ECFA : 10                                  FCB     $10
+     680/    ECFB : 10                                  FCB     $10
+     680/    ECFC : 10                                  FCB     $10
+     680/    ECFD : 10                                  FCB     $10
+     680/    ECFE : 10                                  FCB     $10
+     680/    ECFF : 10                                  FCB     $10
+     682/    ED00 :                                     
+     683/    ED00 :                     
+     684/    ED00 :                     ; ################################################################
+     685/    ED00 :                     ; Extended ROM
+     686/    ED00 :                     ; ################################################################
+     687/    ED00 :                                       ORG $ED00
+     688/    ED00 :                     
+     689/    ED00 : BD ED 22            CLKDMD          JSR     RETRG                    ; EB85: 8D ED     ; Retrigger NMI Timer
+     690/    ED03 : E6 01                               LDAB    $01,X                    ; EB87: E6 01     ; PIAREGB Clear Interrupt Flag
+     691/    ED05 : 4F                                  CLRA                             ; EB89: 4F        ;  
+     692/    ED06 : E6 03               CONT01          LDAB    $03,X                    ; EB8A: E6 03     ; PIACTRLB
+     693/    ED08 : 2A FC                               BPL     CONT01                   ; EB8C: 2A FC     ; Wait for IRQB on CB1 (IDX)
+     694/    ED0A : E6 01                               LDAB    $01,X                    ; EB8E: E6 01     ; PIAREGB Clear Interrupt Flag
+     695/    ED0C : 5F                  IDXHER          CLRB                             ; EB90: 5F        ;  
+     696/    ED0D : 5A                  IEB91           DECB                             ; EB91: 5A        ; Wait
+     697/    ED0E : 26 FD                               BNE     IEB91                    ; EB92: 26 FD     ; |
+     698/    ED10 : 4C                                  INCA                             ; EB94: 4C        ; In A is the ammount of 256 ticks
+     699/    ED11 : 6D 03                               TST     $03,X                    ; EB95: 6D 03     ; PIACTRLB
+     700/    ED13 : 2A F7                               BPL     IDXHER                   ; EB97: 2A F7     ; Wait for IRQB on CB1 (IDX) 166ms later
+     701/    ED15 : 5C                                  INCB                             ; EB99: 5C        ; B is 1 now
+     702/    ED16 : 80 4B                               SUBA    #$4B                     ; EB9A: 80 4B     ;  
+     703/    ED18 : 5C                  IEB9C           INCB                             ; EB9C: 5C        ;  
+     704/    ED19 : 80 16               CONT02          SUBA    #$16                     ; EB9D: 80 16     ;  
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 17 - 02/18/2026 09:30:05 PM
 
 
-     705/    ED22 :                     
-     706/    ED22 :                     ;------------------------------------------------
-     707/    ED22 :                     ; from here new code
-     708/    ED22 :                     ;------------------------------------------------                
-     709/    ED22 : CE EC 00            RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ; 
-     710/    ED25 : 86 36                               LDAA    #$36                     ; EB77: 86 36     ; |
-     711/    ED27 : A7 03                               STAA    $03,X                    ; EB79: A7 03     ; $36 -> PIACTRLB (CB2 Low - Trigger NMI Timer, IRQB Flag set by HL on CB1 - IDX, Select Output Reg. B)
-     712/    ED29 : 86 3E                               LDAA    #$3E                     ; EB7B: 86 3E     ; |
-     713/    ED2B : A7 03                               STAA    $03,X                    ; EB7D: A7 03     ; $3E -> PIACTRLB (CB2 high)
-     714/    ED2D : E6 00                               LDAB    ,X                       ; EB7F: E6 00     ; Get Port A
-     715/    ED2F : 4A                                  DECA                             ; EB81: 4A        ; 
-     716/    ED30 : A7 02                               STAA    $02,X                    ; EB82: A7 02     ; $3D -> PIACTRLA (En. IRQA interrupt by CA1 - NMI Timer, Sel. Output Reg. A, CA2 high - STEP)
-     717/    ED32 : 39                                  RTS                              ; EB84: 39        ; 
-     718/    ED33 :                     ;------------------------------------------------
-     719/    ED33 :                     ;
-     720/    ED33 :                     ;------------------------------------------------
-     721/    ED33 : 9E 16               NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ; 
-     722/    ED35 : C6 35                               LDAB    #$35                     ; E93B: C6 35     ; Set Error '5' (TIMEOUT)
-     723/    ED37 :                     ;                CPX     #MC637                   ; E93D: 8C C6 37  ; 
-     724/    ED37 : 8C                                  FCB     $8C
-     725/    ED38 : C6 37               xSERR7          LDAB    #$37                                       ; Set Error '7' (SEEK ERROR)
-     726/    ED3A : D7 08               SETERR         STAB    FDSTAT                   ; E940: D7 08     ; 
-     727/    ED3C : BD E9 A8                            JSR     EXITHNDLR                ; E942: 8D 4D     ; 
-     728/    ED3F : 0D                                  SEC                              ; E944: 0D        ; 
-     729/    ED40 : 39                                  RTS                              ; E945: 39        ; 
-     730/    ED41 :                     
-     731/    ED41 :                     
-     732/    ED41 :                     ;ED00     jmp WRITINI
-     733/    ED41 :                     ;ED03    jmp TOP
-     734/    ED41 :                     ;ED06    jmp LPINIT
-     735/    ED41 :                     ;ED09    jmp LIST
-     736/    ED41 :                     ;ED0C    jmp LDATA
-     737/    ED41 :                     ;ED0F    jmp LDATA1
-     738/    ED41 :                     ;ED12    jmp EXIT
-     739/    ED41 :                     ;ED15    jmp EXIT
-     740/    ED41 :                     ;ED18    jmp EXIT
-     741/    ED41 :                     ;EXIT    rts
-     742/    ED41 :                     
-     743/    ED41 :                     ;------------------------------------------------
-     744/    ED41 :                     ; Disk Mini Diagnostic Routine (CLRTOP is in original ROM)
-     745/    ED41 :                     ;------------------------------------------------
-     746/    ED41 : BD E8 22            TOPEXT          JSR     FDINIT                   ; EB98: BD E8 22 ; Diagnostic without clear
-     747/    ED44 : BD E8 75                            JSR     RESTOR                   ; EB9B: BD E8 75 ; 
-     748/    ED47 : DE 20               ZEB9E           LDX     LDADDR                   ; EB9E: DE 20    ; 
-     749/    ED49 : DF 06                               STX     CURADRH                  ; EBA0: DF 06    ; 
-     750/    ED4B : DE 22                               LDX     EXADDR                   ; EBA2: DE 22    ; must contain addres of function (READSC,...)
-     751/    ED4D : AD 00                               JSR     ,X                       ; EBA4: AD 00    ; 
-     752/    ED4F : 96 24                               LDAA    ONECON                   ; EBA6: 96 24    ; 
-     753/    ED51 : 26 0F                               BNE     ZEBB9                    ; EBA8: 26 0F    ; 
-     754/    ED53 : 97 07                               STAA    CURADRL                  ; EBAA: 97 07    ; 
-     755/    ED55 : 78 00 08                            ASL     FDSTAT                   ; EBAC: 78 00 08 ; 
-     756/    ED58 : DE 07                               LDX     CURADRL                  ; EBAF: DE 07    ; 
-     757/    ED5A : 6C 01                               INC     $01,X                    ; EBB1: 6C 01    ; 
-     758/    ED5C : 26 E9                               BNE     ZEB9E                    ; EBB3: 26 E9    ; 
-     759/    ED5E : 6C 00                               INC     ,X                       ; EBB5: 6C 00    ; 
-     760/    ED60 : 26 E5                               BNE     ZEB9E                    ; EBB7: 26 E5    ; 
-     761/    ED62 : 7E E8 55            ZEBB9           JMP     PRNTE2                   ; EBB9: 7E E8 55 ; Print Error Code
-     762/    ED65 :                     
-     763/    ED65 :                     ;------------------------------------------------
-     764/    ED65 :                     ; Line Printer Routines
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 18 - 02/18/2026 09:15:49 PM
+     705/    ED1B : 24 FB                               BCC     IEB9C                    ; EB9F: 24 FB     ;  
+     706/    ED1D : D7 19                               STAB    CLKFREQ                  ; EBA1: D7 19     ; B is 3 for 1MHz
+     707/    ED1F : 7E E9 A8                            JMP     EXITHNDLR  ; -->         ; EBA3: 7E E9 91  ; EXITHNDLR has RTS
+     708/    ED22 :                     
+     709/    ED22 :                     ;------------------------------------------------
+     710/    ED22 :                     ; from here new code
+     711/    ED22 :                     ;------------------------------------------------                
+     712/    ED22 : CE EC 00            RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ; 
+     713/    ED25 : 86 36                               LDAA    #$36                     ; EB77: 86 36     ; |
+     714/    ED27 : A7 03                               STAA    $03,X                    ; EB79: A7 03     ; $36 -> PIACTRLB (CB2 Low - Trigger NMI Timer, IRQB Flag set by HL on CB1 - IDX, Select Output Reg. B)
+     715/    ED29 : 86 3E                               LDAA    #$3E                     ; EB7B: 86 3E     ; |
+     716/    ED2B : A7 03                               STAA    $03,X                    ; EB7D: A7 03     ; $3E -> PIACTRLB (CB2 high)
+     717/    ED2D : E6 00                               LDAB    ,X                       ; EB7F: E6 00     ; Get Port A
+     718/    ED2F : 4A                                  DECA                             ; EB81: 4A        ; 
+     719/    ED30 : A7 02                               STAA    $02,X                    ; EB82: A7 02     ; $3D -> PIACTRLA (En. IRQA interrupt by CA1 - NMI Timer, Sel. Output Reg. A, CA2 high - STEP)
+     720/    ED32 : 39                                  RTS                              ; EB84: 39        ; 
+     721/    ED33 :                     ;------------------------------------------------
+     722/    ED33 :                     ;
+     723/    ED33 :                     ;------------------------------------------------
+     724/    ED33 : 9E 16               NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ; 
+     725/    ED35 : C6 35                               LDAB    #$35                     ; E93B: C6 35     ; Set Error '5' (TIMEOUT)
+     726/    ED37 :                     ;                CPX     #MC637                   ; E93D: 8C C6 37  ; 
+     727/    ED37 : 8C                                  FCB     $8C
+     728/    ED38 : C6 37               xSERR7          LDAB    #$37                                       ; Set Error '7' (SEEK ERROR)
+     729/    ED3A : D7 08               SETERR         STAB    FDSTAT                   ; E940: D7 08     ; 
+     730/    ED3C : BD E9 A8                            JSR     EXITHNDLR                ; E942: 8D 4D     ; 
+     731/    ED3F : 0D                                  SEC                              ; E944: 0D        ; 
+     732/    ED40 : 39                                  RTS                              ; E945: 39        ; 
+     733/    ED41 :                     
+     734/    ED41 :                     
+     735/    ED41 :                     ;ED00     jmp WRITINI
+     736/    ED41 :                     ;ED03    jmp TOP
+     737/    ED41 :                     ;ED06    jmp LPINIT
+     738/    ED41 :                     ;ED09    jmp LIST
+     739/    ED41 :                     ;ED0C    jmp LDATA
+     740/    ED41 :                     ;ED0F    jmp LDATA1
+     741/    ED41 :                     ;ED12    jmp EXIT
+     742/    ED41 :                     ;ED15    jmp EXIT
+     743/    ED41 :                     ;ED18    jmp EXIT
+     744/    ED41 :                     ;EXIT    rts
+     745/    ED41 :                     
+     746/    ED41 :                     ;------------------------------------------------
+     747/    ED41 :                     ; Disk Mini Diagnostic Routine (CLRTOP is in original ROM)
+     748/    ED41 :                     ;------------------------------------------------
+     749/    ED41 : BD E8 22            TOPEXT          JSR     FDINIT                   ; EB98: BD E8 22 ; Diagnostic without clear
+     750/    ED44 : BD E8 75                            JSR     RESTOR                   ; EB9B: BD E8 75 ; 
+     751/    ED47 : DE 20               ZEB9E           LDX     LDADDR                   ; EB9E: DE 20    ; 
+     752/    ED49 : DF 06                               STX     CURADRH                  ; EBA0: DF 06    ; 
+     753/    ED4B : DE 22                               LDX     EXADDR                   ; EBA2: DE 22    ; must contain addres of function (READSC,...)
+     754/    ED4D : AD 00                               JSR     ,X                       ; EBA4: AD 00    ; 
+     755/    ED4F : 96 24                               LDAA    ONECON                   ; EBA6: 96 24    ; 
+     756/    ED51 : 26 0F                               BNE     ZEBB9                    ; EBA8: 26 0F    ; 
+     757/    ED53 : 97 07                               STAA    CURADRL                  ; EBAA: 97 07    ; 
+     758/    ED55 : 78 00 08                            ASL     FDSTAT                   ; EBAC: 78 00 08 ; 
+     759/    ED58 : DE 07                               LDX     CURADRL                  ; EBAF: DE 07    ; 
+     760/    ED5A : 6C 01                               INC     $01,X                    ; EBB1: 6C 01    ; 
+     761/    ED5C : 26 E9                               BNE     ZEB9E                    ; EBB3: 26 E9    ; 
+     762/    ED5E : 6C 00                               INC     ,X                       ; EBB5: 6C 00    ; 
+     763/    ED60 : 26 E5                               BNE     ZEB9E                    ; EBB7: 26 E5    ; 
+     764/    ED62 : 7E E8 55            ZEBB9           JMP     PRNTE2                   ; EBB9: 7E E8 55 ; Print Error Code
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 18 - 02/18/2026 09:30:05 PM
 
 
-     765/    ED65 :                     ;------------------------------------------------
-     766/    ED65 : CE FF 2E            LPINITEXT       LDX     #$FF2E                   ; EBC0: CE FF 2E ; Line Printer Init
-     767/    ED68 : FF EC 10                            STX     LPTPIA0                  ; EBC3: FF EC 10 ; <------- PIA here ?
-     768/    ED6B : 86 3C                               LDAA    #$3C                     ; EBC6: 86 3C    ; 
-     769/    ED6D : B7 EC 13                            STAA    LPTPIA3                  ; EBC8: B7 EC 13 ; <------- PIA here ?
-     770/    ED70 : 39                                  RTS                              ; EBCB: 39       ; 
-     771/    ED71 :                     ;------------------------------------------------
-     772/    ED71 : B7 EC 10            LPLISTEXT       STAA    LPTPIA0                  ; EBCC: B7 EC 10 ; Print contents of A
-     773/    ED74 : B6 EC 10                            LDAA    LPTPIA0                  ; EBCF: B6 EC 10 ; <------- PIA here ?
-     774/    ED77 : 37                  ZEBD2           PSHB                             ; EBD2: 37       ; 
-     775/    ED78 : F6 EC 12                            LDAB    LPTPIA2                  ; EBD3: F6 EC 12 ; <------- PIA here ?
-     776/    ED7B : C4 03                               ANDB    #$03                     ; EBD6: C4 03    ; 
-     777/    ED7D : 5A                                  DECB                             ; EBD8: 5A       ; 
-     778/    ED7E : 33                                  PULB                             ; EBD9: 33       ; 
-     779/    ED7F : 26 06                               BNE     ZEBE2                    ; EBDA: 26 06    ; 
-     780/    ED81 : 7D EC 11                            TST     LPTPIA1                  ; EBDC: 7D EC 11 ; <------- PIA here ?
-     781/    ED84 : 2A F1                               BPL     ZEBD2                    ; EBDF: 2A F1    ; 
-     782/    ED86 : 39                                  RTS                              ; EBE1: 39       ; 
-     783/    ED87 :                     ;------------------------------------------------
-     784/    ED87 : 0D                  ZEBE2           SEC                              ; EBE2: 0D       ; 
-     785/    ED88 : 39                                  RTS                              ; EBE3: 39       ; 
-     786/    ED89 :                     ;------------------------------------------------
-     787/    ED89 : 86 0D               LPDATEXT        LDAA    #$0D                     ; EBE4: 86 0D    ; Send String to Printer
-     788/    ED8B : 8D E4               ZEBE6           BSR     LPLISTEXT                ; EBE6: 8D E4    ; 
-     789/    ED8D : 25 FC                               BCS     ZEBE6                    ; EBE8: 25 FC    ; 
-     790/    ED8F : 86 0A                               LDAA    #$0A                     ; EBEA: 86 0A    ; 
-     791/    ED91 : 09                                  DEX                              ; EBEC: 09       ; 
-     792/    ED92 : 8D DD               ZEBED           BSR     LPLISTEXT                ; EBED: 8D DD    ; 
-     793/    ED94 : 25 FC                               BCS     ZEBED                    ; EBEF: 25 FC    ; 
-     794/    ED96 : 08                                  INX                              ; EBF1: 08       ; 
-     795/    ED97 : A6 00               LPDAT0EXT       LDAA    ,X                       ; EBF2: A6 00    ; 
-     796/    ED99 : 81 04                               CMPA    #$04                     ; EBF4: 81 04    ; 
-     797/    ED9B : 26 F5                               BNE     ZEBED                    ; EBF6: 26 F5    ; 
-     798/    ED9D : 39                                  RTS                              ; EBF8: 39       ; 
-     799/    ED9E :                     ;------------------------------------------------
-     800/    ED9E :                     
-     801/    ED9E :                     
-     802/    ED9E :                     
+     765/    ED65 :                     
+     766/    ED65 :                     ;------------------------------------------------
+     767/    ED65 :                     ; Line Printer Routines
+     768/    ED65 :                     ;------------------------------------------------
+     769/    ED65 : CE FF 2E            LPINITEXT       LDX     #$FF2E                   ; EBC0: CE FF 2E ; Line Printer Init
+     770/    ED68 : FF EC 10                            STX     LPTPIA0                  ; EBC3: FF EC 10 ; <------- PIA here ?
+     771/    ED6B : 86 3C                               LDAA    #$3C                     ; EBC6: 86 3C    ; 
+     772/    ED6D : B7 EC 13                            STAA    LPTPIA3                  ; EBC8: B7 EC 13 ; <------- PIA here ?
+     773/    ED70 : 39                                  RTS                              ; EBCB: 39       ; 
+     774/    ED71 :                     ;------------------------------------------------
+     775/    ED71 : B7 EC 10            LPLISTEXT       STAA    LPTPIA0                  ; EBCC: B7 EC 10 ; Print contents of A
+     776/    ED74 : B6 EC 10                            LDAA    LPTPIA0                  ; EBCF: B6 EC 10 ; <------- PIA here ?
+     777/    ED77 : 37                  ZEBD2           PSHB                             ; EBD2: 37       ; 
+     778/    ED78 : F6 EC 12                            LDAB    LPTPIA2                  ; EBD3: F6 EC 12 ; <------- PIA here ?
+     779/    ED7B : C4 03                               ANDB    #$03                     ; EBD6: C4 03    ; 
+     780/    ED7D : 5A                                  DECB                             ; EBD8: 5A       ; 
+     781/    ED7E : 33                                  PULB                             ; EBD9: 33       ; 
+     782/    ED7F : 26 06                               BNE     ZEBE2                    ; EBDA: 26 06    ; 
+     783/    ED81 : 7D EC 11                            TST     LPTPIA1                  ; EBDC: 7D EC 11 ; <------- PIA here ?
+     784/    ED84 : 2A F1                               BPL     ZEBD2                    ; EBDF: 2A F1    ; 
+     785/    ED86 : 39                                  RTS                              ; EBE1: 39       ; 
+     786/    ED87 :                     ;------------------------------------------------
+     787/    ED87 : 0D                  ZEBE2           SEC                              ; EBE2: 0D       ; 
+     788/    ED88 : 39                                  RTS                              ; EBE3: 39       ; 
+     789/    ED89 :                     ;------------------------------------------------
+     790/    ED89 : 86 0D               LPDATEXT        LDAA    #$0D                     ; EBE4: 86 0D    ; Send String to Printer
+     791/    ED8B : 8D E4               ZEBE6           BSR     LPLISTEXT                ; EBE6: 8D E4    ; 
+     792/    ED8D : 25 FC                               BCS     ZEBE6                    ; EBE8: 25 FC    ; 
+     793/    ED8F : 86 0A                               LDAA    #$0A                     ; EBEA: 86 0A    ; 
+     794/    ED91 : 09                                  DEX                              ; EBEC: 09       ; 
+     795/    ED92 : 8D DD               ZEBED           BSR     LPLISTEXT                ; EBED: 8D DD    ; 
+     796/    ED94 : 25 FC                               BCS     ZEBED                    ; EBEF: 25 FC    ; 
+     797/    ED96 : 08                                  INX                              ; EBF1: 08       ; 
+     798/    ED97 : A6 00               LPDAT0EXT       LDAA    ,X                       ; EBF2: A6 00    ; 
+     799/    ED99 : 81 04                               CMPA    #$04                     ; EBF4: 81 04    ; 
+     800/    ED9B : 26 F5                               BNE     ZEBED                    ; EBF6: 26 F5    ; 
+     801/    ED9D : 39                                  RTS                              ; EBF8: 39       ; 
+     802/    ED9E :                     ;------------------------------------------------
      803/    ED9E :                     
-     804/    EFFE :                                     ORG     $EFFE          ; Just to make sure the Area from End to EFFF is filled
-     805/    EFFE : 07 50                               FDB     $0750
-     806/    F000 :                     
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 19 - 02/18/2026 09:15:49 PM
+     804/    ED9E :                     
+     805/    ED9E :                     
+     806/    ED9E :                     
+     807/    EFFE :                                     ORG     $EFFE          ; Just to make sure the Area from End to EFFF is filled
+     808/    EFFE : 07 50                               FDB     $0750
+     809/    F000 :                     
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 19 - 02/18/2026 09:30:05 PM
 
 
   Symbol Table (* = unused):
@@ -1177,7 +1180,7 @@
 *NESTMAX :                      100 - |  NMIISR :                      ED33 C |
  NMISVC :                      FFFC - |  NMIVECSAV :                      F - |
  NOCRC :                       EA07 C |  NUMSCTH :                        3 - |
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 20 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 20 - 02/18/2026 09:30:05 PM
 
 
  NUMSCTL :                        4 - |  NXTSEC :                      E9DF C |
@@ -1203,7 +1206,7 @@
  START :                       E9F1 C |  STATSAV :                        D - |
  STEP :                        E95D C |  STORE :                       E8D1 C |
  STRSCTH :                        1 - |  STRSCTL :                        2 - |
-*TIME :               "09:15:49 PM" - | *TOP :                         EB98 C |
+*TIME :               "09:30:05 PM" - | *TOP :                         EB98 C |
  TOPEXT :                      ED41 C |  TRACKSAV :                      13 - |
 *TRUE :                           1 - | *VERSION :                     142F - |
  WAIT1 :                       E96C C |  WAIT2 :                       E973 C |
@@ -1222,7 +1225,7 @@
     187 symbols
      53 unused symbols
 
- AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 21 - 02/18/2026 09:15:49 PM
+ AS V1.42 Beta [Bld 216] - Source File floppy2_commented.asm - Page 21 - 02/18/2026 09:30:05 PM
 
 
   Code Pages:
@@ -1232,10 +1235,10 @@ STANDARD (0 changed characters)
 
 1 code page
 
-0.01 seconds assembly time
+0.00 seconds assembly time
 
-    806 lines source file
-   1062 lines incl. macro expansions
+    809 lines source file
+   1065 lines incl. macro expansions
       2 passes
       0 errors
       0 warnings
