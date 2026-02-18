@@ -11898,9 +11898,9 @@
 		)
 		(uuid "2a182aa7-9ffc-4900-8589-a26de8856af9")
 	)
-	(text "HLD is low when active"
+	(text "HLD is low when active,\nunfortunately it is high when stepping!"
 		(exclude_from_sim no)
-		(at 164.338 -11.176 0)
+		(at 159.766 -5.842 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -23427,7 +23427,7 @@
 		(uuid "d7f8202c-56cc-4b7c-b796-0bd2d059b7ea")
 	)
 	(label "HLD"
-		(at 180.34 -11.43 0)
+		(at 179.07 -1.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)

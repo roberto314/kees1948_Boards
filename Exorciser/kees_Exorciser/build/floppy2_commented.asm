@@ -186,18 +186,26 @@ CLOCK           LDAB    #$04                     ; E887: C6 04    ; Bit 2 set   
                  ANDA    #$03                     ; | mask dries > 3
                  STAA    $FE05                    ; in $FE04,5 is a pointer to the variable for the current track / drive  
                  STAA    CURDRV 
-                 ;BEQ     DRVZRO                   ;  
+                 LDAA    PIAREGA                  ; Get PA0..7   
+                 ANDA    #$EE                     ; Mask DS0 and HLD
+                 ;ORAA    #$10                     ; DEBUG Reset HLD while in floppy firmware and set it on exit
+                 LDAB    CURDRV                   ; Whats is the current drive
+                 ANDB    #$01                     ; Mask Bit 0 for Drive 0 or 2
+                 BEQ     DRVZRO                   ; Is it zero?
+                 ORA     #$01                     ; If not Set PA0
                  ;LDAA    #$03                     ; If drive is NOT zero set PA0,1 high
 DRVZRO           STAA    PIAREGA                  ; Write TG43, DIRQ, HLD low, Set DS0, DS1 according to CURDRV (DS1 is NOT used)
                  LDX     $FE04                    ; Get pointer
                  LDAA    ,X                       ; Get the Track of Drive
                  STAA    TRACKSAV                 ; Store it
                  
-                 LDAA    #$62                     ; Set DS3(side) and DS2 high
+                 LDAA    PIAREGB                  ;
+                 ORAA    #$20                     ; Set WG and PB0(RESET) and DS2
+                 ;LDAA    #$62                     ; Set DS3(side) and DS2 high
                  LDAB    CURDRV                   ;
-                 ANDB    #$02                     ; if Drive 2 or 3 is set
-                 BEQ     STORE                    ; If Drive 0 or 1 is active, Set PB5
-                 LDAA    #$42                     ; Set Side high and DS2 low
+                 ANDB    #$02                     ; Check if Drive 2 or 3 is set
+                 BEQ     STORE                    ; If Drive 0 or 1 is active, Leave DS2(PB5) High
+                 ANDA    #$DF                     ; Set DS2 low
 STORE            STAA    PIAREGB
 
                 LDAA    #$40                     ; E8B4: 86 40     ; PA6 (RDY)
@@ -213,7 +221,8 @@ SERR3           LDAB    #$33                     ; E8BB: C6 33     ; Error '3' (
 ;                CPX     #MC636                   ; E8BD: 8C C6 36  ; 
                 FCB     $8C
 SERR6           LDAB    #$36                                       ; Set Error '6' (INVALID DISK ADDRESS)
-                BRA     SETERR                   ; E8C0: 20 7E     ; 
+                JMP     SETERR                   ; E8C0: 20 7E     ; 
+;                BRA     SETERR                   ; E8C0: 20 7E     ; 
 ;------------------------------------------------
 DRVRDY          BITB    #$08                     ; E8C2: C5 08     ; Get Bit3 from FUNCSAV (RESTOR)
                 BEQ     RESTORN                  ; E8C4: 27 05     ; Not RESTOR
@@ -285,15 +294,16 @@ IE91F           STAB    PIAREGA                  ; E91F: F7 EC 00  ; Write to Po
 ;------------------------------------------------
 ;
 ;------------------------------------------------
-NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ; 
-                LDAB    #$35                     ; E93B: C6 35     ; Set Error '5' (TIMEOUT)
-;                CPX     #MC637                   ; E93D: 8C C6 37  ; 
-                FCB     $8C
-SERR7           LDAB    #$37                                       ; Set Error '7' (SEEK ERROR)
-SETERR          STAB    FDSTAT                   ; E940: D7 08     ; 
-                BSR     EXITHNDLR                ; E942: 8D 4D     ; 
-                SEC                              ; E944: 0D        ; 
-                RTS                              ; E945: 39        ; 
+SERR7           JMP     xSERR7
+;NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ; 
+;                LDAB    #$35                     ; E93B: C6 35     ; Set Error '5' (TIMEOUT)
+;;                CPX     #MC637                   ; E93D: 8C C6 37  ; 
+;                FCB     $8C
+;SERR7           LDAB    #$37                                       ; Set Error '7' (SEEK ERROR)
+;SETERR          STAB    FDSTAT                   ; E940: D7 08     ; 
+;                BSR     EXITHNDLR                ; E942: 8D 4D     ; 
+;                SEC                              ; E944: 0D        ; 
+;                RTS                              ; E945: 39        ; 
 ;------------------------------------------------
 ;
 ;------------------------------------------------
@@ -376,7 +386,7 @@ DRIVETHREE      STX     PIAREGB   ;write PIAREGB, changed   ; E994: FF EC 01  ; 
 ; if sector >= 27 - steps to next Track,
 ; updates SECTCNT, SofTRK, CWRDCNT, DWRDCNT
 ;------------------------------------------------
-;                  ORG $E9C9
+;                 
 INCTRK          STAA    SofTRK                   ; E9CA: 97 0A     ; store new Sector of Track
                 JSR     STEP                     ; E9CC: BD E9 46  ; move to next Track (X = 0)
                 BSR     WAIT2                    ; E9CF: 8D 8B     ; wait some more (X = 0)
@@ -385,7 +395,7 @@ NXTSEC          INC     SofTRK                   ; E9D3: 7C 00 0A  ; increment S
                 LDAA    SofTRK                   ; E9D6: 96 0A     ; Load it to A
                 LDX     SECTCNT                  ; E9D8: DE 0B     ; Load Sector count
                 BEQ     SECRDDONE   ; -->        ; E9DA: 27 A8     ; done?
-                SUBA    #$1B                     ; E9DC: 80 1B     ; Sector == 27?
+                SUBA    #27                     ; E9DC: 80 1B     ; Sector == 27?
                 BCC     INCTRK                   ; E9DE: 24 EA     ; increase Track
                 LDAA    #$05                     ; E9E0: 86 05     ; 
                 STAA    DRDCNT                   ; E9E2: 97 18     ; Data Read Counter
@@ -406,12 +416,12 @@ IE9F2           STAA    DWRDCNT                  ; E9F2: 97 15     ; is $40 for 
 NOCRC           ADDA    #$40                     ; E9FB: 8B 40     ; 
                 STAA    CWRDCNT                  ; E9FD: 97 09     ; 
                 JSR     RETRG                    ; E9FF: BD EB 74  ; Retrigger NMI Timer X <- EC00
-                LDAA    TRACKSAV                 ; EA02: 96 13     ; 
-                ORAB    #$0C                     ; EA04: CA 0C     ; In B is FUNCSAV<<1, isol. Bit 2,3 (RWTEST, WRTEST, CLOCK)
-                CMPA    #$2B                     ; EA06: 81 2B     ; check for Track > 43
-                BLS     IEA0C                    ; EA08: 23 02     ; No
-                ANDB    #$FB                     ; EA0A: C4 FB     ; Clr Bit 2 (CLOCK, and TG43 on PA2)
-IEA0C           STAB    ,X                       ; EA0C: E7 00     ; Set PortA
+                ;LDAA    TRACKSAV ;changed       ; EA02: 96 13     ; 
+                ;ORAB    #$0C     ;changed       ; EA04: CA 0C     ; In B is FUNCSAV<<1, isol. Bit 2,3 (RWTEST, WRTEST, CLOCK)
+                ;CMPA    #$2B     ;changed       ; EA06: 81 2B     ; check for Track > 43
+                ;BLS     IEA0C    ;changed       ; EA08: 23 02     ; No
+                ;ANDB    #$FB     ;changed       ; EA0A: C4 FB     ; Clr Bit 2 (CLOCK, and TG43 on PA2)
+IEA0C           ;STAB    ,X       ;changed       ; EA0C: E7 00     ; Set PortA
                 LDX     #$D270                   ; EA0E: CE D2 70  ; Inhibit: Sync,Tx,Rx,Select CR3 and 1 Sync Character,Internal Sync,Clear: TUF,CTS
                 STX     SSDA_0                   ; EA11: FF EC 04  ; |
                 LDX     #$D1F5                   ; EA14: CE D1 F5  ; Select Sync Code Register and Set Sync Code to hex F5
@@ -456,7 +466,7 @@ IEA52           TST     $04,X                    ; EA52: 6D 04     ; Read SSDA S
                 CMPA    $05,X                    ; EA58: A1 05     ; Compare SSDA Data Reg to A (04)
                 DECA                             ; EA5A: 4A        ; |
                 BNE     IEA52                    ; EA5B: 26 F5     ; try again
-                LDAB    FUNCSAV                  ; EA5D: D6 0E     ; do it later
+                LDAB    FUNCSAV                  ; EA5D: D6 0E     ; 
                 BMI     WRITINI2   ; -->         ; EA5F: 2B 7C     ; Bit 7 set - Write Function
                 LDAB    CLKFREQ                  ; EA61: D6 19     ; Waitloop
                 ASLB                             ; EA63: 58        ; |
@@ -705,6 +715,18 @@ RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ;
                 DECA                             ; EB81: 4A        ; 
                 STAA    $02,X                    ; EB82: A7 02     ; $3D -> PIACTRLA (En. IRQA interrupt by CA1 - NMI Timer, Sel. Output Reg. A, CA2 high - STEP)
                 RTS                              ; EB84: 39        ; 
+;------------------------------------------------
+;
+;------------------------------------------------
+NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ; 
+                LDAB    #$35                     ; E93B: C6 35     ; Set Error '5' (TIMEOUT)
+;                CPX     #MC637                   ; E93D: 8C C6 37  ; 
+                FCB     $8C
+xSERR7          LDAB    #$37                                       ; Set Error '7' (SEEK ERROR)
+SETERR         STAB    FDSTAT                   ; E940: D7 08     ; 
+                JSR     EXITHNDLR                ; E942: 8D 4D     ; 
+                SEC                              ; E944: 0D        ; 
+                RTS                              ; E945: 39        ; 
 
 
 ;ED00     jmp WRITINI
