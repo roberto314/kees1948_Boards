@@ -187,8 +187,7 @@ CLOCK           LDAB    #$04                     ; E887: C6 04    ; Bit 2 set   
                  STAA    $FE05                    ; in $FE04,5 is a pointer to the variable for the current track / drive  
                  STAA    CURDRV 
                  LDAA    PIAREGA                  ; Get PA0..7   
-                 ANDA    #$EE                     ; Mask DS0 and HLD
-                 ;ORAA    #$10                     ; DEBUG Reset HLD while in floppy firmware and set it on exit
+                 ANDA    #$EE                     ; Mask DS0 and HLD (DEBUG Reset HLD while in floppy firmware and set it on exit)
                  LDAB    CURDRV                   ; Whats is the current drive
                  ANDB    #$01                     ; Mask Bit 0 for Drive 0 or 2
                  BEQ     DRVZRO                   ; Is it zero?
@@ -244,6 +243,9 @@ CLOCKN          LDAB    STRSCTL                  ; E8D2: D6 02     ; normal code
                 CMPB    #$A4     ;changed        ; E8DC: C1 D3     ; |
                 SBCA    #$0F     ;changed        ; E8DE: 82 07     ; 0xFA4 = 4004 (sector too big)
                 BCC     SERR6                    ; E8E0: 24 DC     ; Set Error '6': INVALID DISK ADDRESS
+;------------------------------
+; above: check for number of sector + startsector < 4004
+;------------------------------
                 LDAA    #$FF                     ; E8E2: 86 FF     ; 
                 STAA    SofTRK                   ; E8E4: 97 0A     ; 
                 LDAA    STRSCTH                  ; E8E6: 96 01     ; Startsector is usually at $17 at boot
