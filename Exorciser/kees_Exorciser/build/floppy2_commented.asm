@@ -214,7 +214,7 @@ CHECKAGAIN      BITA    PIAREGA                  ; E8B6: B5 EC 00  ; Check Drive
                 LDAA    PIAREGA
                 ASLA
                 ASLA
-                STAA    EXDSKSD                  ; Store PA5 (SIDES) in Bit 7 of M0010
+                STAA    EXDSKSD                  ; Store PA5 (SIDES) in Bit 7 of M0010, high == SS
                 LDAB    FUNCSAV     ; important!
                 BRA     DRVRDY
 ;------------------------------------------------
@@ -238,6 +238,8 @@ RESTORN         BITB    #$04                     ; E8CB: C5 04     ; Get Bit2 fr
                 BEQ     CLOCKN                   ; E8CD: 27 03     ; No Clock
                 JMP     CLKDMD                   ; E8CF: 7E EB 85  ; Calculate CPU Freq., goes to CLKDMD, EXITHNDLR and RST
 ;------------------------------------------------
+; check for number of (numsector + startsector) < 4004
+;------------------------------------------------
 CLOCKN          LDAB    STRSCTL                  ; E8D2: D6 02     ; normal code flow (no CLOCK, no RESTOR)
                 LDAA    STRSCTH                  ; E8D4: 96 01     ; Get Startsector
                 ADDB    NUMSCTL                  ; E8D6: DB 04     ; |
@@ -248,56 +250,60 @@ CLOCKN          LDAB    STRSCTL                  ; E8D2: D6 02     ; normal code
                 CMPB    #$A4     ;changed        ; E8DC: C1 D3     ; |
                 SBCA    #$0F     ;changed        ; E8DE: 82 07     ; 0xFA4 = 4004 (sector too big)
                 BCC     SERR6                    ; E8E0: 24 DC     ; Set Error '6': INVALID DISK ADDRESS
-;------------------------------
-; above: check for number of sector + startsector < 4004
-;------------------------------
-                LDAA    #$FF                     ; E8E2: 86 FF     ; 
-                STAA    SofTRK                   ; E8E4: 97 0A     ; 
-                LDAA    STRSCTH                  ; E8E6: 96 01     ; Startsector is usually at $17 at boot
-                LDAB    STRSCTL                  ; E8E8: D6 02     ; |
-IE8EA           INC     SofTRK                   ; E8EA: 7C 00 0A  ; is now at 0
-                SUBB    #$D0                     ; E8ED: C0 D0     ; 0xd0 = 208 (8 tracks exactly)
-                SBCA    #$00                     ; E8EF: 82 00     ; 
-                BCC     IE8EA                    ; E8F1: 24 F7     ; $17-$D0 is negative, carry is set
-                ADDB    #$D0                     ; E8F3: CB D0     ; add $d0 again
-                LDAA    SofTRK                   ; E8F5: 96 0A     ; is 0
-                ASLA                             ; E8F7: 48        ; 
-                ASLA                             ; E8F8: 48        ; 
-                ASLA                             ; E8F9: 48        ; Sector * 8
-                DECA                             ; E8FA: 4A        ; 
-IE8FB           INCA                             ; E8FB: 4C        ; A is still 0
-                SUBB    #$1A                     ; E8FC: C0 1A     ; $1a = 26, is STRTSCT > 26
-                BCC     IE8FB                    ; E8FE: 24 FB     ; 
-                ADDB    #$1A                     ; E900: CB 1A     ; $1a = 26, if no add it again
-                STAB    SofTRK                   ; E902: D7 0A     ; store it in Sector of Track
-                LDX     NUMSCTH                  ; E904: DE 03     ; 
-                STX     SECTCNT                  ; E906: DF 0B     ; 
-                LDAB    TRACKSAV                 ; E908: D6 13     ; 
-RESTORY         STAA    TRACKSAV                 ; E90A: 97 13     ; contains track (3 if RESTOR)
-                SBA                              ; E90C: 10        ; B cont. 0 if RESTOR
+;------------------------------------------------
+; Calculate Track for Sector Input
+;------------------------------------------------
+                JSR     CALCTRK
+;                LDAA    #$FF                     ; E8E2: 86 FF     ; 
+;                STAA    SofTRK                   ; E8E4: 97 0A     ; 
+;                LDAA    STRSCTH                  ; E8E6: 96 01     ; Startsector is usually at $17 at boot
+;                LDAB    STRSCTL                  ; E8E8: D6 02     ; |
+;IE8EA           INC     SofTRK                   ; E8EA: 7C 00 0A  ; is now at 0, if STARTSEC > $D0 increase
+;                SUBB    #$D0                     ; E8ED: C0 D0     ; 0xd0 = 208 (8 tracks exactly)
+;                SBCA    #$00                     ; E8EF: 82 00     ; 
+;                BCC     IE8EA                    ; E8F1: 24 F7     ; $17-$D0 is negative, carry is set
+;                ADDB    #$D0                     ; E8F3: CB D0     ; add $d0 again
+;                LDAA    SofTRK                   ; E8F5: 96 0A     ; is 0 or not if STARTSEC > $D0
+;                ASLA                             ; E8F7: 48        ; if SofTRK > 0 it means n*8 Tracks in
+;                ASLA                             ; E8F8: 48        ; 
+;                ASLA                             ; E8F9: 48        ; SofTRK * 8
+;                DECA                             ; E8FA: 4A        ; 
+;IE8FB           INCA                             ; E8FB: 4C        ; A is still 0 or TRACKS
+;                SUBB    #$1A                     ; E8FC: C0 1A     ; $1a = 26, is STRTSCT > 26
+;                BCC     IE8FB                    ; E8FE: 24 FB     ; add single Tracks now
+;                ADDB    #$1A                     ; E900: CB 1A     ; $1a = 26, if no add it again
+;                STAB    SofTRK                   ; E902: D7 0A     ; store it in Sector of Track (1-26)
+;                LDX     NUMSCTH                  ; E904: DE 03     ; A is Track wanted!
+;                STX     SECTCNT                  ; E906: DF 0B     ; 
+;                LDAB    TRACKSAV                 ; E908: D6 13     ; 
+;------------------------------------------------
+; actually STEP to Track
+;------------------------------------------------
+RESTORY         STAA    TRACKSAV                 ; E90A: 97 13     ; contains wanted track (A=3, B=0 if RESTOR or A=0, B=$56)
+                SBA                              ; E90C: 10        ; B=0 if RESTOR so A-B=3 no carry, 0-$56 carry is set
                 LDAB    PIAREGA                  ; E90D: F6 EC 00  ; 
-                ORAB    #$08                     ; E910: CA 08     ; Set Bit 3 (DIRQ) | Check direction to STEP
-                BCC     IE917                    ; E912: 24 03     ;                      | Check direction to STEP
-                ANDB    #$F7                     ; E914: C4 F7     ; Clear Bit 3 (DIRQ) | Check direction to STEP
-                NEGA                             ; E916: 40        ; 
-IE917           ;ANDB    #$EF    ; changed       ; E917: C4 EF     ; Isolate PA4 (HLD)
-                CMPA    #$04                     ; E919: 81 04     ; Compare A with Track 4
-                BLS     IE91F                    ; E91B: 23 02     ; 
-                ;ORAB    #$10     ; changed      ; E91D: CA 10     ; Set Bit 4 (HLD)
+                ORAB    #$08                     ; E910: CA 08     ; Set Bit 3 (DIRQ) Step in
+                BCC     IE917                    ; E912: 24 03     ; B is Track now, A is wanted Track
+                ANDB    #$F7                     ; E914: C4 F7     ; Clear Bit 3 (DIRQ) Step out
+                NEGA                             ; E916: 40        ; If Result is negative, negate.
+IE917           ;ANDB    #$EF                     ; E917: C4 EF     ; Isolate PA4 (HLD)
+                ;CMPA    #$04                     ; E919: 81 04     ; Compare A with Track 4
+                ;BLS     IE91F                    ; E91B: 23 02     ; 
+                ;ORAB    #$10                     ; E91D: CA 10     ; Set Bit 4 (HLD)
 IE91F           STAB    PIAREGA                  ; E91F: F7 EC 00  ; Write to Port
-                DECA                             ; E922: 4A        ; 
-                BMI     ZE96A     ; -->          ; E923: 2B 45     ; 
-                BSR     STEP                     ; E925: 8D 1F     ; 
+STPAGAIN        DECA                             ; E922: 4A        ; 
+                BMI     ZE96A     ; -->          ; E923: 2B 45     ; done
+                BSR     STEP                     ; E925: 8D 1F     ; Step once
                 LDAB    PIAREGA                  ; E927: F6 EC 00  ; 
-                BPL     IE917                    ; E92A: 2A EB     ; Bit 7 clear? (TRK0)
-                ;BMI     IE917                    ; E92A: 2A EB     ; Bit 7 set? (TRK0)
+                BPL     STPAGAIN  ; changed      ; E92A: 2A EB     ; Bit 7 clear? Go again. (TRK0 is inverted, high == TRK0)
+                ;BMI     IE917    ; changed       ; E92A: 2A EB     ; Bit 7 set? (TRK0)
                 TSTA                             ; E92C: 4D        ; 
-                BEQ     ZE96A     ; -->          ; E92D: 27 3B     ; 
+                BEQ     ZE96A     ; -->          ; E92D: 27 3B     ; done
                 LDAA    FUNCSAV                  ; E92F: 96 0E     ; 
                 BITA    #$08                     ; E931: 85 08     ; Get Bit3 from FUNCSAV (RESTOR)
                 BEQ     SERR7                    ; E933: 27 09     ; Function is NOT RESTOR, Set Error
                 BSR     WAIT2                    ; E935: 8D 25     ; Wait
-                BRA     EXITHNDLR ; -->          ; E937: 20 58     ; 
+                BRA     EXITHNDLR ; -->          ; E937: 20 58     ; bail
 ;------------------------------------------------
 ;
 ;------------------------------------------------
@@ -332,7 +338,7 @@ WAIT2           LDX     #$0187                   ; E95C: CE 01 87  ;
 IE961           LDAA    TRACKSAV                 ; E961: 96 13     ; Function = RESTOR
                 BEQ     SERR7                    ; E963: 27 D9     ; Is Track 0? If yes Set Error '7' (SEEK ERROR)
                 CLRA                             ; E965: 4F        ; 
-                LDAB    #$56                     ; E966: C6 56     ; = 86 <---- What is this??????
+                LDAB    #$7F                     ; E966: C6 56     ; = 86 <---- What is this??????
                 BRA     RESTORY   ; -->          ; E968: 20 A0     ; 
 ;------------------------------------------------
 ; Comes from RESTORY
@@ -345,7 +351,7 @@ ZE96A           LDX     #$02C0                   ; E96A: CE 02 C0  ; |
                 BITA    #$10                     ; E975: 85 10     ; Is FUNCTION SEEK?
                 BNE     EXITHNDLR                ; E977: 26 18     ; If yes - Done
                 LDAB    #$6F                     ; E979: C6 6F     ; Write Sync data address mark
-                RORA                             ; E97B: 46        ; Get Bit 0 into carry
+                RORA                             ; E97B: 46        ; Get Bit 0 of Function into carry
                 BCC     IE980                    ; E97C: 24 02     ; Is Bit 0 set?
                 LDAB    #$6A                     ; E97E: C6 6A     ; yes, write DELETED DATA MARK (WRDDAM)
 IE980           STAB    ADDRMRK                  ; E980: D7 14     ; 
@@ -393,9 +399,16 @@ DRIVETHREE      STX     PIAREGB   ;write PIAREGB, changed   ; E994: FF EC 01  ; 
 ; if sector >= 27 - steps to next Track,
 ; updates SECTCNT, SofTRK, CWRDCNT, DWRDCNT
 ;------------------------------------------------
-;                 
+INCSIDE         LDAB    PIAREGB                  ; 
+                ANDB    #$BF                     ; Reset Side (= Side 1)
+                STAB    PIAREGB                  ; 
+                SUBA    #26                      ; We have Sector 27 - 27 = 0 - 26 carry is set, for 53-27=26-26 carry is clear
+                BCS     SIDETWO
 INCTRK          STAA    SofTRK                   ; E9CA: 97 0A     ; store new Sector of Track
                 JSR     STEP                     ; E9CC: BD E9 46  ; move to next Track (X = 0)
+                LDAA    PIAREGB
+                ORAA    #$40                     ; Set Side high ( = Side 0)
+                STAA    PIAREGB
                 BSR     WAIT2                    ; E9CF: 8D 8B     ; wait some more (X = 0)
                 INC     $13,X                    ; E9D1: 6C 13     ; increment TRACKSAV
 NXTSEC          INC     SofTRK                   ; E9D3: 7C 00 0A  ; increment Sector of Track
@@ -403,8 +416,9 @@ NXTSEC          INC     SofTRK                   ; E9D3: 7C 00 0A  ; increment S
                 LDX     SECTCNT                  ; E9D8: DE 0B     ; Load Sector count
                 BEQ     SECRDDONE   ; -->        ; E9DA: 27 A8     ; done?
                 SUBA    #27                     ; E9DC: 80 1B     ; Sector == 27?
-                BCC     INCTRK                   ; E9DE: 24 EA     ; increase Track
-                LDAA    #$05                     ; E9E0: 86 05     ; 
+                BCC     INCSIDE
+                ;BCC     INCTRK                   ; E9DE: 24 EA     ; increase Track
+SIDETWO         LDAA    #$05                     ; E9E0: 86 05     ; 
                 STAA    DRDCNT                   ; E9E2: 97 18     ; Data Read Counter
                 DEX                              ; E9E4: 09        ; decrement sectorcount
 START           LDAA    #$40                     ; E9E5: 86 40     ; One Sector is $40 words
@@ -726,7 +740,7 @@ RETRG           LDX     #PIAREGA                 ; EB74: CE EC 00  ;
                 STAA    $02,X                    ; EB82: A7 02     ; $3D -> PIACTRLA (En. IRQA interrupt by CA1 - NMI Timer, Sel. Output Reg. A, CA2 high - STEP)
                 RTS                              ; EB84: 39        ; 
 ;------------------------------------------------
-;
+; NMI ISR, fires when Timeout
 ;------------------------------------------------
 NMIISR          LDS     STACKSAV                 ; E939: 9E 16     ; 
                 LDAB    #$35                     ; E93B: C6 35     ; Set Error '5' (TIMEOUT)
@@ -737,7 +751,57 @@ SETERR         STAB    FDSTAT                   ; E940: D7 08     ;
                 JSR     EXITHNDLR                ; E942: 8D 4D     ; 
                 SEC                              ; E944: 0D        ; 
                 RTS                              ; E945: 39        ; 
-
+;------------------------------------------------
+; Calculate Tracks and Sectors of Sectors only Input
+; Returns A as wanted Track
+; Modifies SofTRK, SECTCNT
+;------------------------------------------------
+CALCTRK         LDAA    #$FF     ; 
+                STAA    SofTRK   ; 
+                LDAA    EXDSKSD  ;  Bit 7 high == SS
+                BPL     DUALSIDE ; 
+                LDAA    STRSCTH  ; $0
+                LDAB    STRSCTL  ; $D0
+SE8EA           INC     SofTRK   ; is now at 0, increase to 1
+                SUBB    #$D0     ; 0xd0 = 8 tracks exactly
+                SBCA    #$00     ; 
+                BCC     SE8EA    ; carry is clear, carry is set now
+                ADDB    #$D0     ; D contains $0
+                LDAA    SofTRK   ; is 1
+                ASLA             ; 2
+                ASLA             ; 4
+                ASLA             ; SofTRK * 8
+                DECA             ; 7
+SE8FB           INCA             ; 8
+                SUBB    #$1A     ; B is 0
+                BCC     SE8FB    ; carry is set
+                ADDB    #$1A     ; B is 0 again
+                STAB    SofTRK   ; A is 8, SofTRK = 0
+                LDX     NUMSCTH  ; A is Track wanted!
+                STX     SECTCNT  ; 
+                LDAB    TRACKSAV ; 
+                RTS              ; 
+;------------------------------------------------
+DUALSIDE        LDAA    STRSCTH  ; $0
+                LDAB    STRSCTL  ; $D0
+DE8EA           INC     SofTRK   ; is now 0, increase to 1
+                SUBB    #$D0     ; $D0 is exactly 4 Tracks
+                SBCA    #$00     ; 
+                BCC     DE8EA    ; carry is clear, carry is set now
+                ADDB    #$D0     ; D contains $0
+                LDAA    SofTRK   ; is 1
+                ASLA             ; 2
+                ASLA             ; 4
+                DECA             ; 3
+DE8FB           INCA             ; 4
+                SUBB    #$34     ; B is 0
+                BCC     DE8FB    ; carry is set
+                ADDB    #$34     ; b is 0 again
+                STAB    SofTRK   ; A = 4, SofTRK = 0
+                LDX     NUMSCTH  ; A is Track wanted!
+                STX     SECTCNT  ; 
+                LDAB    TRACKSAV ; 
+                RTS              ; 
 
 ;ED00     jmp WRITINI
 ;ED03    jmp TOP
