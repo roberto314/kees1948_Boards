@@ -22,9 +22,10 @@ SofTRK  EQU     $000A
 SECTCNT EQU     $000B
 STATSAV EQU     $000D
 FUNCSAV EQU     $000E
-NMIVECSAV EQU     $000F
+NMIVECSAV EQU   $000F
+EXDSKSD EQU     $0010 ; Sides per disk (Single or double)
 M0012   EQU     $0012 ; was: $11 and $12 are current Track of Drive 0,1, Reused always zero
-TRACKSAV EQU    $0013
+TRACKSAV EQU    $0013 ; save the urrent track
 ADDRMRK EQU     $0014
 DWRDCNT EQU     $0015
 STACKSAV EQU     $0016
@@ -210,6 +211,10 @@ STORE            STAA    PIAREGB
                 LDAA    #$40                     ; E8B4: 86 40     ; PA6 (RDY)
 CHECKAGAIN      BITA    PIAREGA                  ; E8B6: B5 EC 00  ; Check Drive Ready
                 BNE     CHECKAGAIN  ; changed
+                LDAA    PIAREGA
+                ASLA
+                ASLA
+                STAA    EXDSKSD                  ; Store PA5 (SIDES) in Bit 7 of M0010
                 LDAB    FUNCSAV     ; important!
                 BRA     DRVRDY
 ;------------------------------------------------
@@ -583,7 +588,7 @@ IEB11           RORB                             ; EB11: 56        ; ROR FUNCSAV
 IEB2A           LDAA    #$40                     ; EB2A: 86 40     ; 
 IEB2C           BITA    SSDA_0                   ; EB2C: B5 EC 04  ; Transmit Datareg. empty?
                 BEQ     IEB2C                    ; EB2F: 27 FB     ; If no, wait
-WRITSEC         LDAA    $12      ;changed     ;+2                  ; $12 is alway zero    
+WRITSEC         LDAA    M0012    ;changed     ;+2                  ; $12 is alway zero    
                 LDAA    ,X                       ; EB35: A6 00     ; Load Data from RAM
                 STAA    SSDA_1                   ; EB37: B7 EC 05  ; Write to disk
                 LDAA    $01,X                    ; EB3A: A6 01     ; Load next Byte
