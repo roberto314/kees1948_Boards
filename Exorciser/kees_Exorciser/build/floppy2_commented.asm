@@ -200,8 +200,8 @@ DRVZRO           STAA    PIAREGA                  ; Write TG43, DIRQ, HLD low, S
                  STAA    TRACKSAV                 ; Store it
                  
                  LDAA    PIAREGB                  ;
-                 ;ORAA    #$20                     ; Set WG and PB0(RESET) and DS2
-                 ORAA    #$60                     ; Set DS2 and DS3
+                 ORAA    #$20                     ; Set WG and PB0(RESET) and DS2
+                 ;ORAA    #$60                     ; Set DS2 and DS3
                  ;ANDA    #$BF                    ; DS3 low
                  ;LDAA    #$62                     ; Set DS3(side) and DS2 high
                  LDAB    CURDRV                   ;
@@ -595,7 +595,8 @@ WRITINI2        LDX     #$C0DA                   ; EADD: CE C0 DA  ;
                 STAA    SSDA_0                   ; EAF4: B7 EC 04  ; RXRs, Sel. CR3
                 LDAA    PIAREGB  ; changed   ;+4  but DEX is gone (-4) so it is a wash     
                 BITA    #$10     ; changed   ;+2                   ; Check Writeprot?
-                BNE     SERR2    ;changed    ;+4 ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
+                BEQ     SERR2                     ; EB00: 27 93     ; If low set Error (New Info: When $24 is NOT $10 this works, WPT is NOT inverted!)
+                ;BNE     SERR2    ;changed    ;+4 ; EB00: 26 93     ; If high set Error (otherwise it conflicts with format.sy)
                 ANDA    #$60     ; changed   ;+2                   ; Clear all but Bit 5,6 (DS2, DS3)
                 TAB                          ;+2
                 ORAA    #$02     ; changed   ;+2                   ; Set Bit 1 (WG high)
@@ -705,7 +706,8 @@ LIST            JMP     LPLISTEXT
 FDINITEXT       LDAA    #$FE                ; | $ FE00-03  is a pointer to the Position of Track / Drive
                 STAA    $FE04               ; | $FE04 <- $FE 
                 LDX     #$0000
-                CLR     $12
+                CLR     $12                 ; $12 is always zero
+                CLR     $24                 ; $24 is used by format command to check for double sided
                 JMP     FDINTBACK
 ;------------------------------------------------
 ; ########### 7 Bytes free
