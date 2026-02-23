@@ -706,8 +706,8 @@ LIST            JMP     LPLISTEXT
 FDINITEXT       LDAA    #$FE                ; | $ FE00-03  is a pointer to the Position of Track / Drive
                 STAA    $FE04               ; | $FE04 <- $FE 
                 LDX     #$0000
-                CLR     $12                 ; $12 is always zero
-                CLR     $24                 ; $24 is used by format command to check for double sided (Attention: it also inverts WPROT)
+                CLR     $0012                 ; $12 is always zero
+                CLR     $0024                 ; $24 is used by format command to check for double sided (Attention: it also inverts WPROT)
                 JMP     FDINTBACK
 ;------------------------------------------------
 ; ########### 7 Bytes free
