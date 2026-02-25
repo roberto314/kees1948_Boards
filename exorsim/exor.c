@@ -211,6 +211,9 @@ int cur_state; /* 0 = IDLE, 1 = read single, 2 = read multiple, 3 = write single
 int cur_dir = 1;
 
 int count1;
+static int old_ssda_val = 0x1000;
+static int val_cntr;
+static char statusreg;
 
 /* All memory reads go through this function */
 
@@ -232,17 +235,41 @@ unsigned char mread(unsigned short addr){
                         printf("FCF8 Read \n");
                         return 0x80;
                 } 
+                case 0xEC00: { // PIAREGA
+                        return 0x00; //PA5 is for DS
+                } 
+                case 0xEC01: { // PIAREGB
+                        return 0x10; //Return WPROT
+                } 
+                case 0xEC03: { // PIACTRLB
+                        return 0x80; //Return IDX from Floppy
+                } 
+                case 0xEC04: { // SSDA Status
+                        //printf("%04x\n", pc);
+                        if ((pc == 0x220E) ||
+                            (pc == 0x221C) ||
+                            (pc == 0x222A) ||
+                            (pc == 0x2232) ||
+                            (pc == 0x2242) ||
+                            (pc == 0x224E)){
+                                return 0x40; //Return TUF
+                        }
+                        else{
+                                return 0x18; //Return TX FIFO empty
+                        }                } 
                 case 0xFCF4: { /* Check serial port status */
                         if (quick_term_poll())
                                 return 0x03;
                         else
                                 return 0x02;
-                } case 0xFCF5: { /* Read from serial port */
+                } 
+                case 0xFCF5: { /* Read from serial port */
                         if (quick_term_poll())
                                 return term_in();
                         else
                                 return 0;
-                } default: {
+                } 
+                default: {
                         return mem[addr];
                 }
         }
@@ -263,6 +290,35 @@ void mwrite(unsigned short addr, unsigned char data){
                 case 0xFCF5: { /* Write to serial port */
                         term_out(data);
                         /* putchar(data); fflush(stdout); */
+                        break;
+                } 
+                case 0xEC04: {
+                        printf("Ctrl1:  %02X from %04X\n", data, pc-3);
+                        statusreg = data;
+                        break;
+                } 
+                case 0xEC05: {
+                        switch (statusreg & 3){
+                                case 0:
+                                        printf("Ctrl2:  %02X from %04X\n", data, pc-3);
+                                break;
+                                case 1:
+                                        printf("Sync:   %02X from %04X\n", data, pc-3);
+                                break;
+                                case 2:
+                                        if (data == old_ssda_val){
+                                                val_cntr ++;
+                                        } else {
+                                                printf("Ctrl3:  %02X from %04X\n", data, pc-3);
+                                        }
+                                        old_ssda_val = data;
+                                break;
+                                case 3:
+                                        printf("TXData: %02X from %04X\n", data, pc-3);
+                                break;
+                                default:
+                                break;
+                        }
                 }
         }
 }

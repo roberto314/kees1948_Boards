@@ -200,8 +200,8 @@ DRVZRO           STAA    PIAREGA                  ; Write TG43, DIRQ, HLD low, S
                  STAA    TRACKSAV                 ; Store it
                  
                  LDAA    PIAREGB                  ;
-                 ORAA    #$20                     ; Set WG and PB0(RESET) and DS2
-                 ;ORAA    #$60                     ; Set DS2 and DS3
+                 ;ORAA    #$20                     ; Set WG and PB0(RESET) and DS2
+                 ORAA    #$60                     ; Set DS2 and DS3 (start looking for correct sector on Side 0)
                  ;ANDA    #$BF                    ; DS3 low
                  ;LDAA    #$62                     ; Set DS3(side) and DS2 high
                  LDAB    CURDRV                   ;
@@ -253,8 +253,8 @@ CLOCKN          LDAB    STRSCTL                  ; E8D2: D6 02     ; normal code
                 BCS     SERR6                    ; E8DA: 25 E2     ; Set Error '6': INVALID DISK ADDRESS
                ; CMPB    #$D3                     ; E8DC: C1 D3     ; |
                ; SBCA    #$07                     ; E8DE: 82 07     ; 0x7D3 = 2003 (sector too big)
-                CMPB    #$A4     ;changed        ; E8DC: C1 D3     ; |
-                SBCA    #$0F     ;changed        ; E8DE: 82 07     ; 0xFA4 = 4004 (sector too big)
+                CMPB    #$A5     ;changed        ; E8DC: C1 D3     ; |
+                SBCA    #$0F     ;changed        ; E8DE: 82 07     ; 0xFA5 = 4005 (sector too big)
                 BCC     SERR6                    ; E8E0: 24 DC     ; Set Error '6': INVALID DISK ADDRESS
 ;------------------------------------------------
 ; Calculate Track for Sector Input
@@ -326,11 +326,12 @@ SERR7           JMP     xSERR7
 ;------------------------------------------------
 ;
 ;------------------------------------------------
-STEP            LDAB    #$34                     ; E946: C6 34     ; Bit 5,4,2 set
-                STAB    PIACTRL                  ; E948: F7 EC 02  ; CA2 low (STEP)
-                LDAB    #$3C                     ; E94B: C6 3C     ; Bit 5,4,3,2 set
-                STAB    PIACTRL                  ; E94D: F7 EC 02  ; CA2 high (STEP)
-                LDX     #$00FE                   ; E950: CE 00 FE  ; 
+STEP            JMP     EXTSTEP
+;STEP            LDAB    #$34                     ; E946: C6 34     ; Bit 5,4,2 set
+;                STAB    PIACTRL                  ; E948: F7 EC 02  ; CA2 low (STEP)
+;                LDAB    #$3C                     ; E94B: C6 3C     ; Bit 5,4,3,2 set
+;                STAB    PIACTRL                  ; E94D: F7 EC 02  ; CA2 high (STEP)
+;                LDX     #$00FE                   ; E950: CE 00 FE  ; 
 WAIT3           LDAB    CLKFREQ                  ; E953: D6 19     ; is 3 for 1MHz
 WAIT1           DECB                             ; E955: 5A        ; 
                 BNE     WAIT1                    ; E956: 26 FD     ; 
@@ -368,7 +369,10 @@ IE980           STAB    ADDRMRK                  ; E980: D7 14     ;
 ;------------------------------------------------
 ; Comes from NXTSEC
 ;------------------------------------------------
-SECRDDONE       LDAA    FUNCSAV                  ; E984: 96 0E     ; Get Function
+SECRDDONE       LDAA    PIAREGB
+                ORAA    #$40                     ; Set Side high ( = Side 0)
+                STAA    PIAREGB
+                LDAA    FUNCSAV                  ; E984: 96 0E     ; Get Function
                 BPL     EXITHNDLR                ; E986: 2A 09     ; Bit 7 not Set - done (READPS, RDCRC, RESTOR, SEEK, CLOCK)
                 ANDA    #$40                     ; E988: 84 40     ; Isolate Bit 6
                 STAA    FUNCSAV                  ; E98A: 97 0E     ; <------------- WHY??
@@ -425,6 +429,9 @@ INCSIDE         LDAB    EXDSKSD  ;  Bit 7 high == SS
                 STAB    PIAREGB                  ; 
                 SUBA    #26                      ; We have Sector 27 - 27 = 0 - 26 carry is set, for 53-27=26-26 carry is clear
                 BCS     SIDETWO
+                ;LDAB    PIAREGB                  ; 
+                ORAB    #$40                     ; Set Side (= Side 0)
+                STAB    PIAREGB                  ; 
                 ;LDAA    #$FF
                 ;ADDA    #26
 INCTRK          STAA    SofTRK                   ; E9CA: 97 0A     ; store new Sector of Track
@@ -840,7 +847,15 @@ SIDE0           LDX     NUMSCTH  ; A is Track wanted!
                 STX     SECTCNT  ; 
                 LDAB    TRACKSAV ; 
                 RTS              ; 
-
+;------------------------------------------------
+;
+;------------------------------------------------
+EXTSTEP         LDAB    #$34                     ; E946: C6 34     ; Bit 5,4,2 set
+                STAB    PIACTRL                  ; E948: F7 EC 02  ; CA2 low (STEP)
+                LDAB    #$3C                     ; E94B: C6 3C     ; Bit 5,4,3,2 set
+                STAB    PIACTRL                  ; E94D: F7 EC 02  ; CA2 high (STEP)
+                LDX     #$00FE                   ; E950: CE 00 FE  ; 
+                JMP     WAIT3
 ;ED00     jmp WRITINI
 ;ED03    jmp TOP
 ;ED06    jmp LPINIT
